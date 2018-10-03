@@ -67,12 +67,6 @@ namespace GameEngine
             w.KeyDown += KeyDown;
             w.KeyUp += KeyUp;
             //setup Music & prop. sound ^nicer place
-            new Thread((ThreadStart) delegate
-            {
-                var mediaplayer = new SoundPlayer(AppDomain.CurrentDomain.BaseDirectory + "Music/main.wav");
-                mediaplayer.Load();
-                //mediaplayer.PlayLooping();
-            }).Start();
             render.StartRender();
         }
 
