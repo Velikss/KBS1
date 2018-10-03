@@ -23,15 +23,23 @@ namespace GameEngine
             Width = destWidth;
             Height = height;
             collision = new Rectangle((int) X, (int) Y, destWidth, Height);
-            Image destImage = (Image) new Bitmap(destWidth, 32);
-            
-            using (TextureBrush brush = new TextureBrush(Sprite, WrapMode.Tile))
-            using (Graphics g = Graphics.FromImage(destImage))
+            if (widthRepeater > 1)
             {
-                g.FillRectangle(brush, 0, 0, destImage.Width, destImage.Height);
+                Image destImage = (Image) new Bitmap(destWidth, 32);
+
+                using (TextureBrush brush = new TextureBrush(Sprite, WrapMode.Tile))
+                using (Graphics g = Graphics.FromImage(destImage))
+                {
+                    g.FillRectangle(brush, 0, 0, destImage.Width, destImage.Height);
+                }
+
+                this.Sprite = destImage;
             }
-            
-            this.Sprite = destImage;
+            else
+            {
+                this.Sprite = Sprite;
+            }
+
             Ground = standable;
         }
     }
