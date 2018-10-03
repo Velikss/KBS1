@@ -32,7 +32,7 @@ namespace GameEngine
 
         public void InitializeGame(Window w, int Width, int Height)
         {
-            //gets preffered Screen size
+            //gets preferred Screen size
             Screen_Height = Height;
             Screen_Width = Width;
             //sets player.X adapted to screen size
@@ -43,14 +43,19 @@ namespace GameEngine
             var i = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/ground.gif");
             //let's do a Level class which loads level data
             //create level data ^more nice
-            for (var j = 0; j < 550; j += 32)
-                Tiles.Add(new Tile(ref i, j, 532, 32, 32, true));
-            for (var j = 550; j < 700; j += 32)
-                Tiles.Add(new Tile(ref i, j, 435, 32, 32, true));
-            for (var j = 700; j < 800; j += 32)
-                Tiles.Add(new Tile(ref i, j, 532, 32, 32, true));
+            
+            //TODO: Multiple sprites as one Tile
+            
+            Tiles.Add(new Tile(ref i, 20, 0, 532, 32, 32, true));
+            
+//            for (var j = 0; j < 550; j += 32)
+//                Tiles.Add(new Tile(ref i, j, 532, 32, 32, true));
+//            for (var j = 550; j < 700; j += 32)
+//                Tiles.Add(new Tile(ref i, j, 435, 32, 32, true));
+//            for (var j = 700; j < 800; j += 32)
+//                Tiles.Add(new Tile(ref i, j, 532, 32, 32, true));
 
-            //creates a new screen given screen prefferences
+            //creates a new screen given screen preferences
             screen = new Screen(this, w);
             //new Render
             Render render = new Render(this);

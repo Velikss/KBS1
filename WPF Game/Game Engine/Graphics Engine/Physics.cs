@@ -7,7 +7,7 @@ namespace GameEngine
 {
     public class PhysicalObject
     {
-        //rectangle inside object which which contains the collision points
+        //rectangle inside object which contains the collision points
         public Rectangle collision;
         //oriental info
         public float X, Y;
