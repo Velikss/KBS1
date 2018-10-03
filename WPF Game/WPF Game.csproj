@@ -61,10 +61,10 @@
     <Compile Include="Game Engine\Environment\Player.cs" />
     <Compile Include="Game Engine\Environment\Tile.cs" />
     <Compile Include="Game Engine\GameMaker.cs" />
-    <Compile Include="Game Engine\Graphics Engine\Camera.cs" />
-    <Compile Include="Game Engine\Graphics Engine\Physics.cs" />
-    <Compile Include="Game Engine\Graphics Engine\Render.cs" />
-    <Compile Include="Game Engine\Graphics Engine\Screen.cs" />
+    <Compile Include="Game Engine\Engine\Graphics\Camera.cs" />
+    <Compile Include="Game Engine\Engine\Graphics\Physics.cs" />
+    <Compile Include="Game Engine\Engine\Graphics\Render.cs" />
+    <Compile Include="Game Engine\Engine\Graphics\Screen.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

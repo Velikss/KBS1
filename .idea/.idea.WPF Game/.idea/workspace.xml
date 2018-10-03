@@ -1,24 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="41ae38a3-d695-4f47-a723-c4a3296ab06e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.WPF Game/.idea/contentModel.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.WPF Game/.idea/indexLayout.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.WPF Game/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.WPF Game/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.WPF Game/riderModule.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WPF Game/Game Engine/Environment/Tile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WPF Game/Game Engine/Environment/Tile.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WPF Game/Game Engine/GameMaker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WPF Game/Game Engine/GameMaker.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WPF Game/Game Engine/Graphics Engine/Physics.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WPF Game/Game Engine/Graphics Engine/Physics.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WPF Game/bin/Debug/WPF Game.exe" beforeDir="false" afterPath="$PROJECT_DIR$/WPF Game/bin/Debug/WPF Game.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WPF Game/bin/Debug/WPF Game.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/WPF Game/bin/Debug/WPF Game.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WPF Game/obj/Debug/WPF Game.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/WPF Game/obj/Debug/WPF Game.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WPF Game/obj/Debug/WPF Game.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/WPF Game/obj/Debug/WPF Game.csproj.FileListAbsolute.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WPF Game/obj/Debug/WPF Game.csproj.GenerateResource.cache" beforeDir="false" afterPath="$PROJECT_DIR$/WPF Game/obj/Debug/WPF Game.csproj.GenerateResource.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WPF Game/obj/Debug/WPF Game.exe" beforeDir="false" afterPath="$PROJECT_DIR$/WPF Game/obj/Debug/WPF Game.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WPF Game/obj/Debug/WPF Game.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/WPF Game/obj/Debug/WPF Game.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WPF Game/obj/Debug/WPF Game_MarkupCompile.cache" beforeDir="false" afterPath="$PROJECT_DIR$/WPF Game/obj/Debug/WPF Game_MarkupCompile.cache" afterDir="false" />
-    </list>
+    <list default="true" id="41ae38a3-d695-4f47-a723-c4a3296ab06e" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,8 +43,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/WPF Game/Game Engine/GameMaker.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="384">
-              <caret line="58" column="20" selection-start-line="58" selection-start-column="19" selection-end-line="58" selection-end-column="20" />
+            <state relative-caret-position="648">
+              <caret line="66" column="27" lean-forward="true" selection-start-line="66" selection-start-column="27" selection-end-line="66" selection-end-column="27" />
               <folding>
                 <marker date="1538561050419" expanded="false" signature="6:163" ph="..." />
                 <marker date="1538561050419" expanded="true" signature="185:4805" ph="{...}" />
@@ -303,12 +286,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1538557215138</updated>
-      <workItem from="1538557218896" duration="4057000" />
+      <workItem from="1538557218896" duration="4400000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4057000" />
+    <option name="totallyTimeSpent" value="4400000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -446,8 +429,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/WPF Game/Game Engine/GameMaker.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
-          <caret line="58" column="20" selection-start-line="58" selection-start-column="19" selection-end-line="58" selection-end-column="20" />
+        <state relative-caret-position="648">
+          <caret line="66" column="27" lean-forward="true" selection-start-line="66" selection-start-column="27" selection-end-line="66" selection-end-column="27" />
           <folding>
             <marker date="1538561050419" expanded="false" signature="6:163" ph="..." />
             <marker date="1538561050419" expanded="true" signature="185:4805" ph="{...}" />
