@@ -7,7 +7,8 @@ namespace WPF_Game
         public MainWindow()
         {
             InitializeComponent();
-            new GameMaker().InitializeGame(this, 800, 600);
+            new Media().AddMedia("", "");
+            //new GameMaker().InitializeGame(this, 800, 600);
         }
     }
 }

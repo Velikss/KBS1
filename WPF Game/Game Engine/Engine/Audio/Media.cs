@@ -1,22 +1,33 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Media;
+using NAudio.Wave;
 
-namespace WPF_Game.Game_Engine.Engine.Audio
+namespace GameEngine
 {
-    class Media
+    public class Media
     {
-        public string location;
+        private WaveOutEvent outputDevice;
+        private MediaFoundationReader audioFile;
+        private Dictionary<string, MediaPlayer> Soundtrack = new Dictionary<string, MediaPlayer>();
 
-        public Media(string location)
+        public void AddMedia(string Name, string Location)
         {
-            this.location = location;
-            //new Thread((ThreadStart)delegate
-           //{
-           //};
+            if (outputDevice == null)
+            {
+                outputDevice = new WaveOutEvent();
+            }
+            if (audioFile == null)
+            {
+                audioFile = new MediaFoundationReader(@"C:\Users\usr\Downloads\1.wav");
+                outputDevice.Init(audioFile);
+            }
+            outputDevice.Play();
         }
     }
 }
