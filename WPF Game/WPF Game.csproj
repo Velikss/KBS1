@@ -58,6 +58,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Game Engine\Engine\Audio\Media.cs" />
     <Compile Include="Game Engine\Environment\Player.cs" />
     <Compile Include="Game Engine\Environment\Tile.cs" />
     <Compile Include="Game Engine\GameMaker.cs" />
@@ -103,6 +104,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Game Engine\Engine\NewFolder1\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
