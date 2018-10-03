@@ -8,7 +8,6 @@ namespace GameEngine
     public class Tile : PhysicalObject
     {
 
-
         // Use `using` blocks for GDI objects you create, so they'll be released
         // quickly when you're done with them.
 
@@ -16,12 +15,12 @@ namespace GameEngine
         public readonly bool Ground;
 
         //instances tile given referred sprite, position, fatness:), and standability
-        public Tile(ref Image Sprite, int size, int x, int y, int width, int height, bool standable = false)
+        public Tile(ref Image Sprite, int x, int y, int height, int widthRepeater, bool standable = false)
         {
-            int destWidth = size * 32;
+            int destWidth = widthRepeater * 32;
             X = x;
             Y = y;
-            Width = width;
+            Width = destWidth;
             Height = height;
             collision = new Rectangle((int) X, (int) Y, destWidth, Height);
             Image destImage = (Image) new Bitmap(destWidth, 32);

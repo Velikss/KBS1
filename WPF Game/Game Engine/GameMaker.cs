@@ -46,14 +46,9 @@ namespace GameEngine
             
             //TODO: Multiple sprites as one Tile
             
-            Tiles.Add(new Tile(ref i, 20, 0, 532, 32, 32, true));
-            
-//            for (var j = 0; j < 550; j += 32)
-//                Tiles.Add(new Tile(ref i, j, 532, 32, 32, true));
-//            for (var j = 550; j < 700; j += 32)
-//                Tiles.Add(new Tile(ref i, j, 435, 32, 32, true));
-//            for (var j = 700; j < 800; j += 32)
-//                Tiles.Add(new Tile(ref i, j, 532, 32, 32, true));
+            Tiles.Add(new Tile(ref i, 0, 532, 32, 20, true));
+            Tiles.Add(new Tile(ref i, 750, 332, 32, 10, true));
+            Tiles.Add(new Tile(ref i, 1250, 150, 32, 10, true));
 
             //creates a new screen given screen preferences
             screen = new Screen(this, w);
