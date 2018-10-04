@@ -67,6 +67,7 @@ namespace GameEngine
                         }
                         catch
                         {
+                            // ignored
                         }
 
                     else

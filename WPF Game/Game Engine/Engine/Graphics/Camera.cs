@@ -28,7 +28,7 @@ namespace GameEngine
         public Camera(ref Player p, ref Level level, ref Render render)
         {
             player = p;
-            this.Tiles = level.Tiles;
+            Tiles = level.Tiles;
             this.render = render;
         }
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+// ReSharper disable NotAccessedField.Local
 
 namespace GameEngine
 {
@@ -7,9 +8,9 @@ namespace GameEngine
     public class Level
     {
         public List<Tile> Tiles = new List<Tile>();
-        public readonly string LevelName;
+        private readonly string LevelName;
 
-        public Level()
+        private Level()
         {
 
         }
@@ -25,7 +26,7 @@ namespace GameEngine
 
         public void Load(List<Tile> tiles)
         {
-            this.Tiles = tiles;
+            Tiles = tiles;
         }
     }
 }

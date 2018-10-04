@@ -45,7 +45,8 @@ namespace GameEngine
 
             //let's do something with a TileLoader in ? Tile Class: static List<> return?
             //load groud tile sprite to lower memory use ^better place
-            var i = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/ground.gif");
+            Image i = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/ground.gif");
+            i.Tag = "ground";
             //let's do a Level class which loads level data
             //create level data ^more nice
             level = new Level("level1");
@@ -208,7 +209,7 @@ namespace GameEngine
             Gravity.Dispose();
             Gravity.EnableGravityOnObject(player);
             Gravity.EnableGravity(ref level, ref game_render);
-            if(StartGame)
+            if (StartGame)
                 game_render.Activate();
         }
     }

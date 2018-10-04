@@ -17,9 +17,9 @@ namespace GameEngine
         private readonly Window w;
 
         //holds background for lower memory_use ^change this more beautifull^
-        protected Image background;
-        public List<MenuButton> buttons = new List<MenuButton>();
-        public List<MenuText> texts = new List<MenuText>();
+        private readonly Image background;
+        private readonly List<MenuButton> buttons;
+        private readonly List<MenuText> texts;
 
         public Menu(GameMaker gm, Window w, List<MenuText> texts, List<MenuButton> buttons, Image background) : base(gm)
         {
@@ -71,6 +71,7 @@ namespace GameEngine
                         }
                         catch
                         {
+                            // ignored
                         }
                     else
                         Thread.Sleep(100);
@@ -108,12 +109,12 @@ namespace GameEngine
         public delegate void ClickTrigger();
 
         public readonly string Content;
-        public Font font;
+        public readonly Font font;
 
-        public Image Sprite;
-        public Brush text_color;
+        public readonly Image Sprite;
+        public readonly Brush text_color;
         public SizeF text_sizef;
-        public int x, y, Width, Height;
+        public readonly int x, y, Width, Height;
 
         public MenuButton(string Content, Font font, Brush text_color, int x, int y, int Width, int Height,
             Image sprite)
@@ -131,7 +132,7 @@ namespace GameEngine
 
         public event ClickTrigger Clicked;
 
-        public SizeF MeasureString(string text, int fontSize, string typeFace)
+        private SizeF MeasureString(string text, int fontSize, string typeFace)
         {
             var ft = new FormattedText
             (
@@ -153,10 +154,11 @@ namespace GameEngine
 
     public class MenuText
     {
-        public string Content;
-        public Font font;
-        public Brush text_color;
-        public int x, y;
+        public readonly string Content;
+        public readonly Font font;
+        public readonly Brush text_color;
+        public readonly int x;
+        public int y;
 
         public MenuText(string Content, Font font, Brush text_color, int x, int y)
         {
@@ -177,7 +179,7 @@ namespace GameEngine
             y = (int) (600 / 2 - size.Height);
         }
 
-        public SizeF MeasureString(string text, int fontSize, string typeFace)
+        private SizeF MeasureString(string text, int fontSize, string typeFace)
         {
             var ft = new FormattedText
             (

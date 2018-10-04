@@ -7,6 +7,9 @@ namespace GameEngine
     {
         //holds reffered cameradata
         private Camera camera;
+
+        //bool states if object is in contact with the ground
+        public bool Landed;
         
         //set all possible sprites to lower memory_use
         Image jump = Image.FromFile("Animations/jump.gif");

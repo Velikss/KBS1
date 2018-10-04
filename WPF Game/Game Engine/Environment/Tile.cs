@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Xml.Serialization;
 
 namespace GameEngine
 {
@@ -13,10 +12,11 @@ namespace GameEngine
 
         //boolean represents if the Tile is a standable Tile
         public readonly bool Ground;
-
-        public Tile()
+        // public required for xmlparser
+        // ReSharper disable once MemberCanBePrivate.Global
+        public string TileType;
+        private Tile()
         {
-
         }
 
         //instances tile given referred sprite, position, fatness:), and standability
@@ -27,6 +27,7 @@ namespace GameEngine
             Width = widthRepeater * 32;
             Height = height;
             collision = new Rectangle((int) X, (int) Y, Width, Height);
+            TileType = Sprite.Tag.ToString();
             if (Width > 32)
             {
                 this.Sprite = new Bitmap(Width, Height);

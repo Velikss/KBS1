@@ -15,12 +15,8 @@ namespace GameEngine
 
         public int Height, Width;
 
-        //bool states if object is in contact with the ground
-        public bool Landed;
-
         //contains the sprite for the object
-        [XmlIgnore]
-        public Image Sprite;
+        [XmlIgnore] public Image Sprite;
 
         //oriental info
         public float X, Y;
@@ -92,7 +88,7 @@ namespace GameEngine
                                 }
 
                                 //if entity hasn't landed drop player, if landed reset the used jumps variable
-                                if (!(po.Landed = land))
+                                if (po is Player && !(((Player) po).Landed = land))
                                     po.Y += 0.95f;
                                 else
                                     GameMaker.jumps = 0;
@@ -115,8 +111,7 @@ namespace GameEngine
 
         public static void Dispose()
         {
-            if (gravity != null)
-                gravity.Abort();
+            gravity?.Abort();
         }
     }
 }
