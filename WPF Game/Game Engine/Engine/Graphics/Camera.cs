@@ -86,6 +86,7 @@ namespace GameEngine
                 Thread.Sleep(1);
             }
         }
+
         //start's camera
         public void Start()
         {

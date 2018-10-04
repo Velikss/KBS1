@@ -14,34 +14,6 @@ namespace GameEngine
 {
     public class Screen
     {
-        #region Variables
-
-        //framerater
-        public readonly Stopwatch framerater = new Stopwatch();
-
-        //label holds FPS & Refreshrate
-        public readonly Label GameData;
-
-        //is actual drawing screen
-        private readonly Image canvas;
-
-        //is the drawingbuffer on each screen:refresh
-        public Bitmap screen_buffer;
-
-        //
-        public int refreshrate;
-        public int FPS;
-
-        #region Win32
-
-        //win32-methode removes Handler from memory
-        [DllImport("gdi32.dll")]
-        private static extern bool DeleteObject(IntPtr hObject);
-
-        #endregion
-
-        #endregion
-
         //setup Screen
         public Screen(GameMaker gm, Window w)
         {
@@ -71,7 +43,7 @@ namespace GameEngine
             GameData.Visibility = Visibility.Hidden;
             GameData.Margin = new Thickness(0, 0, 700, 508);
             //canvas background
-            grid.Children.Add(new Image()
+            grid.Children.Add(new Image
             {
                 Source = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Scene/back.gif")),
                 Width = w.Width,
@@ -121,10 +93,40 @@ namespace GameEngine
                     framerater.Restart();
                 }
                 else
+                {
                     refreshrate++;
+                }
 
             //repaint canvas from screen_buffer
             canvas.Source = CreateBitmapSource(ref screen_buffer);
         }
+
+        #region Variables
+
+        //framerater
+        public readonly Stopwatch framerater = new Stopwatch();
+
+        //label holds FPS & Refreshrate
+        public readonly Label GameData;
+
+        //is actual drawing screen
+        private readonly Image canvas;
+
+        //is the drawingbuffer on each screen:refresh
+        public Bitmap screen_buffer;
+
+        //
+        public int refreshrate;
+        public int FPS;
+
+        #region Win32
+
+        //win32-methode removes Handler from memory
+        [DllImport("gdi32.dll")]
+        private static extern bool DeleteObject(IntPtr hObject);
+
+        #endregion
+
+        #endregion
     }
 }

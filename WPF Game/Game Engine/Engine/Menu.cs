@@ -5,10 +5,10 @@ using System.Globalization;
 using System.Linq;
 using System.Threading;
 using System.Windows;
+using System.Windows.Input;
 using System.Windows.Media;
 using Brush = System.Drawing.Brush;
 using Brushes = System.Windows.Media.Brushes;
-using FlowDirection = System.Windows.FlowDirection;
 using Point = System.Drawing.Point;
 
 namespace GameEngine
@@ -20,7 +20,15 @@ namespace GameEngine
         private bool Active;
         public List<MenuButton> buttons = new List<MenuButton>();
         public List<MenuText> texts = new List<MenuText>();
-        private Window w;
+        private readonly Window w;
+
+        public Menu(GameMaker gm, Window w, List<MenuText> texts, List<MenuButton> buttons) : base(gm)
+        {
+            Active = true;
+            (this.w = w).MouseDown += W_MouseDown;
+            this.buttons = buttons;
+            this.texts = texts;
+        }
 
         public new void StartRender()
         {
@@ -60,14 +68,6 @@ namespace GameEngine
             }).Start();
         }
 
-        public Menu(GameMaker gm, Window w, List<MenuText> texts, List<MenuButton> buttons) : base(gm)
-        {
-            Active = true;
-            (this.w = w).MouseDown += W_MouseDown;
-            this.buttons = buttons;
-            this.texts = texts;
-        }
-
         public void Activate()
         {
             Active = true;
@@ -80,9 +80,9 @@ namespace GameEngine
             w.MouseDown -= W_MouseDown;
         }
 
-        private void W_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private void W_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            System.Windows.Point p = e.GetPosition(w);
+            var p = e.GetPosition(w);
             foreach (var button in buttons.Where(o =>
                 o.x <= p.X && o.x + o.Width >= p.X && o.y <= p.Y &&
                 o.y + o.Height >= p.Y))
@@ -92,16 +92,15 @@ namespace GameEngine
 
     public class MenuButton
     {
-        public int x, y, Width, Height = 0;
-        public event ClickTrigger Clicked;
-        public SizeF text_sizef;
-        public Font font;
-        public Brush text_color;
-        public readonly string Content;
-
         public delegate void ClickTrigger();
 
+        public readonly string Content;
+        public Font font;
+
         public Image Sprite;
+        public Brush text_color;
+        public SizeF text_sizef;
+        public int x, y, Width, Height;
 
         public MenuButton(string Content, Font font, Brush text_color, int x, int y, int Width, int Height,
             ref Image sprite)
@@ -117,9 +116,11 @@ namespace GameEngine
             Sprite = sprite;
         }
 
+        public event ClickTrigger Clicked;
+
         public SizeF MeasureString(string text, int fontSize, string typeFace)
         {
-            FormattedText ft = new FormattedText
+            var ft = new FormattedText
             (
                 text,
                 CultureInfo.CurrentCulture,
@@ -131,15 +132,18 @@ namespace GameEngine
             return new SizeF((float) ft.Width, (float) ft.Height);
         }
 
-        public void TriggerClick() => Clicked();
+        public void TriggerClick()
+        {
+            Clicked();
+        }
     }
 
     public class MenuText
     {
-        public int x, y;
         public string Content;
         public Font font;
         public Brush text_color;
+        public int x, y;
 
         public MenuText(string Content, Font font, Brush text_color, int x, int y)
         {

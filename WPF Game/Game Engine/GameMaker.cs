@@ -9,9 +9,12 @@ namespace GameEngine
 {
     public class GameMaker
     {
-        //holds screen prefferences
-        public int Screen_Width;
-        public int Screen_Height;
+        public static int jumps;
+        private static int JumpPower;
+
+        //holds instance of camera
+        internal Camera camera;
+        private bool jump_active;
 
         //holds player instance
         internal Player player = new Player
@@ -24,8 +27,13 @@ namespace GameEngine
 
         //holds reffered screen
         internal Screen screen;
-        //holds instance of camera
-        internal Camera camera;
+
+        public int Screen_Height;
+
+        //holds screen prefferences
+        public int Screen_Width;
+        private bool space_press;
+
         //holds all tiles
         internal List<Tile> Tiles = new List<Tile>();
 
@@ -49,17 +57,22 @@ namespace GameEngine
             //creates a new screen given screen preferences
             screen = new Screen(this, w);
             //new Render
-            Render render = new Render(this);
+            var render = new Render(this);
             //new Menu
-            Image _i = Image.FromFile(@"C:\Users\usr\Desktop\54b2d246e0e35be.png");
-            MenuButton mb = new MenuButton("Start Game", new Font("Calibri", 16), Brushes.DarkSlateGray, 50, 200, 200, 50, ref _i);
-            Menu menu = new Menu(this, w, new List<MenuText>(), new List<MenuButton>{mb});
+            var buttonsprite = Image.FromFile(@"C:\Users\usr\Desktop\54b2d246e0e35be.png");
+            var mb = new MenuButton("Start Game", new Font("Calibri", 16), Brushes.DarkSlateGray, 50, 200, 250,
+                50, ref buttonsprite);
+            var mb2 = new MenuButton("Exit Game", new Font("Calibri", 16), Brushes.DarkSlateGray, 50, 255, 250, 50,
+                ref buttonsprite);
+            var menu = new Menu(this, w, new List<MenuText>(), new List<MenuButton> {mb, mb2});
 
             mb.Clicked += delegate
             {
                 menu.Deactivate();
                 render.StartRender();
             };
+
+            mb2.Clicked += delegate { Environment.Exit(0); };
             //creates Camera given reffered focus:player with collision:tiles
             camera = new Camera(ref player, ref Tiles);
             //initialize player given reffered camera
@@ -75,11 +88,6 @@ namespace GameEngine
             //setup Music & prop. sound ^nicer place
             menu.StartRender();
         }
-
-        public static int jumps;
-        private bool jump_active;
-        private bool space_press;
-        private static int JumpPower;
 
         private void KeyDown(object sender, KeyEventArgs e)
         {
@@ -113,6 +121,7 @@ namespace GameEngine
                         screen.GameData.Visibility = Visibility.Visible;
                         screen.framerater.Start();
                     }
+
                     break;
             }
         }

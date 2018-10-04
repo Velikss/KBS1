@@ -1,6 +1,5 @@
 ﻿using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Drawing.Imaging;
 
 namespace GameEngine
 {
@@ -23,12 +22,17 @@ namespace GameEngine
             if (Width > 32)
             {
                 this.Sprite = new Bitmap(Width, Height);
-                using (TextureBrush brush = new TextureBrush(Sprite, WrapMode.Tile))
-                using (Graphics g = Graphics.FromImage(this.Sprite))
+                using (var brush = new TextureBrush(Sprite, WrapMode.Tile))
+                using (var g = Graphics.FromImage(this.Sprite))
+                {
                     g.FillRectangle(brush, 0, 0, Width, Height);
+                }
             }
             else
+            {
                 this.Sprite = Sprite;
+            }
+
             Ground = standable;
         }
     }
