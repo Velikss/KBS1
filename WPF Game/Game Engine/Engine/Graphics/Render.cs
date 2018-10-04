@@ -9,6 +9,8 @@ namespace GameEngine
     {
         protected readonly Bitmap _backend;
 
+        protected bool Activated;
+
         //holds background for lower memory_use ^change this more beautifull^
         private readonly Image background = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/back.gif");
 
@@ -18,6 +20,7 @@ namespace GameEngine
         //holds the backend Graphics drawer -> backend buffer
         protected Graphics backend;
         protected GameMaker gm;
+        protected bool running;
 
         public Render(GameMaker gm)
         {
@@ -29,33 +32,62 @@ namespace GameEngine
             frontend = Graphics.FromImage(gm.screen.screen_buffer);
         }
 
-        public void StartRender()
+        private void StartRender()
         {
+            running = true;
             new Thread((ThreadStart) delegate
             {
                 for (;;)
-                    using (backend = Graphics.FromImage(_backend))
-                    {
-                        //draw background
-                        backend.DrawImage(background, new Point(0, 0));
-                        //draw all tiles within view of camera, #better performance
-                        foreach (var tile in gm.Tiles.Where(o =>
-                            o.X + o.Width >= gm.camera.X * -1 && o.X <= gm.camera.X * -1 + gm.Screen_Width &&
-                            o.Y + o.Height >= gm.camera.Y * -1 &&
-                            o.Y + o.Height <= gm.camera.Y * -1 + gm.Screen_Height &&
-                            o.Sprite != null))
-                            backend.DrawImage(tile.Sprite, gm.camera.X + tile.X, gm.camera.Y + tile.Y);
-                        //draw player
-                        backend.DrawImage(gm.player.Sprite, gm.camera.X + gm.player.X, gm.camera.Y + gm.player.Y);
-                        //draw backend to frontend
-                        lock (gm.screen.screen_buffer)
+                    if (Activated)
+                        try
                         {
-                            frontend.DrawImage(_backend, 0, 0, gm.Screen_Width, gm.Screen_Height);
+                            using (backend = Graphics.FromImage(_backend))
+                            {
+                                //draw background
+                                backend.DrawImage(background, new Point(0, 0));
+                                //draw all tiles within view of camera, #better performance
+                                foreach (var tile in gm.Tiles.Where(o =>
+                                    o.X + o.Width >= gm.camera.X * -1 && o.X <= gm.camera.X * -1 + gm.Screen_Width &&
+                                    o.Y + o.Height >= gm.camera.Y * -1 &&
+                                    o.Y + o.Height <= gm.camera.Y * -1 + gm.Screen_Height &&
+                                    o.Sprite != null))
+                                    backend.DrawImage(tile.Sprite, gm.camera.X + tile.X, gm.camera.Y + tile.Y);
+                                //draw player
+                                backend.DrawImage(gm.player.Sprite, gm.camera.X + gm.player.X,
+                                    gm.camera.Y + gm.player.Y);
+                                //draw backend to frontend
+                                lock (gm.screen.screen_buffer)
+                                {
+                                    frontend.DrawImage(_backend, 0, 0, gm.Screen_Width, gm.Screen_Height);
+                                }
+
+                                gm.screen.FPS++;
+                            }
+                        }
+                        catch
+                        {
                         }
 
-                        gm.screen.FPS++;
+                    else
+                    {
+                        Thread.Sleep(100);
                     }
             }).Start();
         }
+
+        
+        public void Activate()
+        {
+            if(!running)
+                StartRender();
+            Activated = true;
+        }
+
+        public void Deactivate()
+        {
+            Activated = false;
+        }
+
+        public bool isActive() => Activated;
     }
 }

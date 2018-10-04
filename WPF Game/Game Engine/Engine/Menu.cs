@@ -16,67 +16,78 @@ namespace GameEngine
     public class Menu : Render
     {
         //holds background for lower memory_use ^change this more beautifull^
-        private readonly Image background = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/Title.gif");
-        private bool Active;
+        protected Image background;
         public List<MenuButton> buttons = new List<MenuButton>();
         public List<MenuText> texts = new List<MenuText>();
         private readonly Window w;
 
-        public Menu(GameMaker gm, Window w, List<MenuText> texts, List<MenuButton> buttons) : base(gm)
+        public Menu(GameMaker gm, Window w, List<MenuText> texts, List<MenuButton> buttons, Image background) : base(gm)
         {
-            Active = true;
+            Activated = true;
             (this.w = w).MouseDown += W_MouseDown;
             this.buttons = buttons;
             this.texts = texts;
+            this.background = background;
         }
 
-        public new void StartRender()
+        private void StartRender()
         {
+            running = true;
             new Thread((ThreadStart) delegate
             {
                 for (;;)
-                    if (Active)
-                        using (backend = Graphics.FromImage(_backend))
+                    if (Activated)
+                        try
                         {
-                            //draw background
-                            backend.DrawImage(background, new Point(0, 0));
-                            //draw buttons
-                            foreach (var mb in buttons)
-                                backend.DrawImage(mb.Sprite, mb.x, mb.y, mb.Width,
-                                    mb.Height);
-                            foreach (var mb in buttons)
-                                backend.DrawString(mb.Content, mb.font,
-                                    mb.text_color,
-                                    mb.x + (mb.Width / 2 - mb.text_sizef.Width),
-                                    mb.y + (mb.Height / 2 - mb.text_sizef.Height));
-
-                            foreach (var text in texts)
-                                backend.DrawString(text.Content, text.font,
-                                    text.text_color,
-                                    text.x,
-                                    text.y);
-
-                            //draw backend to frontend
-                            lock (gm.screen.screen_buffer)
+                            using (backend = Graphics.FromImage(_backend))
                             {
-                                frontend.DrawImage(_backend, 0, 0, gm.Screen_Width, gm.Screen_Height);
-                            }
+                                //draw background
+                                backend.DrawImage(background, new Point(0, 0));
+                                //draw buttons
+                                foreach (var mb in buttons)
+                                    backend.DrawImage(mb.Sprite, mb.x, mb.y, mb.Width,
+                                        mb.Height);
+                                foreach (var mb in buttons)
+                                    backend.DrawString(mb.Content, mb.font,
+                                        mb.text_color,
+                                        mb.x + (mb.Width / 2 - mb.text_sizef.Width),
+                                        mb.y + (mb.Height / 2 - mb.text_sizef.Height));
 
-                            gm.screen.FPS++;
-                            Thread.Sleep(100);
+                                foreach (var text in texts)
+                                    backend.DrawString(text.Content, text.font,
+                                        text.text_color,
+                                        text.x,
+                                        text.y);
+
+                                //draw backend to frontend
+                                lock (gm.screen.screen_buffer)
+                                {
+                                    frontend.DrawImage(_backend, 0, 0, gm.Screen_Width, gm.Screen_Height);
+                                }
+
+                                gm.screen.FPS++;
+                                Thread.Sleep(100);
+                            }
                         }
+                        catch { }
+                    else
+                        Thread.Sleep(100);
             }).Start();
         }
 
-        public void Activate()
+
+        public new void Activate()
         {
-            Active = true;
+            if (!running)
+                StartRender();
+            Thread.Sleep(100);
+            Activated = true;
             w.MouseDown += W_MouseDown;
         }
 
-        public void Deactivate()
+        public new void Deactivate()
         {
-            Active = false;
+            Activated = false;
             w.MouseDown -= W_MouseDown;
         }
 
@@ -134,7 +145,7 @@ namespace GameEngine
 
         public void TriggerClick()
         {
-            Clicked();
+            Clicked?.Invoke();
         }
     }
 

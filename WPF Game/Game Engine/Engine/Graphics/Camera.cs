@@ -19,67 +19,74 @@ namespace GameEngine
         //camera position
         public float X, Y;
 
+        //render
+        public Render render;
+
         //set's up camera given reffered player, Tiles
-        public Camera(ref Player p, ref List<Tile> Tiles)
+        public Camera(ref Player p, ref List<Tile> Tiles, ref Render render)
         {
             player = p;
             this.Tiles = Tiles;
+            this.render = render;
         }
 
         private void CameraMovement_Thread()
         {
             while (true)
             {
-                //because of gravity being in a diffrent thread it checks if it has to move the camera to keep focus in case of falling etc.
-                if (Math.Abs(player.Y - Y * -1) > 425)
-                    Y -= 0.7f;
-                if (Up)
+                if (render.isActive())
                 {
-                    //check if collision is present otherwise move player to given direction
-                    if (Tiles.Count(o => o.Y <= player.Y && player.Collide(o)) == 0)
+                    //because of gravity being in a diffrent thread it checks if it has to move the camera to keep focus in case of falling etc.
+                    if (Math.Abs(player.Y - Y * -1) > 425)
+                        Y -= 0.7f;
+                    if (Up)
                     {
-                        if (Math.Abs(player.Y - Y * -1) < 125)
-                            Y += 0.8f;
-                        player.Y -= 0.75f;
-                    }
-                    else
-                    {
-                        Gravity.EnableGravityOnObject(player);
-                        Up = false;
-                    }
-                }
-
-                if (Left)
-                {
-                    //check if collision is present otherwise move player to given direction
-                    if (player.X != 0 && Tiles.Count(o => o.X <= player.X && player.Collide(o)) == 0)
-                    {
-                        if (X + player.X < 175 && X != 0)
-                            X += 0.45f;
-                        player.X -= 0.45f;
-                    }
-                    else
-                    {
-                        if (!Gravity.HasGravity(player))
+                        //check if collision is present otherwise move player to given direction
+                        if (Tiles.Count(o => o.Y <= player.Y && player.Collide(o)) == 0)
+                        {
+                            if (Math.Abs(player.Y - Y * -1) < 125)
+                                Y += 0.8f;
+                            player.Y -= 0.75f;
+                        }
+                        else
+                        {
                             Gravity.EnableGravityOnObject(player);
-                        Left = false;
+                            Up = false;
+                        }
                     }
-                }
 
-                if (Right)
-                {
-                    //check if collision is present otherwise move player to given direction
-                    if (Tiles.Count(o => o.X >= player.X && player.Collide(o)) == 0)
+                    if (Left)
                     {
-                        if (X + player.X > 625)
-                            X -= 0.45f;
-                        player.X += 0.45f;
+                        //check if collision is present otherwise move player to given direction
+                        if (player.X != 0 && Tiles.Count(o => o.X <= player.X && player.Collide(o)) == 0)
+                        {
+                            if (X + player.X < 175 && X != 0)
+                                X += 0.45f;
+                            player.X -= 0.45f;
+                        }
+                        else
+                        {
+                            if (!Gravity.HasGravity(player))
+                                Gravity.EnableGravityOnObject(player);
+                            Left = false;
+                        }
                     }
-                    else
+
+                    if (Right)
                     {
-                        if (!Gravity.HasGravity(player))
-                            Gravity.EnableGravityOnObject(player);
-                        Right = false;
+                        //check if collision is present otherwise move player to given direction
+                        if (Tiles.Count(o => o.X >= player.X && player.Collide(o)) == 0)
+                        {
+                            if (X + player.X > 625)
+                                X -= 0.45f;
+                            player.X += 0.45f;
+                        }
+                        else
+                        {
+                            if (!Gravity.HasGravity(player))
+                                Gravity.EnableGravityOnObject(player);
+                            Right = false;
+                        }
                     }
                 }
 

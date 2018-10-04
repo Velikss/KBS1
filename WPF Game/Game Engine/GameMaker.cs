@@ -37,6 +37,11 @@ namespace GameEngine
         //holds all tiles
         internal List<Tile> Tiles = new List<Tile>();
 
+        //holds menu's & Game renders
+        private Render game_render;
+        private Menu TitleMenu;
+        private Menu PauseOverlay;
+
         public void InitializeGame(Window w, int Width, int Height)
         {
             //gets preferred Screen size
@@ -57,36 +62,41 @@ namespace GameEngine
             //creates a new screen given screen preferences
             screen = new Screen(this, w);
             //new Render
-            var render = new Render(this);
+            game_render = new Render(this);
             //new Menu
             var buttonsprite = Image.FromFile(@"C:\Users\usr\Desktop\54b2d246e0e35be.png");
             var mb = new MenuButton("Start Game", new Font("Calibri", 16), Brushes.DarkSlateGray, 50, 200, 250,
                 50, ref buttonsprite);
             var mb2 = new MenuButton("Exit Game", new Font("Calibri", 16), Brushes.DarkSlateGray, 50, 255, 250, 50,
                 ref buttonsprite);
-            var menu = new Menu(this, w, new List<MenuText>(), new List<MenuButton> {mb, mb2});
-
+            TitleMenu = new Menu(this, w, new List<MenuText>(), new List<MenuButton> {mb, mb2},
+                Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/Title.gif"));
+            var Panel = new MenuButton("", new Font("Calibri", 16), Brushes.DarkSlateGray, 50, 50, 700, 450,
+                ref buttonsprite);
+            /*var retrun = new MenuButton("Return to start", new Font("Calibri", 16), Brushes.DarkSlateGray, , 200, 250,
+                50, ref buttonsprite);*/
+            PauseOverlay = new Menu(this, w, new List<MenuText>(), new List<MenuButton> {Panel}, Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/back.gif"));
             mb.Clicked += delegate
             {
-                menu.Deactivate();
-                render.StartRender();
+                TitleMenu.Deactivate();
+                game_render.Activate();
             };
 
             mb2.Clicked += delegate { Environment.Exit(0); };
             //creates Camera given reffered focus:player with collision:tiles
-            camera = new Camera(ref player, ref Tiles);
+            camera = new Camera(ref player, ref Tiles, ref game_render);
             //initialize player given reffered camera
             player.Initialize(ref camera);
             //then start camera
             camera.Start();
             //set gravity on player & enable gravity given reffered tiles
             Gravity.EnableGravityOnObject(player);
-            Gravity.EnableGravity(ref Tiles);
+            Gravity.EnableGravity(ref Tiles, ref game_render);
             //setup Input events ^nicer place
             w.KeyDown += KeyDown;
             w.KeyUp += KeyUp;
             //setup Music & prop. sound ^nicer place
-            menu.StartRender();
+            TitleMenu.Activate();
         }
 
         private void KeyDown(object sender, KeyEventArgs e)
@@ -98,6 +108,19 @@ namespace GameEngine
                     {
                         space_press = true;
                         new Thread(Jump_Thread).Start();
+                    }
+
+                    break;
+                case Key.Escape:
+                    if (game_render.isActive())
+                    {
+                        game_render.Deactivate();
+                        PauseOverlay.Activate();
+                    }
+                    else
+                    {
+                        PauseOverlay.Deactivate();
+                        game_render.Activate();
                     }
 
                     break;
