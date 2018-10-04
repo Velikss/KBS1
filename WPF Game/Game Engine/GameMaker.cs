@@ -58,7 +58,18 @@ namespace GameEngine
             screen = new Screen(this, w);
             //new Render
             game_render = new Render(this);
+            PrepareLevel();
             //new Menu
+            PrepareMenus();
+            //setup Input events ^nicer place
+            w.KeyDown += KeyDown;
+            w.KeyUp += KeyUp;
+            //start TitleMenu Render
+            TitleMenu.Activate();
+        }
+
+        private void PrepareMenus()
+        {
             var buttonsprite = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/54b2d246e0e35be.png");
             var mb = new MenuButton("Start Game", new Font("Calibri", 16), Brushes.DarkSlateGray, 55, 200, 250,
                 50, buttonsprite);
@@ -84,16 +95,9 @@ namespace GameEngine
             mb.Clicked += delegate
             {
                 TitleMenu.Deactivate();
-                StartLevel(true);
+                PrepareLevel(true);
             };
             mb2.Clicked += delegate { Environment.Exit(0); };
-
-            StartLevel();
-            //setup Input events ^nicer place
-            w.KeyDown += KeyDown;
-            w.KeyUp += KeyUp;
-            //setup Music & prop. sound ^nicer place
-            TitleMenu.Activate();
         }
 
         private void KeyDown(object sender, KeyEventArgs e)
@@ -187,7 +191,7 @@ namespace GameEngine
             jump_active = false;
         }
 
-        private void StartLevel(bool StartGame = false)
+        private void PrepareLevel(bool StartGame = false)
         {
             //initiate player
             player?.Dispose();

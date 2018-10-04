@@ -83,7 +83,6 @@ namespace GameEngine
         {
             if (!running)
                 StartRender();
-            Thread.Sleep(100);
             Activated = true;
             w.MouseDown += W_MouseDown;
         }

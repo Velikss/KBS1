@@ -69,7 +69,6 @@ namespace GameEngine
                         {
                             // ignored
                         }
-
                     else
                         Thread.Sleep(100);
             }).Start();

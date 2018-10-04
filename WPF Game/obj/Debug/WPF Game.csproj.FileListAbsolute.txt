@@ -95,3 +95,4 @@ D:\Documenten\GitHub\SE1-KBS1\WPF Game\bin\Debug\WPF Game.exe.config
 D:\Documenten\GitHub\SE1-KBS1\WPF Game\bin\Debug\WPF Game.exe
 D:\Documenten\GitHub\SE1-KBS1\WPF Game\bin\Debug\WPF Game.pdb
 D:\Documenten\GitHub\SE1-KBS1\WPF Game\obj\Debug\WPF Game.csproj.CopyComplete
+D:\Documenten\GitHub\SE1-KBS1\WPF Game\obj\Debug\WPF Game.csprojAssemblyReference.cache
