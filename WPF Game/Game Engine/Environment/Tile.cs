@@ -1,5 +1,6 @@
 ﻿using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
 
 namespace GameEngine
 {
@@ -19,13 +20,15 @@ namespace GameEngine
             Width = widthRepeater * 32;
             Height = height;
             collision = new Rectangle((int) X, (int) Y, Width, Height);
-            if (widthRepeater > 1)
-                using (TextureBrush brush = new TextureBrush(this.Sprite = new Bitmap(Width, 32), WrapMode.Tile))
+            if (Width > 32)
+            {
+                this.Sprite = new Bitmap(Width, Height);
+                using (TextureBrush brush = new TextureBrush(Sprite, WrapMode.Tile))
                 using (Graphics g = Graphics.FromImage(this.Sprite))
-                    g.FillRectangle(brush, 0, 0, this.Sprite.Width, this.Sprite.Height);
+                    g.FillRectangle(brush, 0, 0, Width, Height);
+            }
             else
                 this.Sprite = Sprite;
-
             Ground = standable;
         }
     }

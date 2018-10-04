@@ -15,22 +15,29 @@ namespace GameEngine
     public class Screen
     {
         #region Variables
+
         //framerater
-        private readonly Stopwatch framerater = new Stopwatch();
+        public readonly Stopwatch framerater = new Stopwatch();
+
         //label holds FPS & Refreshrate
-        private readonly Label GameData;
+        public readonly Label GameData;
+
         //is actual drawing screen
         private readonly Image canvas;
+
         //is the drawingbuffer on each screen:refresh
         public Bitmap screen_buffer;
+
         //
         public int refreshrate;
         public int FPS;
 
         #region Win32
+
         //win32-methode removes Handler from memory
         [DllImport("gdi32.dll")]
         private static extern bool DeleteObject(IntPtr hObject);
+
         #endregion
 
         #endregion
@@ -61,6 +68,7 @@ namespace GameEngine
             GameData.Width = 100;
             GameData.Height = 100;
             GameData.FontSize = 24;
+            GameData.Visibility = Visibility.Hidden;
             GameData.Margin = new Thickness(0, 0, 700, 508);
             //canvas background
             grid.Children.Add(new Image()
@@ -77,9 +85,8 @@ namespace GameEngine
             //set View
             grid.Children.Add(canvas);
             grid.Children.Add(GameData);
-            //start FrameRater
-            framerater.Start();
         }
+
         //Creates ImageSource from Bitmap
         private BitmapSource CreateBitmapSource(ref Bitmap bitmap)
         {
@@ -100,19 +107,22 @@ namespace GameEngine
                 }
             }
         }
+
         //Render event @ framerate
         private void Screen_Rendering(object sender, EventArgs e)
         {
             //every second refresh GameData
-            if (framerater.Elapsed.TotalSeconds > 1)
-            {
-                GameData.Content = refreshrate + "Hz" + Environment.NewLine + FPS + "FPS";
-                FPS = 0;
-                refreshrate = 0;
-                framerater.Restart();
-            }
-            else
-                refreshrate++;
+            if (GameData.IsVisible)
+                if (framerater.Elapsed.TotalSeconds > 1)
+                {
+                    GameData.Content = refreshrate + "Hz" + Environment.NewLine + FPS + "FPS";
+                    FPS = 0;
+                    refreshrate = 0;
+                    framerater.Restart();
+                }
+                else
+                    refreshrate++;
+
             //repaint canvas from screen_buffer
             canvas.Source = CreateBitmapSource(ref screen_buffer);
         }

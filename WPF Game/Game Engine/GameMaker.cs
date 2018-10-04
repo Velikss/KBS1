@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Media;
 using System.Threading;
 using System.Windows;
 using System.Windows.Input;
@@ -43,12 +42,9 @@ namespace GameEngine
             var i = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/ground.gif");
             //let's do a Level class which loads level data
             //create level data ^more nice
-            
-            //TODO: Multiple sprites as one Tile
-            
-            Tiles.Add(new Tile(ref i, 0, 532, 32, 20, true));
-            Tiles.Add(new Tile(ref i, 750, 332, 32, 10, true));
-            Tiles.Add(new Tile(ref i, 1250, 150, 32, 10, true));
+            Tiles.Add(new Tile(ref i, 0, 532, 20, 32, true));
+            Tiles.Add(new Tile(ref i, 750, 332, 1, 32, true));
+            Tiles.Add(new Tile(ref i, 1250, 150, 1, 32, true));
 
             //creates a new screen given screen preferences
             screen = new Screen(this, w);
@@ -95,6 +91,18 @@ namespace GameEngine
                     break;
                 case Key.D:
                     camera.Right = true;
+                    break;
+                case Key.F1:
+                    if (screen.GameData.IsVisible)
+                    {
+                        screen.GameData.Visibility = Visibility.Hidden;
+                        screen.framerater.Stop();
+                    }
+                    else
+                    {
+                        screen.GameData.Visibility = Visibility.Visible;
+                        screen.framerater.Start();
+                    }
                     break;
             }
         }
