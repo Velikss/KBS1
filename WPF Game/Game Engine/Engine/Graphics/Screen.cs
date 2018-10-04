@@ -25,6 +25,7 @@ namespace GameEngine
             w.Width = gm.Screen_Width;
             w.Height = gm.Screen_Height;
             w.ResizeMode = ResizeMode.NoResize;
+            w.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             w.Content = grid;
             CompositionTarget.Rendering += Screen_Rendering;
             w.Closing += delegate

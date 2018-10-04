@@ -13,20 +13,22 @@ namespace GameEngine
         //holds the reffered TileData from GameMaker.cs
         private readonly List<Tile> Tiles;
 
+        private Thread Cameramover;
+
+        //render
+        public Render render;
+
         //camera movement pro loop
         public bool Up, Down, Left, Right;
 
         //camera position
         public float X, Y;
 
-        //render
-        public Render render;
-
         //set's up camera given reffered player, Tiles
-        public Camera(ref Player p, ref List<Tile> Tiles, ref Render render)
+        public Camera(ref Player p, ref Level level, ref Render render)
         {
             player = p;
-            this.Tiles = Tiles;
+            this.Tiles = level.Tiles;
             this.render = render;
         }
 
@@ -97,7 +99,12 @@ namespace GameEngine
         //start's camera
         public void Start()
         {
-            new Thread(CameraMovement_Thread).Start();
+            (Cameramover = new Thread(CameraMovement_Thread)).Start();
+        }
+
+        public void Dispose()
+        {
+            Cameramover.Abort();
         }
     }
 }

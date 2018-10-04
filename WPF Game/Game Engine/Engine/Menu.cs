@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
@@ -15,11 +14,12 @@ namespace GameEngine
 {
     public class Menu : Render
     {
+        private readonly Window w;
+
         //holds background for lower memory_use ^change this more beautifull^
         protected Image background;
         public List<MenuButton> buttons = new List<MenuButton>();
         public List<MenuText> texts = new List<MenuText>();
-        private readonly Window w;
 
         public Menu(GameMaker gm, Window w, List<MenuText> texts, List<MenuButton> buttons, Image background) : base(gm)
         {
@@ -172,9 +172,9 @@ namespace GameEngine
             this.Content = Content;
             this.font = font;
             this.text_color = text_color;
-            SizeF size = MeasureString(Content, (int) font.Size, font.Name);
-            x = (int) (800 / 2 - (size.Width));
-            y = (int) (600 / 2 - (size.Height));
+            var size = MeasureString(Content, (int) font.Size, font.Name);
+            x = (int) (800 / 2 - size.Width);
+            y = (int) (600 / 2 - size.Height);
         }
 
         public SizeF MeasureString(string text, int fontSize, string typeFace)

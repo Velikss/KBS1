@@ -10,55 +10,49 @@ namespace GameEngine
 {
     public class GameMaker
     {
+        //jumpdata
         public static int jumps;
         private static int JumpPower;
+        private bool space_press;
 
         //holds instance of camera
         internal Camera camera;
+
+        //holds menu's & Game renders
+        private Render game_render;
         private bool jump_active;
+        private Menu PauseOverlay;
 
         //holds player instance
-        internal Player player = new Player
-        {
-            Y = 350,
-            Width = 32,
-            Height = 32,
-            Sprite = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Animations/normal.gif")
-        };
+        internal Player player;
 
         //holds reffered screen
         internal Screen screen;
 
-        public int Screen_Height;
-
         //holds screen prefferences
+        public int Screen_Height;
         public int Screen_Width;
-        private bool space_press;
 
         //holds all tiles
-        internal List<Tile> Tiles = new List<Tile>();
-
-        //holds menu's & Game renders
-        private Render game_render;
+        internal Level level;
         private Menu TitleMenu;
-        private Menu PauseOverlay;
 
         public void InitializeGame(Window w, int Width, int Height)
         {
             //gets preferred Screen size
             Screen_Height = Height;
             Screen_Width = Width;
-            //sets player.X adapted to screen size
-            player.X = Screen_Width / 4 - 50;
 
             //let's do something with a TileLoader in ? Tile Class: static List<> return?
             //load groud tile sprite to lower memory use ^better place
             var i = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/ground.gif");
             //let's do a Level class which loads level data
             //create level data ^more nice
-            Tiles.Add(new Tile(ref i, 0, 532, 20, 32, true));
-            Tiles.Add(new Tile(ref i, 750, 332, 1, 32, true));
-            Tiles.Add(new Tile(ref i, 1250, 150, 1, 32, true));
+            Level l1 = new Level("level1");
+            l1.Tiles.Add(new Tile(ref i, 0, 532, 20, 32, true));
+            l1.Tiles.Add(new Tile(ref i, 750, 332, 1, 32, true));
+            l1.Tiles.Add(new Tile(ref i, 1250, 150, 1, 32, true));
+            level = l1;
 
             //creates a new screen given screen preferences
             screen = new Screen(this, w);
@@ -78,14 +72,14 @@ namespace GameEngine
             var Text = new MenuText("Pause", new Font("Calibri", 48, FontStyle.Regular), Brushes.White);
             Text.y = 25;
             var totitle = new MenuButton("Return to start", new Font("Calibri", 16), Brushes.DarkSlateGray,
-                800 / 2 - (250 / 2), 420, 250,
+                800 / 2 - 250 / 2, 420, 250,
                 50, buttonsprite);
             totitle.Clicked += delegate
             {
                 PauseOverlay.Deactivate();
                 TitleMenu.Activate();
             };
-            PauseOverlay = new Menu(this, w, new List<MenuText>{Text}, new List<MenuButton> {Panel, totitle},
+            PauseOverlay = new Menu(this, w, new List<MenuText> {Text}, new List<MenuButton> {Panel, totitle},
                 Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/Title.gif"));
             mb.Clicked += delegate
             {
@@ -95,14 +89,22 @@ namespace GameEngine
 
             mb2.Clicked += delegate { Environment.Exit(0); };
             //creates Camera given reffered focus:player with collision:tiles
-            camera = new Camera(ref player, ref Tiles, ref game_render);
-            //initialize player given reffered camera
+            camera = new Camera(ref player, ref level, ref game_render);
+            //initiate player
+            player = new Player
+            {
+                X = Screen_Width / 4 - 50,
+                Y = 350,
+                Width = 32,
+                Height = 32,
+                Sprite = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Animations/normal.gif")
+            };
             player.Initialize(ref camera);
             //then start camera
             camera.Start();
             //set gravity on player & enable gravity given reffered tiles
             Gravity.EnableGravityOnObject(player);
-            Gravity.EnableGravity(ref Tiles, ref game_render);
+            Gravity.EnableGravity(ref level, ref game_render);
             //setup Input events ^nicer place
             w.KeyDown += KeyDown;
             w.KeyUp += KeyUp;
@@ -199,6 +201,19 @@ namespace GameEngine
                 Gravity.EnableGravityOnObject(player);
             jumps++;
             jump_active = false;
+        }
+
+        public void LoadLevel(Level l)
+        {
+            this.level = l;
+            player = new Player
+            {
+                X = Screen_Width / 4 - 50,
+                Y = 350,
+                Width = 32,
+                Height = 32,
+                Sprite = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Animations/normal.gif")
+            };
         }
     }
 }

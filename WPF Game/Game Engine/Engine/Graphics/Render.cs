@@ -9,13 +9,13 @@ namespace GameEngine
     {
         protected readonly Bitmap _backend;
 
-        protected bool Activated;
-
         //holds background for lower memory_use ^change this more beautifull^
         private readonly Image background = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/back.gif");
 
         //holds the frontend Graphics drawer -> Screen.screen_buffer
         protected readonly Graphics frontend;
+
+        protected bool Activated;
 
         //holds the backend Graphics drawer -> backend buffer
         protected Graphics backend;
@@ -69,16 +69,14 @@ namespace GameEngine
                         }
 
                     else
-                    {
                         Thread.Sleep(100);
-                    }
             }).Start();
         }
 
-        
+
         public void Activate()
         {
-            if(!running)
+            if (!running)
                 StartRender();
             Activated = true;
         }
@@ -88,6 +86,9 @@ namespace GameEngine
             Activated = false;
         }
 
-        public bool isActive() => Activated;
+        public bool isActive()
+        {
+            return Activated;
+        }
     }
 }

@@ -58,7 +58,7 @@ namespace GameEngine
         public static void EnableGravity(ref List<Tile> objs, ref Render render)
         {
             objects = objs;
-            Render game = render;
+            var game = render;
             //bool is equaled to the status of being on the ground
             bool land;
             new Thread((ThreadStart) delegate
