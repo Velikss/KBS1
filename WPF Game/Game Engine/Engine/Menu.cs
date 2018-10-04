@@ -17,9 +17,11 @@ namespace GameEngine
         private readonly Window w;
 
         //holds background for lower memory_use ^change this more beautifull^
-        private readonly Image background;
+        private Image background;
         private readonly List<MenuButton> buttons;
         private readonly List<MenuText> texts;
+        private bool overlay;
+        private Image _overlay;
 
         public Menu(GameMaker gm, Window w, List<MenuText> texts, List<MenuButton> buttons, Image background) : base(gm)
         {
@@ -27,7 +29,10 @@ namespace GameEngine
             (this.w = w).MouseDown += W_MouseDown;
             this.buttons = buttons;
             this.texts = texts;
-            this.background = background;
+            if (background != null)
+                this.background = background;
+            else
+                overlay = true;
         }
 
         private void StartRender()
@@ -83,6 +88,13 @@ namespace GameEngine
         {
             if (!running)
                 StartRender();
+            if (overlay)
+            {
+                lock (gm.screen.screen_buffer)
+                {
+                    background = _backend;
+                }
+            }
             Activated = true;
             w.MouseDown += W_MouseDown;
         }

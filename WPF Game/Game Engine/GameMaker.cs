@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Threading;
 using System.Windows;
 using System.Windows.Input;
@@ -53,14 +55,14 @@ namespace GameEngine
             level.Tiles.Add(new Tile(ref i, 0, 532, 20, 32, true));
             level.Tiles.Add(new Tile(ref i, 750, 332, 1, 32, true));
             level.Tiles.Add(new Tile(ref i, 1250, 150, 1, 32, true));
-            LevelGenerator.Filer.GenerateFile("D:/desktop/level.lvl", level);
+
             //creates a new screen given screen preferences
             screen = new Screen(this, w);
             //new Render
             game_render = new Render(this);
             PrepareLevel();
             //new Menu
-            PrepareMenus();
+            PrepareMenus(ref w);
             //setup Input events ^nicer place
             w.KeyDown += KeyDown;
             w.KeyUp += KeyUp;
@@ -68,7 +70,7 @@ namespace GameEngine
             TitleMenu.Activate();
         }
 
-        private void PrepareMenus()
+        private void PrepareMenus(ref Window w)
         {
             var buttonsprite = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/54b2d246e0e35be.png");
             var mb = new MenuButton("Start Game", new Font("Calibri", 16), Brushes.DarkSlateGray, 55, 200, 250,
@@ -77,13 +79,13 @@ namespace GameEngine
                 buttonsprite);
             TitleMenu = new Menu(this, w, new List<MenuText>(), new List<MenuButton> {mb, mb2},
                 Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/Title.gif"));
-            var Panel = new MenuButton("", new Font("Calibri", 16), Brushes.DarkSlateGray, 800 / 12, 0, 800 / 12 * 10,
+            var Panel = new MenuButton("", new Font("Calibri", 16), Brushes.DarkSlateGray, 800 / 10 * 3, 0, 800 / 12 * 4,
                 500,
                 Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/pexels-photo-164005.jpeg"));
             var Text = new MenuText("Pause", new Font("Calibri", 48, FontStyle.Regular), Brushes.White);
             Text.y = 25;
             var totitle = new MenuButton("Return to start", new Font("Calibri", 16), Brushes.DarkSlateGray,
-                800 / 2 - 250 / 2, 420, 250,
+                800 / 2 - 250 / 2, 420, 200,
                 50, buttonsprite);
             totitle.Clicked += delegate
             {
@@ -91,7 +93,7 @@ namespace GameEngine
                 TitleMenu.Activate();
             };
             PauseOverlay = new Menu(this, w, new List<MenuText> {Text}, new List<MenuButton> {Panel, totitle},
-                Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/Title.gif"));
+                null);
             mb.Clicked += delegate
             {
                 TitleMenu.Deactivate();
