@@ -15,20 +15,20 @@ namespace GameEngine
     public class Screen
     {
         //setup Screen
-        public Screen(GameMaker gm, Window w)
+        public Screen(GameMaker gm)
         {
             //setup Grid
             var grid = new Grid();
-            grid.Width = w.Width;
-            grid.Height = w.Height;
+            grid.Width = gm.w.Width;
+            grid.Height = gm.w.Height;
             //setup Window
-            w.Width = gm.Screen_Width;
-            w.Height = gm.Screen_Height;
-            w.ResizeMode = ResizeMode.NoResize;
-            w.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            w.Content = grid;
+            gm.w.Width = gm.Screen_Width;
+            gm.w.Height = gm.Screen_Height;
+            gm.w.ResizeMode = ResizeMode.NoResize;
+            gm.w.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            gm.w.Content = grid;
             CompositionTarget.Rendering += Screen_Rendering;
-            w.Closing += delegate
+            gm.w.Closing += delegate
             {
                 CompositionTarget.Rendering -= Screen_Rendering;
                 framerater.Stop();
@@ -47,13 +47,13 @@ namespace GameEngine
             grid.Children.Add(new Image
             {
                 Source = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Scene/back.gif")),
-                Width = w.Width,
-                Height = w.Height
+                Width = gm.w.Width,
+                Height = gm.w.Height
             });
             //setup Canvas & Screen buffer
             canvas = new Image();
-            canvas.Width = w.Width;
-            canvas.Height = w.Height;
+            canvas.Width = gm.w.Width;
+            canvas.Height = gm.w.Height;
             screen_buffer = new Bitmap(gm.Screen_Width, gm.Screen_Height);
             //set View
             grid.Children.Add(canvas);

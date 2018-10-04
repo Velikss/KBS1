@@ -31,7 +31,7 @@ namespace GameEngine
     public static class Gravity
     {
         //holds the enities to engage gravity on
-        private static readonly List<PhysicalObject> entities = new List<PhysicalObject>();
+        private static List<Player> entities = new List<Player>();
 
         //holds possible collision objects reffered by Tiles from GameMaker.cs
         private static List<Tile> objects;
@@ -39,7 +39,7 @@ namespace GameEngine
         private static Thread gravity;
 
         //void enables gravity on parametered object
-        public static void EnableGravityOnObject(PhysicalObject po)
+        public static void EnableGravityOnObject(Player po)
         {
             lock (entities)
             {
@@ -48,7 +48,7 @@ namespace GameEngine
         }
 
         //disables gravity for parametered object
-        public static void DisableGravityOnObject(PhysicalObject po)
+        public static void DisableGravityOnObject(Player po)
         {
             lock (entities)
             {
@@ -60,6 +60,7 @@ namespace GameEngine
         public static void EnableGravity(ref Level lvl, ref Render render)
         {
             objects = lvl.Tiles;
+            entities = new List<Player>();
             var game = render;
             //bool is equaled to the status of being on the ground
             bool land;
@@ -73,25 +74,15 @@ namespace GameEngine
                             foreach (var po in entities)
                             {
                                 land = false;
-                                if (po is Player)
-                                {
-                                    foreach (var obj in objects.Where(o =>
-                                        o.X - o.Width <= po.X && o.X + o.Width >= po.X && o.Ground))
-                                        if (((Player) po).Stands(obj))
-                                            land = true;
-                                }
-                                else
-                                {
-                                    foreach (var obj in objects.Where(o => o.X <= po.X && o.X + o.Width >= po.X))
-                                        if (po.Collide(obj.collision))
-                                            land = true;
-                                }
+                                foreach (var obj in objects.Where(o =>
+                                    o.X - o.Width <= po.X && o.X + o.Width >= po.X && o.Ground))
+                                    if (po.Stands(obj))
+                                        land = true;
 
-                                //if entity hasn't landed drop player, if landed reset the used jumps variable
-                                if (po is Player && !(((Player) po).Landed = land))
+                                if (!(po.Landed = land))
                                     po.Y += 0.95f;
                                 else
-                                    GameMaker.jumps = 0;
+                                    Movement.jumps = 0;
                             }
 
                             Thread.Sleep(1);
@@ -112,6 +103,8 @@ namespace GameEngine
         public static void Dispose()
         {
             gravity?.Abort();
+            objects = null;
+            entities = null;
         }
     }
 }

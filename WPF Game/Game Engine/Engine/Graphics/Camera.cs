@@ -7,16 +7,13 @@ namespace GameEngine
 {
     public class Camera
     {
-        //holds the reffered playerdata from GameMaker.cs
+        //neccessaty's
         private readonly Player player;
-
-        //holds the reffered TileData from GameMaker.cs
         private readonly List<Tile> Tiles;
+        private readonly Render render;
 
+        //local camerathread
         private Thread Cameramover;
-
-        //render
-        public Render render;
 
         //camera movement pro loop
         public bool Up, Down, Left, Right;

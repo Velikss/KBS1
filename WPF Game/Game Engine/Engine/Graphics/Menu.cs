@@ -14,21 +14,15 @@ namespace GameEngine
 {
     public class Menu : Render
     {
-        private readonly Window w;
-
-        //holds background for lower memory_use ^change this more beautifull^
         private Image background;
-        private readonly List<MenuButton> buttons;
-        private readonly List<MenuText> texts;
-        private bool overlay;
-        private Image _overlay;
+        private readonly List<MenuItem> items;
+        private readonly bool overlay;
 
-        public Menu(GameMaker gm, Window w, List<MenuText> texts, List<MenuButton> buttons, Image background) : base(gm)
+        public Menu(GameMaker gm, List<MenuItem> items, Image background) : base(gm)
         {
             Activated = true;
-            (this.w = w).MouseDown += W_MouseDown;
-            this.buttons = buttons;
-            this.texts = texts;
+            gm.w.MouseDown += W_MouseDown;
+            this.items = items;
             if (background != null)
                 this.background = background;
             else
@@ -49,20 +43,24 @@ namespace GameEngine
                                 //draw background
                                 backend.DrawImage(background, new Point(0, 0));
                                 //draw buttons
-                                foreach (var mb in buttons)
-                                    backend.DrawImage(mb.Sprite, mb.x, mb.y, mb.Width,
-                                        mb.Height);
-                                foreach (var mb in buttons)
-                                    backend.DrawString(mb.Content, mb.font,
-                                        mb.text_color,
-                                        mb.x + (mb.Width / 2 - mb.text_sizef.Width),
-                                        mb.y + (mb.Height / 2 - mb.text_sizef.Height));
-
-                                foreach (var text in texts)
-                                    backend.DrawString(text.Content, text.font,
-                                        text.text_color,
-                                        text.x,
-                                        text.y);
+                                foreach (var mi in items)
+                                    if (mi is MenuButton)
+                                    {
+                                        backend.DrawImage(mi.Sprite, mi.x, mi.y, mi.Width,
+                                            mi.Height);
+                                        backend.DrawString(((MenuButton) mi).Content, ((MenuButton) mi).font,
+                                            ((MenuButton) mi).text_color,
+                                            mi.x + (mi.Width / 2 - ((MenuButton) mi).text_sizef.Width),
+                                            mi.y + (mi.Height / 2 - ((MenuButton) mi).text_sizef.Height));
+                                    }
+                                    else if (mi is MenuText)
+                                        backend.DrawString(((MenuText) mi).Content, ((MenuText) mi).font,
+                                            ((MenuText) mi).text_color,
+                                            ((MenuText) mi).x,
+                                            ((MenuText) mi).y);
+                                    else if (mi is MenuPanel)
+                                        backend.DrawImage(mi.Sprite, mi.x, mi.y, mi.Width,
+                                            mi.Height);
 
                                 //draw backend to frontend
                                 lock (gm.screen.screen_buffer)
@@ -95,37 +93,44 @@ namespace GameEngine
                     background = _backend;
                 }
             }
+
             Activated = true;
-            w.MouseDown += W_MouseDown;
+            gm.w.MouseDown += W_MouseDown;
         }
 
         public new void Deactivate()
         {
             Activated = false;
-            w.MouseDown -= W_MouseDown;
+            gm.w.MouseDown -= W_MouseDown;
         }
 
         private void W_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            var p = e.GetPosition(w);
-            foreach (var button in buttons.Where(o =>
-                o.x <= p.X && o.x + o.Width >= p.X && o.y <= p.Y &&
-                o.y + o.Height >= p.Y))
-                button.TriggerClick();
+            var p = e.GetPosition(gm.w);
+            foreach (var button in items.Where(o => o.x <= p.X && o.x + o.Width >= p.X && o.y <= p.Y &&
+                                                    o.y + o.Height >= p.Y))
+                if (button is MenuButton menuButton)
+                    menuButton.TriggerClick();
         }
     }
 
-    public class MenuButton
+    public class MenuItem
+    {
+        public int x, y, Width, Height;
+        public Image Sprite;
+    }
+
+    #region Items
+
+    public class MenuButton : MenuItem
     {
         public delegate void ClickTrigger();
 
         public readonly string Content;
         public readonly Font font;
 
-        public readonly Image Sprite;
         public readonly Brush text_color;
         public SizeF text_sizef;
-        public readonly int x, y, Width, Height;
 
         public MenuButton(string Content, Font font, Brush text_color, int x, int y, int Width, int Height,
             Image sprite)
@@ -163,13 +168,24 @@ namespace GameEngine
         }
     }
 
-    public class MenuText
+    public class MenuPanel : MenuItem
+    {
+        public MenuPanel(int x, int y, int Width, int Height,
+            Image sprite)
+        {
+            this.x = x;
+            this.y = y;
+            this.Width = Width;
+            this.Height = Height;
+            Sprite = sprite;
+        }
+    }
+
+    public class MenuText : MenuItem
     {
         public readonly string Content;
         public readonly Font font;
         public readonly Brush text_color;
-        public readonly int x;
-        public int y;
 
         public MenuText(string Content, Font font, Brush text_color, int x, int y)
         {
@@ -204,4 +220,6 @@ namespace GameEngine
             return new SizeF((float) ft.Width, (float) ft.Height);
         }
     }
+
+    #endregion
 }

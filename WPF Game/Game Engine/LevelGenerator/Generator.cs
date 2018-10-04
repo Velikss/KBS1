@@ -5,7 +5,7 @@ using GameEngine;
 
 namespace LevelGenerator
 {
-    public static class Filer
+    public static class Generator
     {
         public static void GenerateFile(string FileLocation, Level lvl)
         {
