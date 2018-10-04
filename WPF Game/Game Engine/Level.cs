@@ -1,15 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GameEngine
 {
+    [Serializable]
     public class Level
     {
         public List<Tile> Tiles = new List<Tile>();
         public readonly string LevelName;
+
+        public Level()
+        {
+
+        }
         public Level(string Name)
         {
             LevelName = Name;

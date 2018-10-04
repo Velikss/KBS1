@@ -46,7 +46,7 @@ namespace GameEngine
                                 //draw background
                                 backend.DrawImage(background, new Point(0, 0));
                                 //draw all tiles within view of camera, #better performance
-                                foreach (var tile in gm.Tiles.Where(o =>
+                                foreach (var tile in gm.level.Tiles.Where(o =>
                                     o.X + o.Width >= gm.camera.X * -1 && o.X <= gm.camera.X * -1 + gm.Screen_Width &&
                                     o.Y + o.Height >= gm.camera.Y * -1 &&
                                     o.Y + o.Height <= gm.camera.Y * -1 + gm.Screen_Height &&
@@ -61,7 +61,8 @@ namespace GameEngine
                                     frontend.DrawImage(_backend, 0, 0, gm.Screen_Width, gm.Screen_Height);
                                 }
 
-                                gm.screen.FPS++;
+                                if (gm.screen.GameData.IsVisible)
+                                    gm.screen.FPS++;
                             }
                         }
                         catch

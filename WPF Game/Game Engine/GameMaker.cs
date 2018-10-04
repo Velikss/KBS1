@@ -48,12 +48,11 @@ namespace GameEngine
             var i = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/ground.gif");
             //let's do a Level class which loads level data
             //create level data ^more nice
-            Level l1 = new Level("level1");
-            l1.Tiles.Add(new Tile(ref i, 0, 532, 20, 32, true));
-            l1.Tiles.Add(new Tile(ref i, 750, 332, 1, 32, true));
-            l1.Tiles.Add(new Tile(ref i, 1250, 150, 1, 32, true));
-            level = l1;
-
+            level = new Level("level1");
+            level.Tiles.Add(new Tile(ref i, 0, 532, 20, 32, true));
+            level.Tiles.Add(new Tile(ref i, 750, 332, 1, 32, true));
+            level.Tiles.Add(new Tile(ref i, 1250, 150, 1, 32, true));
+            LevelGenerator.Filer.GenerateFile("D:/desktop/level.lvl", level);
             //creates a new screen given screen preferences
             screen = new Screen(this, w);
             //new Render
@@ -84,27 +83,11 @@ namespace GameEngine
             mb.Clicked += delegate
             {
                 TitleMenu.Deactivate();
-                game_render.Activate();
+                StartLevel(true);
             };
-
             mb2.Clicked += delegate { Environment.Exit(0); };
-            //creates Camera given reffered focus:player with collision:tiles
-            camera = new Camera(ref player, ref level, ref game_render);
-            //initiate player
-            player = new Player
-            {
-                X = Screen_Width / 4 - 50,
-                Y = 350,
-                Width = 32,
-                Height = 32,
-                Sprite = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Animations/normal.gif")
-            };
-            player.Initialize(ref camera);
-            //then start camera
-            camera.Start();
-            //set gravity on player & enable gravity given reffered tiles
-            Gravity.EnableGravityOnObject(player);
-            Gravity.EnableGravity(ref level, ref game_render);
+
+            StartLevel();
             //setup Input events ^nicer place
             w.KeyDown += KeyDown;
             w.KeyUp += KeyUp;
@@ -203,9 +186,10 @@ namespace GameEngine
             jump_active = false;
         }
 
-        public void LoadLevel(Level l)
+        private void StartLevel(bool StartGame = false)
         {
-            this.level = l;
+            //initiate player
+            player?.Dispose();
             player = new Player
             {
                 X = Screen_Width / 4 - 50,
@@ -214,6 +198,18 @@ namespace GameEngine
                 Height = 32,
                 Sprite = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Animations/normal.gif")
             };
+            //creates Camera given reffered focus:player with collision:tiles
+            camera?.Dispose();
+            camera = new Camera(ref player, ref level, ref game_render);
+            player.Initialize(ref camera);
+            //then start camera
+            camera.Start();
+            //set gravity on player & enable gravity given reffered tiles
+            Gravity.Dispose();
+            Gravity.EnableGravityOnObject(player);
+            Gravity.EnableGravity(ref level, ref game_render);
+            if(StartGame)
+                game_render.Activate();
         }
     }
 }

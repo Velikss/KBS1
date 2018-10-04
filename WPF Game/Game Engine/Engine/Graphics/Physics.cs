@@ -1,10 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Threading;
+using System.Xml.Serialization;
 
 namespace GameEngine
 {
+    [Serializable]
     public class PhysicalObject
     {
         //rectangle inside object which which contains the collision points
@@ -16,6 +19,7 @@ namespace GameEngine
         public bool Landed;
 
         //contains the sprite for the object
+        [XmlIgnore]
         public Image Sprite;
 
         //oriental info
@@ -36,6 +40,8 @@ namespace GameEngine
         //holds possible collision objects reffered by Tiles from GameMaker.cs
         private static List<Tile> objects;
 
+        private static Thread gravity;
+
         //void enables gravity on parametered object
         public static void EnableGravityOnObject(PhysicalObject po)
         {
@@ -55,13 +61,13 @@ namespace GameEngine
         }
 
         //starts the gravity given reffered objects to collide with
-        public static void EnableGravity(ref List<Tile> objs, ref Render render)
+        public static void EnableGravity(ref Level lvl, ref Render render)
         {
-            objects = objs;
+            objects = lvl.Tiles;
             var game = render;
             //bool is equaled to the status of being on the ground
             bool land;
-            new Thread((ThreadStart) delegate
+            (gravity = new Thread((ThreadStart) delegate
             {
                 for (;;)
                     if (game.isActive())
@@ -98,13 +104,19 @@ namespace GameEngine
                         {
                             //nothing
                         }
-            }).Start();
+            })).Start();
         }
 
         //checks if gravity is engaged on the given player
         public static bool HasGravity(Player player)
         {
             return entities.Contains(player);
+        }
+
+        public static void Dispose()
+        {
+            if (gravity != null)
+                gravity.Abort();
         }
     }
 }

@@ -1,8 +1,11 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Xml.Serialization;
 
 namespace GameEngine
 {
+    [Serializable]
     public class Tile : PhysicalObject
     {
         // Use `using` blocks for GDI objects you create, so they'll be released
@@ -10,6 +13,11 @@ namespace GameEngine
 
         //boolean represents if the Tile is a standable Tile
         public readonly bool Ground;
+
+        public Tile()
+        {
+
+        }
 
         //instances tile given referred sprite, position, fatness:), and standability
         public Tile(ref Image Sprite, int x, int y, int widthRepeater, int height = 32, bool standable = false)

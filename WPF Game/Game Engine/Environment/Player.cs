@@ -7,6 +7,20 @@ namespace GameEngine
     {
         //holds reffered cameradata
         private Camera camera;
+        
+        //set all possible sprites to lower memory_use
+        Image jump = Image.FromFile("Animations/jump.gif");
+        Image jump_L = Image.FromFile("Animations/jump_L.gif");
+        Image walk1 = Image.FromFile("Animations/walk1.gif");
+        Image walk2 = Image.FromFile("Animations/walk2.gif");
+        Image walk3 = Image.FromFile("Animations/walk3.gif");
+        Image walk1_L = Image.FromFile("Animations/walk1_L.gif");
+        Image walk2_L = Image.FromFile("Animations/walk2_L.gif");
+        Image walk3_L = Image.FromFile("Animations/walk3_L.gif");
+        Image normal = Image.FromFile("Animations/normal.gif");
+        Image normal_L = Image.FromFile("Animations/normal_L.gif");
+
+        private Thread animation;
 
         //boolean checks collision with object
         public bool Collide(PhysicalObject po)
@@ -25,23 +39,12 @@ namespace GameEngine
         public void Initialize(ref Camera cam)
         {
             camera = cam;
-            new Thread(PlayerAnimation).Start();
+            (animation = new Thread(PlayerAnimation)).Start();
         }
 
         //changes the player sprite to give animation given movement
         private void PlayerAnimation()
         {
-            //set all possible sprites to lower memory_use
-            var jump = Image.FromFile("Animations/jump.gif");
-            var jump_L = Image.FromFile("Animations/jump_L.gif");
-            var walk1 = Image.FromFile("Animations/walk1.gif");
-            var walk2 = Image.FromFile("Animations/walk2.gif");
-            var walk3 = Image.FromFile("Animations/walk3.gif");
-            var walk1_L = Image.FromFile("Animations/walk1_L.gif");
-            var walk2_L = Image.FromFile("Animations/walk2_L.gif");
-            var walk3_L = Image.FromFile("Animations/walk3_L.gif");
-            var normal = Image.FromFile("Animations/normal.gif");
-            var normal_L = Image.FromFile("Animations/normal_L.gif");
             //movement sprite changer to give walking animation
             var sequence_number = 1;
             //keeps last direction for jump_direction
@@ -139,6 +142,11 @@ namespace GameEngine
 
                 Thread.Sleep(100);
             }
+        }
+
+        public void Dispose()
+        {
+            animation.Abort();
         }
     }
 }
