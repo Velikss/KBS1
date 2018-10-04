@@ -7,7 +7,7 @@ namespace GameEngine
 {
     public class Render
     {
-        private GameMaker gm;
+        protected GameMaker gm;
 
         public Render(GameMaker gm)
         {
@@ -20,11 +20,11 @@ namespace GameEngine
         }
 
         //holds the backend Graphics drawer -> backend buffer
-        private Graphics backend;
-        private readonly Bitmap _backend;
+        protected Graphics backend;
+        protected readonly Bitmap _backend;
 
         //holds the frontend Graphics drawer -> Screen.screen_buffer
-        private readonly Graphics frontend;
+        protected readonly Graphics frontend;
 
         //holds background for lower memory_use ^change this more beautifull^
         private readonly Image background = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/back.gif");

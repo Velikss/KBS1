@@ -50,6 +50,16 @@ namespace GameEngine
             screen = new Screen(this, w);
             //new Render
             Render render = new Render(this);
+            //new Menu
+            Image _i = Image.FromFile(@"C:\Users\usr\Desktop\54b2d246e0e35be.png");
+            MenuButton mb = new MenuButton("Start Game", 16, 50, 200, 200, 50, ref _i);
+            Menu menu = new Menu(this, w, new List<MenuButton>{mb});
+
+            mb.Clicked += delegate
+            {
+                menu.Deactivate();
+                render.StartRender();
+            };
             //creates Camera given reffered focus:player with collision:tiles
             camera = new Camera(ref player, ref Tiles);
             //initialize player given reffered camera
@@ -63,7 +73,7 @@ namespace GameEngine
             w.KeyDown += KeyDown;
             w.KeyUp += KeyUp;
             //setup Music & prop. sound ^nicer place
-            render.StartRender();
+            menu.StartRender();
         }
 
         public static int jumps;
@@ -76,7 +86,7 @@ namespace GameEngine
             switch (e.Key)
             {
                 case Key.Space:
-                    if (!jump_active && jumps < 3 && !space_press)
+                    if (!jump_active && jumps < 2 && !space_press)
                     {
                         space_press = true;
                         new Thread(Jump_Thread).Start();
