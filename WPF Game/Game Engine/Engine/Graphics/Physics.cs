@@ -9,26 +9,33 @@ namespace GameEngine
     {
         //rectangle inside object which which contains the collision points
         public Rectangle collision;
-        //oriental info
-        public float X, Y;
+
         public int Height, Width;
+
         //bool states if object is in contact with the ground
         public bool Landed;
+
         //contains the sprite for the object
         public Image Sprite;
+
+        //oriental info
+        public float X, Y;
+
         //bool if the object collides with the parametered object
         public bool Collide(Rectangle _co2)
         {
             return collision.IntersectsWith(_co2);
         }
     }
-    
+
     public static class Gravity
     {
         //holds the enities to engage gravity on
         private static readonly List<PhysicalObject> entities = new List<PhysicalObject>();
+
         //holds possible collision objects reffered by Tiles from GameMaker.cs
         private static List<Tile> objects;
+
         //void enables gravity on parametered object
         public static void EnableGravityOnObject(PhysicalObject po)
         {
@@ -37,6 +44,7 @@ namespace GameEngine
                 entities.Add(po);
             }
         }
+
         //disables gravity for parametered object
         public static void DisableGravityOnObject(PhysicalObject po)
         {
@@ -45,6 +53,7 @@ namespace GameEngine
                 entities.Remove(po);
             }
         }
+
         //starts the gravity given reffered objects to collide with
         public static void EnableGravity(ref List<Tile> objs)
         {
@@ -73,6 +82,7 @@ namespace GameEngine
                                     if (po.Collide(obj.collision))
                                         land = true;
                             }
+
                             //if entity hasn't landed drop player, if landed reset the used jumps variable
                             if (!(po.Landed = land))
                                 po.Y += 0.7f;
@@ -88,7 +98,11 @@ namespace GameEngine
                     }
             }).Start();
         }
+
         //checks if gravity is engaged on the given player
-        public static bool HasGravity(Player player) => entities.Contains(player);
+        public static bool HasGravity(Player player)
+        {
+            return entities.Contains(player);
+        }
     }
 }

@@ -7,6 +7,16 @@ namespace GameEngine
 {
     public class Render
     {
+        protected readonly Bitmap _backend;
+
+        //holds background for lower memory_use ^change this more beautifull^
+        private readonly Image background = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/back.gif");
+
+        //holds the frontend Graphics drawer -> Screen.screen_buffer
+        protected readonly Graphics frontend;
+
+        //holds the backend Graphics drawer -> backend buffer
+        protected Graphics backend;
         protected GameMaker gm;
 
         public Render(GameMaker gm)
@@ -18,16 +28,6 @@ namespace GameEngine
             backend = Graphics.FromImage(_backend);
             frontend = Graphics.FromImage(gm.screen.screen_buffer);
         }
-
-        //holds the backend Graphics drawer -> backend buffer
-        protected Graphics backend;
-        protected readonly Bitmap _backend;
-
-        //holds the frontend Graphics drawer -> Screen.screen_buffer
-        protected readonly Graphics frontend;
-
-        //holds background for lower memory_use ^change this more beautifull^
-        private readonly Image background = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/back.gif");
 
         public void StartRender()
         {
@@ -41,7 +41,8 @@ namespace GameEngine
                         //draw all tiles within view of camera, #better performance
                         foreach (var tile in gm.Tiles.Where(o =>
                             o.X + o.Width >= gm.camera.X * -1 && o.X <= gm.camera.X * -1 + gm.Screen_Width &&
-                            o.Y + o.Height >= gm.camera.Y * -1 && o.Y + o.Height <= gm.camera.Y * -1 + gm.Screen_Height &&
+                            o.Y + o.Height >= gm.camera.Y * -1 &&
+                            o.Y + o.Height <= gm.camera.Y * -1 + gm.Screen_Height &&
                             o.Sprite != null))
                             backend.DrawImage(tile.Sprite, gm.camera.X + tile.X, gm.camera.Y + tile.Y);
                         //draw player

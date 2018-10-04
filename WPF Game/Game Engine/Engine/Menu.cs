@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading;
 using System.Windows;
 using System.Windows.Media;
+using Brush = System.Drawing.Brush;
 using Brushes = System.Windows.Media.Brushes;
 using FlowDirection = System.Windows.FlowDirection;
 using Point = System.Drawing.Point;
@@ -18,6 +19,7 @@ namespace GameEngine
         private readonly Image background = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/Title.gif");
         private bool Active;
         public List<MenuButton> buttons = new List<MenuButton>();
+        public List<MenuText> texts = new List<MenuText>();
         private Window w;
 
         public new void StartRender()
@@ -35,10 +37,16 @@ namespace GameEngine
                                 backend.DrawImage(mb.Sprite, mb.x, mb.y, mb.Width,
                                     mb.Height);
                             foreach (var mb in buttons)
-                                backend.DrawString(mb.Content, new Font("Calibri", mb.text_size),
-                                    System.Drawing.Brushes.DarkSlateGray,
+                                backend.DrawString(mb.Content, mb.font,
+                                    mb.text_color,
                                     mb.x + (mb.Width / 2 - mb.text_sizef.Width),
                                     mb.y + (mb.Height / 2 - mb.text_sizef.Height));
+
+                            foreach (var text in texts)
+                                backend.DrawString(text.Content, text.font,
+                                    text.text_color,
+                                    text.x,
+                                    text.y);
 
                             //draw backend to frontend
                             lock (gm.screen.screen_buffer)
@@ -52,11 +60,12 @@ namespace GameEngine
             }).Start();
         }
 
-        public Menu(GameMaker gm, Window w, List<MenuButton> buttons) : base(gm)
+        public Menu(GameMaker gm, Window w, List<MenuText> texts, List<MenuButton> buttons) : base(gm)
         {
             Active = true;
             (this.w = w).MouseDown += W_MouseDown;
             this.buttons = buttons;
+            this.texts = texts;
         }
 
         public void Activate()
@@ -86,18 +95,21 @@ namespace GameEngine
         public int x, y, Width, Height = 0;
         public event ClickTrigger Clicked;
         public SizeF text_sizef;
-        public int text_size;
+        public Font font;
+        public Brush text_color;
         public readonly string Content;
 
         public delegate void ClickTrigger();
 
         public Image Sprite;
 
-        public MenuButton(string Content, int text_size, int x, int y, int Width, int Height, ref Image sprite)
+        public MenuButton(string Content, Font font, Brush text_color, int x, int y, int Width, int Height,
+            ref Image sprite)
         {
             this.Content = Content;
-            text_sizef = MeasureString(Content, text_size, "Calibri");
-            this.text_size = text_size;
+            text_sizef = MeasureString(Content, (int) font.Size, font.Name);
+            this.text_color = text_color;
+            this.font = font;
             this.x = x;
             this.y = y;
             this.Width = Width;
@@ -120,5 +132,22 @@ namespace GameEngine
         }
 
         public void TriggerClick() => Clicked();
+    }
+
+    public class MenuText
+    {
+        public int x, y;
+        public string Content;
+        public Font font;
+        public Brush text_color;
+
+        public MenuText(string Content, Font font, Brush text_color, int x, int y)
+        {
+            this.Content = Content;
+            this.font = font;
+            this.text_color = text_color;
+            this.x = x;
+            this.y = y;
+        }
     }
 }

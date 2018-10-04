@@ -52,8 +52,8 @@ namespace GameEngine
             Render render = new Render(this);
             //new Menu
             Image _i = Image.FromFile(@"C:\Users\usr\Desktop\54b2d246e0e35be.png");
-            MenuButton mb = new MenuButton("Start Game", 16, 50, 200, 200, 50, ref _i);
-            Menu menu = new Menu(this, w, new List<MenuButton>{mb});
+            MenuButton mb = new MenuButton("Start Game", new Font("Calibri", 16), Brushes.DarkSlateGray, 50, 200, 200, 50, ref _i);
+            Menu menu = new Menu(this, w, new List<MenuText>(), new List<MenuButton>{mb});
 
             mb.Clicked += delegate
             {
