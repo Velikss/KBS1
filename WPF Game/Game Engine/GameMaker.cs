@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Threading;
 using System.Windows;
 using System.Windows.Input;
+using FontStyle = System.Drawing.FontStyle;
 
 namespace GameEngine
 {
@@ -64,18 +65,28 @@ namespace GameEngine
             //new Render
             game_render = new Render(this);
             //new Menu
-            var buttonsprite = Image.FromFile(@"C:\Users\usr\Desktop\54b2d246e0e35be.png");
-            var mb = new MenuButton("Start Game", new Font("Calibri", 16), Brushes.DarkSlateGray, 50, 200, 250,
-                50, ref buttonsprite);
-            var mb2 = new MenuButton("Exit Game", new Font("Calibri", 16), Brushes.DarkSlateGray, 50, 255, 250, 50,
-                ref buttonsprite);
+            var buttonsprite = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/54b2d246e0e35be.png");
+            var mb = new MenuButton("Start Game", new Font("Calibri", 16), Brushes.DarkSlateGray, 55, 200, 250,
+                50, buttonsprite);
+            var mb2 = new MenuButton("Exit Game", new Font("Calibri", 16), Brushes.DarkSlateGray, 55, 255, 250, 50,
+                buttonsprite);
             TitleMenu = new Menu(this, w, new List<MenuText>(), new List<MenuButton> {mb, mb2},
                 Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/Title.gif"));
-            var Panel = new MenuButton("", new Font("Calibri", 16), Brushes.DarkSlateGray, 50, 50, 700, 450,
-                ref buttonsprite);
-            /*var retrun = new MenuButton("Return to start", new Font("Calibri", 16), Brushes.DarkSlateGray, , 200, 250,
-                50, ref buttonsprite);*/
-            PauseOverlay = new Menu(this, w, new List<MenuText>(), new List<MenuButton> {Panel}, Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/back.gif"));
+            var Panel = new MenuButton("", new Font("Calibri", 16), Brushes.DarkSlateGray, 800 / 12, 0, 800 / 12 * 10,
+                500,
+                Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/pexels-photo-164005.jpeg"));
+            var Text = new MenuText("Pause", new Font("Calibri", 48, FontStyle.Regular), Brushes.White);
+            Text.y = 25;
+            var totitle = new MenuButton("Return to start", new Font("Calibri", 16), Brushes.DarkSlateGray,
+                800 / 2 - (250 / 2), 420, 250,
+                50, buttonsprite);
+            totitle.Clicked += delegate
+            {
+                PauseOverlay.Deactivate();
+                TitleMenu.Activate();
+            };
+            PauseOverlay = new Menu(this, w, new List<MenuText>{Text}, new List<MenuButton> {Panel, totitle},
+                Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/Title.gif"));
             mb.Clicked += delegate
             {
                 TitleMenu.Deactivate();

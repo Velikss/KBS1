@@ -69,7 +69,9 @@ namespace GameEngine
                                 Thread.Sleep(100);
                             }
                         }
-                        catch { }
+                        catch
+                        {
+                        }
                     else
                         Thread.Sleep(100);
             }).Start();
@@ -114,7 +116,7 @@ namespace GameEngine
         public int x, y, Width, Height;
 
         public MenuButton(string Content, Font font, Brush text_color, int x, int y, int Width, int Height,
-            ref Image sprite)
+            Image sprite)
         {
             this.Content = Content;
             text_sizef = MeasureString(Content, (int) font.Size, font.Name);
@@ -163,6 +165,30 @@ namespace GameEngine
             this.text_color = text_color;
             this.x = x;
             this.y = y;
+        }
+
+        public MenuText(string Content, Font font, Brush text_color)
+        {
+            this.Content = Content;
+            this.font = font;
+            this.text_color = text_color;
+            SizeF size = MeasureString(Content, (int) font.Size, font.Name);
+            x = (int) (800 / 2 - (size.Width));
+            y = (int) (600 / 2 - (size.Height));
+        }
+
+        public SizeF MeasureString(string text, int fontSize, string typeFace)
+        {
+            var ft = new FormattedText
+            (
+                text,
+                CultureInfo.CurrentCulture,
+                FlowDirection.LeftToRight,
+                new Typeface(typeFace),
+                fontSize,
+                Brushes.Black
+            );
+            return new SizeF((float) ft.Width, (float) ft.Height);
         }
     }
 }

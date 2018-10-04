@@ -87,7 +87,7 @@ namespace GameEngine
 
                                 //if entity hasn't landed drop player, if landed reset the used jumps variable
                                 if (!(po.Landed = land))
-                                    po.Y += 0.7f;
+                                    po.Y += 0.95f;
                                 else
                                     GameMaker.jumps = 0;
                             }
