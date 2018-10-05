@@ -61,7 +61,7 @@ namespace GameEngine
             TitleMenu = new Menu(this, new List<MenuItem> {mb, mb2},
                 Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/Title.gif"));
             var Panel = new MenuPanel(800 / 10 * 3, 0, 800 / 12 * 4, 500,
-                Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/pexels-photo-164005.jpeg"));
+                Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/threeRock.gif"));
             var Text = new MenuText("Pause", new Font("Calibri", 48, FontStyle.Regular), Brushes.White);
             Text.y = 25;
             var totitle = new MenuButton("Return to start", new Font("Calibri", 16), Brushes.DarkSlateGray,
