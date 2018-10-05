@@ -72,8 +72,7 @@ namespace GameEngine
                         }
                         else
                         {
-                            if (!Gravity.HasGravity(player))
-                                Gravity.EnableGravityOnObject(player);
+                            player.X += 1;
                             Left = false;
                         }
                     }
@@ -89,8 +88,7 @@ namespace GameEngine
                         }
                         else
                         {
-                            if (!Gravity.HasGravity(player))
-                                Gravity.EnableGravityOnObject(player);
+                            player.X -= 1;
                             Right = false;
                         }
                     }

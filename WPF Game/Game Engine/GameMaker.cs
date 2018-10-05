@@ -39,7 +39,10 @@ namespace GameEngine
             //Leveling ^Level class loader
             Image i = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/ground.gif");
             i.Tag = "ground";
+            Image test = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/test2.gif");
+            test.Tag = "test";
             level = new Level("level1");
+            level.Tiles.Add(new Tile(ref test, 250, 300, 5, 64, true));
             level.Tiles.Add(new Tile(ref i, 0, 532, 20, 32, true));
             level.Tiles.Add(new Tile(ref i, 750, 332, 10, 32, true));
             level.Tiles.Add(new Tile(ref i, 1250, 150, 10, 32, true));
