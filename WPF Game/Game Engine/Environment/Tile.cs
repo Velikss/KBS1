@@ -44,5 +44,30 @@ namespace GameEngine
 
             Collidable = standable;
         }
+
+        public Tile(Rectangle collision, ref Image Sprite, int x, int y, int widthRepeater, int height = 32, bool standable = false)
+        {
+            X = x;
+            Y = y;
+            Width = widthRepeater * 32;
+            Height = height;
+            this.collision = collision;
+            TileType = Sprite.Tag.ToString();
+            if (Width > 32)
+            {
+                this.Sprite = new Bitmap(Width, Height);
+                using (var brush = new TextureBrush(Sprite, WrapMode.Tile))
+                using (var g = Graphics.FromImage(this.Sprite))
+                {
+                    g.FillRectangle(brush, 0, 0, Width, Height);
+                }
+            }
+            else
+            {
+                this.Sprite = Sprite;
+            }
+
+            Collidable = standable;
+        }
     }
 }
