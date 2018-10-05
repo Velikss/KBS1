@@ -41,11 +41,14 @@ namespace GameEngine
             i.Tag = "ground";
             Image beginpoint = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/begin-point-sprite.gif");
             beginpoint.Tag = "beginpoint";
+            Image endpoint = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/end-point-sprite.gif");
+            endpoint.Tag = "endpoint";
             level = new Level("level1");
-            level.Tiles.Add(new Tile(ref beginpoint, 10, 468, 2, 96));
+            level.Tiles.Add(new Tile(ref beginpoint, 10, 436, 2, 96));
+            level.Tiles.Add(new Tile(ref endpoint, 1470, 254, 2, 96));
             level.Tiles.Add(new Tile(ref i, 0, 532, 20, 32, true));
-            level.Tiles.Add(new Tile(ref i, 750, 332, 10, 32, true));
-            level.Tiles.Add(new Tile(ref i, 1250, 150, 10, 32, true));
+            level.Tiles.Add(new Tile(ref i, 750, 432, 10, 32, true));
+            level.Tiles.Add(new Tile(ref i, 1200, 350, 10, 32, true));
             //
             screen = new Screen(this);
             game_render = new Render(this);
@@ -112,7 +115,7 @@ namespace GameEngine
             player?.Dispose();
             player = new Player
             {
-                X = Screen_Width / 4 - 50,
+                X = Screen_Width / 4 - 125,
                 Y = 350,
                 Width = 32,
                 Height = 32,
