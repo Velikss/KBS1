@@ -75,7 +75,7 @@ namespace GameEngine
                             {
                                 land = false;
                                 foreach (var obj in objects.Where(o =>
-                                    o.X - o.Width <= po.X && o.X + o.Width >= po.X && o.Ground))
+                                    o.X - o.Width <= po.X && o.X + o.Width >= po.X && o.Collidable))
                                     if (po.Stands(obj))
                                         land = true;
 

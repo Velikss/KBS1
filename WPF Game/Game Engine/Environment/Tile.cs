@@ -11,7 +11,7 @@ namespace GameEngine
         // quickly when you're done with them.
 
         //boolean represents if the Tile is a standable Tile
-        public readonly bool Ground;
+        public readonly bool Collidable;
         // public required for xmlparser
         // ReSharper disable once MemberCanBePrivate.Global
         public string TileType;
@@ -42,7 +42,7 @@ namespace GameEngine
                 this.Sprite = Sprite;
             }
 
-            Ground = standable;
+            Collidable = standable;
         }
     }
 }

@@ -42,7 +42,7 @@ namespace GameEngine
             Image beginpoint = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/begin-point-sprite.gif");
             beginpoint.Tag = "beginpoint";
             level = new Level("level1");
-            level.Tiles.Add(new Tile(ref beginpoint, 10, 468, 0, 96, false));
+            level.Tiles.Add(new Tile(ref beginpoint, 10, 468, 2, 96));
             level.Tiles.Add(new Tile(ref i, 0, 532, 20, 32, true));
             level.Tiles.Add(new Tile(ref i, 750, 332, 10, 32, true));
             level.Tiles.Add(new Tile(ref i, 1250, 150, 10, 32, true));
