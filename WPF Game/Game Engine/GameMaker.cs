@@ -14,6 +14,8 @@ namespace GameEngine
         //holds menu's & Game renders
         internal Render game_render;
         internal Menu PauseOverlay;
+        private Menu TitleMenu;
+        internal Menu DeadOverlay;
 
         //holds player instance
         internal Player player;
@@ -25,7 +27,6 @@ namespace GameEngine
 
         //holds all tiles
         internal Level level;
-        private Menu TitleMenu;
 
         internal Window w;
 
@@ -54,18 +55,18 @@ namespace GameEngine
         private void PrepareMenus()
         {
             var buttonsprite = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/54b2d246e0e35be.png");
-            var mb = new MenuButton("Start Game", new Font("Calibri", 16), Brushes.DarkSlateGray, 55, 200, 250,
+            var mb = new MenuButton("Singleplayer", new Font("Calibri", 26), Brushes.DarkSlateGray, 55, 200, 250,
                 50, buttonsprite);
-            var mb2 = new MenuButton("Exit Game", new Font("Calibri", 16), Brushes.DarkSlateGray, 55, 255, 250, 50,
+            var mb2 = new MenuButton("Exit", new Font("Calibri", 26), Brushes.DarkSlateGray, 55, 255, 250, 50,
                 buttonsprite);
             TitleMenu = new Menu(this, new List<MenuItem> {mb, mb2},
                 Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/Title.gif"));
-            var Panel = new MenuPanel(800 / 10 * 3, 0, 800 / 12 * 4, 500,
+            var Panel = new MenuPanel(800 / 12 * 3, 0, 800 / 12 * 6, 500,
                 Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/pexels-photo-164005.jpeg"));
-            var Text = new MenuText("Pause", new Font("Calibri", 48, FontStyle.Regular), Brushes.White);
+            var Text = new MenuText("Pause", new Font("Calibri", 72, FontStyle.Regular), Brushes.White);
             Text.y = 25;
-            var totitle = new MenuButton("Return to start", new Font("Calibri", 16), Brushes.DarkSlateGray,
-                800 / 2 - 250 / 2, 420, 200,
+            var totitle = new MenuButton("Return to start", new Font("Calibri", 26), Brushes.DarkSlateGray,
+                800 / 2 - 100, 420, 200,
                 50, buttonsprite);
             totitle.Clicked += delegate
             {
@@ -73,6 +74,18 @@ namespace GameEngine
                 TitleMenu.Activate();
             };
             PauseOverlay = new Menu(this, new List<MenuItem> {Panel, Text, totitle},
+                null);
+            var DeadText = new MenuText("Dead", new Font("Calibri", 72, FontStyle.Bold), Brushes.DarkRed);
+            DeadText.y = 25;
+            var totitle2 = new MenuButton("Return to start", new Font("Calibri", 26), Brushes.DarkSlateGray,
+                800 / 2 - 100, 420, 200,
+                50, buttonsprite);
+            totitle2.Clicked += delegate
+            {
+                DeadOverlay.Deactivate();
+                TitleMenu.Activate();
+            };
+            DeadOverlay = new Menu(this, new List<MenuItem> {Panel, DeadText, totitle2},
                 null);
             mb.Clicked += delegate
             {
@@ -96,7 +109,7 @@ namespace GameEngine
             };
             //creates Camera given reffered focus:player with collision:tiles
             camera?.Dispose();
-            camera = new Camera(ref player, ref level, ref game_render);
+            camera = new Camera(this);
             player.Initialize(ref camera);
             //then start camera
             camera.Start();

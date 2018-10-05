@@ -1,13 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
-using System.Globalization;
 using System.Linq;
 using System.Threading;
-using System.Windows;
 using System.Windows.Input;
-using System.Windows.Media;
 using Brush = System.Drawing.Brush;
-using Brushes = System.Windows.Media.Brushes;
 using Point = System.Drawing.Point;
 
 namespace GameEngine
@@ -32,6 +28,8 @@ namespace GameEngine
         private void StartRender()
         {
             running = true;
+            SizeF size;
+            float x, y;
             new Thread((ThreadStart) delegate
             {
                 for (;;)
@@ -44,22 +42,29 @@ namespace GameEngine
                                 backend.DrawImage(background, new Point(0, 0));
                                 //draw buttons
                                 foreach (var mi in items)
-                                    if (mi is MenuButton)
+                                    if (mi is MenuButton mb)
                                     {
-                                        backend.DrawImage(mi.Sprite, mi.x, mi.y, mi.Width,
+                                        backend.DrawImage(mi.Sprite, (float) mi.x, (float) mi.y, mi.Width,
                                             mi.Height);
-                                        backend.DrawString(((MenuButton) mi).Content, ((MenuButton) mi).font,
-                                            ((MenuButton) mi).text_color,
-                                            mi.x + (mi.Width / 2 - ((MenuButton) mi).text_sizef.Width),
-                                            mi.y + (mi.Height / 2 - ((MenuButton) mi).text_sizef.Height));
+                                        size = backend.MeasureString(mb.Content, mb.font);
+                                        backend.DrawString(mb.Content, mb.font, mb.TextColor,
+                                            ((float) mi.x) + ((mi.Width / 2) - (size.Width / 2)),
+                                            ((float) mi.y) + ((mi.Height / 2) - (size.Height / 2)));
                                     }
-                                    else if (mi is MenuText)
-                                        backend.DrawString(((MenuText) mi).Content, ((MenuText) mi).font,
-                                            ((MenuText) mi).text_color,
-                                            ((MenuText) mi).x,
-                                            ((MenuText) mi).y);
+                                    else if (mi is MenuText mt)
+                                    {
+                                        if (mi.x == null)
+                                            x = (800 / 2) - (backend.MeasureString(mt.Content, mt.font).Width / 2);
+                                        else
+                                            x = (float) mi.x;
+                                        if (mi.y == null)
+                                            y = (600 / 2) - (backend.MeasureString(mt.Content, mt.font).Height / 2);
+                                        else
+                                            y = (float) mi.y;
+                                        backend.DrawString(mt.Content, mt.font, mt.text_color, x, y);
+                                    }
                                     else if (mi is MenuPanel)
-                                        backend.DrawImage(mi.Sprite, mi.x, mi.y, mi.Width,
+                                        backend.DrawImage(mi.Sprite, (float) mi.x, (float) mi.y, mi.Width,
                                             mi.Height);
 
                                 //draw backend to frontend
@@ -116,7 +121,9 @@ namespace GameEngine
 
     public class MenuItem
     {
-        public int x, y, Width, Height;
+        public int? x;
+        public int? y;
+        public int Width, Height;
         public Image Sprite;
     }
 
@@ -127,18 +134,16 @@ namespace GameEngine
         public delegate void ClickTrigger();
 
         public readonly string Content;
-        public readonly Font font;
+        public Font font;
 
-        public readonly Brush text_color;
-        public SizeF text_sizef;
+        public readonly Brush TextColor;
 
         public MenuButton(string Content, Font font, Brush text_color, int x, int y, int Width, int Height,
             Image sprite)
         {
             this.Content = Content;
-            text_sizef = MeasureString(Content, (int) font.Size, font.Name);
-            this.text_color = text_color;
-            this.font = font;
+            this.TextColor = text_color;
+            this.font = new Font(font.FontFamily, font.Size, font.Style, GraphicsUnit.Pixel, 0);
             this.x = x;
             this.y = y;
             this.Width = Width;
@@ -148,25 +153,12 @@ namespace GameEngine
 
         public event ClickTrigger Clicked;
 
-        private SizeF MeasureString(string text, int fontSize, string typeFace)
-        {
-            var ft = new FormattedText
-            (
-                text,
-                CultureInfo.CurrentCulture,
-                FlowDirection.LeftToRight,
-                new Typeface(typeFace),
-                fontSize,
-                Brushes.Black
-            );
-            return new SizeF((float) ft.Width, (float) ft.Height);
-        }
-
         public void TriggerClick()
         {
             Clicked?.Invoke();
         }
     }
+
 
     public class MenuPanel : MenuItem
     {
@@ -190,7 +182,7 @@ namespace GameEngine
         public MenuText(string Content, Font font, Brush text_color, int x, int y)
         {
             this.Content = Content;
-            this.font = font;
+            this.font = new Font(font.FontFamily, font.Size, font.Style, GraphicsUnit.Pixel, 0);
             this.text_color = text_color;
             this.x = x;
             this.y = y;
@@ -199,25 +191,10 @@ namespace GameEngine
         public MenuText(string Content, Font font, Brush text_color)
         {
             this.Content = Content;
-            this.font = font;
+            this.font = new Font(font.FontFamily, font.Size, font.Style, GraphicsUnit.Pixel, 0);
             this.text_color = text_color;
-            var size = MeasureString(Content, (int) font.Size, font.Name);
-            x = (int) (800 / 2 - size.Width);
-            y = (int) (600 / 2 - size.Height);
-        }
-
-        private SizeF MeasureString(string text, int fontSize, string typeFace)
-        {
-            var ft = new FormattedText
-            (
-                text,
-                CultureInfo.CurrentCulture,
-                FlowDirection.LeftToRight,
-                new Typeface(typeFace),
-                fontSize,
-                Brushes.Black
-            );
-            return new SizeF((float) ft.Width, (float) ft.Height);
+            x = null;
+            y = null;
         }
     }
 

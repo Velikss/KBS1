@@ -11,6 +11,7 @@ namespace GameEngine
         private readonly Player player;
         private readonly List<Tile> Tiles;
         private readonly Render render;
+        private readonly Menu DeadMenu;
 
         //local camerathread
         private Thread Cameramover;
@@ -22,11 +23,12 @@ namespace GameEngine
         public float X, Y;
 
         //set's up camera given reffered player, Tiles
-        public Camera(ref Player p, ref Level level, ref Render render)
+        public Camera(GameMaker gm)
         {
-            player = p;
-            Tiles = level.Tiles;
-            this.render = render;
+            player = gm.player;
+            Tiles = gm.level.Tiles;
+            render = gm.game_render;
+            DeadMenu = gm.DeadOverlay;
         }
 
         private void CameraMovement_Thread()
@@ -35,8 +37,13 @@ namespace GameEngine
             {
                 if (render.isActive())
                 {
+                    if (player.Y > 650)
+                    {
+                        render.Deactivate();
+                        DeadMenu.Activate();
+                    }
                     //because of gravity being in a diffrent thread it checks if it has to move the camera to keep focus in case of falling etc.
-                    if (Math.Abs(player.Y - Y * -1) > 425)
+                    if (Math.Abs(player.Y - Y * -1) > 425 && player.Y <= 457)
                         Y -= 0.7f;
                     if (Up)
                     {
@@ -57,9 +64,9 @@ namespace GameEngine
                     if (Left)
                     {
                         //check if collision is present otherwise move player to given direction
-                        if (player.X != 0 && Tiles.Count(o => o.X <= player.X && player.Collide(o)) == 0)
+                        if (player.X > 0 && Tiles.Count(o => o.X <= player.X && player.Collide(o)) == 0)
                         {
-                            if (X + player.X < 175 && X != 0)
+                            if (X + player.X < 175  && X < 0)
                                 X += 0.45f;
                             player.X -= 0.45f;
                         }
