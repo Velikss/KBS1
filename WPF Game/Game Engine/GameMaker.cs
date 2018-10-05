@@ -39,10 +39,10 @@ namespace GameEngine
             //Leveling ^Level class loader
             Image i = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/ground.gif");
             i.Tag = "ground";
-            Image test = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/test2.gif");
-            test.Tag = "test";
+            Image beginpoint = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/begin-point-sprite.gif");
+            beginpoint.Tag = "beginpoint";
             level = new Level("level1");
-            level.Tiles.Add(new Tile(ref test, 250, 300, 5, 64, true));
+            level.Tiles.Add(new Tile(ref beginpoint, 10, 468, 0, 96, false));
             level.Tiles.Add(new Tile(ref i, 0, 532, 20, 32, true));
             level.Tiles.Add(new Tile(ref i, 750, 332, 10, 32, true));
             level.Tiles.Add(new Tile(ref i, 1250, 150, 10, 32, true));
@@ -62,7 +62,7 @@ namespace GameEngine
                 50, buttonsprite);
             var mb2 = new MenuButton("Exit", new Font("Calibri", 26), Brushes.DarkSlateGray, 55, 255, 250, 50,
                 buttonsprite);
-            TitleMenu = new Menu(this, new List<MenuItem> {mb, mb2},
+            TitleMenu = new Menu(this, new List<MenuItem> { mb, mb2 },
                 Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/Title.gif"));
             var Panel = new MenuPanel(800 / 12 * 3, 0, 800 / 12 * 6, 500,
                 Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/pexels-photo-164005.jpeg"));
@@ -84,7 +84,7 @@ namespace GameEngine
                 PauseOverlay.Deactivate();
                 TitleMenu.Activate();
             };
-            PauseOverlay = new Menu(this, new List<MenuItem> {Panel, Text, totitle, restart},
+            PauseOverlay = new Menu(this, new List<MenuItem> { Panel, Text, totitle, restart },
                 null);
             var DeadText = new MenuText("Dead", new Font("Calibri", 72, FontStyle.Bold), Brushes.DarkRed);
             DeadText.y = 25;
@@ -96,7 +96,7 @@ namespace GameEngine
                 DeadOverlay.Deactivate();
                 TitleMenu.Activate();
             };
-            DeadOverlay = new Menu(this, new List<MenuItem> {Panel, DeadText, totitle2},
+            DeadOverlay = new Menu(this, new List<MenuItem> { Panel, DeadText, totitle2 },
                 null);
             mb.Clicked += delegate
             {
