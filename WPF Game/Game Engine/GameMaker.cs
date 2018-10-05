@@ -43,12 +43,29 @@ namespace GameEngine
             beginpoint.Tag = "beginpoint";
             Image endpoint = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/end-point-sprite.gif");
             endpoint.Tag = "endpoint";
+            Image lava = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/lava.gif");
+            lava.Tag = "lava";
+
+            Image groundside = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/ground-side.gif");
+            groundside.Tag = "groundside";
+            Image groundsideright = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/ground-side-right.gif");
+            groundsideright.Tag = "groundsideright";
+
             level = new Level("level1");
-            level.Tiles.Add(new Tile(ref beginpoint, 10, 436, 2, 96));
-            level.Tiles.Add(new Tile(ref endpoint, 1470, 254, 2, 96));
-            level.Tiles.Add(new Tile(ref i, 0, 532, 20, 32, true));
-            level.Tiles.Add(new Tile(ref i, 750, 432, 10, 32, true));
-            level.Tiles.Add(new Tile(ref i, 1200, 350, 10, 32, true));
+            level.Tiles.Add(new Tile(ref beginpoint, PhysicalType.Block, 10, 404, 2, 96));
+            level.Tiles.Add(new Tile(ref endpoint, PhysicalType.Block, 1470, 254, 2, 96));
+
+            level.Tiles.Add(new Tile(ref lava, PhysicalType.Lava, 224, 500, 3, 32));
+
+            level.Tiles.Add(new Tile(ref i, PhysicalType.Block, 0, 500, 6, 32, true));
+            level.Tiles.Add(new Tile(ref i, PhysicalType.Block, 320, 500, 10, 32, true));
+
+            level.Tiles.Add(new Tile(ref groundside, PhysicalType.Block, 192, 500, 1, 32, true));
+            level.Tiles.Add(new Tile(ref groundsideright, PhysicalType.Block, 320, 500, 1, 32, true));
+            level.Tiles.Add(new Tile(ref i, PhysicalType.Block, 224, 532, 3, 32, true));
+
+            level.Tiles.Add(new Tile(ref i, PhysicalType.Block, 750, 432, 10, 32, true));
+            level.Tiles.Add(new Tile(ref i, PhysicalType.Block, 1200, 350, 10, 32, true));
             //
             screen = new Screen(this);
             game_render = new Render(this);
