@@ -65,6 +65,14 @@ namespace GameEngine
                 Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/pexels-photo-164005.jpeg"));
             var Text = new MenuText("Pause", new Font("Calibri", 72, FontStyle.Regular), Brushes.White);
             Text.y = 25;
+            var restart = new MenuButton("Restart", new Font("Calibri", 26), Brushes.DarkSlateGray,
+                800 / 2 - 100, 365, 200,
+                50, buttonsprite);
+            restart.Clicked += delegate
+            {
+                PauseOverlay.Deactivate();
+                PrepareLevel(true);
+            };
             var totitle = new MenuButton("Return to start", new Font("Calibri", 26), Brushes.DarkSlateGray,
                 800 / 2 - 100, 420, 200,
                 50, buttonsprite);
@@ -73,7 +81,7 @@ namespace GameEngine
                 PauseOverlay.Deactivate();
                 TitleMenu.Activate();
             };
-            PauseOverlay = new Menu(this, new List<MenuItem> {Panel, Text, totitle},
+            PauseOverlay = new Menu(this, new List<MenuItem> {Panel, Text, totitle, restart},
                 null);
             var DeadText = new MenuText("Dead", new Font("Calibri", 72, FontStyle.Bold), Brushes.DarkRed);
             DeadText.y = 25;
