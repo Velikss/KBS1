@@ -7,9 +7,23 @@ using System.Xml.Serialization;
 
 namespace GameEngine
 {
+    public enum PhysicalType
+    {
+        Lava,
+        Water,
+        Spike,
+        Block
+    }
+
+    [XmlInclude(typeof(PhysicalType))]
     [Serializable]
     public class PhysicalObject
     {
+        public PhysicalType physicalType;
+        public static event _RegisteredCollision Collided;
+
+        public delegate void _RegisteredCollision(PhysicalObject po);
+
         //rectangle inside object which which contains the collision points
         public Rectangle collision;
 
@@ -25,6 +39,12 @@ namespace GameEngine
         public bool Collide(Rectangle _co2)
         {
             return collision.IntersectsWith(_co2);
+        }
+
+        public void Invoke()
+        {
+            if (physicalType != PhysicalType.Block)
+                Collided?.Invoke(this);
         }
     }
 

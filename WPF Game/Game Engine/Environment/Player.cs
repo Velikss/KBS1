@@ -10,7 +10,7 @@ namespace GameEngine
 
         //bool states if object is in contact with the ground
         public bool Landed;
-        
+
         //set all possible sprites to lower memory_use
         Image jump = Image.FromFile("Animations/jump.gif");
         Image jump_L = Image.FromFile("Animations/jump_L.gif");
@@ -28,7 +28,13 @@ namespace GameEngine
         //boolean checks collision with object
         public bool Collide(PhysicalObject po)
         {
-            return new Rectangle((int) X + 4, (int) Y + 4, Width - 8, Height - 4).IntersectsWith(po.collision);
+            if (new Rectangle((int) X + 4, (int) Y + 4, Width - 8, Height - 4).IntersectsWith(po.collision))
+            {
+                po.Invoke();
+                return true;
+            }
+
+            return false;
         }
 
         //boolean checks if stands on top of object
