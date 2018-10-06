@@ -36,30 +36,6 @@ namespace GameEngine
             Screen_Height = Height;
             Screen_Width = Width;
             this.w = w;
-            //Leveling ^Level class loader
-            var i = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/ground.gif");
-            var beginpoint = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/begin-point-sprite.gif");
-            var endpoint = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/end-point-sprite.gif");
-            var lava = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/lava.gif");
-            var groundside = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/ground-side.gif");
-            var groundsideright =
-                Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/ground-side-right.gif");
-
-            level = new Level("level1");
-            level.Tiles.Add(new Tile(ref beginpoint, PhysicalType.Block, 10, 404, 2, 96));
-            level.Tiles.Add(new Tile(ref endpoint, PhysicalType.Block, 1470, 254, 2, 96));
-
-            level.Tiles.Add(new Tile(ref lava, PhysicalType.Lava, 224, 500, 3));
-            level.Tiles.Add(new Tile(ref i, PhysicalType.Block, 0, 500, 6, 32, true));
-            level.Tiles.Add(new Tile(ref i, PhysicalType.Block, 320, 500, 10, 32, true));
-
-            level.Tiles.Add(new Tile(ref groundside, PhysicalType.Block, 192, 500, 1, 32, true));
-            level.Tiles.Add(new Tile(ref groundsideright, PhysicalType.Block, 320, 500, 1, 32, true));
-            level.Tiles.Add(new Tile(ref i, PhysicalType.Block, 224, 532, 3, 32, true));
-
-            level.Tiles.Add(new Tile(ref i, PhysicalType.Block, 750, 432, 10, 32, true));
-            level.Tiles.Add(new Tile(ref i, PhysicalType.Block, 1200, 350, 10, 32, true));
-            //
             screen = new Screen(this);
             game_render = new Render(this);
             PrepareLevel();
@@ -163,6 +139,7 @@ namespace GameEngine
             };
             //creates Camera given reffered focus:player with collision:tiles
             camera?.Dispose();
+            level = Level.Load(AppDomain.CurrentDomain.BaseDirectory + "Levels/level1.lvl");
             camera = new Camera(this);
             player.Initialize(ref camera);
             //then start camera

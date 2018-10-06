@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.Threading;
 
 namespace GameEngine
@@ -47,6 +48,7 @@ namespace GameEngine
                 po.Invoke();
                 if (po.Collidable)
                     Landed = true;
+                Console.WriteLine("landed: " + Landed);
             }
         }
 

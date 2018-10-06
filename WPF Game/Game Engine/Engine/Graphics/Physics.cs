@@ -13,7 +13,13 @@ namespace GameEngine
         Water,
         Spike,
         Block,
-        Coin
+        Coin,
+        BeginFlag,
+        EndFlag,
+        Ground,
+        Ground_CheckPoint,
+        GroundSide,
+        GroundeSide_Right
     }
 
     [XmlInclude(typeof(PhysicalType))]
@@ -23,7 +29,7 @@ namespace GameEngine
         public delegate void _RegisteredCollision(PhysicalObject po);
 
         //boolean represents if the Tile is a standable Tile
-        internal bool Collidable;
+        public bool Collidable;
 
         //rectangle inside object which which contains the collision points
         public Rectangle collision;
