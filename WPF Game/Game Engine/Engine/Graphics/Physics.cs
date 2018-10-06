@@ -42,7 +42,7 @@ namespace GameEngine
 
         public void Invoke()
         {
-            if (!running && physicalType != PhysicalType.Block)
+            if (!running)
             {
                 running = true;
                 Collided?.Invoke(this);

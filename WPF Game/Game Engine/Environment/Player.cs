@@ -5,25 +5,25 @@ namespace GameEngine
 {
     public class Player : PhysicalObject
     {
+        private Thread animation;
+
         //holds reffered cameradata
         private Camera camera;
 
+        //set all possible sprites to lower memory_use
+        private readonly Image jump = Image.FromFile("Animations/jump.gif");
+        private readonly Image jump_L = Image.FromFile("Animations/jump_L.gif");
+
         //bool states if object is in contact with the ground
         public bool Landed;
-
-        //set all possible sprites to lower memory_use
-        Image jump = Image.FromFile("Animations/jump.gif");
-        Image jump_L = Image.FromFile("Animations/jump_L.gif");
-        Image walk1 = Image.FromFile("Animations/walk1.gif");
-        Image walk2 = Image.FromFile("Animations/walk2.gif");
-        Image walk3 = Image.FromFile("Animations/walk3.gif");
-        Image walk1_L = Image.FromFile("Animations/walk1_L.gif");
-        Image walk2_L = Image.FromFile("Animations/walk2_L.gif");
-        Image walk3_L = Image.FromFile("Animations/walk3_L.gif");
-        Image normal = Image.FromFile("Animations/normal.gif");
-        Image normal_L = Image.FromFile("Animations/normal_L.gif");
-
-        private Thread animation;
+        private readonly Image normal = Image.FromFile("Animations/normal.gif");
+        private readonly Image normal_L = Image.FromFile("Animations/normal_L.gif");
+        private readonly Image walk1 = Image.FromFile("Animations/walk1.gif");
+        private readonly Image walk1_L = Image.FromFile("Animations/walk1_L.gif");
+        private readonly Image walk2 = Image.FromFile("Animations/walk2.gif");
+        private readonly Image walk2_L = Image.FromFile("Animations/walk2_L.gif");
+        private readonly Image walk3 = Image.FromFile("Animations/walk3.gif");
+        private readonly Image walk3_L = Image.FromFile("Animations/walk3_L.gif");
 
         //boolean checks collision with object
         public bool Collide(PhysicalObject po)

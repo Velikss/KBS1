@@ -3,16 +3,14 @@ using System.Drawing;
 using System.Linq;
 using System.Threading;
 using System.Windows.Input;
-using Brush = System.Drawing.Brush;
-using Point = System.Drawing.Point;
 
 namespace GameEngine
 {
     public class Menu : Render
     {
-        private Image background;
         private readonly List<MenuItem> items;
         private readonly bool overlay;
+        private Image background;
 
         public Menu(GameMaker gm, List<MenuItem> items, Image background) : base(gm)
         {
@@ -48,24 +46,26 @@ namespace GameEngine
                                             mi.Height);
                                         size = backend.MeasureString(mb.Content, mb.font);
                                         backend.DrawString(mb.Content, mb.font, mb.TextColor,
-                                            ((float) mi.x) + ((mi.Width / 2) - (size.Width / 2)),
-                                            ((float) mi.y) + ((mi.Height / 2) - (size.Height / 2)));
+                                            (float) mi.x + (mi.Width / 2 - size.Width / 2),
+                                            (float) mi.y + (mi.Height / 2 - size.Height / 2));
                                     }
                                     else if (mi is MenuText mt)
                                     {
                                         if (mi.x == null)
-                                            x = (800 / 2) - (backend.MeasureString(mt.Content, mt.font).Width / 2);
+                                            x = 800 / 2 - backend.MeasureString(mt.Content, mt.font).Width / 2;
                                         else
                                             x = (float) mi.x;
                                         if (mi.y == null)
-                                            y = (600 / 2) - (backend.MeasureString(mt.Content, mt.font).Height / 2);
+                                            y = 600 / 2 - backend.MeasureString(mt.Content, mt.font).Height / 2;
                                         else
                                             y = (float) mi.y;
                                         backend.DrawString(mt.Content, mt.font, mt.text_color, x, y);
                                     }
                                     else if (mi is MenuPanel)
+                                    {
                                         backend.DrawImage(mi.Sprite, (float) mi.x, (float) mi.y, mi.Width,
                                             mi.Height);
+                                    }
 
                                 //draw backend to frontend
                                 lock (gm.screen.screen_buffer)
@@ -92,12 +92,10 @@ namespace GameEngine
             if (!running)
                 StartRender();
             if (overlay)
-            {
                 lock (gm.screen.screen_buffer)
                 {
                     background = _backend;
                 }
-            }
 
             Activated = true;
             gm.w.MouseDown += W_MouseDown;
@@ -121,10 +119,10 @@ namespace GameEngine
 
     public class MenuItem
     {
+        public Image Sprite;
+        public int Width, Height;
         public int? x;
         public int? y;
-        public int Width, Height;
-        public Image Sprite;
     }
 
     #region Items

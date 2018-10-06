@@ -10,12 +10,14 @@ namespace GameEngine
     {
         //holds instance of camera
         internal Camera camera;
+        internal Menu DeadOverlay;
 
         //holds menu's & Game renders
         internal Render game_render;
+
+        //holds all tiles
+        internal Level level;
         internal Menu PauseOverlay;
-        private Menu TitleMenu;
-        internal Menu DeadOverlay;
 
         //holds player instance
         internal Player player;
@@ -24,9 +26,7 @@ namespace GameEngine
         internal Screen screen;
         internal int Screen_Height;
         internal int Screen_Width;
-
-        //holds all tiles
-        internal Level level;
+        private Menu TitleMenu;
 
         internal Window w;
 
@@ -37,12 +37,12 @@ namespace GameEngine
             Screen_Width = Width;
             this.w = w;
             //Leveling ^Level class loader
-            Image i = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/ground.gif");
-            Image beginpoint = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/begin-point-sprite.gif");
-            Image endpoint = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/end-point-sprite.gif");
-            Image lava = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/lava.gif");
-            Image groundside = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/ground-side.gif");
-            Image groundsideright =
+            var i = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/ground.gif");
+            var beginpoint = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/begin-point-sprite.gif");
+            var endpoint = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/end-point-sprite.gif");
+            var lava = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/lava.gif");
+            var groundside = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/ground-side.gif");
+            var groundsideright =
                 Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/ground-side-right.gif");
 
             level = new Level("level1");
