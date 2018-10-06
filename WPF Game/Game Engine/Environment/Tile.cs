@@ -10,8 +10,6 @@ namespace GameEngine
         // Use `using` blocks for GDI objects you create, so they'll be released
         // quickly when you're done with them.
 
-        //boolean represents if the Tile is a standable Tile
-        public readonly bool Collidable;
         // public required for xmlparser
         // ReSharper disable once MemberCanBePrivate.Global
         private Tile()
@@ -19,7 +17,7 @@ namespace GameEngine
         }
 
         //instances tile given referred sprite, position, fatness:), and standability
-        public Tile(ref Image Sprite, PhysicalType pt, int x, int y, int widthRepeater, int height = 32, bool standable = false)
+        public Tile(ref Image Sprite, PhysicalType pt, int x, int y, int widthRepeater, int height = 32, bool collidable = false)
         {
             physicalType = pt;
             X = x;
@@ -41,10 +39,10 @@ namespace GameEngine
                 this.Sprite = Sprite;
             }
 
-            Collidable = standable;
+            Collidable = collidable;
         }
 
-        public Tile(Rectangle collision, PhysicalType pt, ref Image Sprite, int x, int y, int widthRepeater, int height = 32, bool standable = false)
+        public Tile(Rectangle collision, PhysicalType pt, ref Image Sprite, int x, int y, int widthRepeater, int height = 32, bool Collidable = false)
         {
             physicalType = pt;
             X = x;
@@ -66,7 +64,7 @@ namespace GameEngine
                 this.Sprite = Sprite;
             }
 
-            Collidable = standable;
+            base.Collidable = Collidable;
         }
     }
 }

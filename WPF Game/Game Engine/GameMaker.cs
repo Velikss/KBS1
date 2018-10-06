@@ -48,15 +48,15 @@ namespace GameEngine
 
             Image groundside = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/ground-side.gif");
             groundside.Tag = "groundside";
-            Image groundsideright = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/ground-side-right.gif");
+            Image groundsideright =
+                Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/ground-side-right.gif");
             groundsideright.Tag = "groundsideright";
 
             level = new Level("level1");
             level.Tiles.Add(new Tile(ref beginpoint, PhysicalType.Block, 10, 404, 2, 96));
             level.Tiles.Add(new Tile(ref endpoint, PhysicalType.Block, 1470, 254, 2, 96));
 
-            level.Tiles.Add(new Tile(ref lava, PhysicalType.Lava, 224, 500, 3, 32));
-
+            level.Tiles.Add(new Tile(ref lava, PhysicalType.Lava, 224, 500, 3));
             level.Tiles.Add(new Tile(ref i, PhysicalType.Block, 0, 500, 6, 32, true));
             level.Tiles.Add(new Tile(ref i, PhysicalType.Block, 320, 500, 10, 32, true));
 
@@ -71,18 +71,39 @@ namespace GameEngine
             game_render = new Render(this);
             PrepareLevel();
             PrepareMenus();
+            PhysicalObject.Collided += GameMaker_Collided;
             new Movement(this);
+
             TitleMenu.Activate();
+        }
+
+        private void GameMaker_Collided(PhysicalObject po)
+        {
+            switch (po.physicalType)
+            {
+                case PhysicalType.Lava:
+                    Dead();
+                    break;
+                default:
+                    po.running = false;
+                    break;
+            }
+        }
+
+        public void Dead()
+        {
+            game_render.Deactivate();
+            DeadOverlay.Activate();
         }
 
         private void PrepareMenus()
         {
             var buttonsprite = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/54b2d246e0e35be.png");
-            var mb = new MenuButton("Singleplayer", new Font("Calibri", 26), Brushes.DarkSlateGray, 55, 200, 250,
+            var mb = new MenuButton("Single player", new Font("Calibri", 26), Brushes.DarkSlateGray, 55, 200, 250,
                 50, buttonsprite);
             var mb2 = new MenuButton("Exit", new Font("Calibri", 26), Brushes.DarkSlateGray, 55, 255, 250, 50,
                 buttonsprite);
-            TitleMenu = new Menu(this, new List<MenuItem> { mb, mb2 },
+            TitleMenu = new Menu(this, new List<MenuItem> {mb, mb2},
                 Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/Title.gif"));
             var Panel = new MenuPanel(800 / 12 * 3, 0, 800 / 12 * 6, 500,
                 Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/pexels-photo-164005.jpeg"));
@@ -104,7 +125,7 @@ namespace GameEngine
                 PauseOverlay.Deactivate();
                 TitleMenu.Activate();
             };
-            PauseOverlay = new Menu(this, new List<MenuItem> { Panel, Text, totitle, restart },
+            PauseOverlay = new Menu(this, new List<MenuItem> {Panel, Text, totitle, restart},
                 null);
             var DeadText = new MenuText("Dead", new Font("Calibri", 72, FontStyle.Bold), Brushes.DarkRed);
             DeadText.y = 25;
@@ -116,7 +137,15 @@ namespace GameEngine
                 DeadOverlay.Deactivate();
                 TitleMenu.Activate();
             };
-            DeadOverlay = new Menu(this, new List<MenuItem> { Panel, DeadText, totitle2 },
+            var restart2 = new MenuButton("Restart", new Font("Calibri", 26), Brushes.DarkSlateGray,
+                800 / 2 - 100, 365, 200,
+                50, buttonsprite);
+            restart2.Clicked += delegate
+            {
+                PauseOverlay.Deactivate();
+                PrepareLevel(true);
+            };
+            DeadOverlay = new Menu(this, new List<MenuItem> {Panel, DeadText, totitle2, restart2},
                 null);
             mb.Clicked += delegate
             {

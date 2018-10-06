@@ -31,17 +31,23 @@ namespace GameEngine
             if (new Rectangle((int) X + 4, (int) Y + 4, Width - 8, Height - 4).IntersectsWith(po.collision))
             {
                 po.Invoke();
-                return true;
+                if (po.Collidable)
+                    return true;
             }
 
             return false;
         }
 
         //boolean checks if stands on top of object
-        public bool Stands(PhysicalObject po)
+        public void Stands(PhysicalObject po)
         {
-            return new Rectangle((int) X + 4, (int) (Y + 4) + (Height - 4), Width - 8, 1).IntersectsWith(
-                new Rectangle((int) po.X, (int) po.Y, po.Width, 1));
+            if (new Rectangle((int) X + 4, (int) (Y + 4) + (Height - 4), Width - 8, 1).IntersectsWith(
+                new Rectangle((int) po.X, (int) po.Y, po.Width, 1)))
+            {
+                po.Invoke();
+                if (po.Collidable)
+                    Landed = true;
+            }
         }
 
         //initialises a new player given reffered camera

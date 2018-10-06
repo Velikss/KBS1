@@ -12,13 +12,16 @@ namespace GameEngine
         Lava,
         Water,
         Spike,
-        Block
+        Block,
+        Coin
     }
 
     [XmlInclude(typeof(PhysicalType))]
     [Serializable]
     public class PhysicalObject
     {
+        //boolean represents if the Tile is a standable Tile
+        internal bool Collidable;
         public PhysicalType physicalType;
         public static event _RegisteredCollision Collided;
 
@@ -35,16 +38,15 @@ namespace GameEngine
         //oriental info
         public float X, Y;
 
-        //bool if the object collides with the parametered object
-        public bool Collide(Rectangle _co2)
-        {
-            return collision.IntersectsWith(_co2);
-        }
+        public bool running;
 
         public void Invoke()
         {
-            if (physicalType != PhysicalType.Block)
+            if (!running && physicalType != PhysicalType.Block)
+            {
+                running = true;
                 Collided?.Invoke(this);
+            }
         }
     }
 
@@ -82,8 +84,6 @@ namespace GameEngine
             objects = lvl.Tiles;
             entities = new List<Player>();
             var game = render;
-            //bool is equaled to the status of being on the ground
-            bool land;
             (gravity = new Thread((ThreadStart) delegate
             {
                 for (;;)
@@ -93,13 +93,12 @@ namespace GameEngine
                             //checks for each entity if it has landed, because of man-made input standard collision doesn't suffice therfore a stands boolean is used
                             foreach (var po in entities)
                             {
-                                land = false;
+                                po.Landed = false;
                                 foreach (var obj in objects.Where(o =>
-                                    o.X - o.Width <= po.X && o.X + o.Width >= po.X && o.Collidable))
-                                    if (po.Stands(obj))
-                                        land = true;
+                                    o.X - o.Width <= po.X && o.X + o.Width >= po.X))
+                                    po.Stands(obj);
 
-                                if (!(po.Landed = land))
+                                if (!po.Landed)
                                     po.Y += 0.95f;
                                 else
                                     Movement.jumps = 0;

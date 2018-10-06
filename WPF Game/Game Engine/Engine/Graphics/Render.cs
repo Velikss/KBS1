@@ -45,16 +45,18 @@ namespace GameEngine
                             {
                                 //draw background
                                 backend.DrawImage(background, new Point(0, 0));
-                                //draw all tiles within view of camera, #better performance
-                                foreach (var tile in gm.level.Tiles.Where(o =>
-                                    o.X + o.Width >= gm.camera.X * -1 && o.X <= gm.camera.X * -1 + gm.Screen_Width &&
-                                    o.Y + o.Height >= gm.camera.Y * -1 &&
-                                    o.Y + o.Height <= gm.camera.Y * -1 + gm.Screen_Height &&
-                                    o.Sprite != null))
-                                    backend.DrawImage(tile.Sprite, gm.camera.X + tile.X, gm.camera.Y + tile.Y);
                                 //draw player
                                 backend.DrawImage(gm.player.Sprite, gm.camera.X + gm.player.X,
                                     gm.camera.Y + gm.player.Y);
+                                //draw all tiles within view of camera, #better performance
+                                foreach (var tile in gm.level.Tiles.Where(o => o.X + o.Width >= gm.camera.X * -1 &&
+                                                                               o.X <= gm.camera.X * -1 +
+                                                                               gm.Screen_Width &&
+                                                                               o.Y + o.Height >= gm.camera.Y * -1 &&
+                                                                               o.Y + o.Height <=
+                                                                               gm.camera.Y * -1 + gm.Screen_Height &&
+                                                                               o.Sprite != null))
+                                    backend.DrawImage(tile.Sprite, gm.camera.X + tile.X, gm.camera.Y + tile.Y);
                                 //draw backend to frontend
                                 lock (gm.screen.screen_buffer)
                                 {

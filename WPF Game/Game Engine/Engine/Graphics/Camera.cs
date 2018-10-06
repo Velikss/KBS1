@@ -48,7 +48,7 @@ namespace GameEngine
                     if (Up)
                     {
                         //check if collision is present otherwise move player to given direction
-                        if (Tiles.Count(o => o.Collidable && o.Y <= player.Y && player.Collide(o)) == 0)
+                        if (Tiles.Count(o => o.Y <= player.Y && player.Collide(o) && o.Collidable) == 0)
                         {
                             if (Math.Abs(player.Y - Y * -1) < 125)
                                 Y += 0.8f;
@@ -64,7 +64,7 @@ namespace GameEngine
                     if (Left)
                     {
                         //check if collision is present otherwise move player to given direction
-                        if (player.X > 0 && Tiles.Count(o => o.Collidable && o.X <= player.X && player.Collide(o)) == 0)
+                        if (player.X > 0 && Tiles.Count(o => o.X <= player.X && player.Collide(o) && o.Collidable) == 0)
                         {
                             if (X + player.X < 175  && X < 0)
                                 X += 0.45f;
@@ -80,7 +80,7 @@ namespace GameEngine
                     if (Right)
                     {
                         //check if collision is present otherwise move player to given direction
-                        if (Tiles.Count(o => o.Collidable && o.X >= player.X && player.Collide(o)) == 0)
+                        if (Tiles.Count(o => o.X >= player.X && player.Collide(o) && o.Collidable) == 0)
                         {
                             if (X + player.X > 625)
                                 X -= 0.45f;
