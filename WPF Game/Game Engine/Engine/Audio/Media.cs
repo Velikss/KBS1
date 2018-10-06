@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Media;
 using NAudio.Wave;
+
 // ReSharper disable UnusedMember.Local
 
 namespace GameEngine

@@ -134,15 +134,15 @@ namespace GameEngine
         public delegate void ClickTrigger();
 
         public readonly string Content;
-        public Font font;
+        public readonly Font font;
 
         public readonly Brush TextColor;
 
-        public MenuButton(string Content, Font font, Brush text_color, int x, int y, int Width, int Height,
+        public MenuButton(string Content, Font font, Brush TextColor, int x, int y, int Width, int Height,
             Image sprite)
         {
             this.Content = Content;
-            this.TextColor = text_color;
+            this.TextColor = TextColor;
             this.font = new Font(font.FontFamily, font.Size, font.Style, GraphicsUnit.Pixel, 0);
             this.x = x;
             this.y = y;

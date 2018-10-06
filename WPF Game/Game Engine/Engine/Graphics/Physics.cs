@@ -20,25 +20,25 @@ namespace GameEngine
     [Serializable]
     public class PhysicalObject
     {
+        public delegate void _RegisteredCollision(PhysicalObject po);
+
         //boolean represents if the Tile is a standable Tile
         internal bool Collidable;
-        public PhysicalType physicalType;
-        public static event _RegisteredCollision Collided;
-
-        public delegate void _RegisteredCollision(PhysicalObject po);
 
         //rectangle inside object which which contains the collision points
         public Rectangle collision;
 
         public int Height, Width;
+        public PhysicalType physicalType;
+
+        public bool running;
 
         //contains the sprite for the object
         [XmlIgnore] public Image Sprite;
 
         //oriental info
         public float X, Y;
-
-        public bool running;
+        public static event _RegisteredCollision Collided;
 
         public void Invoke()
         {

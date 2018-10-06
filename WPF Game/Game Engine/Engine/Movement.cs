@@ -6,22 +6,42 @@ namespace GameEngine
 {
     public class Movement
     {
-        #region Variables
-
-        public static int jumps;
-        private static int JumpPower;
-        private bool space_press;
-        private bool jump_active;
-        private readonly GameMaker gm;
-
-        #endregion
-
         public Movement(GameMaker gm)
         {
             this.gm = gm;
             gm.w.KeyDown += KeyDown;
             gm.w.KeyUp += KeyUp;
         }
+
+        #region Jump
+
+        private void Jumper()
+        {
+            JumpPower = 0;
+            if (Gravity.HasGravity(gm.player))
+                Gravity.DisableGravityOnObject(gm.player);
+            gm.camera.Up = true;
+            while (JumpPower < 280)
+            {
+                JumpPower++;
+                Thread.Sleep(1);
+            }
+
+            gm.camera.Up = false;
+            if (!Gravity.HasGravity(gm.player))
+                Gravity.EnableGravityOnObject(gm.player);
+        }
+
+        #endregion
+
+        #region Variables
+
+        public static int jumps;
+        private static int JumpPower;
+        private bool space_press;
+        private readonly GameMaker gm;
+
+        #endregion
 
         #region Keys
 
@@ -30,7 +50,7 @@ namespace GameEngine
             switch (e.Key)
             {
                 case Key.Space:
-                    if (!jump_active && jumps < 2 && !space_press)
+                    if (jumps < 2 && !space_press)
                     {
                         space_press = true;
                         new Thread(Jumper).Start();
@@ -95,26 +115,6 @@ namespace GameEngine
                     gm.camera.Right = false;
                     break;
             }
-        }
-
-        #endregion
-
-        #region Jump
-
-        private void Jumper()
-        {
-            JumpPower = 0;
-            if (Gravity.HasGravity(gm.player))
-                Gravity.DisableGravityOnObject(gm.player);
-            gm.camera.Up = true;
-            while (JumpPower < 280)
-            {
-                JumpPower++;
-                Thread.Sleep(1);
-            }
-            gm.camera.Up = false;
-            if (!Gravity.HasGravity(gm.player))
-                Gravity.EnableGravityOnObject(gm.player);
         }
 
         #endregion

@@ -38,19 +38,12 @@ namespace GameEngine
             this.w = w;
             //Leveling ^Level class loader
             Image i = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/ground.gif");
-            i.Tag = "ground";
             Image beginpoint = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/begin-point-sprite.gif");
-            beginpoint.Tag = "beginpoint";
             Image endpoint = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/end-point-sprite.gif");
-            endpoint.Tag = "endpoint";
             Image lava = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/lava.gif");
-            lava.Tag = "lava";
-
             Image groundside = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/ground-side.gif");
-            groundside.Tag = "groundside";
             Image groundsideright =
                 Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/ground-side-right.gif");
-            groundsideright.Tag = "groundsideright";
 
             level = new Level("level1");
             level.Tiles.Add(new Tile(ref beginpoint, PhysicalType.Block, 10, 404, 2, 96));
@@ -82,6 +75,8 @@ namespace GameEngine
             switch (po.physicalType)
             {
                 case PhysicalType.Lava:
+                    //add health & if
+                    Console.WriteLine("lava interaction");
                     Dead();
                     break;
                 default:
@@ -90,7 +85,7 @@ namespace GameEngine
             }
         }
 
-        public void Dead()
+        private void Dead()
         {
             game_render.Deactivate();
             DeadOverlay.Activate();
@@ -127,8 +122,7 @@ namespace GameEngine
             };
             PauseOverlay = new Menu(this, new List<MenuItem> {Panel, Text, totitle, restart},
                 null);
-            var DeadText = new MenuText("Dead", new Font("Calibri", 72, FontStyle.Bold), Brushes.DarkRed);
-            DeadText.y = 25;
+            var DeadText = new MenuText("Dead", new Font("Calibri", 72, FontStyle.Bold), Brushes.DarkRed) {y = 25};
             var totitle2 = new MenuButton("Return to start", new Font("Calibri", 26), Brushes.DarkSlateGray,
                 800 / 2 - 100, 420, 200,
                 50, buttonsprite);

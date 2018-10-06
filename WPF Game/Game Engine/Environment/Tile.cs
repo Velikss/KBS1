@@ -64,7 +64,7 @@ namespace GameEngine
                 this.Sprite = Sprite;
             }
 
-            base.Collidable = Collidable;
+            this.Collidable = Collidable;
         }
     }
 }
