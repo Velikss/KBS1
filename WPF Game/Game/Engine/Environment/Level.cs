@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Xml;
 using System.Xml.Serialization;
 
 namespace GameEngine
@@ -56,6 +57,16 @@ namespace GameEngine
                 lvl.Tiles.Add(new Tile(Sprites.First(o => o.Key == Tile.physicalType).Value, Tile.physicalType,
                     (int) Tile.X, (int) Tile.Y, Tile.Width / 32, Tile.Height, Tile.Collidable));
             return lvl;
+        }
+
+        public void GenerateFile(string FileLocation)
+        {
+            using (var sww = new StringWriter())
+                using (var writer = XmlWriter.Create(sww))
+                {
+                    new XmlSerializer(typeof(Level)).Serialize(writer, this);
+                    File.WriteAllText(FileLocation, sww.ToString());
+                }
         }
     }
 }

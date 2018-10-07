@@ -42,7 +42,6 @@ namespace GameEngine
             PrepareMenus();
             PhysicalObject.Collided += GameMaker_Collided;
             new Movement(this);
-
             TitleMenu.Activate();
         }
 
@@ -67,15 +66,25 @@ namespace GameEngine
 
         private void PrepareMenus()
         {
+            //button sprite
             var buttonsprite = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/54b2d246e0e35be.png");
+            //titlemenu
             var mb = new MenuButton("Single player", new Font("Calibri", 26), Brushes.DarkSlateGray, 55, 200, 250,
                 50, buttonsprite);
             var mb2 = new MenuButton("Exit", new Font("Calibri", 26), Brushes.DarkSlateGray, 55, 255, 250, 50,
                 buttonsprite);
             TitleMenu = new Menu(this, new List<MenuItem> {mb, mb2},
                 Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/Title.gif"));
+            mb.Clicked += delegate
+            {
+                TitleMenu.Deactivate();
+                PrepareLevel(true);
+            };
+            mb2.Clicked += delegate { Environment.Exit(0); };
+            //main panel for overlay
             var Panel = new MenuPanel(800 / 12 * 3, 0, 800 / 12 * 6, 500,
                 Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/pexels-photo-164005.jpeg"));
+            //pausemenu
             var Text = new MenuText("Pause", new Font("Calibri", 72, FontStyle.Regular), Brushes.White);
             Text.y = 25;
             var restart = new MenuButton("Restart", new Font("Calibri", 26), Brushes.DarkSlateGray,
@@ -96,6 +105,7 @@ namespace GameEngine
             };
             PauseOverlay = new Menu(this, new List<MenuItem> {Panel, Text, totitle, restart},
                 null);
+            //on dead menu
             var DeadText = new MenuText("Dead", new Font("Calibri", 72, FontStyle.Bold), Brushes.DarkRed) {y = 25};
             var totitle2 = new MenuButton("Return to start", new Font("Calibri", 26), Brushes.DarkSlateGray,
                 800 / 2 - 100, 420, 200,
@@ -115,12 +125,7 @@ namespace GameEngine
             };
             DeadOverlay = new Menu(this, new List<MenuItem> {Panel, DeadText, totitle2, restart2},
                 null);
-            mb.Clicked += delegate
-            {
-                TitleMenu.Deactivate();
-                PrepareLevel(true);
-            };
-            mb2.Clicked += delegate { Environment.Exit(0); };
+            //
         }
 
         private void PrepareLevel(bool StartGame = false)
