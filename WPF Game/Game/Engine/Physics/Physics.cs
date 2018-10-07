@@ -19,7 +19,7 @@ namespace GameEngine
         Ground,
         Ground_CheckPoint,
         GroundSide,
-        GroundSideRight
+        GroundeSide_Right
     }
 
     [XmlInclude(typeof(PhysicalType))]
@@ -90,7 +90,6 @@ namespace GameEngine
             objects = lvl.Tiles;
             entities = new List<Player>();
             var game = render;
-            bool landed;
             (gravity = new Thread((ThreadStart) delegate
             {
                 for (;;)
@@ -100,13 +99,12 @@ namespace GameEngine
                             //checks for each entity if it has landed, because of man-made input standard collision doesn't suffice therfore a stands boolean is used
                             foreach (var po in entities)
                             {
-                                landed = false;
+                                po.Landed = false;
                                 foreach (var obj in objects.Where(o =>
                                     o.X - o.Width <= po.X && o.X + o.Width >= po.X))
-                                    if (po.Stands(obj))
-                                        landed = true;
+                                    po.Stands(obj);
 
-                                if (!(po.Landed = landed))
+                                if (!po.Landed)
                                     po.Y += 0.95f;
                                 else
                                     Movement.jumps = 0;

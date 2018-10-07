@@ -6,6 +6,8 @@ using System.Linq;
 using System.Xml;
 using System.Xml.Serialization;
 
+// ReSharper disable NotAccessedField.Local
+
 namespace GameEngine
 {
     [Serializable]
@@ -29,7 +31,7 @@ namespace GameEngine
                 Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/lava.gif"));
             Sprites.Add(PhysicalType.GroundSide,
                 Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/ground-side.gif"));
-            Sprites.Add(PhysicalType.GroundSideRight,
+            Sprites.Add(PhysicalType.GroundeSide_Right,
                 Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/ground-side-right.gif"));
             LevelClassPrepared = true;
         }
@@ -39,7 +41,7 @@ namespace GameEngine
             PrepareLevelClass();
         }
 
-        private Level(string Name)
+        public Level(string Name)
         {
             PrepareLevelClass();
             LevelName = Name;
