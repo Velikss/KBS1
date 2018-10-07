@@ -4,9 +4,9 @@ using NAudio.Wave;
 
 // ReSharper disable UnusedMember.Local
 
-namespace GameEngine
+namespace BaseEngine
 {
-    public class Media
+    public class Audio
     {
         private MediaFoundationReader audioFile;
         private WaveOutEvent outputDevice;

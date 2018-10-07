@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Threading;
 using System.Windows.Input;
+using BaseEngine;
 using Point = System.Drawing.Point;
 
 namespace GameEngine

@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 
-namespace GameEngine
+namespace BaseEngine
 {
     public abstract class Renderer
     {

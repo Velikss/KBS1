@@ -10,7 +10,7 @@ using System.Windows.Media.Imaging;
 using Color = System.Windows.Media.Color;
 using Image = System.Windows.Controls.Image;
 
-namespace GameEngine
+namespace BaseEngine
 {
     public class Screen
     {
