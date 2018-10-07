@@ -26,33 +26,24 @@ namespace GameEngine
     [Serializable]
     public class PhysicalObject
     {
+        #region EventVariables
         public delegate void _RegisteredCollision(PhysicalObject po);
-
-        //boolean represents if the Tile is a standable Tile
-        public bool Collidable;
-
-        //rectangle inside object which which contains the collision points
+        public static event _RegisteredCollision Collided;
+        #endregion
+        #region Variables
+        public bool Collidable, running;
         public Rectangle collision;
-
         public int Height, Width;
         public PhysicalType physicalType;
-
-        public bool running;
-
-        //contains the sprite for the object
         [XmlIgnore] public Image Sprite;
-
-        //oriental info
         public float X, Y;
-        public static event _RegisteredCollision Collided;
+        #endregion
 
         public void Invoke()
         {
-            if (!running)
-            {
-                running = true;
-                Collided?.Invoke(this);
-            }
+            if (running) return;
+            running = true;
+            Collided?.Invoke(this);
         }
     }
 
@@ -85,7 +76,7 @@ namespace GameEngine
         }
 
         //starts the gravity given reffered objects to collide with
-        public static void EnableGravity(ref Level lvl, ref Render render)
+        public static void EnableGravity(ref Level lvl, ref GameRenderer render)
         {
             objects = lvl.Tiles;
             entities = new List<Player>();

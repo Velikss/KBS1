@@ -1,32 +1,29 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Threading;
 
 namespace GameEngine
 {
     public class Player : PhysicalObject
     {
-        private Thread animation;
+        #region Static
+        public static readonly List<string> CharacterNames = new List<string>();
+        public static int Character_index;
 
-        //holds reffered cameradata
+        public static void InitializeCharacters()
+        {
+            foreach (var c in Directory.GetDirectories(AppDomain.CurrentDomain.BaseDirectory + "Animations"))
+                CharacterNames.Add(Path.GetFileName(c));
+        }
+        #endregion
+        #region Variables
         private Camera camera;
-
-        //set all possible sprites to lower memory_use
-        private readonly Image jump = Image.FromFile("Animations/jump.gif");
-        private readonly Image jump_L = Image.FromFile("Animations/jump_L.gif");
-
-        //bool states if object is in contact with the ground
         public bool Landed;
-        private readonly Image normal = Image.FromFile("Animations/normal.gif");
-        private readonly Image normal_L = Image.FromFile("Animations/normal_L.gif");
-        private readonly Image walk1 = Image.FromFile("Animations/walk1.gif");
-        private readonly Image walk1_L = Image.FromFile("Animations/walk1_L.gif");
-        private readonly Image walk2 = Image.FromFile("Animations/walk2.gif");
-        private readonly Image walk2_L = Image.FromFile("Animations/walk2_L.gif");
-        private readonly Image walk3 = Image.FromFile("Animations/walk3.gif");
-        private readonly Image walk3_L = Image.FromFile("Animations/walk3_L.gif");
-
-        //boolean checks collision with object
+        private Image normal, normal_L, walk1, walk1_L, walk2, walk2_L, walk3, walk3_L, jump, jump_L;
+        #endregion
+        #region Methods
         public bool Collide(PhysicalObject po)
         {
             if (new Rectangle((int) X + 4, (int) Y + 4, Width - 8, Height - 4).IntersectsWith(po.collision))
@@ -38,8 +35,7 @@ namespace GameEngine
 
             return false;
         }
-
-        //boolean checks if stands on top of object
+        
         public bool Stands(PhysicalObject po)
         {
             if (new Rectangle((int) X + 4, (int) (Y + 4) + (Height - 4), Width - 8, 1).IntersectsWith(
@@ -52,15 +48,23 @@ namespace GameEngine
 
             return false;
         }
-
-        //initialises a new player given reffered camera
+        
         public void Initialize(ref Camera cam)
         {
             camera = cam;
-            (animation = new Thread(PlayerAnimation)).Start();
+            normal = Image.FromFile("Animations/" + CharacterNames[Character_index] + "/normal.gif");
+            normal_L = Image.FromFile("Animations/" + CharacterNames[Character_index] + "/normal_L.gif");
+            walk1 = Image.FromFile("Animations/" + CharacterNames[Character_index] + "/walk1.gif");
+            walk1_L = Image.FromFile("Animations/" + CharacterNames[Character_index] + "/walk1_L.gif");
+            walk2 = Image.FromFile("Animations/" + CharacterNames[Character_index] + "/walk2.gif");
+            walk2_L = Image.FromFile("Animations/" + CharacterNames[Character_index] + "/walk2_L.gif");
+            walk3 = Image.FromFile("Animations/" + CharacterNames[Character_index] + "/walk3.gif");
+            walk3_L = Image.FromFile("Animations/" + CharacterNames[Character_index] + "/walk3_L.gif");
+            jump = Image.FromFile("Animations/" + CharacterNames[Character_index] + "/jump.gif");
+            jump_L = Image.FromFile("Animations/" + CharacterNames[Character_index] + "/jump_L.gif");
+            new Thread(PlayerAnimation).Start();
         }
-
-        //changes the player sprite to give animation given movement
+        
         private void PlayerAnimation()
         {
             //movement sprite changer to give walking animation
@@ -162,9 +166,33 @@ namespace GameEngine
             }
         }
 
-        public void Dispose()
+        public void Reset()
         {
-            animation.Abort();
+            X = 75;
+            Y = 330;
+            Width = 32;
+            Height = 32;
+            lock (normal)
+                normal = Image.FromFile("Animations/" + CharacterNames[Character_index] + "/normal.gif");
+            lock (normal_L)
+                normal_L = Image.FromFile("Animations/" + CharacterNames[Character_index] + "/normal_L.gif");
+            lock (walk1)
+                walk1 = Image.FromFile("Animations/" + CharacterNames[Character_index] + "/walk1.gif");
+            lock (walk1_L)
+                walk1_L = Image.FromFile("Animations/" + CharacterNames[Character_index] + "/walk1_L.gif");
+            lock (walk2)
+                walk2 = Image.FromFile("Animations/" + CharacterNames[Character_index] + "/walk2.gif");
+            lock (walk2_L)
+                walk2_L = Image.FromFile("Animations/" + CharacterNames[Character_index] + "/walk2_L.gif");
+            lock (walk3)
+                walk3 = Image.FromFile("Animations/" + CharacterNames[Character_index] + "/walk3.gif");
+            lock (walk3_L)
+                walk3_L = Image.FromFile("Animations/" + CharacterNames[Character_index] + "/walk3_L.gif");
+            lock (jump)
+                jump = Image.FromFile("Animations/" + CharacterNames[Character_index] + "/jump.gif");
+            lock (jump_L)
+                jump_L = Image.FromFile("Animations/" + CharacterNames[Character_index] + "/jump_L.gif");
         }
+        #endregion
     }
 }

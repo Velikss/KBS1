@@ -1,4 +1,6 @@
-﻿using System.Threading;
+﻿using System;
+using System.Collections.Generic;
+using System.Threading;
 using System.Windows;
 using System.Windows.Input;
 
@@ -6,115 +8,132 @@ namespace GameEngine
 {
     public class Movement
     {
-        public Movement(GameMaker gm)
+        #region Variables
+
+        private bool MovementEnabled;
+        private readonly Player player;
+        private readonly Camera camera;
+        private readonly GameRenderer game_render;
+        private readonly Dictionary<MenuType, Menu> Menus;
+        private readonly Screen screen;
+        public static int jumps;
+        private static int JumpPower;
+        private bool space_press;
+
+        #endregion
+
+        public Movement(ref Screen screen, ref Player player, ref Camera camera, ref GameRenderer game_render,
+            ref Dictionary<MenuType, Menu> Menus)
         {
-            this.gm = gm;
-            gm.w.KeyDown += KeyDown;
-            gm.w.KeyUp += KeyUp;
+            this.screen = screen;
+            this.Menus = Menus;
+            this.game_render = game_render;
+            this.player = player;
+            this.camera = camera;
+            screen.w.KeyDown += KeyDown;
+            screen.w.KeyUp += KeyUp;
         }
+
+        #region Methods
 
         #region Jump
 
         private void Jumper()
         {
             JumpPower = 0;
-            if (Gravity.HasGravity(gm.player))
-                Gravity.DisableGravityOnObject(gm.player);
-            gm.camera.Up = true;
+            if (Gravity.HasGravity(player))
+                Gravity.DisableGravityOnObject(player);
+            camera.Up = true;
             while (JumpPower < 280)
             {
                 JumpPower++;
                 Thread.Sleep(1);
             }
 
-            gm.camera.Up = false;
-            if (!Gravity.HasGravity(gm.player))
-                Gravity.EnableGravityOnObject(gm.player);
+            camera.Up = false;
+            if (!Gravity.HasGravity(player))
+                Gravity.EnableGravityOnObject(player);
         }
 
         #endregion
 
-        #region Variables
-
-        public static int jumps;
-        private static int JumpPower;
-        private bool space_press;
-        private readonly GameMaker gm;
-
-        #endregion
-
-        #region Keys
+        public void EnableKeys() => MovementEnabled = true;
+        public void DisableKeys() => MovementEnabled = false;
 
         private void KeyDown(object sender, KeyEventArgs e)
         {
-            switch (e.Key)
-            {
-                case Key.Space:
-                    if (jumps < 2 && !space_press)
-                    {
-                        space_press = true;
-                        new Thread(Jumper).Start();
-                    }
+            if (MovementEnabled)
+                switch (e.Key)
+                {
+                    case Key.Space:
+                        if (jumps < 2 && !space_press)
+                        {
+                            space_press = true;
+                            new Thread(Jumper).Start();
+                        }
 
-                    break;
-                case Key.Escape:
-                    if (gm.game_render.isActive())
-                    {
-                        gm.game_render.Deactivate();
-                        gm.PauseOverlay.Activate();
-                    }
-                    else
-                    {
-                        gm.PauseOverlay.Deactivate();
-                        gm.game_render.Activate();
-                    }
+                        break;
+                    case Key.Escape:
+                        if (game_render.isActive())
+                        {
+                            game_render.Deactivate();
+                            DisableKeys();
+                            Menus[MenuType.Pause].Activate();
+                        }
+                        else
+                        {
+                            Menus[MenuType.Pause].Deactivate();
+                            EnableKeys();
+                            game_render.Activate();
+                        }
 
-                    break;
-                case Key.S:
-                    gm.camera.Down = true;
-                    break;
-                case Key.A:
-                    gm.camera.Left = true;
-                    break;
-                case Key.D:
-                    gm.camera.Right = true;
-                    break;
-                case Key.F1:
-                    if (gm.screen.GameData.IsVisible)
-                    {
-                        gm.screen.GameData.Visibility = Visibility.Hidden;
-                        gm.screen.framerater.Stop();
-                    }
-                    else
-                    {
-                        gm.screen.GameData.Visibility = Visibility.Visible;
-                        gm.screen.framerater.Start();
-                    }
+                        break;
+                    case Key.S:
+                        camera.Down = true;
+                        break;
+                    case Key.A:
+                        camera.Left = true;
+                        break;
+                    case Key.D:
+                        camera.Right = true;
+                        break;
+                    case Key.F1:
+                        if (screen.GameData.IsVisible)
+                        {
+                            screen.GameData.Visibility = Visibility.Hidden;
+                            screen.framerater.Stop();
+                        }
+                        else
+                        {
+                            screen.GameData.Visibility = Visibility.Visible;
+                            screen.framerater.Start();
+                        }
 
-                    break;
-            }
+                        break;
+                }
         }
 
         private void KeyUp(object sender, KeyEventArgs e)
         {
-            switch (e.Key)
-            {
-                case Key.Space:
-                    if (JumpPower < 165)
-                        JumpPower = 165;
-                    space_press = false;
-                    jumps++;
-                    break;
-                case Key.S:
-                    gm.camera.Down = false;
-                    break;
-                case Key.A:
-                    gm.camera.Left = false;
-                    break;
-                case Key.D:
-                    gm.camera.Right = false;
-                    break;
-            }
+            if (MovementEnabled)
+                switch (e.Key)
+                {
+                    case Key.Space:
+                        if (JumpPower < 165)
+                            JumpPower = 165;
+                        space_press = false;
+                        jumps++;
+                        break;
+                    case Key.S:
+                        camera.Down = false;
+                        break;
+                    case Key.A:
+                        camera.Left = false;
+                        break;
+                    case Key.D:
+                        camera.Right = false;
+                        break;
+                }
         }
 
         #endregion

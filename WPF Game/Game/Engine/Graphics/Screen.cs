@@ -14,55 +14,82 @@ namespace GameEngine
 {
     public class Screen
     {
-        public Render active_render;
+        #region Variables
 
-        //setup Screen
-        public Screen(GameMaker gm)
+        public readonly Stopwatch framerater = new Stopwatch();
+        public readonly Label GameData;
+        private readonly Image canvas;
+        public Bitmap screen_buffer;
+        public readonly Window w;
+        private int refreshrate;
+        public int FPS;
+        public readonly int Screen_Width, Screen_Height;
+
+        #region Win32
+
+        [DllImport("gdi32.dll")]
+        private static extern bool DeleteObject(IntPtr hObject);
+
+        #endregion
+
+        #endregion
+
+        public Screen(ref Window w, int Screen_Width, int Screen_Height)
         {
+            this.w = w;
+            this.Screen_Width = Screen_Width;
+            this.Screen_Height = Screen_Height;
             //setup Grid
-            var grid = new Grid();
-            grid.Width = gm.w.Width;
-            grid.Height = gm.w.Height;
+            var grid = new Grid
+            {
+                Width = w.Width,
+                Height = w.Height
+            };
             //setup Window
-            gm.w.Width = gm.Screen_Width;
-            gm.w.Height = gm.Screen_Height;
-            gm.w.ResizeMode = ResizeMode.NoResize;
-            gm.w.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            gm.w.Content = grid;
+            w.Width = Screen_Width;
+            w.Height = Screen_Height;
+            w.ResizeMode = ResizeMode.NoResize;
+            w.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            w.Content = grid;
             CompositionTarget.Rendering += Screen_Rendering;
-            gm.w.Closing += delegate
+            w.Closing += delegate
             {
                 CompositionTarget.Rendering -= Screen_Rendering;
                 framerater.Stop();
                 Environment.Exit(0);
             };
             //setup GameData
-            GameData = new Label();
-            GameData.Foreground = new SolidColorBrush(Colors.White);
-            GameData.Background = new SolidColorBrush(new Color {A = 0});
-            GameData.Width = 100;
-            GameData.Height = 100;
-            GameData.FontSize = 24;
-            GameData.Visibility = Visibility.Hidden;
-            GameData.Margin = new Thickness(0, 0, 700, 508);
+            GameData = new Label
+            {
+                Foreground = new SolidColorBrush(Colors.White),
+                Background = new SolidColorBrush(new Color {A = 0}),
+                Width = 100,
+                Height = 100,
+                FontSize = 24,
+                Visibility = Visibility.Hidden,
+                Margin = new Thickness(0, 0, 700, 508)
+            };
             //canvas background
             grid.Children.Add(new Image
             {
                 Source = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Scene/back.gif")),
-                Width = gm.w.Width,
-                Height = gm.w.Height
+                Width = w.Width,
+                Height = w.Height
             });
             //setup Canvas & Screen buffer
-            canvas = new Image();
-            canvas.Width = gm.w.Width;
-            canvas.Height = gm.w.Height;
-            screen_buffer = new Bitmap(gm.Screen_Width, gm.Screen_Height);
+            canvas = new Image
+            {
+                Width = w.Width,
+                Height = w.Height
+            };
+            screen_buffer = new Bitmap(Screen_Width, Screen_Height);
             //set View
             grid.Children.Add(canvas);
             grid.Children.Add(GameData);
         }
 
-        //Creates ImageSource from Bitmap
+        #region Methods
+
         private BitmapSource CreateBitmapSource(ref Bitmap bitmap)
         {
             lock (bitmap)
@@ -83,10 +110,8 @@ namespace GameEngine
             }
         }
 
-        //Render event @ framerate
         private void Screen_Rendering(object sender, EventArgs e)
         {
-            //every second refresh GameData
             if (GameData.IsVisible)
                 if (framerater.Elapsed.TotalSeconds > 1)
                 {
@@ -103,32 +128,6 @@ namespace GameEngine
             //repaint canvas from screen_buffer
             canvas.Source = CreateBitmapSource(ref screen_buffer);
         }
-
-        #region Variables
-
-        //framerater
-        public readonly Stopwatch framerater = new Stopwatch();
-
-        //label holds FPS & Refreshrate
-        public readonly Label GameData;
-
-        //is actual drawing screen
-        private readonly Image canvas;
-
-        //is the drawingbuffer on each screen:refresh
-        public Bitmap screen_buffer;
-
-        //
-        public int refreshrate;
-        public int FPS;
-
-        #region Win32
-
-        //win32-methode removes Handler from memory
-        [DllImport("gdi32.dll")]
-        private static extern bool DeleteObject(IntPtr hObject);
-
-        #endregion
 
         #endregion
     }

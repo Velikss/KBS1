@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 
@@ -7,30 +6,30 @@ namespace GameEngine
 {
     public class Camera
     {
-        private readonly Menu DeadMenu;
+        #region Variables
 
-        //neccessaty's
-        private readonly Player player;
-        private readonly Render render;
-        private readonly List<Tile> Tiles;
-
-        //local camerathread
-        private Thread Cameramover;
-
-        //camera movement pro loop
+        private Player player;
+        private GameRenderer render;
+        private readonly Level lvl;
         public bool Up, Down, Left, Right;
-
-        //camera position
         public float X, Y;
 
-        //set's up camera given reffered player, Tiles
-        public Camera(GameMaker gm)
+        #endregion
+
+        #region EventVariables
+
+        public delegate void _Fall();
+
+        public static event _Fall OnFall;
+
+        #endregion
+
+        public Camera(ref Level lvl)
         {
-            player = gm.player;
-            Tiles = gm.level.Tiles;
-            render = gm.game_render;
-            DeadMenu = gm.DeadOverlay;
+            this.lvl = lvl;
         }
+
+        #region Methods
 
         private void CameraMovement_Thread()
         {
@@ -39,10 +38,7 @@ namespace GameEngine
                 if (render.isActive())
                 {
                     if (player.Y > 650)
-                    {
-                        render.Deactivate();
-                        DeadMenu.Activate();
-                    }
+                        OnFall?.Invoke();
 
                     //because of gravity being in a diffrent thread it checks if it has to move the camera to keep focus in case of falling etc.
                     if (Math.Abs(player.Y - Y * -1) > 425 && player.Y <= 470)
@@ -50,7 +46,7 @@ namespace GameEngine
                     if (Up)
                     {
                         //check if collision is present otherwise move player to given direction
-                        if (Tiles.Count(o => o.Y <= player.Y && player.Collide(o) && o.Collidable) == 0)
+                        if (lvl.Tiles.Count(o => o.Y <= player.Y && player.Collide(o) && o.Collidable) == 0)
                         {
                             if (Math.Abs(player.Y - Y * -1) < 125)
                                 Y += 0.8f;
@@ -66,9 +62,10 @@ namespace GameEngine
                     if (Left)
                     {
                         //check if collision is present otherwise move player to given direction
-                        if (player.X > 0 && Tiles.Count(o => o.X <= player.X && player.Collide(o) && o.Collidable) == 0)
+                        if (player.X > 0 &&
+                            lvl.Tiles.Count(o => o.X <= player.X && player.Collide(o) && o.Collidable) == 0)
                         {
-                            if (X + player.X < 175 && X < 0)
+                            if (X + player.X < 250 && X < 0)
                                 X += 0.45f;
                             player.X -= 0.45f;
                         }
@@ -82,9 +79,9 @@ namespace GameEngine
                     if (Right)
                     {
                         //check if collision is present otherwise move player to given direction
-                        if (Tiles.Count(o => o.X >= player.X && player.Collide(o) && o.Collidable) == 0)
+                        if (lvl.Tiles.Count(o => o.X >= player.X && player.Collide(o) && o.Collidable) == 0)
                         {
-                            if (X + player.X > 625)
+                            if (X + player.X > 350)
                                 X -= 0.45f;
                             player.X += 0.45f;
                         }
@@ -100,15 +97,23 @@ namespace GameEngine
             }
         }
 
-        //start's camera
-        public void Start()
+        public void Start(ref GameRenderer render, ref Player player)
         {
-            (Cameramover = new Thread(CameraMovement_Thread)).Start();
+            this.render = render;
+            this.player = player;
+            new Thread(CameraMovement_Thread).Start();
         }
 
-        public void Dispose()
+        public void Reset()
         {
-            Cameramover.Abort();
+            X = 0;
+            Y = 0;
+            Down = false;
+            Up = false;
+            Left = false;
+            Right = false;
         }
+
+        #endregion
     }
 }

@@ -11,11 +11,15 @@ namespace GameEngine
     [Serializable]
     public class Level
     {
+        #region Static
+        #region Variables
         private static readonly Dictionary<PhysicalType, Image> Sprites = new Dictionary<PhysicalType, Image>();
         private static bool LevelClassPrepared;
-        private readonly string LevelName;
-        public readonly List<Tile> Tiles = new List<Tile>();
-
+        public static readonly List<Level> Levels = new List<Level>();
+        public static int Level_index;
+        #endregion
+        #region Methods
+        private Level(){}
         private static void PrepareLevelClass()
         {
             if (LevelClassPrepared) return;
@@ -33,40 +37,64 @@ namespace GameEngine
                 Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/ground-side-right.gif"));
             LevelClassPrepared = true;
         }
-
-        private Level()
+        public static void LoadLevels(string Dir)
         {
-            PrepareLevelClass();
+            foreach (var c in Directory.GetFiles(Dir))
+            {
+                if (Path.GetExtension(c) == ".lvl")
+                    Levels.Add(Load(c));
+            }
         }
-
-        private Level(string Name)
+        private static Level Load(string File)
         {
             PrepareLevelClass();
-            LevelName = Name;
-        }
-
-        public static Level Load(string File)
-        {
-            PrepareLevelClass();
+            Console.WriteLine(File + ", added");
             XmlSerializer serializer = new XmlSerializer(typeof(Level));
             StreamReader reader = new StreamReader(File);
             Level l = (Level) serializer.Deserialize(reader);
-            Level lvl = new Level(l.LevelName);
+            Level lvl = new Level(l.Name);
             reader.Close();
             foreach (var Tile in l.Tiles)
                 lvl.Tiles.Add(new Tile(Sprites.First(o => o.Key == Tile.physicalType).Value, Tile.physicalType,
                     (int) Tile.X, (int) Tile.Y, Tile.Width / 32, Tile.Height, Tile.Collidable));
+            lvl.BackgroundPath = l.BackgroundPath;
+            lvl.Background = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + lvl.BackgroundPath);
             return lvl;
         }
-
+        public static Level Load(int index)
+        {
+            PrepareLevelClass();
+            foreach (var i in Levels[index].Tiles)
+                i.running = false;
+            return Levels[index];
+        }
+        #endregion
+        #endregion
+        #region Variables
+        public string BackgroundPath;
+        public Image Background;
+        public string Name;
+        public readonly List<Tile> Tiles = new List<Tile>();
+        #endregion
+        private Level(string Name)
+        {
+            PrepareLevelClass();
+            this.Name = Name;
+        }
+        #region Methods
+        
+        public Level LoadLevel(string File) => Load(File);
+        
         public void GenerateFile(string FileLocation)
         {
             using (var sww = new StringWriter())
-                using (var writer = XmlWriter.Create(sww))
-                {
-                    new XmlSerializer(typeof(Level)).Serialize(writer, this);
-                    File.WriteAllText(FileLocation, sww.ToString());
-                }
+            using (var writer = XmlWriter.Create(sww))
+            {
+                new XmlSerializer(typeof(Level)).Serialize(writer, this);
+                File.WriteAllText(FileLocation, sww.ToString());
+            }
         }
+
+        #endregion
     }
 }
