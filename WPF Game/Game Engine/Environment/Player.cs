@@ -40,16 +40,17 @@ namespace GameEngine
         }
 
         //boolean checks if stands on top of object
-        public void Stands(PhysicalObject po)
+        public bool Stands(PhysicalObject po)
         {
             if (new Rectangle((int) X + 4, (int) (Y + 4) + (Height - 4), Width - 8, 1).IntersectsWith(
                 new Rectangle((int) po.X, (int) po.Y, po.Width, 1)))
             {
                 po.Invoke();
                 if (po.Collidable)
-                    Landed = true;
-                Console.WriteLine("landed: " + Landed);
+                    return true;
             }
+
+            return false;
         }
 
         //initialises a new player given reffered camera

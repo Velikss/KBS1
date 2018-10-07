@@ -45,7 +45,7 @@ namespace GameEngine
                     }
 
                     //because of gravity being in a diffrent thread it checks if it has to move the camera to keep focus in case of falling etc.
-                    if (Math.Abs(player.Y - Y * -1) > 425 && player.Y <= 457)
+                    if (Math.Abs(player.Y - Y * -1) > 425 && player.Y <= 470)
                         Y -= 0.7f;
                     if (Up)
                     {

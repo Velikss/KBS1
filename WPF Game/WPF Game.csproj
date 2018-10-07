@@ -61,16 +61,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Game\Engine\Audio\Media.cs" />
-    <Compile Include="Game\Engine\Graphics\Menu.cs" />
-    <Compile Include="Game\Engine\Movement.cs" />
-    <Compile Include="Game\Engine\Environment\Player.cs" />
-    <Compile Include="Game\Engine\Environment\Tile.cs" />
-    <Compile Include="Game\GameMaker.cs" />
-    <Compile Include="Game\Engine\Physics\Camera.cs" />
-    <Compile Include="Game\Engine\Physics\Physics.cs" />
-    <Compile Include="Game\Engine\Graphics\Render.cs" />
-    <Compile Include="Game\Engine\Graphics\Screen.cs" />
+    <Compile Include="Game Engine\Engine\Audio\Media.cs" />
+    <Compile Include="Game Engine\Engine\Graphics\Menu.cs" />
+    <Compile Include="Game Engine\Engine\Movement.cs" />
+    <Compile Include="Game Engine\Environment\Player.cs" />
+    <Compile Include="Game Engine\Environment\Tile.cs" />
+    <Compile Include="Game Engine\GameMaker.cs" />
+    <Compile Include="Game Engine\Engine\Graphics\Camera.cs" />
+    <Compile Include="Game Engine\Engine\Graphics\Physics.cs" />
+    <Compile Include="Game Engine\Engine\Graphics\Render.cs" />
+    <Compile Include="Game Engine\Engine\Graphics\Screen.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -79,7 +79,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Game\Engine\Environment\Level.cs" />
+    <Compile Include="Game Engine\Environment\Level.cs" />
+    <Compile Include="Game Engine\LevelGenerator\Generator.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

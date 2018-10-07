@@ -109,4 +109,3 @@ C:\Users\barts\Documents\GitHub\SE1-KBS1\WPF Game\obj\Debug\WPF Game.csproj.Core
 C:\Users\barts\Documents\GitHub\SE1-KBS1\WPF Game\obj\Debug\WPF Game.csproj.CopyComplete
 C:\Users\barts\Documents\GitHub\SE1-KBS1\WPF Game\obj\Debug\WPF Game.exe
 C:\Users\barts\Documents\GitHub\SE1-KBS1\WPF Game\obj\Debug\WPF Game.pdb
-D:\Documenten\GitHub\SE1-KBS1\WPF Game\obj\Debug\WPF Game.csprojAssemblyReference.cache
