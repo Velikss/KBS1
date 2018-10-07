@@ -51,8 +51,6 @@ namespace GameEngine
             switch (po.physicalType)
             {
                 case PhysicalType.Lava:
-                    //add health & if
-                    Console.WriteLine("lava interaction");
                     Dead();
                     break;
                 default:
