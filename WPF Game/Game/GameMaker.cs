@@ -120,7 +120,7 @@ namespace GameEngine
                 50, buttonsprite);
             restart2.Clicked += delegate
             {
-                PauseOverlay.Deactivate();
+                DeadOverlay.Deactivate();
                 PrepareLevel(true);
             };
             DeadOverlay = new Menu(this, new List<MenuItem> {Panel, DeadText, totitle2, restart2},

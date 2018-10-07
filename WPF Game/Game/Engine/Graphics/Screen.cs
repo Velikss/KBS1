@@ -14,6 +14,8 @@ namespace GameEngine
 {
     public class Screen
     {
+        public Render active_render;
+
         //setup Screen
         public Screen(GameMaker gm)
         {
