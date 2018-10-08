@@ -19,7 +19,7 @@ namespace GameEngine
         {
             Y = 350,
             Width = 32,
-            Height = 32,
+            Height = 64,
             Sprite = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Animations/normal.gif")
         };
 
@@ -46,7 +46,7 @@ namespace GameEngine
             
             //TODO: Multiple sprites as one Tile
             
-            Tiles.Add(new Tile(ref i, 0, 532, 32, 20, true));
+            Tiles.Add(new Tile(ref i, 0, 532, 32, 25, true));
             Tiles.Add(new Tile(ref i, 750, 332, 32, 10, true));
             Tiles.Add(new Tile(ref i, 1250, 150, 32, 10, true));
 
@@ -56,7 +56,7 @@ namespace GameEngine
             Render render = new Render(this);
             //creates Camera given reffered focus:player with collision:tiles
             camera = new Camera(ref player, ref Tiles);
-            //initialize player given reffered camera
+            //initialize player given reffered 1camera
             player.Initialize(ref camera);
             //then start camera
             camera.Start();
