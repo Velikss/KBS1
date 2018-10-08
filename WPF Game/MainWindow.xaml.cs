@@ -124,11 +124,11 @@ namespace WPF_Game
             MenuText SelectLevel =
                 new MenuText("Select Level", new Font("Calibri", 40, System.Drawing.FontStyle.Regular), Brushes.White)
                 {
-                    y = 190
+                    y = 40
                 };
             MenuText SelectCharacter =
                 new MenuText("Select Character", new Font("Calibri", 40, System.Drawing.FontStyle.Regular),
-                    Brushes.White) {y = 40};
+                    Brushes.White) {y = 190};
             //Images
             MenuImage CharacterSprite = new MenuImage(800 / 2 - 132, 262, 48, 48,
                 Image.FromFile("Animations/" + Player.CharacterNames[Player.Character_index] + "/normal.gif"), true);
