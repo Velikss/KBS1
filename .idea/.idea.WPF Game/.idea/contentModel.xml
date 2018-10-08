@@ -7,21 +7,32 @@
         <e p="App.config" t="Include" />
         <e p="App.xaml" t="Include" />
         <e p="App.xaml.cs" t="Include" />
-        <e p="bin" t="ExcludeRecursive" />
-        <e p="Game Engine" t="Include">
-          <e p="Engine" t="Include">
-            <e p="Graphics" t="Include">
-              <e p="Camera.cs" t="Include" />
-              <e p="Physics.cs" t="Include" />
-              <e p="Render.cs" t="Include" />
-              <e p="Screen.cs" t="Include" />
-            </e>
+        <e p="Base Engine" t="Include">
+          <e p="Audio" t="Include">
+            <e p="Audio.cs" t="Include" />
           </e>
+          <e p="Graphics" t="Include">
+            <e p="Renderer.cs" t="Include" />
+            <e p="Screen.cs" t="Include" />
+          </e>
+        </e>
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Game" t="Include">
           <e p="Environment" t="Include">
+            <e p="Level.cs" t="Include" />
             <e p="Player.cs" t="Include" />
             <e p="Tile.cs" t="Include" />
           </e>
           <e p="GameMaker.cs" t="Include" />
+          <e p="Physics" t="Include">
+            <e p="Camera.cs" t="Include" />
+            <e p="Movement.cs" t="Include" />
+            <e p="Physics.cs" t="Include" />
+          </e>
+          <e p="Visual" t="Include">
+            <e p="GameRenderer.cs" t="Include" />
+            <e p="Menu.cs" t="Include" />
+          </e>
         </e>
         <e p="MainWindow.xaml" t="Include" />
         <e p="MainWindow.xaml.cs" t="Include" />

@@ -2,26 +2,74 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="41ae38a3-d695-4f47-a723-c4a3296ab06e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.vs/ProjectSettings.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.vs/SE1-KBS1/v15/.suo" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.vs/VSWorkspaceState.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.vs/slnx.sqlite" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WPF Game/Base Engine/Audio/Audio.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WPF Game/Base Engine/Graphics/Renderer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WPF Game/Game/Environment/Level.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WPF Game/Game/Environment/Tile.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WPF Game/Game/GameMaker.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WPF Game/Game/Physics/Camera.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WPF Game/Game/Physics/Movement.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WPF Game/Game/Physics/Physics.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WPF Game/Game/Visual/GameRenderer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WPF Game/Game/Visual/Menu.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WPF Game/obj/Debug/WPF Game.csproj.CopyComplete" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.WPF Game/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WPF Game/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.WPF Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WPF Game/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/WPF Game/v15/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/WPF Game/v15/.suo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/WPF Game/v15/Server/sqlite3/storage.ide" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/WPF Game/v15/Server/sqlite3/storage.ide" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/WPF Game/v15/Server/sqlite3/storage.ide-shm" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/WPF Game/v15/Server/sqlite3/storage.ide-shm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/WPF Game/v15/Server/sqlite3/storage.ide-wal" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/WPF Game/v15/Server/sqlite3/storage.ide-wal" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WPF Game/Game Engine/Engine/Graphics/Camera.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WPF Game/Game Engine/Engine/Graphics/Physics.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WPF Game/Game Engine/Engine/Graphics/Render.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WPF Game/Game Engine/Engine/Graphics/Screen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WPF Game/Base Engine/Graphics/Screen.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WPF Game/Game Engine/Environment/Entities.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WPF Game/Game/Environment/Entities.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WPF Game/Game Engine/Environment/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WPF Game/Game/Environment/Player.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WPF Game/Game Engine/Environment/Tile.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/WPF Game/Game Engine/GameMaker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WPF Game/Game Engine/GameMaker.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WPF Game/bin/Debug/Animations/jump.gif" beforeDir="false" afterPath="$PROJECT_DIR$/WPF Game/bin/Debug/Animations/jump.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WPF Game/bin/Debug/Animations/jump_L.gif" beforeDir="false" afterPath="$PROJECT_DIR$/WPF Game/bin/Debug/Animations/jump_L.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WPF Game/bin/Debug/Animations/normal.gif" beforeDir="false" afterPath="$PROJECT_DIR$/WPF Game/bin/Debug/Animations/normal.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WPF Game/bin/Debug/Animations/normal_L.gif" beforeDir="false" afterPath="$PROJECT_DIR$/WPF Game/bin/Debug/Animations/normal_L.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WPF Game/bin/Debug/Animations/walk1.gif" beforeDir="false" afterPath="$PROJECT_DIR$/WPF Game/bin/Debug/Animations/walk1.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WPF Game/bin/Debug/Animations/walk1_L.gif" beforeDir="false" afterPath="$PROJECT_DIR$/WPF Game/bin/Debug/Animations/walk1_L.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WPF Game/bin/Debug/Animations/walk2.gif" beforeDir="false" afterPath="$PROJECT_DIR$/WPF Game/bin/Debug/Animations/walk2.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WPF Game/bin/Debug/Animations/walk2_L.gif" beforeDir="false" afterPath="$PROJECT_DIR$/WPF Game/bin/Debug/Animations/walk2_L.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WPF Game/bin/Debug/Animations/walk3.gif" beforeDir="false" afterPath="$PROJECT_DIR$/WPF Game/bin/Debug/Animations/walk3.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WPF Game/bin/Debug/Animations/walk3_L.gif" beforeDir="false" afterPath="$PROJECT_DIR$/WPF Game/bin/Debug/Animations/walk3_L.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WPF Game/MainWindow.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WPF Game/MainWindow.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WPF Game/WPF Game.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/WPF Game/WPF Game.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WPF Game/bin/Debug/Animations/Mario/jump.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WPF Game/bin/Debug/Animations/Mario/jump_L.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WPF Game/bin/Debug/Animations/Mario/normal.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WPF Game/bin/Debug/Animations/Mario/normal_L.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WPF Game/bin/Debug/Animations/Mario/walk1.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WPF Game/bin/Debug/Animations/Mario/walk1_L.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WPF Game/bin/Debug/Animations/Mario/walk2.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WPF Game/bin/Debug/Animations/Mario/walk2_L.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WPF Game/bin/Debug/Animations/Mario/walk3.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WPF Game/bin/Debug/Animations/Mario/walk3_L.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WPF Game/bin/Debug/Animations/jump_R.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WPF Game/bin/Debug/Scene/back.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WPF Game/bin/Debug/Scene/ground.gif" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/WPF Game/bin/Debug/WPF Game.exe" beforeDir="false" afterPath="$PROJECT_DIR$/WPF Game/bin/Debug/WPF Game.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WPF Game/bin/Debug/WPF Game.exe.config" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/WPF Game/bin/Debug/WPF Game.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/WPF Game/bin/Debug/WPF Game.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WPF Game/bin/Debug/black.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WPF Game/obj/Debug/App.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WPF Game/obj/Debug/App.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WPF Game/obj/Debug/App.g.i.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WPF Game/obj/Debug/App.g.i.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WPF Game/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache" beforeDir="false" afterPath="$PROJECT_DIR$/WPF Game/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WPF Game/obj/Debug/MainWindow.baml" beforeDir="false" afterPath="$PROJECT_DIR$/WPF Game/obj/Debug/MainWindow.baml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WPF Game/obj/Debug/MainWindow.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WPF Game/obj/Debug/MainWindow.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WPF Game/obj/Debug/MainWindow.g.i.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WPF Game/obj/Debug/MainWindow.g.i.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WPF Game/obj/Debug/WPF Game.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/WPF Game/obj/Debug/WPF Game.csproj.CoreCompileInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WPF Game/obj/Debug/WPF Game.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/WPF Game/obj/Debug/WPF Game.csproj.FileListAbsolute.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WPF Game/obj/Debug/WPF Game.csproj.GenerateResource.cache" beforeDir="false" afterPath="$PROJECT_DIR$/WPF Game/obj/Debug/WPF Game.csproj.GenerateResource.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WPF Game/obj/Debug/WPF Game.csprojAssemblyReference.cache" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/WPF Game/obj/Debug/WPF Game.exe" beforeDir="false" afterPath="$PROJECT_DIR$/WPF Game/obj/Debug/WPF Game.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WPF Game/obj/Debug/WPF Game.g.resources" beforeDir="false" afterPath="$PROJECT_DIR$/WPF Game/obj/Debug/WPF Game.g.resources" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WPF Game/obj/Debug/WPF Game.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/WPF Game/obj/Debug/WPF Game.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WPF Game/obj/Debug/WPF Game_MarkupCompile.cache" beforeDir="false" afterPath="$PROJECT_DIR$/WPF Game/obj/Debug/WPF Game_MarkupCompile.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WPF Game/obj/Debug/WPF Game_MarkupCompile.i.cache" beforeDir="false" afterPath="$PROJECT_DIR$/WPF Game/obj/Debug/WPF Game_MarkupCompile.i.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WPF Game/obj/Release/App.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WPF Game/obj/Release/App.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WPF Game/obj/Release/MainWindow.baml" beforeDir="false" afterPath="$PROJECT_DIR$/WPF Game/obj/Release/MainWindow.baml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WPF Game/obj/Release/MainWindow.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WPF Game/obj/Release/MainWindow.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WPF Game/obj/Release/WPF Game.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/WPF Game/obj/Release/WPF Game.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WPF Game/obj/Release/WPF Game_MarkupCompile.cache" beforeDir="false" afterPath="$PROJECT_DIR$/WPF Game/obj/Release/WPF Game_MarkupCompile.cache" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -34,200 +82,171 @@
       <usages-collector id="statistics.lifecycle.project">
         <counts>
           <entry key="project.closed" value="1" />
-          <entry key="project.open.time.5" value="2" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.open.time.5" value="3" />
+          <entry key="project.opened" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="cs" value="12" />
+          <entry key="cs" value="16" />
+          <entry key="csproj" value="1" />
+          <entry key="targets" value="1" />
           <entry key="xaml" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="C#" value="12" />
+          <entry key="C#" value="16" />
+          <entry key="Csproj" value="1" />
+          <entry key="MsBuild targets file" value="1" />
           <entry key="XAML" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="cs" value="866" />
+          <entry key="cs" value="869" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="C#" value="866" />
+          <entry key="C#" value="869" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5005988">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/WPF Game/Game Engine/GameMaker.cs">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-468">
-                  <caret line="57" column="47" selection-start-line="57" selection-start-column="47" selection-end-line="57" selection-end-column="47" />
-                  <folding>
-                    <marker date="1538569178974" expanded="false" signature="6:163" ph="..." />
-                    <marker date="1538569178974" expanded="true" signature="185:4566" ph="{...}" />
-                    <marker date="1538569178974" expanded="true" signature="214:4564" ph="{...}" />
-                    <marker date="1538569178974" expanded="true" signature="409:591" ph="{...}" />
-                    <marker date="1538569178974" expanded="true" signature="873:2562" ph="{...}" />
-                    <marker date="1538569178974" expanded="true" signature="1105:1253" ph="/* let's do something with a TileLoader in ? Tile Class: static List&lt;&gt; return? ... */" />
-                    <marker date="1538569178974" expanded="true" signature="1362:1514" ph="/* let's do a Level class which loads level data ... */" />
-                    <marker date="1538569178974" expanded="true" signature="2763:3396" ph="{...}" />
-                    <marker date="1538569178974" expanded="true" signature="2800:3386" ph="{...}" />
-                    <marker date="1538569178974" expanded="true" signature="2913:3058" ph="{...}" />
-                    <marker date="1538569178974" expanded="true" signature="3455:4001" ph="{...}" />
-                    <marker date="1538569178974" expanded="true" signature="3492:3991" ph="{...}" />
-                    <marker date="1538569178974" expanded="true" signature="4037:4558" ph="{...}" />
-                    <marker date="1538569178974" expanded="true" signature="4272:4362" ph="{...}" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/WPF Game/Game Engine/Engine/Graphics/Physics.cs">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1035">
-                  <caret line="72" column="63" selection-start-line="72" selection-start-column="63" selection-end-line="72" selection-end-column="63" />
-                  <folding>
-                    <marker date="1538562712321" expanded="false" signature="6:98" ph="..." />
-                    <marker date="1538562712321" expanded="true" signature="154:708" ph="{...}" />
-                    <marker date="1538562712321" expanded="true" signature="631:702" ph="{...}" />
-                    <marker date="1538562712321" expanded="true" signature="745:3534" ph="{...}" />
-                    <marker date="1538562712321" expanded="true" signature="1135:1245" ph="{...}" />
-                    <marker date="1538562712321" expanded="true" signature="1364:1477" ph="{...}" />
-                    <marker date="1538562712321" expanded="true" signature="1607:3386" ph="{...}" />
-                    <marker date="1538562712321" expanded="true" signature="1844:3248" ph="{...}" />
-                    <marker date="1538562712321" expanded="true" signature="2081:3184" ph="{...}" />
-                    <marker date="1538562712321" expanded="true" signature="2195:2543" ph="{...}" />
-                    <marker date="1538562712321" expanded="true" signature="2576:2866" ph="{...}" />
-                    <marker date="1538562712321" expanded="true" signature="3295:3352" ph="{...}" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/WPF Game/Game Engine/Engine/Graphics/Screen.cs">
-              <provider selected="true" editor-type-id="text-editor">
-                <state>
-                  <folding>
-                    <marker date="1538562712322" expanded="false" signature="6:333" ph="..." />
-                    <marker date="1538562712322" expanded="true" signature="381:3971" ph="{...}" />
-                    <marker date="1538562712322" expanded="false" signature="396:1024" ph="Variables" />
-                    <marker date="1538562712322" expanded="false" signature="822:1004" ph="Win32" />
-                    <marker date="1538562712322" expanded="true" signature="1094:2736" ph="{...}" />
-                    <marker date="1538562712322" expanded="true" signature="2141:2332" ph="{...}" />
-                    <marker date="1538562712322" expanded="true" signature="2845:3369" ph="{...}" />
-                    <marker date="1538562712322" expanded="true" signature="2966:3242" ph="{...}" />
-                    <marker date="1538562712322" expanded="true" signature="3266:3345" ph="{...}" />
-                    <marker date="1538562712322" expanded="true" signature="3470:3965" ph="{...}" />
-                    <marker date="1538562712322" expanded="true" signature="3577:3792" ph="{...}" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/WPF Game/Game Engine/Engine/Graphics/Render.cs">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="480">
-                  <caret line="35" column="24" lean-forward="true" selection-start-line="35" selection-start-column="24" selection-end-line="35" selection-end-column="24" />
-                  <folding>
-                    <marker date="1538562712322" expanded="false" signature="6:78" ph="..." />
-                    <marker date="1538562712322" expanded="true" signature="100:2363" ph="{...}" />
-                    <marker date="1538562712322" expanded="true" signature="126:2361" ph="{...}" />
-                    <marker date="1538562712322" expanded="true" signature="199:531" ph="{...}" />
-                    <marker date="1538562712322" expanded="true" signature="1016:2355" ph="{...}" />
-                    <marker date="1538562712322" expanded="true" signature="1178:2321" ph="{...}" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/WPF Game/Game Engine/Environment/Player.cs">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="150">
-                  <caret line="11" column="9" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
-                  <folding>
-                    <marker date="1538569170127" expanded="false" signature="6:45" ph="..." />
-                    <marker date="1538569170127" expanded="true" signature="110:5319" ph="{...}" />
-                    <marker date="1538569170127" expanded="true" signature="277:409" ph="{...}" />
-                    <marker date="1538569170127" expanded="true" signature="507:702" ph="{...}" />
-                    <marker date="1538569170127" expanded="true" signature="806:901" ph="{...}" />
-                    <marker date="1538569170127" expanded="true" signature="1009:5313" ph="{...}" />
-                    <marker date="1538569170127" expanded="true" signature="2058:5303" ph="{...}" />
-                    <marker date="1538569170127" expanded="true" signature="2394:2903" ph="{...}" />
-                    <marker date="1538569170127" expanded="true" signature="2619:2885" ph="{...}" />
-                    <marker date="1538569170127" expanded="true" signature="2924:5253" ph="{...}" />
-                    <marker date="1538569170127" expanded="true" signature="2974:4820" ph="{...}" />
-                    <marker date="1538569170127" expanded="true" signature="3037:3661" ph="{...}" />
-                    <marker date="1538569170127" expanded="true" signature="3164:3635" ph="{...}" />
-                    <marker date="1538569170127" expanded="true" signature="3704:4322" ph="{...}" />
-                    <marker date="1538569170127" expanded="true" signature="3831:4296" ph="{...}" />
-                    <marker date="1538569170127" expanded="true" signature="4464:4798" ph="{...}" />
-                    <marker date="1538569170127" expanded="true" signature="4845:5235" ph="{...}" />
-                    <marker date="1538569170127" expanded="true" signature="4915:5213" ph="{...}" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/WPF Game/Game Engine/Environment/Tile.cs">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="210">
-                  <caret line="16" column="38" selection-start-line="16" selection-start-column="38" selection-end-line="16" selection-end-column="38" />
-                  <folding>
-                    <marker date="1538562735890" expanded="false" signature="6:83" ph="..." />
-                    <marker date="1538562735890" expanded="true" signature="105:1238" ph="{...}" />
-                    <marker date="1538562735890" expanded="true" signature="147:1236" ph="{...}" />
-                    <marker date="1538562735890" expanded="true" signature="163:344" ph="/* Use `using` blocks for GDI objects you create, so they'll be released ... */" />
-                    <marker date="1538562735890" expanded="true" signature="575:1230" ph="{...}" />
-                    <marker date="1538562735890" expanded="true" signature="1029:1138" ph="{...}" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/WPF Game/Game Engine/Environment/Tile.cs">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="195">
-                  <caret line="15" selection-start-line="15" selection-end-line="15" />
-                  <folding>
-                    <marker date="1538562735890" expanded="false" signature="6:83" ph="..." />
-                    <marker date="1538562735890" expanded="true" signature="105:1238" ph="{...}" />
-                    <marker date="1538562735890" expanded="true" signature="147:1236" ph="{...}" />
-                    <marker date="1538562735890" expanded="true" signature="163:344" ph="/* Use `using` blocks for GDI objects you create, so they'll be released ... */" />
-                    <marker date="1538562735890" expanded="true" signature="575:1230" ph="{...}" />
-                    <marker date="1538562735890" expanded="true" signature="1029:1138" ph="{...}" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WPF Game/Game Engine/GameMaker.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="315">
+              <caret line="27" column="34" selection-start-line="27" selection-start-column="34" selection-end-line="29" selection-end-column="25" />
+              <folding>
+                <marker date="1538569178974" expanded="false" signature="6:163" ph="..." />
+                <marker date="1538569178974" expanded="true" signature="214:4564" ph="{...}" />
+                <marker date="1538569178974" expanded="true" signature="409:591" ph="{...}" />
+                <marker date="1538569178974" expanded="true" signature="873:2562" ph="{...}" />
+                <marker date="1538569178974" expanded="true" signature="1105:1253" ph="/* let's do something with a TileLoader in ? Tile Class: static List&lt;&gt; return? ... */" />
+                <marker date="1538569178974" expanded="true" signature="1362:1514" ph="/* let's do a Level class which loads level data ... */" />
+                <marker date="1538569178974" expanded="true" signature="2763:3396" ph="{...}" />
+                <marker date="1538569178974" expanded="true" signature="2800:3386" ph="{...}" />
+                <marker date="1538569178974" expanded="true" signature="2913:3058" ph="{...}" />
+                <marker date="1538569178974" expanded="true" signature="3455:4001" ph="{...}" />
+                <marker date="1538569178974" expanded="true" signature="3492:3991" ph="{...}" />
+                <marker date="1538569178974" expanded="true" signature="4037:4558" ph="{...}" />
+                <marker date="1538569178974" expanded="true" signature="4272:4362" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/WPF Game/Base Engine/Audio/Audio.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="375">
+              <caret line="25" column="5" lean-forward="true" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
+              <folding>
+                <marker date="1538991453017" expanded="true" signature="6:80" ph="..." />
+                <marker date="1538991453017" expanded="true" signature="143:758" ph="{...}" />
+                <marker date="1538991453017" expanded="true" signature="168:756" ph="{...}" />
+                <marker date="1538991453017" expanded="true" signature="426:750" ph="{...}" />
+                <marker date="1538991453017" expanded="true" signature="544:706" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WPF Game/Game/Environment/Level.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <folding>
+                <marker date="1538991453021" expanded="false" signature="6:155" ph="..." />
+                <marker date="1538991453021" expanded="true" signature="177:3788" ph="{...}" />
+                <marker date="1538991453021" expanded="true" signature="221:3786" ph="{...}" />
+                <marker date="1538991453021" expanded="false" signature="236:2991" ph="Static" />
+                <marker date="1538991453021" expanded="false" signature="259:566" ph="Variables" />
+                <marker date="1538991453021" expanded="false" signature="575:2972" ph="Methods" />
+                <marker date="1538991453021" expanded="true" signature="664:1646" ph="{...}" />
+                <marker date="1538991453021" expanded="true" signature="1696:1892" ph="{...}" />
+                <marker date="1538991453021" expanded="true" signature="1761:1882" ph="{...}" />
+                <marker date="1538991453021" expanded="true" signature="1939:2736" ph="{...}" />
+                <marker date="1538991453021" expanded="true" signature="2780:2953" ph="{...}" />
+                <marker date="1538991453021" expanded="false" signature="3000:3196" ph="Variables" />
+                <marker date="1538991453021" expanded="true" signature="3231:3314" ph="{...}" />
+                <marker date="1538991453021" expanded="false" signature="3323:3780" ph="Methods" />
+                <marker date="1538991453021" expanded="true" signature="3469:3760" ph="{...}" />
+                <marker date="1538991453021" expanded="true" signature="3583:3750" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WPF Game/Game/Environment/Player.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="197" column="1" selection-start-line="197" selection-start-column="1" selection-end-line="197" selection-end-column="1" />
+              <folding>
+                <marker date="1538991453396" expanded="false" signature="6:110" ph="..." />
+                <marker date="1538991453396" expanded="true" signature="132:7812" ph="{...}" />
+                <marker date="1538991453396" expanded="true" signature="175:7810" ph="{...}" />
+                <marker date="1538991453396" expanded="false" signature="190:585" ph="Static" />
+                <marker date="1538991453396" expanded="true" signature="379:566" ph="{...}" />
+                <marker date="1538991453396" expanded="false" signature="594:791" ph="Variables" />
+                <marker date="1538991453396" expanded="false" signature="800:7804" ph="Methods" />
+                <marker date="1538991453396" expanded="true" signature="862:1143" ph="{...}" />
+                <marker date="1538991453396" expanded="true" signature="981:1106" ph="{...}" />
+                <marker date="1538991453396" expanded="true" signature="1198:1542" ph="{...}" />
+                <marker date="1538991453396" expanded="true" signature="1380:1505" ph="{...}" />
+                <marker date="1538991453396" expanded="true" signature="1598:2713" ph="{...}" />
+                <marker date="1538991453396" expanded="true" signature="2761:6326" ph="{...}" />
+                <marker date="1538991453396" expanded="true" signature="3071:6316" ph="{...}" />
+                <marker date="1538991453396" expanded="true" signature="3407:3916" ph="{...}" />
+                <marker date="1538991453396" expanded="true" signature="3632:3898" ph="{...}" />
+                <marker date="1538991453396" expanded="true" signature="3937:6266" ph="{...}" />
+                <marker date="1538991453396" expanded="true" signature="3987:5833" ph="{...}" />
+                <marker date="1538991453396" expanded="true" signature="4050:4674" ph="{...}" />
+                <marker date="1538991453396" expanded="true" signature="4177:4648" ph="{...}" />
+                <marker date="1538991453396" expanded="true" signature="4717:5335" ph="{...}" />
+                <marker date="1538991453396" expanded="true" signature="4844:5309" ph="{...}" />
+                <marker date="1538991453396" expanded="true" signature="5477:5811" ph="{...}" />
+                <marker date="1538991453396" expanded="true" signature="5858:6248" ph="{...}" />
+                <marker date="1538991453396" expanded="true" signature="5928:6226" ph="{...}" />
+                <marker date="1538991453396" expanded="true" signature="6355:7785" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WPF Game/Game/GameMaker.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="465">
+              <caret line="31" column="9" selection-start-line="31" selection-start-column="9" selection-end-line="31" selection-end-column="9" />
+              <folding>
+                <marker date="1538991453022" expanded="true" signature="6:87" ph="..." />
+                <marker date="1538991453022" expanded="true" signature="109:1820" ph="{...}" />
+                <marker date="1538991453022" expanded="true" signature="138:1818" ph="{...}" />
+                <marker date="1538991453022" expanded="true" signature="153:471" ph="Variables" />
+                <marker date="1538991453022" expanded="true" signature="481:1250" ph="Methods" />
+                <marker date="1538991453022" expanded="true" signature="566:771" ph="{...}" />
+                <marker date="1538991453022" expanded="true" signature="827:1230" ph="{...}" />
+                <marker date="1538991453022" expanded="true" signature="1302:1812" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
       <find>Sprite</find>
       <find>gif</find>
       <find>png</find>
+      <find>HEAD</find>
+      <find>&lt;&lt;&lt;&lt;&lt;</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -235,12 +254,14 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/WPF Game/MainWindow.xaml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/WPF Game/Game Engine/Engine/Graphics/Render.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/WPF Game/Game Engine/Engine/Graphics/Screen.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/WPF Game/Game Engine/Engine/Graphics/Physics.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/WPF Game/Game Engine/GameMaker.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/WPF Game/Game Engine/Environment/Player.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/WPF Game/Game Engine/Environment/Tile.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WPF Game/Properties/Resources.resx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WPF Game/Base Engine/Audio/Audio.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WPF Game/App.xaml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WPF Game/Game Engine/GameMaker.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WPF Game/MainWindow.xaml.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WPF Game/Game/Environment/Level.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WPF Game/Game/Environment/Player.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WPF Game/Game/GameMaker.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -249,6 +270,8 @@
         <option value="$PROJECT_DIR$/WPF Game/Game Engine/Environment/Tile.cs" />
         <option value="$PROJECT_DIR$/WPF Game/Game Engine/Environment/Player.cs" />
         <option value="$PROJECT_DIR$/WPF Game/Game Engine/GameMaker.cs" />
+        <option value="$PROJECT_DIR$/WPF Game/Game/GameMaker.cs" />
+        <option value="$PROJECT_DIR$/WPF Game/Game/Environment/Player.cs" />
       </list>
     </option>
   </component>
@@ -258,7 +281,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-6" />
     <option name="width" value="1400" />
     <option name="height" value="1000" />
@@ -285,29 +308,34 @@
               <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
               <item name="WPF Game" type="24d0babc:SolutionExplorerModelNode" />
               <item name="WPF Game" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Game Engine" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Base Engine" type="24d0babc:SolutionExplorerModelNode" />
             </path>
             <path>
               <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
               <item name="WPF Game" type="24d0babc:SolutionExplorerModelNode" />
               <item name="WPF Game" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Game Engine" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Engine" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Game" type="24d0babc:SolutionExplorerModelNode" />
             </path>
             <path>
               <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
               <item name="WPF Game" type="24d0babc:SolutionExplorerModelNode" />
               <item name="WPF Game" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Game Engine" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Engine" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Graphics" type="24d0babc:SolutionExplorerModelNode" />
-            </path>
-            <path>
-              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
-              <item name="WPF Game" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="WPF Game" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Game Engine" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Game" type="24d0babc:SolutionExplorerModelNode" />
               <item name="Environment" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+            <path>
+              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="WPF Game" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="WPF Game" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Game" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Physics" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+            <path>
+              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="WPF Game" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="WPF Game" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Game" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Visual" type="24d0babc:SolutionExplorerModelNode" />
             </path>
           </expand>
           <select />
@@ -366,11 +394,12 @@
       <updated>1538557215138</updated>
       <workItem from="1538557218896" duration="10033000" />
       <workItem from="1538656503753" duration="727000" />
+      <workItem from="1538991471175" duration="2143000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10760000" />
+    <option name="totallyTimeSpent" value="12903000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -382,9 +411,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1108742" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12153518" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -402,7 +432,7 @@
       <window_info anchor="bottom" id="Unit Tests" order="12" />
       <window_info anchor="bottom" id="Terminal" order="13" />
       <window_info anchor="bottom" id="Event Log" order="14" side_tool="true" />
-      <window_info anchor="bottom" id="Build" order="15" weight="0.329718" />
+      <window_info active="true" anchor="bottom" id="Build" order="15" visible="true" weight="0.329718" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -440,70 +470,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WPF Game/Game Engine/Engine/Graphics/Physics.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1035">
-          <caret line="72" column="63" selection-start-line="72" selection-start-column="63" selection-end-line="72" selection-end-column="63" />
-          <folding>
-            <marker date="1538562712321" expanded="false" signature="6:98" ph="..." />
-            <marker date="1538562712321" expanded="true" signature="154:708" ph="{...}" />
-            <marker date="1538562712321" expanded="true" signature="631:702" ph="{...}" />
-            <marker date="1538562712321" expanded="true" signature="745:3534" ph="{...}" />
-            <marker date="1538562712321" expanded="true" signature="1135:1245" ph="{...}" />
-            <marker date="1538562712321" expanded="true" signature="1364:1477" ph="{...}" />
-            <marker date="1538562712321" expanded="true" signature="1607:3386" ph="{...}" />
-            <marker date="1538562712321" expanded="true" signature="1844:3248" ph="{...}" />
-            <marker date="1538562712321" expanded="true" signature="2081:3184" ph="{...}" />
-            <marker date="1538562712321" expanded="true" signature="2195:2543" ph="{...}" />
-            <marker date="1538562712321" expanded="true" signature="2576:2866" ph="{...}" />
-            <marker date="1538562712321" expanded="true" signature="3295:3352" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/WPF Game/Game Engine/Engine/Graphics/Screen.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <marker date="1538562712322" expanded="false" signature="6:333" ph="..." />
-            <marker date="1538562712322" expanded="true" signature="381:3971" ph="{...}" />
-            <marker date="1538562712322" expanded="false" signature="396:1024" ph="Variables" />
-            <marker date="1538562712322" expanded="false" signature="822:1004" ph="Win32" />
-            <marker date="1538562712322" expanded="true" signature="1094:2736" ph="{...}" />
-            <marker date="1538562712322" expanded="true" signature="2141:2332" ph="{...}" />
-            <marker date="1538562712322" expanded="true" signature="2845:3369" ph="{...}" />
-            <marker date="1538562712322" expanded="true" signature="2966:3242" ph="{...}" />
-            <marker date="1538562712322" expanded="true" signature="3266:3345" ph="{...}" />
-            <marker date="1538562712322" expanded="true" signature="3470:3965" ph="{...}" />
-            <marker date="1538562712322" expanded="true" signature="3577:3792" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/WPF Game/Game Engine/Environment/Player.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="11" column="9" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
-          <folding>
-            <marker date="1538569170127" expanded="false" signature="6:45" ph="..." />
-            <marker date="1538569170127" expanded="true" signature="110:5319" ph="{...}" />
-            <marker date="1538569170127" expanded="true" signature="277:409" ph="{...}" />
-            <marker date="1538569170127" expanded="true" signature="507:702" ph="{...}" />
-            <marker date="1538569170127" expanded="true" signature="806:901" ph="{...}" />
-            <marker date="1538569170127" expanded="true" signature="1009:5313" ph="{...}" />
-            <marker date="1538569170127" expanded="true" signature="2058:5303" ph="{...}" />
-            <marker date="1538569170127" expanded="true" signature="2394:2903" ph="{...}" />
-            <marker date="1538569170127" expanded="true" signature="2619:2885" ph="{...}" />
-            <marker date="1538569170127" expanded="true" signature="2924:5253" ph="{...}" />
-            <marker date="1538569170127" expanded="true" signature="2974:4820" ph="{...}" />
-            <marker date="1538569170127" expanded="true" signature="3037:3661" ph="{...}" />
-            <marker date="1538569170127" expanded="true" signature="3164:3635" ph="{...}" />
-            <marker date="1538569170127" expanded="true" signature="3704:4322" ph="{...}" />
-            <marker date="1538569170127" expanded="true" signature="3831:4296" ph="{...}" />
-            <marker date="1538569170127" expanded="true" signature="4464:4798" ph="{...}" />
-            <marker date="1538569170127" expanded="true" signature="4845:5235" ph="{...}" />
-            <marker date="1538569170127" expanded="true" signature="4915:5213" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -511,14 +484,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="16" column="38" selection-start-line="16" selection-start-column="38" selection-end-line="16" selection-end-column="38" />
-          <folding>
-            <marker date="1538562735890" expanded="false" signature="6:83" ph="..." />
-            <marker date="1538562735890" expanded="true" signature="105:1238" ph="{...}" />
-            <marker date="1538562735890" expanded="true" signature="147:1236" ph="{...}" />
-            <marker date="1538562735890" expanded="true" signature="163:344" ph="/* Use `using` blocks for GDI objects you create, so they'll be released ... */" />
-            <marker date="1538562735890" expanded="true" signature="575:1230" ph="{...}" />
-            <marker date="1538562735890" expanded="true" signature="1029:1138" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -526,24 +491,108 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="480">
           <caret line="35" column="24" lean-forward="true" selection-start-line="35" selection-start-column="24" selection-end-line="35" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WPF Game/Game Engine/Engine/Graphics/Physics.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1035">
+          <caret line="72" column="63" selection-start-line="72" selection-start-column="63" selection-end-line="72" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/MSBuild/15.0/Bin/Microsoft.Common.CurrentVersion.targets">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="235">
+          <caret line="4817" lean-forward="true" selection-start-line="4817" selection-end-line="4817" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WPF Game/Game/Environment/Player.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="197" column="1" selection-start-line="197" selection-start-column="1" selection-end-line="197" selection-end-column="1" />
           <folding>
-            <marker date="1538562712322" expanded="false" signature="6:78" ph="..." />
-            <marker date="1538562712322" expanded="true" signature="100:2363" ph="{...}" />
-            <marker date="1538562712322" expanded="true" signature="126:2361" ph="{...}" />
-            <marker date="1538562712322" expanded="true" signature="199:531" ph="{...}" />
-            <marker date="1538562712322" expanded="true" signature="1016:2355" ph="{...}" />
-            <marker date="1538562712322" expanded="true" signature="1178:2321" ph="{...}" />
+            <marker date="1538991453396" expanded="false" signature="6:110" ph="..." />
+            <marker date="1538991453396" expanded="true" signature="132:7812" ph="{...}" />
+            <marker date="1538991453396" expanded="true" signature="175:7810" ph="{...}" />
+            <marker date="1538991453396" expanded="false" signature="190:585" ph="Static" />
+            <marker date="1538991453396" expanded="true" signature="379:566" ph="{...}" />
+            <marker date="1538991453396" expanded="false" signature="594:791" ph="Variables" />
+            <marker date="1538991453396" expanded="false" signature="800:7804" ph="Methods" />
+            <marker date="1538991453396" expanded="true" signature="862:1143" ph="{...}" />
+            <marker date="1538991453396" expanded="true" signature="981:1106" ph="{...}" />
+            <marker date="1538991453396" expanded="true" signature="1198:1542" ph="{...}" />
+            <marker date="1538991453396" expanded="true" signature="1380:1505" ph="{...}" />
+            <marker date="1538991453396" expanded="true" signature="1598:2713" ph="{...}" />
+            <marker date="1538991453396" expanded="true" signature="2761:6326" ph="{...}" />
+            <marker date="1538991453396" expanded="true" signature="3071:6316" ph="{...}" />
+            <marker date="1538991453396" expanded="true" signature="3407:3916" ph="{...}" />
+            <marker date="1538991453396" expanded="true" signature="3632:3898" ph="{...}" />
+            <marker date="1538991453396" expanded="true" signature="3937:6266" ph="{...}" />
+            <marker date="1538991453396" expanded="true" signature="3987:5833" ph="{...}" />
+            <marker date="1538991453396" expanded="true" signature="4050:4674" ph="{...}" />
+            <marker date="1538991453396" expanded="true" signature="4177:4648" ph="{...}" />
+            <marker date="1538991453396" expanded="true" signature="4717:5335" ph="{...}" />
+            <marker date="1538991453396" expanded="true" signature="4844:5309" ph="{...}" />
+            <marker date="1538991453396" expanded="true" signature="5477:5811" ph="{...}" />
+            <marker date="1538991453396" expanded="true" signature="5858:6248" ph="{...}" />
+            <marker date="1538991453396" expanded="true" signature="5928:6226" ph="{...}" />
+            <marker date="1538991453396" expanded="true" signature="6355:7785" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/WPF Game/Game/GameMaker.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="31" column="9" selection-start-line="31" selection-start-column="9" selection-end-line="31" selection-end-column="9" />
+          <folding>
+            <marker date="1538991453022" expanded="true" signature="6:87" ph="..." />
+            <marker date="1538991453022" expanded="true" signature="109:1820" ph="{...}" />
+            <marker date="1538991453022" expanded="true" signature="138:1818" ph="{...}" />
+            <marker date="1538991453022" expanded="true" signature="153:471" ph="Variables" />
+            <marker date="1538991453022" expanded="true" signature="481:1250" ph="Methods" />
+            <marker date="1538991453022" expanded="true" signature="566:771" ph="{...}" />
+            <marker date="1538991453022" expanded="true" signature="827:1230" ph="{...}" />
+            <marker date="1538991453022" expanded="true" signature="1302:1812" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WPF Game/Game/Environment/Level.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <marker date="1538991453021" expanded="false" signature="6:155" ph="..." />
+            <marker date="1538991453021" expanded="true" signature="177:3788" ph="{...}" />
+            <marker date="1538991453021" expanded="true" signature="221:3786" ph="{...}" />
+            <marker date="1538991453021" expanded="false" signature="236:2991" ph="Static" />
+            <marker date="1538991453021" expanded="false" signature="259:566" ph="Variables" />
+            <marker date="1538991453021" expanded="false" signature="575:2972" ph="Methods" />
+            <marker date="1538991453021" expanded="true" signature="664:1646" ph="{...}" />
+            <marker date="1538991453021" expanded="true" signature="1696:1892" ph="{...}" />
+            <marker date="1538991453021" expanded="true" signature="1761:1882" ph="{...}" />
+            <marker date="1538991453021" expanded="true" signature="1939:2736" ph="{...}" />
+            <marker date="1538991453021" expanded="true" signature="2780:2953" ph="{...}" />
+            <marker date="1538991453021" expanded="false" signature="3000:3196" ph="Variables" />
+            <marker date="1538991453021" expanded="true" signature="3231:3314" ph="{...}" />
+            <marker date="1538991453021" expanded="false" signature="3323:3780" ph="Methods" />
+            <marker date="1538991453021" expanded="true" signature="3469:3760" ph="{...}" />
+            <marker date="1538991453021" expanded="true" signature="3583:3750" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WPF Game/WPF Game.csproj">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/WPF Game/Game Engine/GameMaker.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-468">
-          <caret line="57" column="47" selection-start-line="57" selection-start-column="47" selection-end-line="57" selection-end-column="47" />
+        <state relative-caret-position="315">
+          <caret line="27" column="34" selection-start-line="27" selection-start-column="34" selection-end-line="29" selection-end-column="25" />
           <folding>
             <marker date="1538569178974" expanded="false" signature="6:163" ph="..." />
-            <marker date="1538569178974" expanded="true" signature="185:4566" ph="{...}" />
             <marker date="1538569178974" expanded="true" signature="214:4564" ph="{...}" />
             <marker date="1538569178974" expanded="true" signature="409:591" ph="{...}" />
             <marker date="1538569178974" expanded="true" signature="873:2562" ph="{...}" />
@@ -556,6 +605,20 @@
             <marker date="1538569178974" expanded="true" signature="3492:3991" ph="{...}" />
             <marker date="1538569178974" expanded="true" signature="4037:4558" ph="{...}" />
             <marker date="1538569178974" expanded="true" signature="4272:4362" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WPF Game/Base Engine/Audio/Audio.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" column="5" lean-forward="true" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
+          <folding>
+            <marker date="1538991453017" expanded="true" signature="6:80" ph="..." />
+            <marker date="1538991453017" expanded="true" signature="143:758" ph="{...}" />
+            <marker date="1538991453017" expanded="true" signature="168:756" ph="{...}" />
+            <marker date="1538991453017" expanded="true" signature="426:750" ph="{...}" />
+            <marker date="1538991453017" expanded="true" signature="544:706" ph="{...}" />
           </folding>
         </state>
       </provider>

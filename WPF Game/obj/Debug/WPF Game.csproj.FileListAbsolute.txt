@@ -54,7 +54,6 @@ D:\Desktop\WPF Game\WPF Game\obj\Debug\WPF Game.csprojAssemblyReference.cache
 C:\Users\usr\Documents\GitHub\SE1-KBS1\WPF Game\bin\Debug\WPF Game.exe.config
 C:\Users\usr\Documents\GitHub\SE1-KBS1\WPF Game\bin\Debug\WPF Game.exe
 C:\Users\usr\Documents\GitHub\SE1-KBS1\WPF Game\bin\Debug\WPF Game.pdb
-C:\Users\usr\Documents\GitHub\SE1-KBS1\WPF Game\obj\Debug\WPF Game.csprojAssemblyReference.cache
 C:\Users\usr\Documents\GitHub\SE1-KBS1\WPF Game\obj\Debug\MainWindow.baml
 C:\Users\usr\Documents\GitHub\SE1-KBS1\WPF Game\obj\Debug\MainWindow.g.cs
 C:\Users\usr\Documents\GitHub\SE1-KBS1\WPF Game\obj\Debug\App.g.cs
@@ -65,6 +64,7 @@ C:\Users\usr\Documents\GitHub\SE1-KBS1\WPF Game\obj\Debug\WPF Game.csproj.Genera
 C:\Users\usr\Documents\GitHub\SE1-KBS1\WPF Game\obj\Debug\WPF Game.csproj.CoreCompileInputs.cache
 C:\Users\usr\Documents\GitHub\SE1-KBS1\WPF Game\obj\Debug\WPF Game.exe
 C:\Users\usr\Documents\GitHub\SE1-KBS1\WPF Game\obj\Debug\WPF Game.pdb
+<<<<<<< HEAD
 C:\code\runch\SE1-KBS1\WPF Game\bin\Debug\WPF Game.exe.config
 C:\code\runch\SE1-KBS1\WPF Game\bin\Debug\WPF Game.exe
 C:\code\runch\SE1-KBS1\WPF Game\bin\Debug\WPF Game.pdb
@@ -79,3 +79,51 @@ C:\code\runch\SE1-KBS1\WPF Game\obj\Debug\WPF Game.csproj.GenerateResource.cache
 C:\code\runch\SE1-KBS1\WPF Game\obj\Debug\WPF Game.csproj.CoreCompileInputs.cache
 C:\code\runch\SE1-KBS1\WPF Game\obj\Debug\WPF Game.exe
 C:\code\runch\SE1-KBS1\WPF Game\obj\Debug\WPF Game.pdb
+=======
+C:\Users\Felix\Source\Repos\SE1-KBS1\WPF Game\bin\Debug\WPF Game.exe.config
+C:\Users\Felix\Source\Repos\SE1-KBS1\WPF Game\bin\Debug\WPF Game.exe
+C:\Users\Felix\Source\Repos\SE1-KBS1\WPF Game\bin\Debug\WPF Game.pdb
+C:\Users\Felix\Source\Repos\SE1-KBS1\WPF Game\obj\Debug\WPF Game.csprojAssemblyReference.cache
+C:\Users\Felix\Source\Repos\SE1-KBS1\WPF Game\obj\Debug\MainWindow.baml
+C:\Users\Felix\Source\Repos\SE1-KBS1\WPF Game\obj\Debug\MainWindow.g.cs
+C:\Users\Felix\Source\Repos\SE1-KBS1\WPF Game\obj\Debug\App.g.cs
+C:\Users\Felix\Source\Repos\SE1-KBS1\WPF Game\obj\Debug\WPF Game_MarkupCompile.cache
+C:\Users\Felix\Source\Repos\SE1-KBS1\WPF Game\obj\Debug\WPF Game.g.resources
+C:\Users\Felix\Source\Repos\SE1-KBS1\WPF Game\obj\Debug\WPF_Game.Properties.Resources.resources
+C:\Users\Felix\Source\Repos\SE1-KBS1\WPF Game\obj\Debug\WPF Game.csproj.GenerateResource.cache
+C:\Users\Felix\Source\Repos\SE1-KBS1\WPF Game\obj\Debug\WPF Game.csproj.CoreCompileInputs.cache
+C:\Users\Felix\Source\Repos\SE1-KBS1\WPF Game\obj\Debug\WPF Game.exe
+C:\Users\Felix\Source\Repos\SE1-KBS1\WPF Game\obj\Debug\WPF Game.pdb
+C:\Users\usr\Documents\GitHub\SE1-KBS1\WPF Game\bin\Debug\NAudio.dll
+C:\Users\usr\Documents\GitHub\SE1-KBS1\WPF Game\obj\Debug\WPF Game.csproj.CopyComplete
+D:\Documenten\GitHub\SE1-KBS1\WPF Game\obj\Debug\MainWindow.baml
+D:\Documenten\GitHub\SE1-KBS1\WPF Game\obj\Debug\MainWindow.g.cs
+D:\Documenten\GitHub\SE1-KBS1\WPF Game\obj\Debug\App.g.cs
+D:\Documenten\GitHub\SE1-KBS1\WPF Game\obj\Debug\WPF Game_MarkupCompile.cache
+D:\Documenten\GitHub\SE1-KBS1\WPF Game\obj\Debug\WPF Game.g.resources
+D:\Documenten\GitHub\SE1-KBS1\WPF Game\obj\Debug\WPF_Game.Properties.Resources.resources
+D:\Documenten\GitHub\SE1-KBS1\WPF Game\obj\Debug\WPF Game.csproj.GenerateResource.cache
+D:\Documenten\GitHub\SE1-KBS1\WPF Game\obj\Debug\WPF Game.csproj.CoreCompileInputs.cache
+D:\Documenten\GitHub\SE1-KBS1\WPF Game\obj\Debug\WPF Game.exe
+D:\Documenten\GitHub\SE1-KBS1\WPF Game\obj\Debug\WPF Game.pdb
+D:\Documenten\GitHub\SE1-KBS1\WPF Game\bin\Debug\WPF Game.exe.config
+D:\Documenten\GitHub\SE1-KBS1\WPF Game\bin\Debug\WPF Game.exe
+D:\Documenten\GitHub\SE1-KBS1\WPF Game\bin\Debug\WPF Game.pdb
+D:\Documenten\GitHub\SE1-KBS1\WPF Game\obj\Debug\WPF Game.csproj.CopyComplete
+C:\Users\barts\Documents\GitHub\SE1-KBS1\WPF Game\bin\Debug\WPF Game.exe.config
+C:\Users\barts\Documents\GitHub\SE1-KBS1\WPF Game\bin\Debug\WPF Game.exe
+C:\Users\barts\Documents\GitHub\SE1-KBS1\WPF Game\bin\Debug\WPF Game.pdb
+C:\Users\barts\Documents\GitHub\SE1-KBS1\WPF Game\obj\Debug\WPF Game.csprojAssemblyReference.cache
+C:\Users\barts\Documents\GitHub\SE1-KBS1\WPF Game\obj\Debug\MainWindow.baml
+C:\Users\barts\Documents\GitHub\SE1-KBS1\WPF Game\obj\Debug\MainWindow.g.cs
+C:\Users\barts\Documents\GitHub\SE1-KBS1\WPF Game\obj\Debug\App.g.cs
+C:\Users\barts\Documents\GitHub\SE1-KBS1\WPF Game\obj\Debug\WPF Game_MarkupCompile.cache
+C:\Users\barts\Documents\GitHub\SE1-KBS1\WPF Game\obj\Debug\WPF Game.g.resources
+C:\Users\barts\Documents\GitHub\SE1-KBS1\WPF Game\obj\Debug\WPF_Game.Properties.Resources.resources
+C:\Users\barts\Documents\GitHub\SE1-KBS1\WPF Game\obj\Debug\WPF Game.csproj.GenerateResource.cache
+C:\Users\barts\Documents\GitHub\SE1-KBS1\WPF Game\obj\Debug\WPF Game.csproj.CoreCompileInputs.cache
+C:\Users\barts\Documents\GitHub\SE1-KBS1\WPF Game\obj\Debug\WPF Game.csproj.CopyComplete
+C:\Users\barts\Documents\GitHub\SE1-KBS1\WPF Game\obj\Debug\WPF Game.exe
+C:\Users\barts\Documents\GitHub\SE1-KBS1\WPF Game\obj\Debug\WPF Game.pdb
+>>>>>>> a7344ea52b6658d8f07f4acb54f58a57114d6eac
+C:\code\runch\SE1-KBS1\WPF Game\obj\Debug\WPF Game.csproj.CopyComplete
