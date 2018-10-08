@@ -9,20 +9,43 @@
             <Collidable>false</Collidable>
             <collision>
                 <Location>
-                    <X>1470</X>
+                    <X>35</X>
+                    <Y>404</Y>
+                </Location>
+                <Size>
+                    <Width>4</Width>
+                    <Height>96</Height>
+                </Size>
+                <X>35</X>
+                <Y>404</Y>
+                <Width>4</Width>
+                <Height>96</Height>
+            </collision>
+            <Height>96</Height>
+            <Width>64</Width>
+            <physicalType>BeginFlag</physicalType>
+            <running>false</running>
+            <X>10</X>
+            <Y>404</Y>
+        </Tile>
+        <Tile>
+            <Collidable>false</Collidable>
+            <collision>
+                <Location>
+                    <X>1495</X>
                     <Y>254</Y>
                 </Location>
                 <Size>
                     <Width>64</Width>
                     <Height>96</Height>
                 </Size>
-                <X>1470</X>
+                <X>1495</X>
                 <Y>254</Y>
-                <Width>64</Width>
+                <Width>+4</Width>
                 <Height>96</Height>
             </collision>
             <Height>96</Height>
-            <Width>64</Width>
+            <Width>4</Width>
             <physicalType>EndFlag</physicalType>
             <running>false</running>
             <X>1470</X>

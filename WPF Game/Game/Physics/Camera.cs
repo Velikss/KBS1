@@ -54,7 +54,7 @@ namespace GameEngine
                         }
                         else
                         {
-                            Gravity.EnableGravityOnObject(player);
+                            player.Y += 1;
                             Up = false;
                         }
                     }

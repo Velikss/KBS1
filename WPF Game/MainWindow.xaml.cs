@@ -32,6 +32,11 @@ namespace WPF_Game
                         gm.Menus[MenuType.Death].Activate();
                     }).Start();
                     break;
+                case PhysicalType.EndFlag:
+                    gm.game_render.Deactivate();
+                    //Next Level Menu//TODO
+                    gm.Menus[MenuType.Death].Activate();
+                    break;
                 default:
                     po.running = false;
                     break;
