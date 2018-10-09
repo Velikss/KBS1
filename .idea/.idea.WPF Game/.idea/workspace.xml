@@ -2,74 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="41ae38a3-d695-4f47-a723-c4a3296ab06e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.vs/ProjectSettings.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.vs/SE1-KBS1/v15/.suo" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.vs/VSWorkspaceState.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.vs/slnx.sqlite" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WPF Game/Base Engine/Audio/Audio.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WPF Game/Base Engine/Graphics/Renderer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WPF Game/Game/Environment/Level.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WPF Game/Game/Environment/Tile.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WPF Game/Game/GameMaker.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WPF Game/Game/Physics/Camera.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WPF Game/Game/Physics/Movement.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WPF Game/Game/Physics/Physics.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WPF Game/Game/Visual/GameRenderer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WPF Game/Game/Visual/Menu.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WPF Game/obj/Debug/WPF Game.csproj.CopyComplete" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.WPF Game/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WPF Game/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.WPF Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WPF Game/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/WPF Game/v15/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/WPF Game/v15/.suo" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/WPF Game/v15/Server/sqlite3/storage.ide" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/WPF Game/v15/Server/sqlite3/storage.ide" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/WPF Game/v15/Server/sqlite3/storage.ide-shm" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/WPF Game/v15/Server/sqlite3/storage.ide-shm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/WPF Game/v15/Server/sqlite3/storage.ide-wal" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/WPF Game/v15/Server/sqlite3/storage.ide-wal" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WPF Game/Game Engine/Engine/Graphics/Camera.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WPF Game/Game Engine/Engine/Graphics/Physics.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WPF Game/Game Engine/Engine/Graphics/Render.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WPF Game/Game Engine/Engine/Graphics/Screen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WPF Game/Base Engine/Graphics/Screen.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WPF Game/Game Engine/Environment/Entities.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WPF Game/Game/Environment/Entities.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WPF Game/Game Engine/Environment/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WPF Game/Game/Environment/Player.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WPF Game/Game Engine/Environment/Tile.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WPF Game/Game Engine/GameMaker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WPF Game/Game Engine/GameMaker.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WPF Game/MainWindow.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WPF Game/MainWindow.xaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WPF Game/WPF Game.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/WPF Game/WPF Game.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WPF Game/bin/Debug/Animations/Mario/jump.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WPF Game/bin/Debug/Animations/Mario/jump_L.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WPF Game/bin/Debug/Animations/Mario/normal.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WPF Game/bin/Debug/Animations/Mario/normal_L.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WPF Game/bin/Debug/Animations/Mario/walk1.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WPF Game/bin/Debug/Animations/Mario/walk1_L.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WPF Game/bin/Debug/Animations/Mario/walk2.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WPF Game/bin/Debug/Animations/Mario/walk2_L.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WPF Game/bin/Debug/Animations/Mario/walk3.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WPF Game/bin/Debug/Animations/Mario/walk3_L.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WPF Game/bin/Debug/Animations/jump_R.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WPF Game/bin/Debug/Scene/back.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WPF Game/bin/Debug/Scene/ground.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WPF Game/Base Engine/Audio/Audio.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WPF Game/Base Engine/Audio/Audio.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WPF Game/bin/Debug/WPF Game.exe" beforeDir="false" afterPath="$PROJECT_DIR$/WPF Game/bin/Debug/WPF Game.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WPF Game/bin/Debug/WPF Game.exe.config" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/WPF Game/bin/Debug/WPF Game.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/WPF Game/bin/Debug/WPF Game.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WPF Game/bin/Debug/black.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WPF Game/obj/Debug/App.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WPF Game/obj/Debug/App.g.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WPF Game/obj/Debug/App.g.i.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WPF Game/obj/Debug/App.g.i.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WPF Game/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache" beforeDir="false" afterPath="$PROJECT_DIR$/WPF Game/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WPF Game/obj/Debug/MainWindow.baml" beforeDir="false" afterPath="$PROJECT_DIR$/WPF Game/obj/Debug/MainWindow.baml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WPF Game/obj/Debug/MainWindow.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WPF Game/obj/Debug/MainWindow.g.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WPF Game/obj/Debug/MainWindow.g.i.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WPF Game/obj/Debug/MainWindow.g.i.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WPF Game/obj/Debug/WPF Game.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/WPF Game/obj/Debug/WPF Game.csproj.CoreCompileInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WPF Game/obj/Debug/WPF Game.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/WPF Game/obj/Debug/WPF Game.csproj.FileListAbsolute.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WPF Game/obj/Debug/WPF Game.csproj.GenerateResource.cache" beforeDir="false" afterPath="$PROJECT_DIR$/WPF Game/obj/Debug/WPF Game.csproj.GenerateResource.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WPF Game/obj/Debug/WPF Game.csprojAssemblyReference.cache" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/WPF Game/obj/Debug/WPF Game.exe" beforeDir="false" afterPath="$PROJECT_DIR$/WPF Game/obj/Debug/WPF Game.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WPF Game/obj/Debug/WPF Game.g.resources" beforeDir="false" afterPath="$PROJECT_DIR$/WPF Game/obj/Debug/WPF Game.g.resources" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WPF Game/obj/Debug/WPF Game.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/WPF Game/obj/Debug/WPF Game.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WPF Game/obj/Debug/WPF Game_MarkupCompile.cache" beforeDir="false" afterPath="$PROJECT_DIR$/WPF Game/obj/Debug/WPF Game_MarkupCompile.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WPF Game/obj/Debug/WPF Game_MarkupCompile.i.cache" beforeDir="false" afterPath="$PROJECT_DIR$/WPF Game/obj/Debug/WPF Game_MarkupCompile.i.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WPF Game/obj/Release/App.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WPF Game/obj/Release/App.g.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WPF Game/obj/Release/MainWindow.baml" beforeDir="false" afterPath="$PROJECT_DIR$/WPF Game/obj/Release/MainWindow.baml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WPF Game/obj/Release/MainWindow.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WPF Game/obj/Release/MainWindow.g.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WPF Game/obj/Release/WPF Game.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/WPF Game/obj/Release/WPF Game.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WPF Game/obj/Release/WPF Game_MarkupCompile.cache" beforeDir="false" afterPath="$PROJECT_DIR$/WPF Game/obj/Release/WPF Game_MarkupCompile.cache" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -81,7 +22,7 @@
     <session id="-1850373345">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
+          <entry key="project.closed" value="2" />
           <entry key="project.open.time.5" value="3" />
           <entry key="project.opened" value="3" />
         </counts>
@@ -90,7 +31,7 @@
         <counts>
           <entry key="cs" value="16" />
           <entry key="csproj" value="1" />
-          <entry key="targets" value="1" />
+          <entry key="targets" value="2" />
           <entry key="xaml" value="1" />
         </counts>
       </usages-collector>
@@ -98,7 +39,7 @@
         <counts>
           <entry key="C#" value="16" />
           <entry key="Csproj" value="1" />
-          <entry key="MsBuild targets file" value="1" />
+          <entry key="MsBuild targets file" value="2" />
           <entry key="XAML" value="1" />
         </counts>
       </usages-collector>
@@ -140,18 +81,27 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WPF Game/Base Engine/Audio/Audio.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="25" column="5" lean-forward="true" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
+            <state relative-caret-position="105">
+              <caret line="7" column="1" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
               <folding>
-                <marker date="1538991453017" expanded="true" signature="6:80" ph="..." />
-                <marker date="1538991453017" expanded="true" signature="143:758" ph="{...}" />
-                <marker date="1538991453017" expanded="true" signature="168:756" ph="{...}" />
-                <marker date="1538991453017" expanded="true" signature="426:750" ph="{...}" />
-                <marker date="1538991453017" expanded="true" signature="544:706" ph="{...}" />
+                <marker date="1539000587869" expanded="true" signature="6:61" ph="..." />
+                <marker date="1539000587869" expanded="true" signature="62:123" ph="/* using NAudio.Wave; ... */" />
+                <marker date="1539000587869" expanded="true" signature="145:791" ph="{...}" />
+                <marker date="1539000587869" expanded="true" signature="170:788" ph="{...}" />
+                <marker date="1539000587869" expanded="true" signature="177:782" ph="/* private MediaFoundationReader audioFile; ... */" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/MSBuild/15.0/Bin/Microsoft.Common.CurrentVersion.targets">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="205">
+              <caret line="4812" lean-forward="true" selection-start-line="4812" selection-end-line="4812" />
             </state>
           </provider>
         </entry>
@@ -272,6 +222,7 @@
         <option value="$PROJECT_DIR$/WPF Game/Game Engine/GameMaker.cs" />
         <option value="$PROJECT_DIR$/WPF Game/Game/GameMaker.cs" />
         <option value="$PROJECT_DIR$/WPF Game/Game/Environment/Player.cs" />
+        <option value="$PROJECT_DIR$/WPF Game/Base Engine/Audio/Audio.cs" />
       </list>
     </option>
   </component>
@@ -304,39 +255,6 @@
               <item name="WPF Game" type="24d0babc:SolutionExplorerModelNode" />
               <item name="WPF Game" type="24d0babc:SolutionExplorerModelNode" />
             </path>
-            <path>
-              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
-              <item name="WPF Game" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="WPF Game" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Base Engine" type="24d0babc:SolutionExplorerModelNode" />
-            </path>
-            <path>
-              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
-              <item name="WPF Game" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="WPF Game" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Game" type="24d0babc:SolutionExplorerModelNode" />
-            </path>
-            <path>
-              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
-              <item name="WPF Game" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="WPF Game" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Game" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Environment" type="24d0babc:SolutionExplorerModelNode" />
-            </path>
-            <path>
-              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
-              <item name="WPF Game" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="WPF Game" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Game" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Physics" type="24d0babc:SolutionExplorerModelNode" />
-            </path>
-            <path>
-              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
-              <item name="WPF Game" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="WPF Game" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Game" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Visual" type="24d0babc:SolutionExplorerModelNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -348,6 +266,7 @@
     <property name="Rider.DefaultBreakpoints.AreToggled" value="true" />
     <property name="Rider.ProjectViewActivator.IsNotFirstRun" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RunDashboard">
@@ -394,12 +313,12 @@
       <updated>1538557215138</updated>
       <workItem from="1538557218896" duration="10033000" />
       <workItem from="1538656503753" duration="727000" />
-      <workItem from="1538991471175" duration="2143000" />
+      <workItem from="1538991471175" duration="3543000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12903000" />
+    <option name="totallyTimeSpent" value="14303000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -412,9 +331,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12153518" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1977612" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -432,7 +350,7 @@
       <window_info anchor="bottom" id="Unit Tests" order="12" />
       <window_info anchor="bottom" id="Terminal" order="13" />
       <window_info anchor="bottom" id="Event Log" order="14" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Build" order="15" visible="true" weight="0.329718" />
+      <window_info anchor="bottom" id="Build" order="15" visible="true" weight="0.329718" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -498,13 +416,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1035">
           <caret line="72" column="63" selection-start-line="72" selection-start-column="63" selection-end-line="72" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/MSBuild/15.0/Bin/Microsoft.Common.CurrentVersion.targets">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="235">
-          <caret line="4817" lean-forward="true" selection-start-line="4817" selection-end-line="4817" />
         </state>
       </provider>
     </entry>
@@ -611,15 +522,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/WPF Game/Base Engine/Audio/Audio.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="5" lean-forward="true" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
+        <state relative-caret-position="105">
+          <caret line="7" column="1" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
           <folding>
-            <marker date="1538991453017" expanded="true" signature="6:80" ph="..." />
-            <marker date="1538991453017" expanded="true" signature="143:758" ph="{...}" />
-            <marker date="1538991453017" expanded="true" signature="168:756" ph="{...}" />
-            <marker date="1538991453017" expanded="true" signature="426:750" ph="{...}" />
-            <marker date="1538991453017" expanded="true" signature="544:706" ph="{...}" />
+            <marker date="1539000587869" expanded="true" signature="6:61" ph="..." />
+            <marker date="1539000587869" expanded="true" signature="62:123" ph="/* using NAudio.Wave; ... */" />
+            <marker date="1539000587869" expanded="true" signature="145:791" ph="{...}" />
+            <marker date="1539000587869" expanded="true" signature="170:788" ph="{...}" />
+            <marker date="1539000587869" expanded="true" signature="177:782" ph="/* private MediaFoundationReader audioFile; ... */" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/MSBuild/15.0/Bin/Microsoft.Common.CurrentVersion.targets">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="205">
+          <caret line="4812" lean-forward="true" selection-start-line="4812" selection-end-line="4812" />
         </state>
       </provider>
     </entry>
