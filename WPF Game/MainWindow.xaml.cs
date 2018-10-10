@@ -15,7 +15,7 @@ namespace WPF_Game
         {
             InitializeComponent();
             AudioPlayer.Initialize();
-            AudioPlayer a = new AudioPlayer(@"Music/temp_back.wav", 0.4f);
+            AudioPlayer a = new AudioPlayer(@"Music/temp_back.wav", 0.0f);
             a.Play();
 
             gm = new GameMaker(this, 800, 600);
@@ -43,8 +43,19 @@ namespace WPF_Game
                     //Next Level Menu//TODO
                     gm.Menus[MenuType.Death].Activate();
                     break;
-//                case PhysicalType.Coin:
-//                    gm.level
+                case PhysicalType.Coin:
+                    try
+                    {
+                        lock (gm.level.Tiles)
+                        gm.level.Tiles.Remove((Tile) po);
+                    }
+                    catch (Exception x)
+                    {
+                        Console.WriteLine(x.ToString());
+                    }
+
+                    //point up
+                    break;
                 default:
                     po.running = false;
                     break;
