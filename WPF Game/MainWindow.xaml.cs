@@ -4,7 +4,6 @@ using System.Drawing;
 using System.Threading;
 using BaseEngine;
 using GameEngine;
-using NAudio.Wave;
 
 namespace WPF_Game
 {
