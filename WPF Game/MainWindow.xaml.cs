@@ -43,6 +43,8 @@ namespace WPF_Game
                     //Next Level Menu//TODO
                     gm.Menus[MenuType.Death].Activate();
                     break;
+//                case PhysicalType.Coin:
+//                    gm.level
                 default:
                     po.running = false;
                     break;
