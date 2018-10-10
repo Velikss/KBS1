@@ -16,8 +16,7 @@ namespace WPF_Game
         {
             InitializeComponent();
             AudioPlayer.Initialize();
-            AudioPlayer.PlayStop();
-            AudioPlayer a = new AudioPlayer(@"C:\Users\Felix\Downloads\piano2.wav", 0.4f, true);
+            AudioPlayer a = new AudioPlayer(@"Music/temp_back.wav", 0.4f);
             a.Play();
 
             gm = new GameMaker(this, 800, 600);

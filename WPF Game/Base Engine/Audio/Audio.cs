@@ -18,16 +18,6 @@ namespace BaseEngine
             Channel = new WaveChannel32(Stream);
             Channel.PadWithZeroes = false;
             Channel.Volume = Volume;
-        }
-
-        public static void Initialize()
-        {
-            if (outputDevice == null) outputDevice = new WaveOutEvent();
-            outputDevice.Init(mixer);
-        }
-
-        public static void PlayStop()
-        {
             if (!Playing)
             {
                 outputDevice.Play();
@@ -38,6 +28,12 @@ namespace BaseEngine
                 outputDevice.Stop();
                 Playing = false;
             }
+        }
+
+        public static void Initialize()
+        {
+            if (outputDevice == null) outputDevice = new WaveOutEvent();
+            outputDevice.Init(mixer);
         }
 
         public void Play()
