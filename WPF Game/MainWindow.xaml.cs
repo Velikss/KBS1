@@ -24,18 +24,12 @@ namespace WPF_Game
             new Thread((ThreadStart) delegate
             {
                 Thread.Sleep(3000);
-                var audioFile2 =
-                    new WaveFileReader(
-                        @"C:\Users\usr\Downloads\01 None Shall Live - Battlecry - Two Steps From Hell.wav");
-                Audio.LoopStream background2 = new Audio.LoopStream(audioFile2);
-                var background32 = new WaveChannel32(background2);
-                background32.PadWithZeroes = false;
-                // set the volume of background file
-                background32.Volume = 0.8f;
-                //add stream into the mixer
-                a.mixer.AddInputStream(background32);
+                AudioPlayer ap = new AudioPlayer(new Audio.LoopStream(new WaveFileReader(
+                    @"C:\Users\usr\Downloads\01 None Shall Live - Battlecry - Two Steps From Hell.wav")), 0.4f);
+                ap.Play();
             }).Start();
         }
+
 
         private void ObjectInteraction(PhysicalObject po)
         {

@@ -1,39 +1,48 @@
-﻿using System.Collections.Generic;
-using System.Windows.Media;
-using NAudio.Wave;
+﻿using NAudio.Wave;
 
 namespace BaseEngine
 {
-    public class Audio
+    public class AudioPlayer
     {
-        private WaveOutEvent outputDevice;
+        private static WaveOutEvent outputDevice;
+        private static WaveMixerStream32 mixer = new WaveMixerStream32();
+        private static bool Playing;
 
-        public WaveMixerStream32 mixer = new WaveMixerStream32();
+        public static void Initialize()
+        {
+            if (outputDevice == null) outputDevice = new WaveOutEvent();
+            outputDevice.Init(mixer);
+        }
+
+        public static void PlayStop()
+        {
+            if (!Playing)
+            {
+                outputDevice.Play();
+                Playing = true;
+            }
+            else
+            {
+                outputDevice.Stop();
+                Playing = false;
+            }
+        }
+
+        private readonly LoopStream Stream;
+        private readonly WaveChannel32 Channel;
+
+        public AudioPlayer(LoopStream Stream, float Volume, bool Repeat = true)
+        {
+            this.Stream = Stream;
+            this.Stream.Looping = Repeat;
+            Channel = new WaveChannel32(this.Stream);
+            Channel.PadWithZeroes = false;
+            Channel.Volume = Volume;
+        }
 
         public void Play()
         {
-            if (outputDevice == null) outputDevice = new WaveOutEvent();
-            var audioFile = new WaveFileReader(@"C:\Users\usr\Downloads\1.wav");
-            var audioFile2 =
-                new WaveFileReader(@"C:\Users\usr\Documents\GitHub\Runch\WPF Game\bin\Debug\Music\Stage 2.wav");
-
-            LoopStream background = new LoopStream(audioFile);
-
-            LoopStream background2 = new LoopStream(audioFile2);
-            var background32 = new WaveChannel32(background);
-            background32.PadWithZeroes = false;
-            // set the volume of background file
-            background32.Volume = 0.4f;
-            var background322 = new WaveChannel32(background2);
-            background322.PadWithZeroes = false;
-            // set the volume of background file
-            background322.Volume = 0.4f;
-            //add stream into the mixer
-            mixer.AddInputStream(background32);
-            mixer.AddInputStream(background322);
-            outputDevice.Init(mixer);
-
-            outputDevice.Play();
+            mixer.AddInputStream(Channel);
         }
 
         public class LoopStream : WaveStream
@@ -48,13 +57,13 @@ namespace BaseEngine
             public LoopStream(WaveStream sourceStream)
             {
                 this.sourceStream = sourceStream;
-                this.EnableLooping = true;
+                this.Looping = true;
             }
 
             /// <summary>
             /// Use this to turn looping on or off
             /// </summary>
-            public bool EnableLooping { get; set; }
+            public bool Looping { get; set; }
 
             /// <summary>
             /// Return source stream's wave format
@@ -90,7 +99,7 @@ namespace BaseEngine
                     int bytesRead = sourceStream.Read(buffer, offset + totalBytesRead, count - totalBytesRead);
                     if (bytesRead == 0)
                     {
-                        if (sourceStream.Position == 0 || !EnableLooping)
+                        if (sourceStream.Position == 0 || !Looping)
                         {
                             // something wrong with the source stream
                             break;
