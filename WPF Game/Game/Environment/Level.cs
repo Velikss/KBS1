@@ -46,6 +46,7 @@ namespace GameEngine
             }
 
             Level l = new Level("Stage Test");
+            l.Background = Levels[0].Background;
             l.Tiles = Levels[0].Tiles;
             Levels.Add(l);
         }
