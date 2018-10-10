@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading;
 
 namespace GameEngine
@@ -13,9 +14,6 @@ namespace GameEngine
         
         #endregion
 
-        #region EventVariables
-        #endregion
-
         public EnemyAI(Enemy enemy)
         {
             this.Enemies.Add(enemy);
@@ -25,8 +23,11 @@ namespace GameEngine
         
         private void EnemyAI_Thread()
         {
+         
             while (true)
             {
+                
+                
                 Thread.Sleep(100);
             }
         }

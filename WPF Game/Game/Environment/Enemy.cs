@@ -10,9 +10,9 @@ namespace GameEngine
         #region variables
 
         private int x;
-        private int y;
+        public int y;
         private Image sprite;
-        private int stopFollowingAt;
+        private int stopFollowingAt; //Location Y from visible -until player.Y + (stopFollowingAt + remaining space to the right of the screen)
         private bool visible;
         private Camera camera;
         private Image normal, normal_L;
