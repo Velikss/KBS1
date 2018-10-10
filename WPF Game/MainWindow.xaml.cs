@@ -15,19 +15,15 @@ namespace WPF_Game
         public MainWindow()
         {
             InitializeComponent();
-            Audio a = new Audio();
+            AudioPlayer.Initialize();
+            AudioPlayer.PlayStop();
+            AudioPlayer a = new AudioPlayer(@"C:\Users\Felix\Downloads\piano2.wav", 0.4f, true);
             a.Play();
+
             gm = new GameMaker(this, 800, 600);
             gm.InitializeGame(PrepareMenus());
             Camera.OnFall += Player_Fell;
             PhysicalObject.Collided += ObjectInteraction;
-            new Thread((ThreadStart) delegate
-            {
-                Thread.Sleep(3000);
-                AudioPlayer ap = new AudioPlayer(new Audio.LoopStream(new WaveFileReader(
-                    @"C:\Users\usr\Downloads\01 None Shall Live - Battlecry - Two Steps From Hell.wav")), 0.4f);
-                ap.Play();
-            }).Start();
         }
 
 
