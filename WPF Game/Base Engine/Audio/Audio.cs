@@ -6,25 +6,32 @@ namespace BaseEngine
 {
     public class Audio
     {
-        private MediaFoundationReader audioFile;
         private WaveOutEvent outputDevice;
+
+        public WaveMixerStream32 mixer = new WaveMixerStream32();
 
         public void Play()
         {
             if (outputDevice == null) outputDevice = new WaveOutEvent();
-            if (audioFile == null)
-            {
-                audioFile = new MediaFoundationReader(@"C:\Users\usr\Downloads\1.wav");
-                LoopStream background = new LoopStream(WaveFormatConversionStream.CreatePcmStream(audioFile));
-                var mixer = new WaveMixerStream32();
-                var background32 = new WaveChannel32(background);
-                background32.PadWithZeroes = false;
-                // set the volume of background file
-                background32.Volume = 0.4f;
-                //add stream into the mixer
-                mixer.AddInputStream(background32);
-                outputDevice.Init(mixer);
-            }
+            var audioFile = new WaveFileReader(@"C:\Users\usr\Downloads\1.wav");
+            var audioFile2 =
+                new WaveFileReader(@"C:\Users\usr\Documents\GitHub\Runch\WPF Game\bin\Debug\Music\Stage 2.wav");
+
+            LoopStream background = new LoopStream(audioFile);
+
+            LoopStream background2 = new LoopStream(audioFile2);
+            var background32 = new WaveChannel32(background);
+            background32.PadWithZeroes = false;
+            // set the volume of background file
+            background32.Volume = 0.4f;
+            var background322 = new WaveChannel32(background2);
+            background322.PadWithZeroes = false;
+            // set the volume of background file
+            background322.Volume = 0.4f;
+            //add stream into the mixer
+            mixer.AddInputStream(background32);
+            mixer.AddInputStream(background322);
+            outputDevice.Init(mixer);
 
             outputDevice.Play();
         }

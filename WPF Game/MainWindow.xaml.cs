@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Threading;
+using BaseEngine;
 using GameEngine;
+using NAudio.Wave;
 
 namespace WPF_Game
 {
@@ -13,12 +15,28 @@ namespace WPF_Game
         public MainWindow()
         {
             InitializeComponent();
+            Audio a = new Audio();
+            a.Play();
             gm = new GameMaker(this, 800, 600);
             gm.InitializeGame(PrepareMenus());
             Camera.OnFall += Player_Fell;
             PhysicalObject.Collided += ObjectInteraction;
+            new Thread((ThreadStart) delegate
+            {
+                Thread.Sleep(3000);
+                var audioFile2 =
+                    new WaveFileReader(
+                        @"C:\Users\usr\Downloads\01 None Shall Live - Battlecry - Two Steps From Hell.wav");
+                Audio.LoopStream background2 = new Audio.LoopStream(audioFile2);
+                var background32 = new WaveChannel32(background2);
+                background32.PadWithZeroes = false;
+                // set the volume of background file
+                background32.Volume = 0.8f;
+                //add stream into the mixer
+                a.mixer.AddInputStream(background32);
+            }).Start();
         }
-        
+
         private void ObjectInteraction(PhysicalObject po)
         {
             switch (po.physicalType)
