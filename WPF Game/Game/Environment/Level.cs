@@ -44,6 +44,10 @@ namespace GameEngine
                 if (Path.GetExtension(c) == ".lvl")
                     Levels.Add(Load(c));
             }
+
+            Level l = new Level("Stage Test");
+            l.Tiles = Levels[0].Tiles;
+            Levels.Add(l);
         }
         private static Level Load(string File)
         {
@@ -74,7 +78,7 @@ namespace GameEngine
         public string BackgroundPath;
         public Image Background;
         public string Name;
-        public readonly List<Tile> Tiles = new List<Tile>();
+        public List<Tile> Tiles = new List<Tile>();
         #endregion
         private Level(string Name)
         {

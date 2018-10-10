@@ -77,13 +77,11 @@ namespace GameEngine
                         if (game_render.isActive())
                         {
                             game_render.Deactivate();
-                            DisableKeys();
                             Menus[MenuType.Pause].Activate();
                         }
                         else
                         {
                             Menus[MenuType.Pause].Deactivate();
-                            EnableKeys();
                             game_render.Activate();
                         }
 
