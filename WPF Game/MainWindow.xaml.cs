@@ -256,8 +256,8 @@ namespace WPF_Game
             //adds to Menu's
             Menus.Add(MenuType.TitleScreen, new Menu(ref gm.screen, new List<MenuItem> { SinglePlayerBtn, HighScoresBtn, ExitBtn },
                 Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/Title.gif")));
-            Menus.Add(MenuType.HighScoreScreen, new Menu(ref gm.screen, new List<MenuItem> { HighScoreToTitleScrn },
-                Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/Title.gif")));
+            Menus.Add(MenuType.HighScoreScreen, new Menu(ref gm.screen, new List<MenuItem> { HighScoreToTitleScrn, LevelSpriteBack, LevelTitleBack, PreviousLevel, NextLevel, LevelName, LevelSprite },
+                Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/HighScores.gif")));
             Menus.Add(MenuType.Pause, new Menu(ref gm.screen,
                 new List<MenuItem> { OverlayPanel, PauseText, PauseToTitleScrn, PauseRestart, PauseLvlOptions },
                 null));
