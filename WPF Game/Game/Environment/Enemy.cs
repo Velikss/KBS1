@@ -21,7 +21,7 @@ namespace GameEngine
             X = x;
             Y = y;
             camera = cam;
-            Sprite = Image.FromFile("Animations/enemy/enemy.gif");
+            Sprite = Image.FromFile("Levels/enemy.gif");
         }
         
     }
