@@ -5,6 +5,7 @@ using System.Threading;
 using System.Windows.Media;
 using BaseEngine;
 using GameEngine;
+using WPF_Game.Base_Engine.Audio;
 using Brushes = System.Drawing.Brushes;
 
 namespace WPF_Game
@@ -14,10 +15,14 @@ namespace WPF_Game
         private readonly GameMaker gm;
         public int CoinCollection;
         public MenuText VictoryHighScoreText;
-
         public MainWindow()
         {
-            InitializeComponent();
+            InitializeComponent();/*
+            AudioPlayer.Load("background", @"C:\Users\usr\Downloads\1.wav", true);
+            AudioPlayer.Play("background");*/
+
+            AudioPlayer.Load("fuck you", @"C:\Users\usr\Documents\GitHub\Runch\WPF Game\bin\Debug\Music\on_enemy_kill.wav", true);
+            AudioPlayer.Play("fuck you");
             gm = new GameMaker(this, 800, 600);
             gm.InitializeGame(PrepareMenus());
             Camera.OnFall += Player_Fell;

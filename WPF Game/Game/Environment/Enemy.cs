@@ -16,6 +16,8 @@ namespace GameEngine
         public bool activated = true;
         private GameRenderer renderer;
         private Player player;
+        private bool inFOV;
+        private bool audioPlayed = false;
 
         #endregion
 
@@ -35,9 +37,35 @@ namespace GameEngine
         {
             while (renderer.isActive())
             {
-                Console.WriteLine("Active");
-                X++;
-                Thread.Sleep(100);
+                if (player.X > X - 300 || audioPlayed != true)
+                {
+                    inFOV = true;
+                    //TODO: Play "Get your ass back here"
+                    audioPlayed = true;
+                } 
+                
+                if(inFOV){
+                    if (player.X < X)
+                    {
+                        X = X + 2;
+                    }
+    
+                    if (player.X > X)
+                    {
+                        X = X + 2;
+                    }
+    
+                    if (player.Y > Y)
+                    {
+                        Y++;
+                    }
+    
+                    if (player.Y < Y)
+                    {
+                        Y--;
+                    }
+                }
+                Thread.Sleep(12);
             }
         }
 
