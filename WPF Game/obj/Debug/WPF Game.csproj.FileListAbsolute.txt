@@ -134,6 +134,5 @@ C:\code\runch42\Runch\WPF Game\obj\Debug\WPF Game.g.resources
 C:\code\runch42\Runch\WPF Game\obj\Debug\WPF_Game.Properties.Resources.resources
 C:\code\runch42\Runch\WPF Game\obj\Debug\WPF Game.csproj.GenerateResource.cache
 C:\code\runch42\Runch\WPF Game\obj\Debug\WPF Game.csproj.CoreCompileInputs.cache
-C:\code\runch42\Runch\WPF Game\obj\Debug\WPF Game.csproj.CopyComplete
 C:\code\runch42\Runch\WPF Game\obj\Debug\WPF Game.exe
 C:\code\runch42\Runch\WPF Game\obj\Debug\WPF Game.pdb
