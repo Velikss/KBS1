@@ -62,6 +62,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Base Engine\Audio\Audio.cs" />
+    <Compile Include="Game\Environment\Enemy.cs" />
     <Compile Include="Game\Visual\GameRenderer.cs" />
     <Compile Include="Game\Visual\Menu.cs" />
     <Compile Include="Game\Physics\Movement.cs" />
