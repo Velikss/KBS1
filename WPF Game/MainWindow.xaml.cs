@@ -30,6 +30,7 @@ namespace WPF_Game
 
             AudioPlayer.Load("fuck you", @"C:\Users\usr\Documents\GitHub\Runch\WPF Game\bin\Debug\Music\on_enemy_kill.wav", true);
             AudioPlayer.Play("fuck you");
+            AudioPlayer.Load("on_coin_collide", AppDomain.CurrentDomain.BaseDirectory + @"Music/coin.wav", false);
             gm = new GameMaker(this, 800, 600);
             gm.InitializeGame(PrepareMenus());
             Camera.OnFall += Player_Fell;
