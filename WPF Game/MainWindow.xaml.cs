@@ -15,14 +15,14 @@ namespace WPF_Game
         private readonly GameMaker gm;
         public int CoinCollection;
         public MenuText VictoryHighScoreText;
+
         public MainWindow()
         {
-            InitializeComponent();/*
-            AudioPlayer.Load("background", @"C:\Users\usr\Downloads\1.wav", true);
-            AudioPlayer.Play("background");*/
-
-            AudioPlayer.Load("fuck you", @"C:\Users\usr\Documents\GitHub\Runch\WPF Game\bin\Debug\Music\on_enemy_kill.wav", true);
-            AudioPlayer.Play("fuck you");
+            InitializeComponent();
+            AudioPlayer.Load("on_dead", AppDomain.CurrentDomain.BaseDirectory + "Music/on_dead.wav", false);
+            AudioPlayer.Load("background", AppDomain.CurrentDomain.BaseDirectory + @"Music\temp_back.wav", true);
+            AudioPlayer.Load("on_coin_collide", AppDomain.CurrentDomain.BaseDirectory + @"Music/coin.wav", false);
+            //AudioPlayer.Play("on_dead");
             gm = new GameMaker(this, 800, 600);
             gm.InitializeGame(PrepareMenus());
             Camera.OnFall += Player_Fell;
@@ -34,6 +34,15 @@ namespace WPF_Game
             switch (po.physicalType)
             {
                 case PhysicalType.Lava:
+                    new Thread((ThreadStart) delegate
+                    {
+                        gm.movement.DisableKeys();
+                        Dispatcher.Invoke(() => AudioPlayer.Play("on_dead"));
+                        Thread.Sleep(1000);
+                        gm.game_render.Deactivate();
+                        gm.Menus[MenuType.Death].Activate();
+                    }).Start();
+
                     break;
                 case PhysicalType.EndFlag:
                     gm.game_render.Deactivate();
@@ -42,6 +51,7 @@ namespace WPF_Game
                     gm.level.HighScore.Add(DateTime.Now.ToShortDateString(), CoinCollection);
                     break;
                 case PhysicalType.Coin:
+                    Dispatcher.Invoke(() => AudioPlayer.Play("on_coin_collide"));
                     ((Tile) po).Visible = false;
                     CoinCollection++;
                     break;
