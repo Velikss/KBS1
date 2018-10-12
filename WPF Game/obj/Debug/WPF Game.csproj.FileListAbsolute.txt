@@ -97,7 +97,6 @@ D:\Documenten\GitHub\SE1-KBS1\WPF Game\obj\Debug\WPF Game.csproj.CopyComplete
 C:\Users\barts\Documents\GitHub\SE1-KBS1\WPF Game\bin\Debug\WPF Game.exe.config
 C:\Users\barts\Documents\GitHub\SE1-KBS1\WPF Game\bin\Debug\WPF Game.exe
 C:\Users\barts\Documents\GitHub\SE1-KBS1\WPF Game\bin\Debug\WPF Game.pdb
-C:\Users\barts\Documents\GitHub\SE1-KBS1\WPF Game\obj\Debug\WPF Game.csprojAssemblyReference.cache
 C:\Users\barts\Documents\GitHub\SE1-KBS1\WPF Game\obj\Debug\MainWindow.baml
 C:\Users\barts\Documents\GitHub\SE1-KBS1\WPF Game\obj\Debug\MainWindow.g.cs
 C:\Users\barts\Documents\GitHub\SE1-KBS1\WPF Game\obj\Debug\App.g.cs
