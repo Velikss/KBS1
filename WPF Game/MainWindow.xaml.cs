@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Threading;
 using System.Windows.Media;
 using BaseEngine;
 using GameEngine;
 using WPF_Game.Base_Engine.Audio;
+using WPF_Game.Game;
 using Brushes = System.Drawing.Brushes;
 
 namespace WPF_Game
@@ -15,11 +17,16 @@ namespace WPF_Game
         private readonly GameMaker gm;
         public int CoinCollection;
         public MenuText VictoryHighScoreText;
+
         public MainWindow()
         {
-            InitializeComponent();/*
+            InitializeComponent();
+            ScoreController.LoadScoreBoard();
+            
+            /*
             AudioPlayer.Load("background", @"C:\Users\usr\Downloads\1.wav", true);
-            AudioPlayer.Play("background");*/
+            AudioPlayer.Play("background");
+            */
 
             AudioPlayer.Load("fuck you", @"C:\Users\usr\Documents\GitHub\Runch\WPF Game\bin\Debug\Music\on_enemy_kill.wav", true);
             AudioPlayer.Play("fuck you");
@@ -38,8 +45,8 @@ namespace WPF_Game
                 case PhysicalType.EndFlag:
                     gm.game_render.Deactivate();
                     VictoryHighScoreText.Content = "Score: " + CoinCollection.ToString();
+                    ScoreController.SaveScore(gm.level, CoinCollection);
                     gm.Menus[MenuType.Completed].Activate();
-                    gm.level.HighScore.Add(DateTime.Now.ToShortDateString(), CoinCollection);
                     break;
                 case PhysicalType.Coin:
                     ((Tile) po).Visible = false;
@@ -166,6 +173,9 @@ namespace WPF_Game
                 new MenuText("Select  Character", new Font("ArcadeClassic", 40),
                         Brushes.White)
                     {y = 200};
+       
+            ScoreController.Score[] scrs = ScoreController.Scores.Where(o => o.LevelName == "Stage 1").OrderBy(i => i.score).Take(5).ToArray();
+            MenuText HighScores = new MenuText(scrs.ToString(), new Font("ArcadeClassic", 40), Brushes.White) { y = 250 };
             //Images
             MenuImage CharacterSprite = new MenuImage(800 / 2 - 132, 262, 48, 48,
                 Image.FromFile("Animations/" + Player.CharacterNames[Player.Character_index] + "/normal.gif"), true);
@@ -287,7 +297,7 @@ namespace WPF_Game
                 new List<MenuItem>
                 {
                     HighScoreToTitleScrn, LevelSpriteBack, LevelTitleBack, PreviousLevel, NextLevel, LevelName,
-                    LevelSprite
+                    LevelSprite, HighScores
                 },
                 Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/HighScores.gif")));
             Menus.Add(MenuType.Pause, new Menu(ref gm.screen,

@@ -43,7 +43,6 @@ namespace WPF_Game.Game
                 sw.WriteLine(score.LevelName + ":" + score.score + ":" + score.Date);
             sw.Close();
             Console.WriteLine("Scores Saved");
-            Score[] scrs = Scores.Where(o => o.LevelName == "Stage 1").OrderBy(i => i.score).Take(5).ToArray();
         }
     }
 }
