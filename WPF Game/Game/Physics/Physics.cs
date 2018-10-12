@@ -16,6 +16,7 @@ namespace GameEngine
         Coin,
         BeginFlag,
         EndFlag,
+        Enemy,
         Ground,
         Ground_CheckPoint,
         GroundSide,

@@ -9,26 +9,26 @@ namespace GameEngine
     {
         #region variables
 
-        private int
-            stopFollowingAt; //Location Y from visible -until player.Y + (stopFollowingAt + remaining space to the right of the screen)
-
-//        private int circleSize;
+        private int stopFollowingAt;
         public bool activated = true;
         private GameRenderer renderer;
         private Player player;
-        private bool inFOV;
+        private bool inFOV = false;
         private bool audioPlayed = false;
+        private int baseX;
+        private int baseY;
 
         #endregion
 
         public Enemy(int x, int y, int stopFollowingAt)
         {
-            Console.WriteLine("abc1");
             this.stopFollowingAt = stopFollowingAt;
             X = x;
             Y = y;
+            baseX = x;
+            baseY = y;
             Sprite = Image.FromFile("Levels/enemy.gif");
-//            circleSize = 300;
+            physicalType = PhysicalType.Enemy;
         }
 
         #region Methods
@@ -37,36 +37,54 @@ namespace GameEngine
         {
             while (renderer.isActive())
             {
-                if (player.X > X - 300 || audioPlayed != true)
+                if (X < stopFollowingAt)
                 {
-                    inFOV = true;
-                    //TODO: Play "Get your ass back here"
-                    audioPlayed = true;
-                } 
                 
-                if(inFOV){
-                    if (player.X < X)
+                    if ((player.X < X + 300) && (player.X > X - 300) && audioPlayed == false)
                     {
-                        X = X + 2;
+                        inFOV = true;
+                        //TODO: Play "Get your ass back here"
+                        audioPlayed = true;
                     }
-    
-                    if (player.X > X)
-                    {
-                        X = X + 2;
+                    
+                    if(inFOV){
+                        if (player.X < X)
+                        {
+                            X = X - 2;
+                        }
+        
+                        if (player.X > X)
+                        {
+                            X = X + 2;
+                        }
+        
+                        if (player.Y > Y)
+                        {
+                            Y++;
+                        }
+        
+                        if (player.Y < Y)
+                        {
+                            Y--;
+                        }
+
+                        if ((player.X < X + 10) && (player.X > X - 10) && (player.Y < Y + 10) && (player.Y > Y - 10))
+                        {
+                            Sprite = Image.FromFile("Levels/explode.gif");
+                            base.Invoke();
+                        }
                     }
-    
-                    if (player.Y > Y)
-                    {
-                        Y++;
-                    }
-    
-                    if (player.Y < Y)
-                    {
-                        Y--;
-                    }
+                }
+                else
+                {
+                    X = baseX;
+                    Y = baseY;
+                    audioPlayed = false;
+                    inFOV = false;
                 }
                 Thread.Sleep(12);
             }
+                
         }
 
         public void Start(ref GameRenderer render, ref Player player)
@@ -74,6 +92,11 @@ namespace GameEngine
             this.renderer = render;
             this.player = player;
             new Thread(EnemyAI_Thread).Start();
+        }
+
+        public void Reset()
+        {
+            
         }
 
         #endregion

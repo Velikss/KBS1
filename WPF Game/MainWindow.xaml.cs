@@ -30,7 +30,11 @@ namespace WPF_Game
 
             AudioPlayer.Load("fuck you", @"C:\Users\usr\Documents\GitHub\Runch\WPF Game\bin\Debug\Music\on_enemy_kill.wav", true);
             AudioPlayer.Play("fuck you");
+            AudioPlayer.Load("on_dead", AppDomain.CurrentDomain.BaseDirectory + "Music/on_dead.wav", false);
+            AudioPlayer.Load("background", AppDomain.CurrentDomain.BaseDirectory + @"Music\temp_back.wav", true);
             AudioPlayer.Load("on_coin_collide", AppDomain.CurrentDomain.BaseDirectory + @"Music/coin.wav", false);
+            AudioPlayer.Soundtrack.First(o => o.Key == "background").Value.player.Volume = 0.08;
+            AudioPlayer.Play("background");
             gm = new GameMaker(this, 800, 600);
             gm.InitializeGame(PrepareMenus());
             Camera.OnFall += Player_Fell;
@@ -42,6 +46,15 @@ namespace WPF_Game
             switch (po.physicalType)
             {
                 case PhysicalType.Lava:
+                    new Thread((ThreadStart) delegate
+                    {
+                        gm.movement.DisableKeys();
+                        Dispatcher.Invoke(() => AudioPlayer.Play("on_dead"));
+                        Thread.Sleep(1000);
+                        gm.game_render.Deactivate();
+                        gm.Menus[MenuType.Death].Activate();
+                    }).Start();
+
                     break;
                 case PhysicalType.EndFlag:
                     gm.game_render.Deactivate();
@@ -50,9 +63,18 @@ namespace WPF_Game
                     gm.Menus[MenuType.Completed].Activate();
                     break;
                 case PhysicalType.Coin:
+                    Dispatcher.Invoke(() => AudioPlayer.Play("on_coin_collide"));
                     ((Tile) po).Visible = false;
                     CoinCollection++;
                     break;
+                case PhysicalType.Enemy:
+                    gm.movement.DisableKeys();
+                    Dispatcher.Invoke(() => AudioPlayer.Play("on_dead"));
+                    Thread.Sleep(1000);
+                    gm.game_render.Deactivate();
+                    gm.Menus[MenuType.Death].Activate();
+                    break;
+                    
                 default:
                     po.running = false;
                     break;
