@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Threading;
 using BaseEngine;
 using GameEngine;
 
@@ -16,7 +15,6 @@ namespace WPF_Game
         public MainWindow()
         {
             InitializeComponent();
-            AudioPlayer.Initialize();
             gm = new GameMaker(this, 800, 600);
             gm.InitializeGame(PrepareMenus());
             Camera.OnFall += Player_Fell;
@@ -28,8 +26,6 @@ namespace WPF_Game
             switch (po.physicalType)
             {
                 case PhysicalType.Lava:
-                    (new AudioPlayer(AppDomain.CurrentDomain.BaseDirectory + @"Music\on_enemy_kill.wav",
-                        0.4f, ref po, false)).Play();
                     break;
                 case PhysicalType.EndFlag:
                     gm.game_render.Deactivate();
@@ -39,7 +35,6 @@ namespace WPF_Game
                     break;
                 case PhysicalType.Coin:
                     ((Tile)po).Visible = false;
-                    (new AudioPlayer(AppDomain.CurrentDomain.BaseDirectory + @"Music\coin.wav", 0.8f, ref po, false)).Play();
                     CoinCollection++;
                     break;
                 default:

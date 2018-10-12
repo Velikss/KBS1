@@ -61,7 +61,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Base Engine\Audio\Audio.cs" />
     <Compile Include="Game\Environment\Enemy.cs" />
     <Compile Include="Game\Visual\GameRenderer.cs" />
     <Compile Include="Game\Visual\Menu.cs" />
@@ -113,6 +112,8 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Base Engine\Audio\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
