@@ -35,7 +35,7 @@ namespace GameEngine
                                 backend.DrawImage(player.Sprite, camera.X + player.X,
                                     camera.Y + player.Y);
                                 //draw all tiles within view of camera, #better performance
-                                foreach (var tile in level.Tiles.Where(o => o.X + o.Width >= camera.X * -1 &&
+                                foreach (var tile in level.Tiles.Where(o => o.Visible && o.X + o.Width >= camera.X * -1 &&
                                                                                o.X <= camera.X * -1 +
                                                                                screen.Screen_Width &&
                                                                                o.Y + o.Height >= camera.Y * -1 &&

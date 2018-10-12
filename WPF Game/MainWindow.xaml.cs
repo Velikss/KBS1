@@ -15,28 +15,19 @@ namespace WPF_Game
         {
             InitializeComponent();
             AudioPlayer.Initialize();
-            AudioPlayer a = new AudioPlayer(@"Music/temp_back.wav", 0.0f);
-            a.Play();
-
             gm = new GameMaker(this, 800, 600);
             gm.InitializeGame(PrepareMenus());
             Camera.OnFall += Player_Fell;
             PhysicalObject.Collided += ObjectInteraction;
         }
 
-
         private void ObjectInteraction(PhysicalObject po)
         {
             switch (po.physicalType)
             {
                 case PhysicalType.Lava:
-                    gm.movement.DisableKeys();
-                    new Thread((ThreadStart) delegate
-                    {
-                        Thread.Sleep(150);
-                        gm.game_render.Deactivate();
-                        gm.Menus[MenuType.Death].Activate();
-                    }).Start();
+                    (new AudioPlayer(@"C:\Users\usr\Documents\GitHub\Runch\WPF Game\bin\Debug\Music\on_enemy_kill.wav",
+                        0.4f, ref po, false)).Play();
                     break;
                 case PhysicalType.EndFlag:
                     gm.game_render.Deactivate();
@@ -44,16 +35,7 @@ namespace WPF_Game
                     gm.Menus[MenuType.Death].Activate();
                     break;
                 case PhysicalType.Coin:
-                    try
-                    {
-                        lock (gm.level.Tiles)
-                        gm.level.Tiles.Remove((Tile) po);
-                    }
-                    catch (Exception x)
-                    {
-                        Console.WriteLine(x.ToString());
-                    }
-
+                    ((Tile) po).Visible = false;
                     //point up
                     break;
                 default:

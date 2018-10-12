@@ -58,5 +58,7 @@ namespace GameEngine
 
             this.Collidable = Collidable;
         }
+
+        public bool Visible = true;
     }
 }

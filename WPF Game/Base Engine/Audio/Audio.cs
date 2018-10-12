@@ -1,19 +1,22 @@
-﻿using NAudio.Wave;
+﻿using System;
+using GameEngine;
+using NAudio.Wave;
 
 namespace BaseEngine
 {
     public class AudioPlayer
     {
         private static WaveOutEvent outputDevice;
-        private static readonly WaveMixerStream32 mixer = new WaveMixerStream32();
+        private static WaveMixerStream32 mixer = new WaveMixerStream32();
         private static bool Playing;
+        public static bool effect_played;
         private readonly WaveChannel32 Channel;
 
         private readonly LoopStream Stream;
 
-        public AudioPlayer(string Path, float Volume, bool Repeat = true)
+        public AudioPlayer(string Path, float Volume, ref PhysicalObject po, bool Repeat = true)
         {
-            Stream = new LoopStream(new WaveFileReader(Path));
+            Stream = new LoopStream(new WaveFileReader(Path), ref po);
             Stream.Looping = Repeat;
             Channel = new WaveChannel32(Stream);
             Channel.PadWithZeroes = false;
@@ -23,11 +26,8 @@ namespace BaseEngine
                 outputDevice.Play();
                 Playing = true;
             }
-            else
-            {
-                outputDevice.Stop();
-                Playing = false;
-            }
+
+            outputDevice.PlaybackStopped += delegate { effect_played = false; };
         }
 
         public static void Initialize()
@@ -52,9 +52,11 @@ namespace BaseEngine
             ///     The stream to read from. Note: the Read method of this stream should return 0 when it reaches the end
             ///     or else we will not loop to the start again.
             /// </param>
-            public LoopStream(WaveStream sourceStream)
+            private PhysicalObject po;
+            public LoopStream(WaveStream sourceStream, ref PhysicalObject po)
             {
                 this.sourceStream = sourceStream;
+                this.po = po;
                 Looping = true;
             }
 
@@ -98,6 +100,13 @@ namespace BaseEngine
                     }
 
                     totalBytesRead += bytesRead;
+                }
+
+                if (Position == Length)
+                {
+                    Console.WriteLine("Triggered");
+                    po.running = false;
+                    mixer.RemoveInputStream(this);
                 }
 
                 return totalBytesRead;

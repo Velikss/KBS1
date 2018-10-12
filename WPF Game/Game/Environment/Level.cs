@@ -47,7 +47,7 @@ namespace GameEngine
 
             Level l = new Level("Stage Test");
             l.Background = Levels[0].Background;
-            l.Tiles = Levels[0].Tiles;
+            l.Tiles = Levels[0].Tiles.ToList();
             l.Tiles.Add(new Tile(Image.FromFile(@"Scene\coin.png"), PhysicalType.Coin, 200, 300, 1, 32, false));
             Levels.Add(l);
         }
@@ -71,7 +71,11 @@ namespace GameEngine
         {
             PrepareLevelClass();
             foreach (var i in Levels[index].Tiles)
+            {
                 i.running = false;
+                i.Visible = true;
+            }
+
             return Levels[index];
         }
         #endregion
@@ -81,6 +85,7 @@ namespace GameEngine
         public Image Background;
         public string Name;
         public List<Tile> Tiles = new List<Tile>();
+        public List<Tile> back_Tiles = new List<Tile>();
         #endregion
         private Level(string Name)
         {
@@ -99,6 +104,11 @@ namespace GameEngine
                 new XmlSerializer(typeof(Level)).Serialize(writer, this);
                 File.WriteAllText(FileLocation, sww.ToString());
             }
+        }
+
+        public void Reset()
+        {
+
         }
 
         #endregion

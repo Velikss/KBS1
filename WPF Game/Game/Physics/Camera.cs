@@ -37,63 +37,70 @@ namespace GameEngine
             {
                 if (render.isActive())
                 {
-                    if (player.Y > 650)
-                        OnFall?.Invoke();
-
-                    //because of gravity being in a diffrent thread it checks if it has to move the camera to keep focus in case of falling etc.
-                    if (Math.Abs(player.Y - Y * -1) > 425 && player.Y <= 470)
-                        Y -= 0.7f;
-                    if (Up)
+                    try
                     {
-                        //check if collision is present otherwise move player to given direction
-                        if (lvl.Tiles.Count(o => o.Y <= player.Y && player.Collide(o) && o.Collidable) == 0)
+                        if (player.Y > 650)
+                            OnFall?.Invoke();
+
+                        //because of gravity being in a diffrent thread it checks if it has to move the camera to keep focus in case of falling etc.
+                        if (Math.Abs(player.Y - Y * -1) > 425 && player.Y <= 470)
+                            Y -= 0.7f;
+                        if (Up)
                         {
-                            if (Math.Abs(player.Y - Y * -1) < 125)
-                                Y += 0.8f;
-                            player.Y -= 0.75f;
+                            //check if collision is present otherwise move player to given direction
+                            if (lvl.Tiles.Count(o => o.Y <= player.Y && player.Collide(o) && o.Collidable) == 0)
+                            {
+                                if (Math.Abs(player.Y - Y * -1) < 125)
+                                    Y += 0.8f;
+                                player.Y -= 0.75f;
+                            }
+                            else
+                            {
+                                player.Y += 1;
+                                Up = false;
+                            }
                         }
-                        else
+
+                        if (Left)
                         {
-                            player.Y += 1;
-                            Up = false;
+                            //check if collision is present otherwise move player to given direction
+                            if (player.X > 0 &&
+                                lvl.Tiles.Count(o => o.X <= player.X && player.Collide(o) && o.Collidable) == 0)
+                            {
+                                if (X + player.X < 250 && X < 0)
+                                    X += 0.45f;
+                                player.X -= 0.45f;
+                            }
+                            else
+                            {
+                                player.X += 1;
+                                Left = false;
+                            }
+                        }
+
+                        if (Right)
+                        {
+                            //check if collision is present otherwise move player to given direction
+                            if (lvl.Tiles.Count(o => o.X >= player.X && player.Collide(o) && o.Collidable) == 0)
+                            {
+                                if (X + player.X > 350)
+                                    X -= 0.45f;
+                                player.X += 0.45f;
+                            }
+                            else
+                            {
+                                player.X -= 1;
+                                Right = false;
+                            }
                         }
                     }
+                    catch
 
-                    if (Left)
                     {
-                        //check if collision is present otherwise move player to given direction
-                        if (player.X > 0 &&
-                            lvl.Tiles.Count(o => o.X <= player.X && player.Collide(o) && o.Collidable) == 0)
-                        {
-                            if (X + player.X < 250 && X < 0)
-                                X += 0.45f;
-                            player.X -= 0.45f;
-                        }
-                        else
-                        {
-                            player.X += 1;
-                            Left = false;
-                        }
                     }
 
-                    if (Right)
-                    {
-                        //check if collision is present otherwise move player to given direction
-                        if (lvl.Tiles.Count(o => o.X >= player.X && player.Collide(o) && o.Collidable) == 0)
-                        {
-                            if (X + player.X > 350)
-                                X -= 0.45f;
-                            player.X += 0.45f;
-                        }
-                        else
-                        {
-                            player.X -= 1;
-                            Right = false;
-                        }
-                    }
+                    Thread.Sleep(1);
                 }
-
-                Thread.Sleep(1);
             }
         }
 
