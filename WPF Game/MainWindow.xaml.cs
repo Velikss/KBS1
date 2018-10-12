@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Threading;
+using System.Windows.Media;
 using BaseEngine;
 using GameEngine;
+using Brushes = System.Drawing.Brushes;
 
 namespace WPF_Game
 {
@@ -34,7 +37,7 @@ namespace WPF_Game
                     gm.level.HighScore.Add(DateTime.Now.ToShortDateString(), CoinCollection);
                     break;
                 case PhysicalType.Coin:
-                    ((Tile)po).Visible = false;
+                    ((Tile) po).Visible = false;
                     CoinCollection++;
                     break;
                 default:
@@ -55,46 +58,59 @@ namespace WPF_Game
             //button sprite
             Image buttonsprite = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/54b2d246e0e35be.png");
             //Buttons
-            MenuButton SinglePlayerBtn = new MenuButton("Singleplayer", new Font("Munro", 25, System.Drawing.FontStyle.Bold), Brushes.Gainsboro,
+            MenuButton SinglePlayerBtn = new MenuButton("Singleplayer",
+                new Font("Munro", 25, System.Drawing.FontStyle.Bold), Brushes.Gainsboro,
                 55, 200, 250,
                 50, buttonsprite);
-            MenuButton HighScoresBtn = new MenuButton("High Scores", new Font("Munro", 25, System.Drawing.FontStyle.Bold), Brushes.Gainsboro,
+            MenuButton HighScoresBtn = new MenuButton("High Scores",
+                new Font("Munro", 25, System.Drawing.FontStyle.Bold), Brushes.Gainsboro,
                 55, 255, 250,
                 50, buttonsprite);
-            MenuButton HighScoreToTitleScrn = new MenuButton("Return to start", new Font("Munro", 25, System.Drawing.FontStyle.Bold), Brushes.Gainsboro,
+            MenuButton HighScoreToTitleScrn = new MenuButton("Return to start",
+                new Font("Munro", 25, System.Drawing.FontStyle.Bold), Brushes.Gainsboro,
                 55, 475, 250,
                 50, buttonsprite);
-            MenuButton ExitBtn = new MenuButton("Exit", new Font("Munro", 25, System.Drawing.FontStyle.Bold), Brushes.Gainsboro,
+            MenuButton ExitBtn = new MenuButton("Exit", new Font("Munro", 25, System.Drawing.FontStyle.Bold),
+                Brushes.Gainsboro,
                 55, 310, 250,
                 50, buttonsprite);
-            MenuButton PauseRestart = new MenuButton("Restart", new Font("Munro", 25, System.Drawing.FontStyle.Bold), Brushes.Gainsboro,
+            MenuButton PauseRestart = new MenuButton("Restart", new Font("Munro", 25, System.Drawing.FontStyle.Bold),
+                Brushes.Gainsboro,
                 800 / 2 - 170, 120, 340,
                 50, buttonsprite);
-            MenuButton PauseLvlOptions = new MenuButton("Level Options", new Font("Munro", 25, System.Drawing.FontStyle.Bold), Brushes.Gainsboro,
+            MenuButton PauseLvlOptions = new MenuButton("Level Options",
+                new Font("Munro", 25, System.Drawing.FontStyle.Bold), Brushes.Gainsboro,
                 800 / 2 - 170, 175, 340,
                 50, buttonsprite);
-            MenuButton PauseToTitleScrn = new MenuButton("Return to start", new Font("Munro", 25, System.Drawing.FontStyle.Bold),
+            MenuButton PauseToTitleScrn = new MenuButton("Return to start",
+                new Font("Munro", 25, System.Drawing.FontStyle.Bold),
                 Brushes.Gainsboro,
                 800 / 2 - 170, 230, 340,
                 50, buttonsprite);
-            MenuButton DeathToTitleScrn = new MenuButton("Return to start", new Font("Munro", 25, System.Drawing.FontStyle.Bold),
+            MenuButton DeathToTitleScrn = new MenuButton("Return to start",
+                new Font("Munro", 25, System.Drawing.FontStyle.Bold),
                 Brushes.Gainsboro,
                 800 / 2 - 170, 230, 340,
                 50, buttonsprite);
-            MenuButton VictoryToTitleScrn = new MenuButton("Return to start", new Font("Munro", 25, System.Drawing.FontStyle.Bold),
+            MenuButton VictoryToTitleScrn = new MenuButton("Return to start",
+                new Font("Munro", 25, System.Drawing.FontStyle.Bold),
                 Brushes.Gainsboro,
                 800 / 2 - 170, 350, 340,
                 50, buttonsprite);
-            MenuButton DeathLvlOptions = new MenuButton("Level Options", new Font("Munro", 25, System.Drawing.FontStyle.Bold), Brushes.Gainsboro,
+            MenuButton DeathLvlOptions = new MenuButton("Level Options",
+                new Font("Munro", 25, System.Drawing.FontStyle.Bold), Brushes.Gainsboro,
                 800 / 2 - 170, 175, 340,
                 50, buttonsprite);
-            MenuButton DeathRestart = new MenuButton("Restart", new Font("Munro", 25, System.Drawing.FontStyle.Bold), Brushes.Gainsboro,
+            MenuButton DeathRestart = new MenuButton("Restart", new Font("Munro", 25, System.Drawing.FontStyle.Bold),
+                Brushes.Gainsboro,
                 800 / 2 - 170, 120, 340,
                 50, buttonsprite);
-            MenuButton VictoryRestart = new MenuButton("Restart", new Font("Munro", 25, System.Drawing.FontStyle.Bold), Brushes.Gainsboro,
+            MenuButton VictoryRestart = new MenuButton("Restart", new Font("Munro", 25, System.Drawing.FontStyle.Bold),
+                Brushes.Gainsboro,
                 800 / 2 - 170, 405, 340,
                 50, buttonsprite);
-            MenuButton StartGame = new MenuButton("Start Game", new Font("Munro", 25, System.Drawing.FontStyle.Bold), Brushes.Gainsboro,
+            MenuButton StartGame = new MenuButton("Start Game", new Font("Munro", 25, System.Drawing.FontStyle.Bold),
+                Brushes.Gainsboro,
                 800 / 2 - 170, 340, 340,
                 50, buttonsprite);
             MenuButton PreviousCharacter = new MenuButton("<", new Font("Calibri", 26), Brushes.Gainsboro,
@@ -109,7 +125,8 @@ namespace WPF_Game
             MenuButton NextLevel = new MenuButton(">", new Font("Calibri", 26), Brushes.Gainsboro,
                 800 / 2 + 145, 100, 25,
                 75, buttonsprite);
-            MenuButton LevelOptionsToTitleScrn = new MenuButton("Return to start", new Font("Munro", 25, System.Drawing.FontStyle.Bold),
+            MenuButton LevelOptionsToTitleScrn = new MenuButton("Return to start",
+                new Font("Munro", 25, System.Drawing.FontStyle.Bold),
                 Brushes.Gainsboro,
                 800 / 2 - 170, 395, 340,
                 50, buttonsprite);
@@ -124,12 +141,14 @@ namespace WPF_Game
                 Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/menu-background.jpg"));
             //Texts
             MenuText PauseText =
-                new MenuText("Pause", new Font("ArcadeClassic", 60), Brushes.White) { y = 50 };
+                new MenuText("Pause", new Font("ArcadeClassic", 60), Brushes.White) {y = 50};
             MenuText DeadText =
-                new MenuText("GAME  OVER", new Font("ArcadeClassic", 60), Brushes.White) { y = 50 };
+                new MenuText("GAME  OVER", new Font("ArcadeClassic", 60), Brushes.White) {y = 50};
             MenuText VictoryText =
-                new MenuText("Victory", new Font("ArcadeClassic", 60), Brushes.White) { y = 120 };
-            VictoryHighScoreText = new MenuText("Score: " + CoinCollection.ToString(), new Font("ArcadeClassic", 60), Brushes.White) { y = 180 };
+                new MenuText("Victory", new Font("ArcadeClassic", 60), Brushes.White) {y = 120};
+            VictoryHighScoreText =
+                new MenuText("Score: " + CoinCollection.ToString(), new Font("ArcadeClassic", 60), Brushes.White)
+                    {y = 180};
             MenuText CharacterName = new MenuText(Player.CharacterNames[Player.Character_index],
                 new Font("Calibri", 32, System.Drawing.FontStyle.Bold),
                 Brushes.DarkSlateGray, 800 / 2 - 55, 600 / 2 - 34);
@@ -137,11 +156,11 @@ namespace WPF_Game
                 new Font("Calibri", 32, System.Drawing.FontStyle.Bold),
                 Brushes.DarkSlateGray, 800 / 2 - 55, 115);
             MenuText SelectLevel =
-                new MenuText("Select  Level", new Font("ArcadeClassic", 40), Brushes.White) { y = 50 };
+                new MenuText("Select  Level", new Font("ArcadeClassic", 40), Brushes.White) {y = 50};
             MenuText SelectCharacter =
                 new MenuText("Select  Character", new Font("ArcadeClassic", 40),
-                    Brushes.White)
-                { y = 200 };
+                        Brushes.White)
+                    {y = 200};
             //Images
             MenuImage CharacterSprite = new MenuImage(800 / 2 - 132, 262, 48, 48,
                 Image.FromFile("Animations/" + Player.CharacterNames[Player.Character_index] + "/normal.gif"), true);
@@ -256,19 +275,28 @@ namespace WPF_Game
                 Menus[MenuType.TitleScreen].Activate();
             };
             //adds to Menu's
-            Menus.Add(MenuType.TitleScreen, new Menu(ref gm.screen, new List<MenuItem> { SinglePlayerBtn, HighScoresBtn, ExitBtn },
+            Menus.Add(MenuType.TitleScreen, new Menu(ref gm.screen,
+                new List<MenuItem> {SinglePlayerBtn, HighScoresBtn, ExitBtn},
                 Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/Title.gif")));
-            Menus.Add(MenuType.HighScoreScreen, new Menu(ref gm.screen, new List<MenuItem> { HighScoreToTitleScrn, LevelSpriteBack, LevelTitleBack, PreviousLevel, NextLevel, LevelName, LevelSprite },
+            Menus.Add(MenuType.HighScoreScreen, new Menu(ref gm.screen,
+                new List<MenuItem>
+                {
+                    HighScoreToTitleScrn, LevelSpriteBack, LevelTitleBack, PreviousLevel, NextLevel, LevelName,
+                    LevelSprite
+                },
                 Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/HighScores.gif")));
             Menus.Add(MenuType.Pause, new Menu(ref gm.screen,
-                new List<MenuItem> { OverlayPanel, PauseText, PauseToTitleScrn, PauseRestart, PauseLvlOptions },
+                new List<MenuItem> {OverlayPanel, PauseText, PauseToTitleScrn, PauseRestart, PauseLvlOptions},
                 null));
             Menus.Add(MenuType.Death, new Menu(ref gm.screen,
-                new List<MenuItem> { OverlayPanel, DeadText, DeathToTitleScrn, DeathRestart, DeathLvlOptions },
+                new List<MenuItem> {OverlayPanel, DeadText, DeathToTitleScrn, DeathRestart, DeathLvlOptions},
                 null));
             Menus.Add(MenuType.Completed, new Menu(ref gm.screen,
-               new List<MenuItem> { OverlayPanel, VictorySprite, VictoryText, VictoryHighScoreText, VictoryToTitleScrn, VictoryRestart },
-               null));
+                new List<MenuItem>
+                {
+                    OverlayPanel, VictorySprite, VictoryText, VictoryHighScoreText, VictoryToTitleScrn, VictoryRestart
+                },
+                null));
             Menus.Add(MenuType.LevelOptions, new Menu(ref gm.screen,
                 new List<MenuItem>
                 {

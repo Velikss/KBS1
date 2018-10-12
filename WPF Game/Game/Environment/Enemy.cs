@@ -35,6 +35,8 @@ namespace GameEngine
         {
             while (renderer.isActive())
             {
+                Console.WriteLine("Active");
+                X++;
                 Thread.Sleep(100);
             }
         }

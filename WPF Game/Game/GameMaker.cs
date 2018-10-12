@@ -37,10 +37,12 @@ namespace GameEngine
             Gravity.Dispose();
             Gravity.EnableGravity(ref level, ref game_render);
             Gravity.EnableGravityOnObject(player);
-            foreach(var enemy in level.Enemies)
-                enemy.Start(ref game_render, ref player);
             if (StartGame)
+            {
                 game_render.Activate();
+                foreach (var enemy in level.Enemies)
+                    enemy.Start(ref game_render, ref player);
+            }
         }
 
         #endregion
