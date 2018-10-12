@@ -8,7 +8,7 @@ namespace GameEngine
     public class Enemy : PhysicalObject
     {
         #region variables
-        
+
         private int stopFollowingAt;
         public bool activated = true;
         private GameRenderer renderer;
@@ -28,6 +28,7 @@ namespace GameEngine
             baseX = x;
             baseY = y;
             Sprite = Image.FromFile("Levels/enemy.gif");
+            physicalType = PhysicalType.Enemy;
         }
 
         #region Methods
@@ -70,6 +71,7 @@ namespace GameEngine
                         if ((player.X < X + 10) && (player.X > X - 10) && (player.Y < Y + 10) && (player.Y > Y - 10))
                         {
                             Sprite = Image.FromFile("Levels/explode.gif");
+                            base.Invoke();
                         }
                     }
                 }
