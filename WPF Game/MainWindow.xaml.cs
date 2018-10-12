@@ -77,8 +77,11 @@ namespace WPF_Game
             MenuButton SinglePlayerBtn = new MenuButton("Singleplayer", new Font("Munro", 25, System.Drawing.FontStyle.Bold), Brushes.Gainsboro,
                 55, 200, 250,
                 50, buttonsprite);
-            MenuButton ExitBtn = new MenuButton("Exit", new Font("Munro", 25, System.Drawing.FontStyle.Bold), Brushes.Gainsboro,
+            MenuButton HighScoresBtn = new MenuButton("High Scores", new Font("Munro", 25, System.Drawing.FontStyle.Bold), Brushes.Gainsboro,
                 55, 255, 250,
+                50, buttonsprite);
+            MenuButton ExitBtn = new MenuButton("Exit", new Font("Munro", 25, System.Drawing.FontStyle.Bold), Brushes.Gainsboro,
+                55, 310, 250,
                 50, buttonsprite);
             MenuButton PauseRestart = new MenuButton("Restart", new Font("Munro", 25, System.Drawing.FontStyle.Bold), Brushes.Gainsboro,
                 800 / 2 - 170, 120, 340,
@@ -257,7 +260,7 @@ namespace WPF_Game
                 Menus[MenuType.TitleScreen].Activate();
             };
             //adds to Menu's
-            Menus.Add(MenuType.TitleScreen, new Menu(ref gm.screen, new List<MenuItem> { SinglePlayerBtn, ExitBtn },
+            Menus.Add(MenuType.TitleScreen, new Menu(ref gm.screen, new List<MenuItem> { SinglePlayerBtn, HighScoresBtn, ExitBtn },
                 Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/Title.gif")));
             Menus.Add(MenuType.Pause, new Menu(ref gm.screen,
                 new List<MenuItem> { OverlayPanel, PauseText, PauseToTitleScrn, PauseRestart, PauseLvlOptions },
