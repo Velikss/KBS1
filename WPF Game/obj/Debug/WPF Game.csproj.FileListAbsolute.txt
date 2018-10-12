@@ -123,3 +123,18 @@ C:\Users\usr\Documents\GitHub\Runch\WPF Game\obj\Debug\WPF Game.csproj.CoreCompi
 C:\Users\usr\Documents\GitHub\Runch\WPF Game\obj\Debug\WPF Game.csproj.CopyComplete
 C:\Users\usr\Documents\GitHub\Runch\WPF Game\obj\Debug\WPF Game.exe
 C:\Users\usr\Documents\GitHub\Runch\WPF Game\obj\Debug\WPF Game.pdb
+C:\Users\Buste\OneDrive\Documenten\GitHub\SE1-KBS1\WPF Game\bin\Debug\WPF Game.exe.config
+C:\Users\Buste\OneDrive\Documenten\GitHub\SE1-KBS1\WPF Game\bin\Debug\WPF Game.exe
+C:\Users\Buste\OneDrive\Documenten\GitHub\SE1-KBS1\WPF Game\bin\Debug\WPF Game.pdb
+C:\Users\Buste\OneDrive\Documenten\GitHub\SE1-KBS1\WPF Game\obj\Debug\WPF Game.csprojAssemblyReference.cache
+C:\Users\Buste\OneDrive\Documenten\GitHub\SE1-KBS1\WPF Game\obj\Debug\MainWindow.baml
+C:\Users\Buste\OneDrive\Documenten\GitHub\SE1-KBS1\WPF Game\obj\Debug\MainWindow.g.cs
+C:\Users\Buste\OneDrive\Documenten\GitHub\SE1-KBS1\WPF Game\obj\Debug\App.g.cs
+C:\Users\Buste\OneDrive\Documenten\GitHub\SE1-KBS1\WPF Game\obj\Debug\WPF Game_MarkupCompile.cache
+C:\Users\Buste\OneDrive\Documenten\GitHub\SE1-KBS1\WPF Game\obj\Debug\WPF Game.g.resources
+C:\Users\Buste\OneDrive\Documenten\GitHub\SE1-KBS1\WPF Game\obj\Debug\WPF_Game.Properties.Resources.resources
+C:\Users\Buste\OneDrive\Documenten\GitHub\SE1-KBS1\WPF Game\obj\Debug\WPF Game.csproj.GenerateResource.cache
+C:\Users\Buste\OneDrive\Documenten\GitHub\SE1-KBS1\WPF Game\obj\Debug\WPF Game.csproj.CoreCompileInputs.cache
+C:\Users\Buste\OneDrive\Documenten\GitHub\SE1-KBS1\WPF Game\obj\Debug\WPF Game.csproj.CopyComplete
+C:\Users\Buste\OneDrive\Documenten\GitHub\SE1-KBS1\WPF Game\obj\Debug\WPF Game.exe
+C:\Users\Buste\OneDrive\Documenten\GitHub\SE1-KBS1\WPF Game\obj\Debug\WPF Game.pdb

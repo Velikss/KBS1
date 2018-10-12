@@ -61,6 +61,9 @@ namespace WPF_Game
             MenuButton HighScoresBtn = new MenuButton("High Scores", new Font("Munro", 25, System.Drawing.FontStyle.Bold), Brushes.Gainsboro,
                 55, 255, 250,
                 50, buttonsprite);
+            MenuButton HighScoreToTitleScrn = new MenuButton("Return to start", new Font("Munro", 25, System.Drawing.FontStyle.Bold), Brushes.Gainsboro,
+                55, 475, 250,
+                50, buttonsprite);
             MenuButton ExitBtn = new MenuButton("Exit", new Font("Munro", 25, System.Drawing.FontStyle.Bold), Brushes.Gainsboro,
                 55, 310, 250,
                 50, buttonsprite);
@@ -230,6 +233,11 @@ namespace WPF_Game
                 Menus[MenuType.Pause].Deactivate();
                 gm.StartLevel(true);
             };
+            HighScoresBtn.Clicked += delegate
+            {
+                Menus[MenuType.TitleScreen].Deactivate();
+                Menus[MenuType.HighScoreScreen].Activate();
+            };
             PauseLvlOptions.Clicked += delegate
             {
                 Menus[MenuType.Pause].Deactivate();
@@ -240,8 +248,15 @@ namespace WPF_Game
                 Menus[MenuType.Pause].Deactivate();
                 Menus[MenuType.TitleScreen].Activate();
             };
+            HighScoreToTitleScrn.Clicked += delegate
+            {
+                Menus[MenuType.HighScoreScreen].Deactivate();
+                Menus[MenuType.TitleScreen].Activate();
+            };
             //adds to Menu's
             Menus.Add(MenuType.TitleScreen, new Menu(ref gm.screen, new List<MenuItem> { SinglePlayerBtn, HighScoresBtn, ExitBtn },
+                Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/Title.gif")));
+            Menus.Add(MenuType.HighScoreScreen, new Menu(ref gm.screen, new List<MenuItem> { HighScoreToTitleScrn },
                 Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/Title.gif")));
             Menus.Add(MenuType.Pause, new Menu(ref gm.screen,
                 new List<MenuItem> { OverlayPanel, PauseText, PauseToTitleScrn, PauseRestart, PauseLvlOptions },
