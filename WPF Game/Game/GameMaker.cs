@@ -37,6 +37,7 @@ namespace GameEngine
             Gravity.Dispose();
             Gravity.EnableGravity(ref level, ref game_render);
             Gravity.EnableGravityOnObject(player);
+            level.Enemies.Add(new Enemy(100, 100, 1200, ref camera));
             if (StartGame)
                 game_render.Activate();
         }

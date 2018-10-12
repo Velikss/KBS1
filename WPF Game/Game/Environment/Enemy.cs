@@ -4,14 +4,11 @@ using System.Threading;
 
 namespace GameEngine
 {
-    public class Enemy
+    public class Enemy : PhysicalObject
     {
 
         #region variables
 
-        private int x;
-        public int y;
-        private Image sprite;
         private int stopFollowingAt; //Location Y from visible -until player.Y + (stopFollowingAt + remaining space to the right of the screen)
         private bool visible;
         private Camera camera;
@@ -19,21 +16,16 @@ namespace GameEngine
 
         #endregion
 
-        public Enemy(int x, int y, Image sprite, int stopFollowingAt)
+        public Enemy(int x, int y, int stopFollowingAt, ref Camera cam)
         {
-            this.x = x;
-            this.y = y;
-            this.sprite = sprite;
             this.stopFollowingAt = stopFollowingAt;
-        }
-
-
-        public void Initialize(ref Camera cam)
-        {
+            X = x;
+            Y = y;
             camera = cam;
             normal = Image.FromFile("Animations/enemy/enemy.gif");
+            Sprite = normal;
             normal_L = Image.FromFile("Animations/enemy/enemy_L.gif");
-            new Thread(EnemyAnimation).Start();
+            //new Thread(EnemyAnimation).Start();
         }
 
         private void EnemyAnimation()
@@ -76,7 +68,31 @@ namespace GameEngine
                 Thread.Sleep(100);
             }
         }
+        
+    }
+    
+    public class EnemyAi : PhysicalObject
+    {
 
-        public Image Sprite { get; set; }
+        #region Methods
+        
+        private void EnemyAI_Thread()
+        {
+         
+            while (true)
+            {
+                
+                
+                Thread.Sleep(100);
+            }
+        }
+
+        public void Start(ref GameRenderer render)
+        {
+            new Thread(EnemyAI_Thread).Start();
+        }
+        
+        #endregion
+        
     }
 }

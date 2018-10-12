@@ -124,3 +124,18 @@ C:\Users\usr\Documents\GitHub\Runch\WPF Game\obj\Debug\WPF Game.csproj.CoreCompi
 C:\Users\usr\Documents\GitHub\Runch\WPF Game\obj\Debug\WPF Game.csproj.CopyComplete
 C:\Users\usr\Documents\GitHub\Runch\WPF Game\obj\Debug\WPF Game.exe
 C:\Users\usr\Documents\GitHub\Runch\WPF Game\obj\Debug\WPF Game.pdb
+C:\code\runch42\Runch\WPF Game\bin\Debug\WPF Game.exe.config
+C:\code\runch42\Runch\WPF Game\bin\Debug\WPF Game.exe
+C:\code\runch42\Runch\WPF Game\bin\Debug\WPF Game.pdb
+C:\code\runch42\Runch\WPF Game\obj\Debug\WPF Game.csprojAssemblyReference.cache
+C:\code\runch42\Runch\WPF Game\obj\Debug\MainWindow.baml
+C:\code\runch42\Runch\WPF Game\obj\Debug\MainWindow.g.cs
+C:\code\runch42\Runch\WPF Game\obj\Debug\App.g.cs
+C:\code\runch42\Runch\WPF Game\obj\Debug\WPF Game_MarkupCompile.cache
+C:\code\runch42\Runch\WPF Game\obj\Debug\WPF Game.g.resources
+C:\code\runch42\Runch\WPF Game\obj\Debug\WPF_Game.Properties.Resources.resources
+C:\code\runch42\Runch\WPF Game\obj\Debug\WPF Game.csproj.GenerateResource.cache
+C:\code\runch42\Runch\WPF Game\obj\Debug\WPF Game.csproj.CoreCompileInputs.cache
+C:\code\runch42\Runch\WPF Game\obj\Debug\WPF Game.csproj.CopyComplete
+C:\code\runch42\Runch\WPF Game\obj\Debug\WPF Game.exe
+C:\code\runch42\Runch\WPF Game\obj\Debug\WPF Game.pdb
