@@ -41,7 +41,7 @@ namespace WPF_Game
                 case PhysicalType.EndFlag:
                     gm.game_render.Deactivate();
                     //Next Level Menu//TODO
-                    gm.Menus[MenuType.Death].Activate();
+                    gm.Menus[MenuType.Completed].Activate();
                     break;
                 case PhysicalType.Coin:
                     try
