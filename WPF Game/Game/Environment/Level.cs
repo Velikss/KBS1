@@ -49,7 +49,6 @@ namespace GameEngine
             l.Background = Levels[0].Background;
             l.Tiles = Levels[0].Tiles.ToList();
             l.Tiles.Add(new Tile(Image.FromFile(@"Scene\coin.png"), PhysicalType.Coin, 200, 300, 1, 32, false));
-            
             Levels.Add(l);
         }
         private static Level Load(string File)

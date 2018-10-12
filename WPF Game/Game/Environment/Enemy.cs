@@ -12,6 +12,7 @@ namespace GameEngine
         private int stopFollowingAt; //Location Y from visible -until player.Y + (stopFollowingAt + remaining space to the right of the screen)
         private bool visible;
         private Camera camera;
+        private int circleSize;
 
         #endregion
 
@@ -22,6 +23,7 @@ namespace GameEngine
             Y = y;
             camera = cam;
             Sprite = Image.FromFile("Levels/enemy.gif");
+            circleSize = 300;
         }
         
     }
