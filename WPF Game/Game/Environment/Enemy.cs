@@ -7,12 +7,15 @@ namespace GameEngine
 {
     public class Enemy : PhysicalObject
     {
-
         #region variables
 
-        private int stopFollowingAt; //Location Y from visible -until player.Y + (stopFollowingAt + remaining space to the right of the screen)
+        private int
+            stopFollowingAt; //Location Y from visible -until player.Y + (stopFollowingAt + remaining space to the right of the screen)
+
 //        private int circleSize;
-        public bool activated;
+        public bool activated = true;
+        private GameRenderer renderer;
+        private Player player;
 
         #endregion
 
@@ -24,30 +27,25 @@ namespace GameEngine
             Y = y;
             Sprite = Image.FromFile("Levels/enemy.gif");
 //            circleSize = 300;
-            new Thread(EnemyAI_Thread).Start();
         }
-       
+
         #region Methods
-        
+
         private void EnemyAI_Thread()
         {
-         
-            if(activated) {
-                while (true)
-                {
-                    Console.WriteLine("abc2");
-                    
-                    Thread.Sleep(100);
-                }
+            while (renderer.isActive())
+            {
+                Thread.Sleep(100);
             }
         }
 
-        public void Start(ref GameRenderer render)
+        public void Start(ref GameRenderer render, ref Player player)
         {
+            this.renderer = render;
+            this.player = player;
             new Thread(EnemyAI_Thread).Start();
         }
-        
+
         #endregion
-        
     }
 }
