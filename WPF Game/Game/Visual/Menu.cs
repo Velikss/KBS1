@@ -12,6 +12,7 @@ namespace GameEngine
     public enum MenuType
     {
         TitleScreen,
+        HighScoreScreen,
         LevelOptions,
         Options,
         Death,
