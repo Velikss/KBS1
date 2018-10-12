@@ -55,6 +55,14 @@ namespace WPF_Game
                     ((Tile) po).Visible = false;
                     CoinCollection++;
                     break;
+                case PhysicalType.Enemy:
+                    gm.movement.DisableKeys();
+                    Dispatcher.Invoke(() => AudioPlayer.Play("on_dead"));
+                    Thread.Sleep(1000);
+                    gm.game_render.Deactivate();
+                    gm.Menus[MenuType.Death].Activate();
+                    break;
+                    
                 default:
                     po.running = false;
                     break;

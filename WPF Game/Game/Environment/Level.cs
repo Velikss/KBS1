@@ -37,6 +37,8 @@ namespace GameEngine
                 Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/ground-side.gif"));
             Sprites.Add(PhysicalType.GroundSideRight,
                 Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/ground-side-right.gif"));
+            Sprites.Add(PhysicalType.Enemy,
+                Image.FromFile("Levels/enemy.gif"));
             LevelClassPrepared = true;
         }
         public static void LoadLevels(string Dir)
