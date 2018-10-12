@@ -10,6 +10,8 @@ namespace WPF_Game
     public partial class MainWindow
     {
         private readonly GameMaker gm;
+        public int CoinCollection;
+        public MenuText VictoryHighScoreText;
 
         public MainWindow()
         {
@@ -26,16 +28,19 @@ namespace WPF_Game
             switch (po.physicalType)
             {
                 case PhysicalType.Lava:
-                    (new AudioPlayer(@"C:\Users\usr\Documents\GitHub\Runch\WPF Game\bin\Debug\Music\on_enemy_kill.wav",
+                    (new AudioPlayer(AppDomain.CurrentDomain.BaseDirectory + @"Music\on_enemy_kill.wav",
                         0.4f, ref po, false)).Play();
                     break;
                 case PhysicalType.EndFlag:
                     gm.game_render.Deactivate();
+                    VictoryHighScoreText.Content = "Score: " + CoinCollection.ToString();
                     gm.Menus[MenuType.Completed].Activate();
+                    gm.level.HighScore.Add(DateTime.Now.ToShortDateString(), CoinCollection);
                     break;
                 case PhysicalType.Coin:
-                    ((Tile) po).Visible = false;
-                    //point up
+                    ((Tile)po).Visible = false;
+                    (new AudioPlayer(AppDomain.CurrentDomain.BaseDirectory + @"Music\coin.wav", 0.8f, ref po, false)).Play();
+                    CoinCollection++;
                     break;
                 default:
                     po.running = false;
@@ -126,6 +131,7 @@ namespace WPF_Game
                 new MenuText("GAME  OVER", new Font("ArcadeClassic", 60), Brushes.White) { y = 50 };
             MenuText VictoryText =
                 new MenuText("Victory", new Font("ArcadeClassic", 60), Brushes.White) { y = 120 };
+            VictoryHighScoreText = new MenuText("Score: " + CoinCollection.ToString(), new Font("ArcadeClassic", 60), Brushes.White) { y = 180 };
             MenuText CharacterName = new MenuText(Player.CharacterNames[Player.Character_index],
                 new Font("Calibri", 32, System.Drawing.FontStyle.Bold),
                 Brushes.DarkSlateGray, 800 / 2 - 55, 600 / 2 - 34);
@@ -193,6 +199,7 @@ namespace WPF_Game
             {
                 Menus[MenuType.LevelOptions].Deactivate();
                 gm.StartLevel(true);
+                CoinCollection = 0;
             };
             DeathLvlOptions.Clicked += delegate
             {
@@ -250,7 +257,7 @@ namespace WPF_Game
                 new List<MenuItem> { OverlayPanel, DeadText, DeathToTitleScrn, DeathRestart, DeathLvlOptions },
                 null));
             Menus.Add(MenuType.Completed, new Menu(ref gm.screen,
-               new List<MenuItem> { OverlayPanel, VictorySprite, VictoryText, VictoryToTitleScrn, VictoryRestart },
+               new List<MenuItem> { OverlayPanel, VictorySprite, VictoryText, VictoryHighScoreText, VictoryToTitleScrn, VictoryRestart },
                null));
             Menus.Add(MenuType.LevelOptions, new Menu(ref gm.screen,
                 new List<MenuItem>
