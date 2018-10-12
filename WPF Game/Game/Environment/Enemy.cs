@@ -16,6 +16,7 @@ namespace GameEngine
         public bool activated = true;
         private GameRenderer renderer;
         private Player player;
+        private bool inFOV;
 
         #endregion
 
@@ -35,9 +36,33 @@ namespace GameEngine
         {
             while (renderer.isActive())
             {
-                Console.WriteLine("Active");
-                X++;
-                Thread.Sleep(100);
+                if (player.X > X - 300)
+                {
+                    inFOV = true;
+                } 
+                
+                if(inFOV){
+                    if (player.X < X)
+                    {
+                        X = X + 2;
+                    }
+    
+                    if (player.X > X)
+                    {
+                        X = X + 2;
+                    }
+    
+                    if (player.Y > Y)
+                    {
+                        Y++;
+                    }
+    
+                    if (player.Y < Y)
+                    {
+                        Y--;
+                    }
+                }
+                Thread.Sleep(12);
             }
         }
 
