@@ -112,7 +112,6 @@ C:\Users\usr\Documents\GitHub\Runch\WPF Game\bin\Debug\WPF Game.exe.config
 C:\Users\usr\Documents\GitHub\Runch\WPF Game\bin\Debug\WPF Game.exe
 C:\Users\usr\Documents\GitHub\Runch\WPF Game\bin\Debug\WPF Game.pdb
 C:\Users\usr\Documents\GitHub\Runch\WPF Game\bin\Debug\NAudio.dll
-C:\Users\usr\Documents\GitHub\Runch\WPF Game\obj\Debug\WPF Game.csprojAssemblyReference.cache
 C:\Users\usr\Documents\GitHub\Runch\WPF Game\obj\Debug\MainWindow.baml
 C:\Users\usr\Documents\GitHub\Runch\WPF Game\obj\Debug\MainWindow.g.cs
 C:\Users\usr\Documents\GitHub\Runch\WPF Game\obj\Debug\App.g.cs
