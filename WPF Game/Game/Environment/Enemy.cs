@@ -8,8 +8,7 @@ namespace GameEngine
     public class Enemy : PhysicalObject
     {
         #region variables
-
-        private int
+        
         private int stopFollowingAt;
         public bool activated = true;
         private GameRenderer renderer;
