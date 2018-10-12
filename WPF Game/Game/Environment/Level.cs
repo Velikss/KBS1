@@ -17,6 +17,8 @@ namespace GameEngine
         private static bool LevelClassPrepared;
         public static readonly List<Level> Levels = new List<Level>();
         public static int Level_index;
+        [XmlIgnore] public Dictionary<string, int> HighScore = new Dictionary<string, int>();
+
         #endregion
         #region Methods
         private Level(){}
