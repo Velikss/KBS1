@@ -26,7 +26,7 @@ namespace GameEngine
         #region Methods
         public bool Collide(PhysicalObject po)
         {
-            if (new Rectangle((int) X + 4, (int) Y + 4, Width - 8, Height - 4).IntersectsWith(po.collision))
+            if (new Rectangle((int) X+ 4, (int) Y, Width - 8, Height).IntersectsWith(po.collision))
             {
                 po.Invoke();
                 if (po.Collidable)
