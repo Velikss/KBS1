@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Threading;
 
@@ -7,19 +5,6 @@ namespace GameEngine
 {
     public class Enemy : PhysicalObject
     {
-        #region variables
-
-        private int stopFollowingAt;
-        public bool activated = true;
-        private GameRenderer renderer;
-        private Player player;
-        private bool inFOV = false;
-        private bool audioPlayed = false;
-        private int baseX;
-        private int baseY;
-
-        #endregion
-
         public Enemy(int x, int y, int stopFollowingAt)
         {
             this.stopFollowingAt = stopFollowingAt;
@@ -31,72 +16,64 @@ namespace GameEngine
             physicalType = PhysicalType.Enemy;
         }
 
+        #region variables
+
+        private readonly int stopFollowingAt;
+        private GameRenderer renderer;
+        private Player player;
+        private readonly int baseX;
+        private readonly int baseY;
+
+        #endregion
+
         #region Methods
 
         private void EnemyAI_Thread()
         {
             while (renderer.isActive())
             {
-                if (X < stopFollowingAt)
+                if (player.X < X + stopFollowingAt && player.X > X - stopFollowingAt)
                 {
-                
-                    if ((player.X < X + 300) && (player.X > X - 300) && audioPlayed == false)
-                    {
-                        inFOV = true;
-                        //TODO: Play "Get your ass back here"
-                        audioPlayed = true;
-                    }
-                    
-                    if(inFOV){
-                        if (player.X < X)
-                        {
-                            X = X - 2;
-                        }
-        
-                        if (player.X > X)
-                        {
-                            X = X + 2;
-                        }
-        
-                        if (player.Y > Y)
-                        {
-                            Y++;
-                        }
-        
-                        if (player.Y < Y)
-                        {
-                            Y--;
-                        }
+                    //TODO: Play "Get your ass back here"
+                    if (player.X < X)
+                        X = X - 2;
 
-                        if ((player.X < X + 10) && (player.X > X - 10) && (player.Y < Y + 10) && (player.Y > Y - 10))
-                        {
-                            Sprite = Image.FromFile("Levels/explode.gif");
-                            base.Invoke();
-                        }
+                    if (player.X > X)
+                        X = X + 2;
+
+                    if (player.Y > Y)
+                        Y++;
+
+                    if (player.Y < Y)
+                        Y--;
+
+                    if (player.X < X + 10 && player.X > X - 10 && player.Y < Y + 10 && player.Y > Y - 10)
+                    {
+                        Sprite = Image.FromFile("Levels/explode.gif");
+                        Invoke();
                     }
                 }
                 else
                 {
-                    X = baseX;
-                    Y = baseY;
-                    audioPlayed = false;
-                    inFOV = false;
+                    if (X > baseX)
+                        X -= 2;
+                    if (X < baseX)
+                        X += 2;
+                    if (Y > baseY)
+                        Y -= 2;
+                    if (Y < baseY)
+                        Y += 2;
                 }
-                Thread.Sleep(12);
+
+                Thread.Sleep(10);
             }
-                
         }
 
-        public void Start(ref GameRenderer render, ref Player player)
+        public void Start(ref GameRenderer renderer, ref Player player)
         {
-            this.renderer = render;
+            this.renderer = renderer;
             this.player = player;
             new Thread(EnemyAI_Thread).Start();
-        }
-
-        public void Reset()
-        {
-            
         }
 
         #endregion

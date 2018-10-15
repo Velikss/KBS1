@@ -7,11 +7,11 @@ namespace GameEngine
 {
     public class GameRenderer : Renderer
     {
-        private readonly Player player;
         private readonly Camera camera;
+        private readonly Player player;
         private Level level;
 
-        public GameRenderer(ref Screen screen, ref Player player, ref Camera camera, ref Level level):base(ref screen)
+        public GameRenderer(ref Screen screen, ref Player player, ref Camera camera, ref Level level) : base(ref screen)
         {
             this.player = player;
             this.camera = camera;
@@ -37,13 +37,14 @@ namespace GameEngine
                                 //draw all tiles within view of camera, #better performance
                                 foreach (var Enemy in level.Enemies)
                                     backend.DrawImage(Enemy.Sprite, camera.X + Enemy.X, camera.Y + Enemy.Y);
-                                foreach (var tile in level.Tiles.Where(o => o.Visible && o.X + o.Width >= camera.X * -1 &&
-                                                                               o.X <= camera.X * -1 +
-                                                                               screen.Screen_Width &&
-                                                                               o.Y + o.Height >= camera.Y * -1 &&
-                                                                               o.Y + o.Height <=
-                                                                               camera.Y * -1 + screen.Screen_Height &&
-                                                                               o.Sprite != null))
+                                foreach (var tile in level.Tiles.Where(o =>
+                                    o.Visible && o.X + o.Width >= camera.X * -1 &&
+                                    o.X <= camera.X * -1 +
+                                    screen.Screen_Width &&
+                                    o.Y + o.Height >= camera.Y * -1 &&
+                                    o.Y + o.Height <=
+                                    camera.Y * -1 + screen.Screen_Height &&
+                                    o.Sprite != null))
                                     backend.DrawImage(tile.Sprite, camera.X + tile.X, camera.Y + tile.Y);
                                 //draw backend to frontend
                                 lock (screen.screen_buffer)
@@ -67,7 +68,9 @@ namespace GameEngine
         public void ChangeLevelData(Level l)
         {
             lock (level)
+            {
                 level = l;
+            }
         }
     }
 }

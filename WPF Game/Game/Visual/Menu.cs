@@ -5,7 +5,6 @@ using System.Linq;
 using System.Threading;
 using System.Windows.Input;
 using BaseEngine;
-using Point = System.Drawing.Point;
 
 namespace GameEngine
 {
@@ -23,14 +22,6 @@ namespace GameEngine
 
     public class Menu : Renderer
     {
-        #region Variables
-
-        private readonly List<MenuItem> items;
-        private readonly bool overlay;
-        private Image background;
-
-        #endregion
-
         public Menu(ref Screen screen, List<MenuItem> items, Image background) : base(ref screen)
         {
             this.items = items;
@@ -39,6 +30,14 @@ namespace GameEngine
             else
                 overlay = true;
         }
+
+        #region Variables
+
+        private readonly List<MenuItem> items;
+        private readonly bool overlay;
+        private Image background;
+
+        #endregion
 
         #region Methods
 
@@ -67,14 +66,16 @@ namespace GameEngine
                                             var ratioY = mi.Height / (double) mi.Sprite.Height;
                                             var ratio = ratioX < ratioY ? ratioX : ratioY;
                                             backend.DrawImage(mi.Sprite,
-                                                Convert.ToInt32(mi.x + ((mi.Width - mi.Sprite.Width * ratio) / 2)),
-                                                Convert.ToInt32(mi.y + ((mi.Height - mi.Sprite.Height * ratio) / 2)),
+                                                Convert.ToInt32(mi.x + (mi.Width - mi.Sprite.Width * ratio) / 2),
+                                                Convert.ToInt32(mi.y + (mi.Height - mi.Sprite.Height * ratio) / 2),
                                                 Convert.ToInt32(mi.Sprite.Width * ratio),
                                                 Convert.ToInt32(mi.Sprite.Height * ratio));
                                         }
                                         else
+                                        {
                                             backend.DrawImage(mi.Sprite, (float) mi.x, (float) mi.y, mi.Width,
                                                 mi.Height);
+                                        }
                                     }
                                     else if (mi is MenuText mt)
                                     {

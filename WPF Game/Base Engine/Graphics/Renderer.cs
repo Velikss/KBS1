@@ -4,13 +4,6 @@ namespace BaseEngine
 {
     public abstract class Renderer
     {
-        #region Variables
-        protected readonly Bitmap _backend;
-        protected readonly Graphics frontend;
-        protected Graphics backend;
-        protected bool Activated, running;
-        protected readonly Screen screen;
-        #endregion
         protected Renderer(ref Screen screen)
         {
             this.screen = screen;
@@ -20,9 +13,21 @@ namespace BaseEngine
             backend = Graphics.FromImage(_backend);
             frontend = Graphics.FromImage(screen.screen_buffer);
         }
+
+        #region Variables
+
+        protected readonly Bitmap _backend;
+        protected readonly Graphics frontend;
+        protected Graphics backend;
+        protected bool Activated, running;
+        protected readonly Screen screen;
+
+        #endregion
+
         #region Methods
+
         protected abstract void Render();
-        
+
         public void Activate()
         {
             if (!running)
@@ -39,6 +44,7 @@ namespace BaseEngine
         {
             return Activated;
         }
+
         #endregion
     }
 }

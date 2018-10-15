@@ -7,6 +7,8 @@ namespace GameEngine
     [Serializable]
     public class Tile : PhysicalObject
     {
+        public bool Visible = true;
+
         private Tile()
         {
         }
@@ -51,14 +53,16 @@ namespace GameEngine
                 this.Sprite = new Bitmap(Width, Height);
                 using (var brush = new TextureBrush(Sprite, WrapMode.Tile))
                 using (var g = Graphics.FromImage(this.Sprite))
+                {
                     g.FillRectangle(brush, 0, 0, Width, Height);
+                }
             }
             else
+            {
                 this.Sprite = Sprite;
+            }
 
             this.Collidable = Collidable;
         }
-
-        public bool Visible = true;
     }
 }

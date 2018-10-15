@@ -9,6 +9,7 @@ namespace GameEngine
     public class Player : PhysicalObject
     {
         #region Static
+
         public static readonly List<string> CharacterNames = new List<string>();
         public static int Character_index;
 
@@ -17,16 +18,22 @@ namespace GameEngine
             foreach (var c in Directory.GetDirectories(AppDomain.CurrentDomain.BaseDirectory + "Animations"))
                 CharacterNames.Add(Path.GetFileName(c));
         }
+
         #endregion
+
         #region Variables
+
         private Camera camera;
         public bool Landed;
         private Image normal, normal_L, walk1, walk1_L, walk2, walk2_L, walk3, walk3_L, jump, jump_L;
+
         #endregion
+
         #region Methods
+
         public bool Collide(PhysicalObject po)
         {
-            if (new Rectangle((int) X+ 4, (int) Y, Width - 8, Height).IntersectsWith(po.collision))
+            if (new Rectangle((int) X + 4, (int) Y, Width - 8, Height).IntersectsWith(po.collision))
             {
                 po.Invoke();
                 if (po.Collidable)
@@ -35,7 +42,7 @@ namespace GameEngine
 
             return false;
         }
-        
+
         public bool Stands(PhysicalObject po)
         {
             if (new Rectangle((int) X + 4, (int) (Y + 4) + (Height - 4), Width - 8, 1).IntersectsWith(
@@ -48,7 +55,7 @@ namespace GameEngine
 
             return false;
         }
-        
+
         public void Initialize(ref Camera cam)
         {
             camera = cam;
@@ -64,7 +71,7 @@ namespace GameEngine
             jump_L = Image.FromFile("Animations/" + CharacterNames[Character_index] + "/jump_L.gif");
             new Thread(PlayerAnimation).Start();
         }
-        
+
         private void PlayerAnimation()
         {
             //movement sprite changer to give walking animation
@@ -173,26 +180,56 @@ namespace GameEngine
             Width = 32;
             Height = 32;
             lock (normal)
+            {
                 normal = Image.FromFile("Animations/" + CharacterNames[Character_index] + "/normal.gif");
+            }
+
             lock (normal_L)
+            {
                 normal_L = Image.FromFile("Animations/" + CharacterNames[Character_index] + "/normal_L.gif");
+            }
+
             lock (walk1)
+            {
                 walk1 = Image.FromFile("Animations/" + CharacterNames[Character_index] + "/walk1.gif");
+            }
+
             lock (walk1_L)
+            {
                 walk1_L = Image.FromFile("Animations/" + CharacterNames[Character_index] + "/walk1_L.gif");
+            }
+
             lock (walk2)
+            {
                 walk2 = Image.FromFile("Animations/" + CharacterNames[Character_index] + "/walk2.gif");
+            }
+
             lock (walk2_L)
+            {
                 walk2_L = Image.FromFile("Animations/" + CharacterNames[Character_index] + "/walk2_L.gif");
+            }
+
             lock (walk3)
+            {
                 walk3 = Image.FromFile("Animations/" + CharacterNames[Character_index] + "/walk3.gif");
+            }
+
             lock (walk3_L)
+            {
                 walk3_L = Image.FromFile("Animations/" + CharacterNames[Character_index] + "/walk3_L.gif");
+            }
+
             lock (jump)
+            {
                 jump = Image.FromFile("Animations/" + CharacterNames[Character_index] + "/jump.gif");
+            }
+
             lock (jump_L)
+            {
                 jump_L = Image.FromFile("Animations/" + CharacterNames[Character_index] + "/jump_L.gif");
+            }
         }
+
         #endregion
     }
 }

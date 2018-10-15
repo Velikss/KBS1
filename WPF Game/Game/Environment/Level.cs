@@ -11,16 +11,29 @@ namespace GameEngine
     [Serializable]
     public class Level
     {
+        private Level(string Name)
+        {
+            PrepareLevelClass();
+            this.Name = Name;
+        }
+
         #region Static
+
         #region Variables
+
         private static readonly Dictionary<PhysicalType, Image> Sprites = new Dictionary<PhysicalType, Image>();
         private static bool LevelClassPrepared;
         public static readonly List<Level> Levels = new List<Level>();
         public static int Level_index;
 
         #endregion
+
         #region Methods
-        private Level(){}
+
+        private Level()
+        {
+        }
+
         private static void PrepareLevelClass()
         {
             if (LevelClassPrepared) return;
@@ -40,29 +53,29 @@ namespace GameEngine
                 Image.FromFile("Levels/enemy.gif"));
             LevelClassPrepared = true;
         }
+
         public static void LoadLevels(string Dir)
         {
             foreach (var c in Directory.GetFiles(Dir))
-            {
                 if (Path.GetExtension(c) == ".lvl")
                     Levels.Add(Load(c));
-            }
 
-            Level l = new Level("Stage Test");
+            var l = new Level("Stage Test");
             l.Background = Levels[0].Background;
             l.Tiles = Levels[0].Tiles.ToList();
             l.Tiles.Add(new Tile(Image.FromFile(@"Scene\coin.png"), PhysicalType.Coin, 200, 300, 1, 32, false));
-            l.Enemies.Add(new Enemy(800, 200, 1200));
+            l.Enemies.Add(new Enemy(800, 200, 200));
             Levels.Add(l);
         }
+
         private static Level Load(string File)
         {
             PrepareLevelClass();
             Console.WriteLine(File + ", added");
-            XmlSerializer serializer = new XmlSerializer(typeof(Level));
-            StreamReader reader = new StreamReader(File);
-            Level l = (Level) serializer.Deserialize(reader);
-            Level lvl = new Level(l.Name);
+            var serializer = new XmlSerializer(typeof(Level));
+            var reader = new StreamReader(File);
+            var l = (Level) serializer.Deserialize(reader);
+            var lvl = new Level(l.Name);
             reader.Close();
             foreach (var Tile in l.Tiles)
                 lvl.Tiles.Add(new Tile(Sprites.First(o => o.Key == Tile.physicalType).Value, Tile.physicalType,
@@ -71,6 +84,7 @@ namespace GameEngine
             lvl.Background = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + lvl.BackgroundPath);
             return lvl;
         }
+
         public static Level Load(int index)
         {
             PrepareLevelClass();
@@ -82,25 +96,29 @@ namespace GameEngine
 
             return Levels[index];
         }
+
         #endregion
+
         #endregion
+
         #region Variables
+
         public string BackgroundPath;
         public Image Background;
         public string Name;
         public List<Tile> Tiles = new List<Tile>();
-        [XmlIgnore]
-        public List<Enemy> Enemies = new List<Enemy>();
+
+        [XmlIgnore] public List<Enemy> Enemies = new List<Enemy>();
+
         #endregion
-        private Level(string Name)
-        {
-            PrepareLevelClass();
-            this.Name = Name;
-        }
+
         #region Methods
-        
-        public Level LoadLevel(string File) => Load(File);
-        
+
+        public Level LoadLevel(string File)
+        {
+            return Load(File);
+        }
+
         public void GenerateFile(string FileLocation)
         {
             using (var sww = new StringWriter())
@@ -113,7 +131,6 @@ namespace GameEngine
 
         public void Reset()
         {
-
         }
 
         #endregion

@@ -8,6 +8,18 @@ namespace GameEngine
 {
     public class Movement
     {
+        public Movement(ref Screen screen, ref Player player, ref Camera camera, ref GameRenderer game_render,
+            ref Dictionary<MenuType, Menu> Menus)
+        {
+            this.screen = screen;
+            this.Menus = Menus;
+            this.game_render = game_render;
+            this.player = player;
+            this.camera = camera;
+            screen.w.KeyDown += KeyDown;
+            screen.w.KeyUp += KeyUp;
+        }
+
         #region Variables
 
         private bool MovementEnabled;
@@ -21,18 +33,6 @@ namespace GameEngine
         private bool space_press;
 
         #endregion
-
-        public Movement(ref Screen screen, ref Player player, ref Camera camera, ref GameRenderer game_render,
-            ref Dictionary<MenuType, Menu> Menus)
-        {
-            this.screen = screen;
-            this.Menus = Menus;
-            this.game_render = game_render;
-            this.player = player;
-            this.camera = camera;
-            screen.w.KeyDown += KeyDown;
-            screen.w.KeyUp += KeyUp;
-        }
 
         #region Methods
 
@@ -57,8 +57,15 @@ namespace GameEngine
 
         #endregion
 
-        public void EnableKeys() => MovementEnabled = true;
-        public void DisableKeys() => MovementEnabled = false;
+        public void EnableKeys()
+        {
+            MovementEnabled = true;
+        }
+
+        public void DisableKeys()
+        {
+            MovementEnabled = false;
+        }
 
         private void KeyDown(object sender, KeyEventArgs e)
         {
