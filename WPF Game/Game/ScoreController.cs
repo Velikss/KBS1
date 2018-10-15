@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using GameEngine;
 
 namespace WPF_Game.Game
 {
     public static class ScoreController
     {
-<<<<<<< HEAD
         public class Score
         {
             public Score(string LevelName, int score, string Date)
@@ -29,8 +29,6 @@ namespace WPF_Game.Game
             }
         }
 
-=======
->>>>>>> 04198d5e805dfe79fc2481c8756ba97b3b478891
         public static List<Score> Scores = new List<Score>();
 
         public static void LoadScoreBoard()
@@ -50,7 +48,6 @@ namespace WPF_Game.Game
             Console.WriteLine("Scores Saved");
         }
 
-<<<<<<< HEAD
         public static string GetTopActive()
         {
             Score[] scrs = ScoreController.Scores.Where(o => o.LevelName == Level.Levels[Level.Level_index].Name).OrderBy(i => i.score).Take(5).ToArray();
@@ -58,22 +55,5 @@ namespace WPF_Game.Game
             foreach (var score in scrs)
                 printScores += score.ToString() + Environment.NewLine;
             return printScores;
-=======
-        public class Score
-        {
-            public string Date;
-
-            public string LevelName;
-
-            public int score;
-
-            public Score(string LevelName, int score, string Date)
-            {
-                this.LevelName = LevelName;
-                this.score = score;
-                this.Date = Date;
-            }
->>>>>>> 04198d5e805dfe79fc2481c8756ba97b3b478891
-        }
     }
 }
