@@ -173,7 +173,7 @@ namespace WPF_Game
                 Brushes.Gainsboro,
                 800 / 2 - 170, 395, 340,
                 50, buttonsprite);
-            var GoToNextLevel = new MenuButton("Next Level",
+            var GoToNextLevel = new MenuButton("Continue",
                 new Font("Munro", 25, System.Drawing.FontStyle.Bold),
                 Brushes.Gainsboro,
                 800 / 2 - 170, 295, 340,
