@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices.ComTypes;
-using System.Windows.Forms;
 using System.Windows.Media;
-using System.Windows.Threading;
 
 namespace WPF_Game.Base_Engine.Audio
 {
@@ -14,8 +11,8 @@ namespace WPF_Game.Base_Engine.Audio
         );
 
         public MediaPlayer player;
-        public bool running;
         public bool repeat;
+        public bool running;
 
         public static void Load(string Name, string Path, bool repeat)
         {
@@ -31,7 +28,9 @@ namespace WPF_Game.Base_Engine.Audio
                     ap.player.Stop();
                 }
                 else
+                {
                     ap.player.Play();
+                }
             };
             ap.repeat = repeat;
             Soundtrack.Add(Name, ap);

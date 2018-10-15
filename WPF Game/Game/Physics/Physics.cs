@@ -27,25 +27,31 @@ namespace GameEngine
     [Serializable]
     public class PhysicalObject
     {
-        #region EventVariables
-        public delegate void _RegisteredCollision(PhysicalObject po);
-        public static event _RegisteredCollision Collided;
-        #endregion
-        #region Variables
-        public bool Collidable, running;
-        public Rectangle collision;
-        public int Height, Width;
-        public PhysicalType physicalType;
-        [XmlIgnore] public Image Sprite;
-        public float X, Y;
-        #endregion
-
         public void Invoke()
         {
             if (running) return;
             running = true;
             Collided?.Invoke(this);
         }
+
+        #region EventVariables
+
+        public delegate void _RegisteredCollision(PhysicalObject po);
+
+        public static event _RegisteredCollision Collided;
+
+        #endregion
+
+        #region Variables
+
+        public bool Collidable, running;
+        public Rectangle collision;
+        public int Height, Width;
+        public PhysicalType physicalType;
+        [XmlIgnore] public Image Sprite;
+        public float X, Y;
+
+        #endregion
     }
 
     public static class Gravity

@@ -7,6 +7,19 @@ namespace GameEngine
 {
     public class GameMaker
     {
+        public GameMaker(Window w, int _w, int _h)
+        {
+            Player.InitializeCharacters();
+            Level.LoadLevels(AppDomain.CurrentDomain.BaseDirectory + "Levels");
+            level = Level.Load(Level.Level_index);
+            camera = new Camera(ref level);
+            player = new Player();
+            player.Initialize(ref camera);
+            screen = new Screen(ref w, _w, _h);
+            game_render = new GameRenderer(ref screen, ref player, ref camera, ref level);
+            camera.Start(ref game_render, ref player);
+        }
+
         #region Variables
 
         public Dictionary<MenuType, Menu> Menus = new Dictionary<MenuType, Menu>();
@@ -46,18 +59,5 @@ namespace GameEngine
         }
 
         #endregion
-
-        public GameMaker(Window w, int _w, int _h)
-        {
-            Player.InitializeCharacters();
-            Level.LoadLevels(AppDomain.CurrentDomain.BaseDirectory + "Levels");
-            level = Level.Load(Level.Level_index);
-            camera = new Camera(ref level);
-            player = new Player();
-            player.Initialize(ref camera);
-            screen = new Screen(ref w, _w, _h);
-            game_render = new GameRenderer(ref screen, ref player, ref camera, ref level);
-            camera.Start(ref game_render, ref player);
-        }
     }
 }

@@ -6,6 +6,11 @@ namespace GameEngine
 {
     public class Camera
     {
+        public Camera(ref Level lvl)
+        {
+            this.lvl = lvl;
+        }
+
         #region Variables
 
         private Player player;
@@ -24,17 +29,11 @@ namespace GameEngine
 
         #endregion
 
-        public Camera(ref Level lvl)
-        {
-            this.lvl = lvl;
-        }
-
         #region Methods
 
         private void CameraMovement_Thread()
         {
             while (true)
-            {
                 if (render.isActive())
                 {
                     try
@@ -101,7 +100,6 @@ namespace GameEngine
 
                     Thread.Sleep(1);
                 }
-            }
         }
 
         public void Start(ref GameRenderer render, ref Player player)
