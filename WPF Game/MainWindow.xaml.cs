@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Text;
 using System.Linq;
 using System.Threading;
 using GameEngine;
@@ -17,7 +18,6 @@ namespace WPF_Game
 
         public MainWindow()
         {
-            FontInstaller.RegisterFont(AppDomain.CurrentDomain.BaseDirectory + "Fonts/munro.ttf");
             InitializeComponent();
             ScoreController.LoadScoreBoard();
             AudioPlayer.Load("on_dead", AppDomain.CurrentDomain.BaseDirectory + "Music/on_dead.wav", false);

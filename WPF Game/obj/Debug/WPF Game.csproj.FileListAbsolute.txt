@@ -134,3 +134,4 @@ C:\code\runch42\Runch\WPF Game\obj\Debug\WPF Game.csproj.GenerateResource.cache
 C:\code\runch42\Runch\WPF Game\obj\Debug\WPF Game.csproj.CoreCompileInputs.cache
 C:\code\runch42\Runch\WPF Game\obj\Debug\WPF Game.exe
 C:\code\runch42\Runch\WPF Game\obj\Debug\WPF Game.pdb
+C:\Users\barts\Documents\GitHub\SE1-KBS1\WPF Game\obj\Debug\WPF Game.csprojAssemblyReference.cache

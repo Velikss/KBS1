@@ -60,7 +60,6 @@
     </ApplicationDefinition>
     <Compile Include="Base Engine\Audio\AudioPlayer.cs" />
     <Compile Include="Game\Environment\Enemy.cs" />
-    <Compile Include="Game\FontInstaller.cs" />
     <Compile Include="Game\ScoreController.cs" />
     <Compile Include="Game\Visual\GameRenderer.cs" />
     <Compile Include="Game\Visual\Menu.cs" />
