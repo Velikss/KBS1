@@ -183,14 +183,12 @@ namespace WPF_Game
                 new MenuText("Select  Character", new Font("ArcadeClassic", 40),
                         Brushes.White)
                     {y = 200};
-<<<<<<< HEAD
-            MenuText HighScores = new MenuText(ScoreController.GetTopActive(), new Font("ArcadeClassic", 40, System.Drawing.FontStyle.Underline), Brushes.White) { y = 250 };
-=======
 
             var scrs = ScoreController.Scores.Where(o => o.LevelName == "Stage 1").OrderBy(i => i.score).Take(5)
                 .ToArray();
-            var HighScores = new MenuText(scrs.ToString(), new Font("ArcadeClassic", 40), Brushes.White) {y = 250};
->>>>>>> 04198d5e805dfe79fc2481c8756ba97b3b478891
+            var HighScores = new MenuText(ScoreController.GetTopActive(), new Font("ArcadeClassic", 40, System.Drawing.FontStyle.Underline), Brushes.White) { y = 250 };
+
+
             //Images
             var CharacterSprite = new MenuImage(800 / 2 - 132, 262, 48, 48,
                 Image.FromFile("Animations/" + Player.CharacterNames[Player.Character_index] + "/normal.gif"), true);
