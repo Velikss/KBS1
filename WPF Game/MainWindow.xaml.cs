@@ -22,14 +22,6 @@ namespace WPF_Game
         {
             InitializeComponent();
             ScoreController.LoadScoreBoard();
-            
-            /*
-            AudioPlayer.Load("background", @"C:\Users\usr\Downloads\1.wav", true);
-            AudioPlayer.Play("background");
-            */
-
-            AudioPlayer.Load("fuck you", @"C:\Users\usr\Documents\GitHub\Runch\WPF Game\bin\Debug\Music\on_enemy_kill.wav", true);
-            //AudioPlayer.Play("fuck you");
             AudioPlayer.Load("on_dead", AppDomain.CurrentDomain.BaseDirectory + "Music/on_dead.wav", false);
             AudioPlayer.Load("background", AppDomain.CurrentDomain.BaseDirectory + @"Music\temp_back.wav", true);
             AudioPlayer.Load("on_coin_collide", AppDomain.CurrentDomain.BaseDirectory + @"Music/coin.wav", false);
@@ -70,7 +62,6 @@ namespace WPF_Game
                 case PhysicalType.Enemy:
                     gm.movement.DisableKeys();
                     Dispatcher.Invoke(() => AudioPlayer.Play("on_dead"));
-                    Thread.Sleep(1000);
                     gm.game_render.Deactivate();
                     gm.Menus[MenuType.Death].Activate();
                     break;
