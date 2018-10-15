@@ -115,7 +115,7 @@ namespace WPF_Game
                 50, buttonsprite);
             var ExitBtn = new MenuButton("Exit", new Font("Munro", 25, System.Drawing.FontStyle.Bold),
                 Brushes.Gainsboro,
-                55, 310, 250,
+                55, 375, 250,
                 50, buttonsprite);
             var PauseRestart = new MenuButton("Restart", new Font("Munro", 25, System.Drawing.FontStyle.Bold),
                 Brushes.Gainsboro,
@@ -178,6 +178,14 @@ namespace WPF_Game
                 Brushes.Gainsboro,
                 800 / 2 - 170, 295, 340,
                 50, buttonsprite);
+            var InstructionsBtn = new MenuButton("Instructions", new Font("Munro", 25, System.Drawing.FontStyle.Bold),
+                Brushes.Gainsboro,
+                55, 310, 250,
+                50, buttonsprite);
+            var InstructionsScreenToTitleScrnBtn = new MenuButton("Return to start", new Font("Munro", 25, System.Drawing.FontStyle.Bold),
+                Brushes.Gainsboro,
+                55, 475, 250,
+                50, buttonsprite);
             //Panels
             var LevelSpriteBack = new MenuPanel(800 / 2 - 145, 100, 75, 75, buttonsprite);
             var LevelTitleBack = new MenuPanel(800 / 2 - 74, 100, 221, 75, buttonsprite);
@@ -209,9 +217,14 @@ namespace WPF_Game
                 new MenuText("Select  Character", new Font("ArcadeClassic", 40),
                         Brushes.White)
                     {y = 200};
-
             var HighScores = new MenuText(ScoreController.GetTopActive(),
                 new Font("ArcadeClassic", 40, System.Drawing.FontStyle.Underline), Brushes.White) {y = 200};
+            var Instructions = new MenuText("You can control your character with 'W', 'D' and spacebar." 
+                                            + Environment.NewLine 
+                                            + "The goal is to reach the red flag at the end of the level."
+                                            + Environment.NewLine
+                                            + "Good luck!",
+                new Font("ArcadeClassic", 25), Brushes.White) {y = 200};
 
             //Images
             var CharacterSprite = new MenuImage(800 / 2 - 132, 262, 48, 48,
@@ -342,9 +355,19 @@ namespace WPF_Game
                 Menus[MenuType.HighScoreScreen].Deactivate();
                 Menus[MenuType.TitleScreen].Activate();
             };
+            InstructionsBtn.Clicked += delegate
+            {
+                Menus[MenuType.TitleScreen].Deactivate();
+                Menus[MenuType.InstructionsScreen].Activate();
+            };
+            InstructionsScreenToTitleScrnBtn.Clicked += delegate
+            {
+                Menus[MenuType.InstructionsScreen].Deactivate();
+                Menus[MenuType.TitleScreen].Activate();
+            };
             //adds to Menu's
             Menus.Add(MenuType.TitleScreen, new Menu(ref gm.screen,
-                new List<MenuItem> {SinglePlayerBtn, HighScoresBtn, ExitBtn},
+                new List<MenuItem> {SinglePlayerBtn, HighScoresBtn, InstructionsBtn, ExitBtn},
                 Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/Title.gif")));
             Menus.Add(MenuType.HighScoreScreen, new Menu(ref gm.screen,
                 new List<MenuItem>
@@ -353,6 +376,12 @@ namespace WPF_Game
                     LevelSprite, HighScores
                 },
                 Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/HighScores.gif")));
+            Menus.Add(MenuType.InstructionsScreen, new Menu(ref gm.screen,
+                new List<MenuItem>
+                {
+                    InstructionsScreenToTitleScrnBtn, Instructions
+                },
+                Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/Title.gif")));
             Menus.Add(MenuType.Pause, new Menu(ref gm.screen,
                 new List<MenuItem> {OverlayPanel, PauseText, PauseToTitleScrn, PauseRestart, PauseLvlOptions},
                 null));
