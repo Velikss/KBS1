@@ -1,5 +1,7 @@
 using System.Drawing;
 using System.Threading;
+using System.Windows.Threading;
+using WPF_Game.Base_Engine.Audio;
 
 namespace GameEngine
 {
@@ -34,7 +36,7 @@ namespace GameEngine
             {
                 if (player.X < X + stopFollowingAt && player.X > X - stopFollowingAt)
                 {
-                    //TODO: Play "Get your ass back here"
+                    Invoke("outside");
                     if (player.X < X)
                         X = X - 2;
 

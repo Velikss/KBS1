@@ -31,7 +31,7 @@ namespace WPF_Game
             PhysicalObject.Collided += ObjectInteraction;
         }
 
-        private void ObjectInteraction(PhysicalObject po)
+        private void ObjectInteraction(PhysicalObject po, string argument)
         {
             switch (po.physicalType)
             {
@@ -59,9 +59,17 @@ namespace WPF_Game
                     break;
                 case PhysicalType.Enemy:
                     gm.movement.DisableKeys();
-                    Dispatcher.Invoke(() => AudioPlayer.Play("on_dead"));
-                    gm.game_render.Deactivate();
-                    gm.Menus[MenuType.Death].Activate();
+                    switch (argument)
+                    {
+                        case "outside":
+                            Dispatcher.Invoke(() => AudioPlayer.Play("enemy_getbackhere"));
+                            break;
+                        default:
+                            Dispatcher.Invoke(() => AudioPlayer.Play("on_dead"));
+                            gm.game_render.Deactivate();
+                            gm.Menus[MenuType.Death].Activate();
+                            break;
+                    }
                     break;
                 default:
                     po.running = false;

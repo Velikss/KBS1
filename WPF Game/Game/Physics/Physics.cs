@@ -27,16 +27,16 @@ namespace GameEngine
     [Serializable]
     public class PhysicalObject
     {
-        public void Invoke()
+        public void Invoke(string arguments = "")
         {
             if (running) return;
             running = true;
-            Collided?.Invoke(this);
+            Collided?.Invoke(this, arguments);
         }
 
         #region EventVariables
 
-        public delegate void _RegisteredCollision(PhysicalObject po);
+        public delegate void _RegisteredCollision(PhysicalObject po, string arguments);
 
         public static event _RegisteredCollision Collided;
 
