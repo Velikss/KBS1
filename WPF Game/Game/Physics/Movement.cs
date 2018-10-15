@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading;
 using System.Windows;
 using System.Windows.Input;
 using BaseEngine;
-using WPF_Game;
 
 namespace GameEngine
 {
@@ -86,7 +84,6 @@ namespace GameEngine
                         if (game_render.isActive())
                         {
                             game_render.Deactivate();
-                            MainWindow.PauseText.Content = GameMaker.level.Name;
                             Menus[MenuType.Pause].Activate();
                         }
                         else

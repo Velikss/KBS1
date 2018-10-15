@@ -26,7 +26,7 @@ namespace GameEngine
         private Camera camera;
         public Movement movement;
         public GameRenderer game_render;
-        public static Level level;
+        public Level level;
         private Player player;
         public Screen screen;
 
@@ -61,4 +61,4 @@ namespace GameEngine
 
         #endregion
     }
-}
+}       

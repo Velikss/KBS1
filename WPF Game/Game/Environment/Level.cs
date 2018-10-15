@@ -88,12 +88,12 @@ namespace GameEngine
         public static Level Load(int index)
         {
             PrepareLevelClass();
-
-            foreach (var t in Levels[index].Tiles)
+            foreach (var i in Levels[index].Tiles)
             {
-                t.running = false;
-                t.Visible = true;
+                i.running = false;
+                i.Visible = true;
             }
+
             return Levels[index];
         }
 
