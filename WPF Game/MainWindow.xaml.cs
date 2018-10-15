@@ -12,7 +12,6 @@ namespace WPF_Game
     public partial class MainWindow
     {
         private readonly GameMaker gm;
-        public int CoinCollection;
         public MenuText VictoryHighScoreText;
 
         public MainWindow()
@@ -47,14 +46,14 @@ namespace WPF_Game
                     break;
                 case PhysicalType.EndFlag:
                     gm.game_render.Deactivate();
-                    VictoryHighScoreText.Content = "Score: " + CoinCollection;
-                    ScoreController.SaveScore(gm.level, CoinCollection);
+                    VictoryHighScoreText.Content = "Score: " + gm.Points;
+                    ScoreController.SaveScore(gm.level, gm.Points);
                     gm.Menus[MenuType.Completed].Activate();
                     break;
                 case PhysicalType.Coin:
                     Dispatcher.Invoke(() => AudioPlayer.Play("on_coin_collide"));
                     ((Tile) po).Visible = false;
-                    CoinCollection++;
+                    gm.Points++;
                     break;
                 case PhysicalType.Enemy:
                     gm.movement.DisableKeys();
@@ -174,7 +173,7 @@ namespace WPF_Game
             var VictoryText =
                 new MenuText("Victory", new Font("ArcadeClassic", 60), Brushes.White) {y = 120};
             VictoryHighScoreText =
-                new MenuText("Score: " + CoinCollection, new Font("ArcadeClassic", 60), Brushes.White)
+                new MenuText("Score: " + gm.Points, new Font("ArcadeClassic", 60), Brushes.White)
                     {y = 180};
             var CharacterName = new MenuText(Player.CharacterNames[Player.Character_index],
                 new Font("Calibri", 32, System.Drawing.FontStyle.Bold),
@@ -263,7 +262,6 @@ namespace WPF_Game
             {
                 Menus[MenuType.LevelOptions].Deactivate();
                 gm.StartLevel(true);
-                CoinCollection = 0;
             };
             DeathLvlOptions.Clicked += delegate
             {

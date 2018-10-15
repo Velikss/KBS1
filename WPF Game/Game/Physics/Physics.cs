@@ -10,15 +10,11 @@ namespace GameEngine
     public enum PhysicalType
     {
         Lava,
-        Water,
-        Spike,
-        Block,
         Coin,
         BeginFlag,
         EndFlag,
         Enemy,
         Ground,
-        Ground_CheckPoint,
         GroundSide,
         GroundSideRight
     }

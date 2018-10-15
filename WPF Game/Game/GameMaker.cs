@@ -29,6 +29,7 @@ namespace GameEngine
         public Level level;
         private Player player;
         public Screen screen;
+        public int Points;
 
         #endregion
 
@@ -48,6 +49,7 @@ namespace GameEngine
             level = Level.Load(Level.Level_index);
             camera.Reset(ref level);
             game_render.ChangeLevelData(level);
+            Points = 0;
             Gravity.Dispose();
             Gravity.EnableGravity(ref level, ref game_render);
             Gravity.EnableGravityOnObject(player);

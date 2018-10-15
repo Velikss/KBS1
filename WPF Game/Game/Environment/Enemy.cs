@@ -5,6 +5,10 @@ namespace GameEngine
 {
     public class Enemy : PhysicalObject
     {
+        private Enemy()
+        {
+        }
+
         public Enemy(int x, int y, int stopFollowingAt)
         {
             this.stopFollowingAt = stopFollowingAt;
@@ -13,16 +17,16 @@ namespace GameEngine
             baseX = x;
             baseY = y;
             physicalType = PhysicalType.Enemy;
-            Sprite = Image.FromFile("Levels/enemy.gif");
+            Sprite = Image.FromFile("Scene/enemy.gif");
         }
 
         #region variables
 
-        private readonly int stopFollowingAt;
+        public int stopFollowingAt;
         private GameRenderer renderer;
         private Player player;
-        private readonly int baseX;
-        private readonly int baseY;
+        public int baseX;
+        public int baseY;
 
         #endregion
 
@@ -49,7 +53,7 @@ namespace GameEngine
 
                     if (player.X < X + 10 && player.X > X - 10 && player.Y < Y + 10 && player.Y > Y - 10)
                     {
-                        Sprite = Image.FromFile("Levels/explode.gif");
+                        Sprite = Image.FromFile("Scene/explode.gif");
                         Invoke();
                     }
                 }
@@ -70,7 +74,7 @@ namespace GameEngine
 
             X = baseX;
             Y = baseY;
-            Sprite = Image.FromFile("Levels/enemy.gif");
+            Sprite = Image.FromFile("Scene/enemy.gif");
         }
 
         public void Start(ref GameRenderer renderer, ref Player player)

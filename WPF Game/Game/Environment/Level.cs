@@ -50,7 +50,9 @@ namespace GameEngine
             Sprites.Add(PhysicalType.GroundSideRight,
                 Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/ground-side-right.gif"));
             Sprites.Add(PhysicalType.Enemy,
-                Image.FromFile("Levels/enemy.gif"));
+                Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/enemy.gif"));
+            Sprites.Add(PhysicalType.Coin,
+                Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/coin.png"));
             LevelClassPrepared = true;
         }
 
@@ -59,13 +61,6 @@ namespace GameEngine
             foreach (var c in Directory.GetFiles(Dir))
                 if (Path.GetExtension(c) == ".lvl")
                     Levels.Add(Load(c));
-
-            var l = new Level("Stage Test");
-            l.Background = Levels[0].Background;
-            l.Tiles = Levels[0].Tiles.ToList();
-            l.Tiles.Add(new Tile(Image.FromFile(@"Scene\coin.png"), PhysicalType.Coin, 200, 300, 1, 32, false));
-            l.Enemies.Add(new Enemy(800, 200, 200));
-            Levels.Add(l);
         }
 
         private static Level Load(string File)
@@ -80,6 +75,8 @@ namespace GameEngine
             foreach (var Tile in l.Tiles)
                 lvl.Tiles.Add(new Tile(Sprites.First(o => o.Key == Tile.physicalType).Value, Tile.physicalType,
                     (int) Tile.X, (int) Tile.Y, Tile.Width / 32, Tile.Height, Tile.Collidable));
+            foreach (var enemy in l.Enemies)
+                lvl.Enemies.Add(new Enemy(enemy.baseX, enemy.baseY, enemy.stopFollowingAt));
             lvl.BackgroundPath = l.BackgroundPath;
             lvl.Background = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + lvl.BackgroundPath);
             return lvl;
@@ -104,11 +101,10 @@ namespace GameEngine
         #region Variables
 
         public string BackgroundPath;
-        public Image Background;
+        [XmlIgnore] public Image Background;
         public string Name;
         public List<Tile> Tiles = new List<Tile>();
-
-        [XmlIgnore] public List<Enemy> Enemies = new List<Enemy>();
+        public List<Enemy> Enemies = new List<Enemy>();
 
         #endregion
 
