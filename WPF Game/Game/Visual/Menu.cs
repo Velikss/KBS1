@@ -12,6 +12,7 @@ namespace GameEngine
     {
         TitleScreen,
         HighScoreScreen,
+        InstructionsScreen,
         LevelOptions,
         Options,
         Death,
