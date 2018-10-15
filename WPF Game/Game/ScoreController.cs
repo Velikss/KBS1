@@ -24,6 +24,11 @@ namespace WPF_Game.Game
             public int score;
 
             public string LevelName;
+
+            public override string ToString()
+            {
+                return Date + ": " + score;
+            }
         }
 
         public static List<Score> Scores = new List<Score>();
@@ -31,7 +36,7 @@ namespace WPF_Game.Game
         public static void LoadScoreBoard()
         {
             foreach (var Score in File.ReadAllLines(AppDomain.CurrentDomain.BaseDirectory + "Levels/scores.scoreboard"))
-                Scores.Add(new Score(Score.Split(':')[0], Convert.ToInt32(Score.Split(':')[1]), Score.Split(':')[2]));
+                Scores.Add(new Score(Score.Split('#')[0], Convert.ToInt32(Score.Split('#')[1]), Score.Split('#')[2]));
         }
 
         public static void SaveScore(Level l, int Score)
@@ -40,9 +45,18 @@ namespace WPF_Game.Game
             StreamWriter sw = new StreamWriter(AppDomain.CurrentDomain.BaseDirectory + "Levels/scores.scoreboard")
                 {AutoFlush = true};
             foreach (var score in Scores)
-                sw.WriteLine(score.LevelName + ":" + score.score + ":" + score.Date);
+                sw.WriteLine(score.LevelName + "#" + score.score + "#" + score.Date);
             sw.Close();
             Console.WriteLine("Scores Saved");
+        }
+
+        public static string GetTopActive()
+        {
+            Score[] scrs = ScoreController.Scores.Where(o => o.LevelName == Level.Levels[Level.Level_index].Name).OrderBy(i => i.score).Take(5).ToArray();
+            string printScores = "";
+            foreach (var score in scrs)
+                printScores += score.ToString() + Environment.NewLine;
+            return printScores;
         }
     }
 }

@@ -196,9 +196,7 @@ namespace WPF_Game
                 new MenuText("Select  Character", new Font("ArcadeClassic", 40),
                         Brushes.White)
                     {y = 200};
-       
-            ScoreController.Score[] scrs = ScoreController.Scores.Where(o => o.LevelName == "Stage 1").OrderBy(i => i.score).Take(5).ToArray();
-            MenuText HighScores = new MenuText(scrs.ToString(), new Font("ArcadeClassic", 40), Brushes.White) { y = 250 };
+            MenuText HighScores = new MenuText(ScoreController.GetTopActive(), new Font("ArcadeClassic", 40, System.Drawing.FontStyle.Underline), Brushes.White) { y = 250 };
             //Images
             MenuImage CharacterSprite = new MenuImage(800 / 2 - 132, 262, 48, 48,
                 Image.FromFile("Animations/" + Player.CharacterNames[Player.Character_index] + "/normal.gif"), true);
@@ -220,6 +218,7 @@ namespace WPF_Game
                     Level.Level_index = 0;
                 LevelSprite.Sprite = Image.FromFile("Levels/" + Level.Levels[Level.Level_index].Name + ".gif");
                 LevelName.Content = Level.Levels[Level.Level_index].Name;
+                HighScores.Content = ScoreController.GetTopActive();
             };
             PreviousLevel.Clicked += delegate
             {
@@ -229,6 +228,7 @@ namespace WPF_Game
                     Level.Level_index--;
                 LevelSprite.Sprite = Image.FromFile("Levels/" + Level.Levels[Level.Level_index].Name + ".gif");
                 LevelName.Content = Level.Levels[Level.Level_index].Name;
+                HighScores.Content = ScoreController.GetTopActive();
             };
             NextCharacter.Clicked += delegate
             {
