@@ -21,8 +21,10 @@ namespace WPF_Game
             AudioPlayer.Load("on_dead", AppDomain.CurrentDomain.BaseDirectory + "Music/on_dead.wav", false);
             AudioPlayer.Load("background", AppDomain.CurrentDomain.BaseDirectory + "Music/temp_back.wav", true);
             AudioPlayer.Load("on_coin_collide", AppDomain.CurrentDomain.BaseDirectory + "Music/coin.wav", false);
-            AudioPlayer.Load("enemy_getbackhere", AppDomain.CurrentDomain.BaseDirectory + "Music/enemy_getbackhere.wav",
-                false);
+            AudioPlayer.Load("enemy_getbackhere", AppDomain.CurrentDomain.BaseDirectory + "Music/enemy_getbackhere.wav", false);
+            AudioPlayer.Load("sucktion", AppDomain.CurrentDomain.BaseDirectory + "Music/SUCTION.wav", false);
+            AudioPlayer.Load("boom", AppDomain.CurrentDomain.BaseDirectory + "Music/boom.wav", false);
+               
             AudioPlayer.Soundtrack.First(o => o.Key == "background").Value.player.Volume = 0.08;
             AudioPlayer.Play("background");
             gm = new GameMaker(this, 800, 600);
@@ -68,9 +70,15 @@ namespace WPF_Game
                             gm.movement.DisableKeys();
                             Thread.Sleep(10);
                             gm.game_render.Deactivate();
+                            
+                            po.running = false;
+                            Dispatcher.Invoke(() => AudioPlayer.Play("boom"));
                             Thread.Sleep(1000);
-                            Dispatcher.Invoke(() => AudioPlayer.Play("on_dead"));
                             gm.Menus[MenuType.Death].Activate();
+                            break;
+                        case "returnToBase":
+                            Dispatcher.Invoke(() => AudioPlayer.Play("sucktion"));
+                            po.running = false;
                             break;
                     }
 
