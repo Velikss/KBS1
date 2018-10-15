@@ -68,15 +68,19 @@ namespace GameEngine
                 }
                 else
                 {
+                    
+                    if (played)
+                        Invoke("returnToBase");
                     played = false;
                     if (X > baseX)
-                        X -= 2;
+                        X -= 3;
                     if (X < baseX)
-                        X += 2;
+                        X += 3;
                     if (Y > baseY)
-                        Y -= 2;
+                        Y -= 3;
                     if (Y < baseY)
-                        Y += 2;
+                        Y += 3;
+                    
                 }
 
                 Thread.Sleep(10);
@@ -91,6 +95,7 @@ namespace GameEngine
         {
             this.renderer = renderer;
             this.player = player;
+            played = false;
             new Thread(EnemyAI_Thread).Start();
         }
 
