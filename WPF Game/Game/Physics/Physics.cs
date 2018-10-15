@@ -10,15 +10,11 @@ namespace GameEngine
     public enum PhysicalType
     {
         Lava,
-        Water,
-        Spike,
-        Block,
         Coin,
         BeginFlag,
         EndFlag,
         Enemy,
         Ground,
-        Ground_CheckPoint,
         GroundSide,
         GroundSideRight
     }
@@ -29,6 +25,8 @@ namespace GameEngine
     {
         public void Invoke()
         {
+            if (physicalType == PhysicalType.EndFlag)
+                Console.WriteLine("ENdflag interaction " + running);
             if (running) return;
             running = true;
             Collided?.Invoke(this);

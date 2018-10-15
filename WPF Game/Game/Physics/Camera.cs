@@ -15,7 +15,7 @@ namespace GameEngine
 
         private Player player;
         private GameRenderer render;
-        private readonly Level lvl;
+        private Level lvl;
         public bool Up, Down, Left, Right;
         public float X, Y;
 
@@ -109,7 +109,7 @@ namespace GameEngine
             new Thread(CameraMovement_Thread).Start();
         }
 
-        public void Reset()
+        public void Reset(ref Level level)
         {
             X = 0;
             Y = 0;
@@ -117,6 +117,7 @@ namespace GameEngine
             Up = false;
             Left = false;
             Right = false;
+            lvl = level;
         }
 
         #endregion

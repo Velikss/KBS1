@@ -26,7 +26,7 @@ namespace GameEngine
         private Camera camera;
         public Movement movement;
         public GameRenderer game_render;
-        public Level level;
+        public static Level level;
         private Player player;
         public Screen screen;
 
@@ -44,9 +44,10 @@ namespace GameEngine
         public void StartLevel(bool StartGame = false)
         {
             player.Reset();
-            camera.Reset();
             movement.EnableKeys();
-            game_render.ChangeLevelData(level = Level.Load(Level.Level_index));
+            level = Level.Load(Level.Level_index);
+            camera.Reset(ref level);
+            game_render.ChangeLevelData(level);
             Gravity.Dispose();
             Gravity.EnableGravity(ref level, ref game_render);
             Gravity.EnableGravityOnObject(player);

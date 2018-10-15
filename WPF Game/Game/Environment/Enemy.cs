@@ -12,8 +12,8 @@ namespace GameEngine
             Y = y;
             baseX = x;
             baseY = y;
-            physicalType = PhysicalType.Enemy;
             Sprite = Image.FromFile("Levels/enemy.gif");
+            physicalType = PhysicalType.Enemy;
         }
 
         #region variables
@@ -67,10 +67,6 @@ namespace GameEngine
 
                 Thread.Sleep(10);
             }
-
-            X = baseX;
-            Y = baseY;
-            Sprite = Image.FromFile("Levels/enemy.gif");
         }
 
         public void Start(ref GameRenderer renderer, ref Player player)
