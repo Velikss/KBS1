@@ -14,26 +14,6 @@ namespace BaseEngine
 {
     public class Screen
     {
-        #region Variables
-
-        public readonly Stopwatch framerater = new Stopwatch();
-        public readonly Label GameData;
-        private readonly Image canvas;
-        public Bitmap screen_buffer;
-        public readonly Window w;
-        private int refreshrate;
-        public int FPS;
-        public readonly int Screen_Width, Screen_Height;
-
-        #region Win32
-
-        [DllImport("gdi32.dll")]
-        private static extern bool DeleteObject(IntPtr hObject);
-
-        #endregion
-
-        #endregion
-
         public Screen(ref Window w, int Screen_Width, int Screen_Height)
         {
             this.w = w;
@@ -87,6 +67,26 @@ namespace BaseEngine
             grid.Children.Add(canvas);
             grid.Children.Add(GameData);
         }
+
+        #region Variables
+
+        public readonly Stopwatch framerater = new Stopwatch();
+        public readonly Label GameData;
+        private readonly Image canvas;
+        public Bitmap screen_buffer;
+        public readonly Window w;
+        private int refreshrate;
+        public int FPS;
+        public readonly int Screen_Width, Screen_Height;
+
+        #region Win32
+
+        [DllImport("gdi32.dll")]
+        private static extern bool DeleteObject(IntPtr hObject);
+
+        #endregion
+
+        #endregion
 
         #region Methods
 
