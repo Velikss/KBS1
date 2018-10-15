@@ -175,10 +175,6 @@ namespace GameEngine
 
         public void Reset()
         {
-            X = 75;
-            Y = 330;
-            Width = 32;
-            Height = 32;
             lock (normal)
             {
                 normal = Image.FromFile("Animations/" + CharacterNames[Character_index] + "/normal.gif");
@@ -228,6 +224,10 @@ namespace GameEngine
             {
                 jump_L = Image.FromFile("Animations/" + CharacterNames[Character_index] + "/jump_L.gif");
             }
+            X = 75 - (normal.Width - 32);
+            Y = 330 - (normal.Height - 32);
+            Width = normal.Width;
+            Height = normal.Height;
         }
 
         #endregion

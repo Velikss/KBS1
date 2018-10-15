@@ -47,7 +47,7 @@ namespace GameEngine
             player.Reset();
             movement.EnableKeys();
             level = Level.Load(Level.Level_index);
-            camera.Reset(ref level);
+            camera.Setup(ref level);
             game_render.ChangeLevelData(level);
             Points = 0;
             Gravity.Dispose();

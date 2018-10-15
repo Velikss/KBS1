@@ -93,7 +93,6 @@ D:\Documenten\GitHub\SE1-KBS1\WPF Game\obj\Debug\WPF Game.pdb
 D:\Documenten\GitHub\SE1-KBS1\WPF Game\bin\Debug\WPF Game.exe.config
 D:\Documenten\GitHub\SE1-KBS1\WPF Game\bin\Debug\WPF Game.exe
 D:\Documenten\GitHub\SE1-KBS1\WPF Game\bin\Debug\WPF Game.pdb
-D:\Documenten\GitHub\SE1-KBS1\WPF Game\obj\Debug\WPF Game.csproj.CopyComplete
 C:\Users\barts\Documents\GitHub\SE1-KBS1\WPF Game\bin\Debug\WPF Game.exe.config
 C:\Users\barts\Documents\GitHub\SE1-KBS1\WPF Game\bin\Debug\WPF Game.exe
 C:\Users\barts\Documents\GitHub\SE1-KBS1\WPF Game\bin\Debug\WPF Game.pdb
@@ -136,3 +135,4 @@ C:\code\runch42\Runch\WPF Game\obj\Debug\WPF Game.csproj.CoreCompileInputs.cache
 C:\code\runch42\Runch\WPF Game\obj\Debug\WPF Game.exe
 C:\code\runch42\Runch\WPF Game\obj\Debug\WPF Game.pdb
 C:\Users\usr\Documents\GitHub\Runch\WPF Game\obj\Debug\WPF Game.csprojAssemblyReference.cache
+D:\Documenten\GitHub\SE1-KBS1\WPF Game\obj\Debug\WPF Game.csprojAssemblyReference.cache

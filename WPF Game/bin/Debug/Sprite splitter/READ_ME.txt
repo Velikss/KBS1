@@ -1,0 +1,1 @@
+first export as png then convert to gif with paint3d and mirror

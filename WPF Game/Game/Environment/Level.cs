@@ -53,6 +53,19 @@ namespace GameEngine
                 Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/enemy.gif"));
             Sprites.Add(PhysicalType.Coin,
                 Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/coin.png"));
+            Sprites.Add(PhysicalType.Brick, Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/brick.gif"));
+            Sprites.Add(PhysicalType.Cloud, Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/cloud.gif"));
+            Sprites.Add(PhysicalType.Fire_Goast,
+                Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/Fire-Goast.gif"));
+            Sprites.Add(PhysicalType.Goomba,
+                Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/Goomba.gif"));
+            Sprites.Add(PhysicalType.Grass,
+                Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/grass_ground.gif"));
+            Sprites.Add(PhysicalType.Stone, Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/stone.gif"));
+            Sprites.Add(PhysicalType.Pipe, Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/Pipe.gif"));
+            Sprites.Add(PhysicalType.Spike, Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/spikes.gif"));
+            Sprites.Add(PhysicalType.Water, Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/water.gif"));
+            Sprites.Add(PhysicalType.Sand, Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/Sand.png"));
             LevelClassPrepared = true;
         }
 
@@ -61,6 +74,20 @@ namespace GameEngine
             foreach (var c in Directory.GetFiles(Dir))
                 if (Path.GetExtension(c) == ".lvl")
                     Levels.Add(Load(c));
+            Level l = new Level("World 1-3");
+            l.Tiles.Add(new Tile(Sprites.First(o => o.Key == PhysicalType.Sand).Value, PhysicalType.Sand, 0, 470, 150));
+            for (int x = 150; x < 4700; x += 32)
+                l.Tiles.Add(new Tile(Sprites.First(o => o.Key == PhysicalType.Coin).Value, PhysicalType.Coin, x, 438,
+                    1, 32, false));
+            l.Tiles.Add(new Tile(Sprites.First(o => o.Key == PhysicalType.Sand).Value, PhysicalType.Sand, -64, 400, 2));
+            for (int y = 200; y < 380; y += 32)
+                l.Tiles.Add(new Tile(Sprites.First(o => o.Key == PhysicalType.Coin).Value, PhysicalType.Coin, -48, y,
+                    1, 32, false));
+            l.Tiles.Add(new Tile(Sprites.First(o => o.Key == PhysicalType.BeginFlag).Value, PhysicalType.BeginFlag, 10, 375, 1, 64, false));
+            l.Tiles.Add(new Tile(Sprites.First(o => o.Key == PhysicalType.EndFlag).Value, PhysicalType.EndFlag, 4768, 375, 1, 64, false));
+            l.BackgroundPath = "Levels/code.jpg";
+            l.Background = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + l.BackgroundPath);
+            Levels.Add(l);
         }
 
         private static Level Load(string File)

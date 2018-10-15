@@ -16,7 +16,17 @@ namespace GameEngine
         Enemy,
         Ground,
         GroundSide,
-        GroundSideRight
+        GroundSideRight,
+        Brick,
+        Cloud,
+        Fire_Goast,
+        Goomba,
+        Grass,
+        Stone,
+        Pipe,
+        Spike,
+        Water,
+        Sand
     }
 
     [XmlInclude(typeof(PhysicalType))]

@@ -12,7 +12,7 @@ namespace GameEngine
         }
 
         #region Variables
-
+        
         private Player player;
         private GameRenderer render;
         private Level lvl;
@@ -63,10 +63,9 @@ namespace GameEngine
                         if (Left)
                         {
                             //check if collision is present otherwise move player to given direction
-                            if (player.X > 0 &&
-                                lvl.Tiles.Count(o => o.X <= player.X && player.Collide(o) && o.Collidable) == 0)
+                            if (lvl.Tiles.Count(o => o.X <= player.X && player.Collide(o) && o.Collidable) == 0)
                             {
-                                if (X + player.X < 250 && X < 0)
+                                if (X + player.X < 250)
                                     X += 0.45f;
                                 player.X -= 0.45f;
                             }
@@ -108,7 +107,7 @@ namespace GameEngine
             new Thread(CameraMovement_Thread).Start();
         }
 
-        public void Reset(ref Level level)
+        public void Setup(ref Level level)
         {
             X = 0;
             Y = 0;

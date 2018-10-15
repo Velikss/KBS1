@@ -12,7 +12,7 @@ namespace WPF_Game
     public partial class MainWindow
     {
         private readonly GameMaker gm;
-        public MenuText VictoryHighScoreText;
+        private MenuText VictoryHighScoreText;
 
         public MainWindow()
         {
@@ -24,7 +24,7 @@ namespace WPF_Game
             AudioPlayer.Load("enemy_getbackhere", AppDomain.CurrentDomain.BaseDirectory + "Music/enemy_getbackhere.wav", false);
             AudioPlayer.Load("sucktion", AppDomain.CurrentDomain.BaseDirectory + "Music/SUCTION.wav", false);
             AudioPlayer.Load("boom", AppDomain.CurrentDomain.BaseDirectory + "Music/boom.wav", false);
-               
+            
             AudioPlayer.Soundtrack.First(o => o.Key == "background").Value.player.Volume = 1.2;
             AudioPlayer.Play("background");
             gm = new GameMaker(this, 800, 600);
