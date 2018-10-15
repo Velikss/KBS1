@@ -50,10 +50,11 @@ namespace WPF_Game.Game
 
         public static string GetTopActive()
         {
-            Score[] scrs = ScoreController.Scores.Where(o => o.LevelName == Level.Levels[Level.Level_index].Name).OrderBy(i => i.score).Take(5).ToArray();
             string printScores = "";
-            foreach (var score in scrs)
-                printScores += score.ToString() + Environment.NewLine;
+            foreach (var score in Scores.Where(o => o.LevelName == Level.Levels[Level.Level_index].Name)
+                .OrderBy(i => i.score).Take(5).ToArray())
+                printScores += score + Environment.NewLine;
             return printScores;
+        }
     }
 }
