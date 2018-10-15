@@ -189,7 +189,7 @@ namespace WPF_Game
                         Brushes.White)
                     {y = 200};
             
-            var HighScores = new MenuText(ScoreController.GetTopActive(), new Font("ArcadeClassic", 40, System.Drawing.FontStyle.Underline), Brushes.White) { y = 250 };
+            var HighScores = new MenuText(ScoreController.GetTopActive(), new Font("ArcadeClassic", 40, System.Drawing.FontStyle.Underline), Brushes.White) { y = 200 };
             
             //Images
             var CharacterSprite = new MenuImage(800 / 2 - 132, 262, 48, 48,

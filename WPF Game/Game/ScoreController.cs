@@ -52,7 +52,7 @@ namespace WPF_Game.Game
         {
             string printScores = "";
             foreach (var score in Scores.Where(o => o.LevelName == Level.Levels[Level.Level_index].Name)
-                .OrderBy(i => i.score).Take(5).ToArray())
+                .OrderByDescending(i => i.score).Take(5).ToArray())
                 printScores += score + Environment.NewLine;
             return printScores;
         }
