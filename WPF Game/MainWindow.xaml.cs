@@ -20,8 +20,9 @@ namespace WPF_Game
             InitializeComponent();
             ScoreController.LoadScoreBoard();
             AudioPlayer.Load("on_dead", AppDomain.CurrentDomain.BaseDirectory + "Music/on_dead.wav", false);
-            AudioPlayer.Load("background", AppDomain.CurrentDomain.BaseDirectory + @"Music\temp_back.wav", true);
-            AudioPlayer.Load("on_coin_collide", AppDomain.CurrentDomain.BaseDirectory + @"Music/coin.wav", false);
+            AudioPlayer.Load("background", AppDomain.CurrentDomain.BaseDirectory + "Music/temp_back.wav", true);
+            AudioPlayer.Load("on_coin_collide", AppDomain.CurrentDomain.BaseDirectory + "Music/coin.wav", false);
+            AudioPlayer.Load("enemy_getbackhere", AppDomain.CurrentDomain.BaseDirectory + "Music/enemy_getbackhere.wav", false);
             AudioPlayer.Soundtrack.First(o => o.Key == "background").Value.player.Volume = 0.08;
             AudioPlayer.Play("background");
             gm = new GameMaker(this, 800, 600);
