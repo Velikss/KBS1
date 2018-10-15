@@ -1,7 +1,5 @@
 using System.Drawing;
 using System.Threading;
-using System.Windows.Threading;
-using WPF_Game.Base_Engine.Audio;
 
 namespace GameEngine
 {
@@ -10,6 +8,9 @@ namespace GameEngine
         private Enemy()
         {
         }
+
+        private bool played = false;
+        private const int Killingrange = 32;
 
         public Enemy(int x, int y, int stopFollowingAt)
         {
@@ -40,7 +41,12 @@ namespace GameEngine
             {
                 if (player.X < X + stopFollowingAt && player.X > X - stopFollowingAt)
                 {
-                    Invoke("outside");
+                    if (!played)
+                    {
+                        played = true;
+                        Invoke("outside");
+                    }
+
                     if (player.X < X)
                         X = X - 2;
 
@@ -53,14 +59,16 @@ namespace GameEngine
                     if (player.Y < Y)
                         Y--;
 
-                    if (player.X < X + 10 && player.X > X - 10 && player.Y < Y + 10 && player.Y > Y - 10)
+                    if (player.X < X + Killingrange && player.X > X - Killingrange && player.Y < Y + Killingrange &&
+                        player.Y > Y - Killingrange)
                     {
                         Sprite = Image.FromFile("Scene/explode.gif");
-                        Invoke();
+                        Invoke("kill");
                     }
                 }
                 else
                 {
+                    played = false;
                     if (X > baseX)
                         X -= 2;
                     if (X < baseX)

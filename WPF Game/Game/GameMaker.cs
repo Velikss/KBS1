@@ -23,11 +23,11 @@ namespace GameEngine
         #region Variables
 
         public Dictionary<MenuType, Menu> Menus = new Dictionary<MenuType, Menu>();
-        private Camera camera;
+        internal Camera camera;
         public Movement movement;
         public GameRenderer game_render;
         public Level level;
-        private Player player;
+        internal Player player;
         public Screen screen;
         public int Points;
 

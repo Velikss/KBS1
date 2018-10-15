@@ -94,7 +94,6 @@ namespace GameEngine
                         }
                     }
                     catch
-
                     {
                     }
 

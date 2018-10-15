@@ -63,18 +63,30 @@ namespace GameEngine
         //void enables gravity on parametered object
         public static void EnableGravityOnObject(Player po)
         {
-            lock (entities)
+            try
             {
-                entities.Add(po);
+                lock (entities)
+            {
+                    entities.Add(po);
+                }
+            }
+            catch
+            {
             }
         }
 
         //disables gravity for parametered object
         public static void DisableGravityOnObject(Player po)
         {
-            lock (entities)
+            try
             {
-                entities.Remove(po);
+                lock (entities)
+            {
+                    entities.Remove(po);
+                }
+            }
+            catch
+            {
             }
         }
 
@@ -118,7 +130,14 @@ namespace GameEngine
         //checks if gravity is engaged on the given player
         public static bool HasGravity(Player player)
         {
-            return entities.Contains(player);
+            try
+            {
+                return entities.Contains(player);
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         public static void Dispose()

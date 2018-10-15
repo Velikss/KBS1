@@ -21,7 +21,8 @@ namespace WPF_Game
             AudioPlayer.Load("on_dead", AppDomain.CurrentDomain.BaseDirectory + "Music/on_dead.wav", false);
             AudioPlayer.Load("background", AppDomain.CurrentDomain.BaseDirectory + "Music/temp_back.wav", true);
             AudioPlayer.Load("on_coin_collide", AppDomain.CurrentDomain.BaseDirectory + "Music/coin.wav", false);
-            AudioPlayer.Load("enemy_getbackhere", AppDomain.CurrentDomain.BaseDirectory + "Music/enemy_getbackhere.wav", false);
+            AudioPlayer.Load("enemy_getbackhere", AppDomain.CurrentDomain.BaseDirectory + "Music/enemy_getbackhere.wav",
+                false);
             AudioPlayer.Soundtrack.First(o => o.Key == "background").Value.player.Volume = 0.08;
             AudioPlayer.Play("background");
             gm = new GameMaker(this, 800, 600);
@@ -57,18 +58,22 @@ namespace WPF_Game
                     gm.Points++;
                     break;
                 case PhysicalType.Enemy:
-                    gm.movement.DisableKeys();
                     switch (argument)
                     {
                         case "outside":
                             Dispatcher.Invoke(() => AudioPlayer.Play("enemy_getbackhere"));
+                            po.running = false;
                             break;
-                        default:
-                            Dispatcher.Invoke(() => AudioPlayer.Play("on_dead"));
+                        case "kill":
+                            gm.movement.DisableKeys();
+                            Thread.Sleep(10);
                             gm.game_render.Deactivate();
+                            Thread.Sleep(1000);
+                            Dispatcher.Invoke(() => AudioPlayer.Play("on_dead"));
                             gm.Menus[MenuType.Death].Activate();
                             break;
                     }
+
                     break;
                 default:
                     po.running = false;
@@ -196,9 +201,10 @@ namespace WPF_Game
                 new MenuText("Select  Character", new Font("ArcadeClassic", 40),
                         Brushes.White)
                     {y = 200};
-            
-            var HighScores = new MenuText(ScoreController.GetTopActive(), new Font("ArcadeClassic", 40, System.Drawing.FontStyle.Underline), Brushes.White) { y = 200 };
-            
+
+            var HighScores = new MenuText(ScoreController.GetTopActive(),
+                new Font("ArcadeClassic", 40, System.Drawing.FontStyle.Underline), Brushes.White) {y = 200};
+
             //Images
             var CharacterSprite = new MenuImage(800 / 2 - 132, 262, 48, 48,
                 Image.FromFile("Animations/" + Player.CharacterNames[Player.Character_index] + "/normal.gif"), true);
@@ -348,7 +354,8 @@ namespace WPF_Game
             Menus.Add(MenuType.Completed, new Menu(ref gm.screen,
                 new List<MenuItem>
                 {
-                    OverlayPanel, VictorySprite, VictoryText, VictoryHighScoreText, VictoryToTitleScrn, VictoryRestart, GoToNextLevel
+                    OverlayPanel, VictorySprite, VictoryText, VictoryHighScoreText, VictoryToTitleScrn, VictoryRestart,
+                    GoToNextLevel
                 },
                 null));
             Menus.Add(MenuType.LevelOptions, new Menu(ref gm.screen,
