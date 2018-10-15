@@ -105,7 +105,6 @@ C:\Users\barts\Documents\GitHub\SE1-KBS1\WPF Game\obj\Debug\WPF Game.g.resources
 C:\Users\barts\Documents\GitHub\SE1-KBS1\WPF Game\obj\Debug\WPF_Game.Properties.Resources.resources
 C:\Users\barts\Documents\GitHub\SE1-KBS1\WPF Game\obj\Debug\WPF Game.csproj.GenerateResource.cache
 C:\Users\barts\Documents\GitHub\SE1-KBS1\WPF Game\obj\Debug\WPF Game.csproj.CoreCompileInputs.cache
-C:\Users\barts\Documents\GitHub\SE1-KBS1\WPF Game\obj\Debug\WPF Game.csproj.CopyComplete
 C:\Users\barts\Documents\GitHub\SE1-KBS1\WPF Game\obj\Debug\WPF Game.exe
 C:\Users\barts\Documents\GitHub\SE1-KBS1\WPF Game\obj\Debug\WPF Game.pdb
 C:\Users\usr\Documents\GitHub\Runch\WPF Game\bin\Debug\WPF Game.exe.config
