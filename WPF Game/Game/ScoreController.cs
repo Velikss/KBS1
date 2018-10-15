@@ -25,7 +25,7 @@ namespace WPF_Game.Game
 
             public override string ToString()
             {
-                return Date + ": " + score;
+                return Date + " | " + score;
             }
         }
 
