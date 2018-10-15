@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Level xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-   <Name>Stage 1</Name>
+   <Name>World 1-1</Name>
    <BackgroundPath>Levels/Cave.gif</BackgroundPath>
    <Enemies>
       <Enemy>
