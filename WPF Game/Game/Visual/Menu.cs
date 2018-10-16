@@ -14,11 +14,9 @@ namespace GameEngine
         HighScoreScreen,
         InstructionsScreen,
         LevelOptions,
-        Options,
         Death,
         Pause,
-        Completed,
-        Error
+        Completed
     }
 
     public class Menu : Renderer
@@ -146,11 +144,14 @@ namespace GameEngine
 
         private void W_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            var p = e.GetPosition(screen.w);
-            foreach (var button in items.Where(o => o.x <= p.X && o.x + o.Width >= p.X && o.y <= p.Y &&
-                                                    o.y + o.Height >= p.Y))
-                if (button is MenuButton menuButton)
-                    menuButton.TriggerClick();
+            if (Activated)
+            {
+                var p = e.GetPosition(screen.w);
+                foreach (var button in items.Where(o => o.x <= p.X && o.x + o.Width >= p.X && o.y <= p.Y &&
+                                                        o.y + o.Height >= p.Y))
+                    if (button is MenuButton menuButton)
+                        menuButton.TriggerClick();
+            }
         }
 
         #endregion
