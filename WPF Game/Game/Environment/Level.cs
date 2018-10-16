@@ -74,20 +74,48 @@ namespace GameEngine
             foreach (var c in Directory.GetFiles(Dir))
                 if (Path.GetExtension(c) == ".lvl")
                     Levels.Add(Load(c));
-            Level l = new Level("World 1-3");
-            l.Tiles.Add(new Tile(Sprites.First(o => o.Key == PhysicalType.Sand).Value, PhysicalType.Sand, 0, 470, 150));
-            for (int x = 150; x < 4700; x += 32)
-                l.Tiles.Add(new Tile(Sprites.First(o => o.Key == PhysicalType.Coin).Value, PhysicalType.Coin, x, 438,
-                    1, 32, false));
-            l.Tiles.Add(new Tile(Sprites.First(o => o.Key == PhysicalType.Sand).Value, PhysicalType.Sand, -64, 400, 2));
-            for (int y = 200; y < 380; y += 32)
-                l.Tiles.Add(new Tile(Sprites.First(o => o.Key == PhysicalType.Coin).Value, PhysicalType.Coin, -48, y,
-                    1, 32, false));
-            l.Tiles.Add(new Tile(Sprites.First(o => o.Key == PhysicalType.BeginFlag).Value, PhysicalType.BeginFlag, 10, 375, 1, 64, false));
-            l.Tiles.Add(new Tile(Sprites.First(o => o.Key == PhysicalType.EndFlag).Value, PhysicalType.EndFlag, 4768, 375, 1, 64, false));
-            l.BackgroundPath = "Levels/code.jpg";
-            l.Background = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + l.BackgroundPath);
-            Levels.Add(l);
+//            Level l = new Level("World 1-3");
+//            l.Tiles.Add(new Tile(Sprites.First(o => o.Key == PhysicalType.Brick).Value, PhysicalType.Brick, 0, 470, 5));
+//            int xStairs = 165;
+//            int yStairs = 470;
+//            for (int i = 0; i < 10; i++)
+//            { 
+//                xStairs += 64;
+//                yStairs -= 32;
+//                l.Tiles.Add(new Tile(Sprites.First(o => o.Key == PhysicalType.Brick).Value, PhysicalType.Brick, xStairs, yStairs, 1));
+//            }
+//            int xCoin = 165;
+//            int yCoin = 430;
+//            for (int i = 0; i < 10; i++)
+//            {
+//                xCoin += 64;
+//                yCoin -= 32;
+//                l.Tiles.Add(new Tile(Sprites.First(o => o.Key == PhysicalType.Coin).Value, PhysicalType.Coin, xCoin, yCoin, 1, 32, false));
+//            }
+//            l.Tiles.Add(new Tile(Sprites.First(o => o.Key == PhysicalType.Brick).Value, PhysicalType.Brick, 805, 150, 15));
+//            int xStairs2 = 1285;
+//            int yStairs2 = 150;
+//            for (int i = 0; i < 5; i++)
+//            {
+//                xStairs2 += 64;
+//                yStairs2 += 64;
+//                l.Tiles.Add(new Tile(Sprites.First(o => o.Key == PhysicalType.Brick).Value, PhysicalType.Brick, xStairs2, yStairs2, 1));
+//            }
+//            l.Tiles.Add(new Tile(Sprites.First(o => o.Key == PhysicalType.Brick).Value, PhysicalType.Brick, 1585, 150, 1));
+//            l.Tiles.Add(new Tile(Sprites.First(o => o.Key == PhysicalType.Coin).Value, PhysicalType.Coin, 1585, 118, 1));
+//            l.Tiles.Add(new Tile(Sprites.First(o => o.Key == PhysicalType.Brick).Value, PhysicalType.Brick, 1777, 150, 1));
+//            l.Tiles.Add(new Tile(Sprites.First(o => o.Key == PhysicalType.Coin).Value, PhysicalType.Coin, 1777, 118, 1));
+//            l.Tiles.Add(new Tile(Sprites.First(o => o.Key == PhysicalType.Brick).Value, PhysicalType.Brick, 1969, 150, 1));
+//            l.Tiles.Add(new Tile(Sprites.First(o => o.Key == PhysicalType.Coin).Value, PhysicalType.Coin, 1969, 118, 1));
+//
+//            l.Tiles.Add(new Tile(Sprites.First(o => o.Key == PhysicalType.Brick).Value, PhysicalType.Brick, 2290, 110, 15));
+//            
+//            l.Tiles.Add(new Tile(Sprites.First(o => o.Key == PhysicalType.BeginFlag).Value, PhysicalType.BeginFlag, 10, 375, 1, 64, false));
+//            l.Tiles.Add(new Tile(Sprites.First(o => o.Key == PhysicalType.EndFlag).Value, PhysicalType.EndFlag, 2650, 14, 1, 64, false));
+//            l.BackgroundPath = "Levels/back3.jpeg";
+//            l.Background = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + l.BackgroundPath);
+//            l.GenerateFile(AppDomain.CurrentDomain.BaseDirectory + "Levels/level3.lvl");
+//            Levels.Add(l);
         }
 
         private static Level Load(string File)

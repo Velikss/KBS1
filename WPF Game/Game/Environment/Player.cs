@@ -228,6 +228,7 @@ namespace GameEngine
             Y = 330 - (normal.Height - 32);
             Width = normal.Width;
             Height = normal.Height;
+            collision = new Rectangle((int) X,(int) Y, Width, Height);
         }
 
         #endregion
