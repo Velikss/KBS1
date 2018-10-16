@@ -16,7 +16,8 @@ namespace GameEngine
         LevelOptions,
         Death,
         Pause,
-        Completed
+        Completed,
+        Credits
     }
 
     public class Menu : Renderer

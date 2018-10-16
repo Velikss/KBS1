@@ -186,6 +186,10 @@ namespace WPF_Game
                 Brushes.Gainsboro,
                 55, 475, 250,
                 50, buttonsprite);
+            var CreditsToTitleBtn = new MenuButton("Return to start", new Font("Munro", 25, System.Drawing.FontStyle.Bold),
+                Brushes.Gainsboro,
+                55, 475, 250,
+                50, buttonsprite);
             //Panels
             var LevelSpriteBack = new MenuPanel(800 / 2 - 145, 100, 75, 75, buttonsprite);
             var LevelTitleBack = new MenuPanel(800 / 2 - 74, 100, 221, 75, buttonsprite);
@@ -226,8 +230,17 @@ namespace WPF_Game
                                             + "Good luck!",
                 new Font("ArcadeClassic", 25), Brushes.White)
             { y = 200 };
-            var CopyrightDisclaimer = new MenuText("This game is for educational purpose only", new Font("ArcadeClassic", 21, System.Drawing.FontStyle.Italic), Brushes.White) {y = 450};
-
+            var CopyrightDisclaimer = new MenuText("This game is for educational purpose only", new Font("ArcadeClassic", 21, System.Drawing.FontStyle.Italic), Brushes.White) { y = 450 };
+            var Congratulations = new MenuText("Congratulations", new Font("ArcadeClassic", 60), Brushes.White) { y = 120 };
+            var CongratulationsTxt = new MenuText("You have succesfully completed the game, good job!",
+                    new Font("ArcadeClassic", 25), Brushes.White)
+                { y = 200 };
+            var Credits = new MenuText("Credits", new Font("ArcadeClassic", 60), Brushes.White) { y = 280 };
+            var CreditsTxt = new MenuText("This game was made by:"
+                                            + Environment.NewLine
+                                            + "Buster, Bart, Remy, Nolen, Felix en Bram",
+                    new Font("ArcadeClassic", 25), Brushes.White)
+                { y = 360 };
             //Images
             var CharacterSprite = new MenuImage(800 / 2 - 132, 262, 48, 48,
                 Image.FromFile("Animations/" + Player.CharacterNames[Player.Character_index] + "/normal.gif"), true);
@@ -248,7 +261,7 @@ namespace WPF_Game
                 {
                     Level.Level_index = 0;
                     Menus[MenuType.Completed].Deactivate();
-                    Menus[MenuType.TitleScreen].Activate();
+                    Menus[MenuType.Credits].Activate();
                 }
             };
             LevelOptionsToTitleScrn.Clicked += delegate
@@ -367,6 +380,11 @@ namespace WPF_Game
                 Menus[MenuType.InstructionsScreen].Deactivate();
                 Menus[MenuType.TitleScreen].Activate();
             };
+            CreditsToTitleBtn.Clicked += delegate
+            {
+                Menus[MenuType.Credits].Deactivate();
+                Menus[MenuType.TitleScreen].Activate();
+            };
             //adds to Menu's
             Menus.Add(MenuType.TitleScreen, new Menu(ref gm.screen,
                 new List<MenuItem> {SinglePlayerBtn, HighScoresBtn, InstructionsBtn, ExitBtn},
@@ -397,6 +415,11 @@ namespace WPF_Game
                     GoToNextLevel
                 },
                 null));
+            Menus.Add(MenuType.Credits, new Menu(ref gm.screen, new List<MenuItem>
+                {
+                Congratulations, CongratulationsTxt, Credits, CreditsTxt, CreditsToTitleBtn
+                },
+                Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/back.gif")));
             Menus.Add(MenuType.LevelOptions, new Menu(ref gm.screen,
                 new List<MenuItem>
                 {
