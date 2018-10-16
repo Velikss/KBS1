@@ -219,12 +219,14 @@ namespace WPF_Game
                     {y = 200};
             var HighScores = new MenuText(ScoreController.GetTopActive(),
                 new Font("ArcadeClassic", 40, System.Drawing.FontStyle.Underline), Brushes.White) {y = 200};
-            var Instructions = new MenuText("You can control your character with 'W', 'D' and spacebar." 
-                                            + Environment.NewLine 
+            var Instructions = new MenuText("You can control your character with 'W', 'D' and spacebar."
+                                            + Environment.NewLine
                                             + "The goal is to reach the red flag at the end of the level."
                                             + Environment.NewLine
                                             + "Good luck!",
-                new Font("ArcadeClassic", 25), Brushes.White) {y = 200};
+                new Font("ArcadeClassic", 25), Brushes.White)
+            { y = 200 };
+            var CopyrightDisclaimer = new MenuText("This game is for educational purpose only", new Font("ArcadeClassic", 21, System.Drawing.FontStyle.Italic), Brushes.White) {y = 450};
 
             //Images
             var CharacterSprite = new MenuImage(800 / 2 - 132, 262, 48, 48,
@@ -379,7 +381,7 @@ namespace WPF_Game
             Menus.Add(MenuType.InstructionsScreen, new Menu(ref gm.screen,
                 new List<MenuItem>
                 {
-                    InstructionsScreenToTitleScrnBtn, Instructions
+                    InstructionsScreenToTitleScrnBtn, Instructions, CopyrightDisclaimer
                 },
                 Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Scene/Title.gif")));
             Menus.Add(MenuType.Pause, new Menu(ref gm.screen,

@@ -74,6 +74,7 @@ namespace GameEngine
             foreach (var c in Directory.GetFiles(Dir))
                 if (Path.GetExtension(c) == ".lvl")
                     Levels.Add(Load(c));
+
 //            Level l = new Level("World 1-3");
 //            l.Tiles.Add(new Tile(Sprites.First(o => o.Key == PhysicalType.Brick).Value, PhysicalType.Brick, 0, 470, 5));
 //            int xStairs = 165;
