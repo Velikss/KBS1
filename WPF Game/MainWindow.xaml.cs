@@ -225,12 +225,12 @@ namespace WPF_Game
                 new Font("ArcadeClassic", 40, System.Drawing.FontStyle.Underline), Brushes.White) {y = 200};
             var Instructions = new MenuText("You can control your character with 'W', 'D' and spacebar."
                                             + Environment.NewLine
-                                            + "The goal is to reach the red flag at the end of the level."
+                                            + "The goal is to reach the red flag at the end of each level."
                                             + Environment.NewLine
                                             + "Good luck!",
                 new Font("ArcadeClassic", 25), Brushes.White)
             { y = 200 };
-            var CopyrightDisclaimer = new MenuText("This game is for educational purpose only", new Font("ArcadeClassic", 21, System.Drawing.FontStyle.Italic), Brushes.White) { y = 450 };
+            var CopyrightDisclaimer = new MenuText("This game is for educational purpose only", new Font("ArcadeClassic", 21, System.Drawing.FontStyle.Italic), Brushes.White) { y = 440 };
             var Congratulations = new MenuText("Congratulations", new Font("ArcadeClassic", 60), Brushes.White) { y = 120 };
             var CongratulationsTxt = new MenuText("You have succesfully completed the game, good job!",
                     new Font("ArcadeClassic", 25), Brushes.White)
