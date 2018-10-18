@@ -119,7 +119,7 @@ namespace GameEngine
 //            Levels.Add(l);
         }
 
-        private static Level Load(string File)
+        public static Level Load(string File)
         {
             PrepareLevelClass();
             Console.WriteLine(File + ", added");

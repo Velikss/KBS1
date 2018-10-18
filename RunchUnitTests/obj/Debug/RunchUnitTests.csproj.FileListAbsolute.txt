@@ -1,0 +1,17 @@
+C:\Users\Felix\Source\Repos\SE1-KBS1\RunchUnitTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Users\Felix\Source\Repos\SE1-KBS1\RunchUnitTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\Users\Felix\Source\Repos\SE1-KBS1\RunchUnitTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Users\Felix\Source\Repos\SE1-KBS1\RunchUnitTests\bin\Debug\RunchUnitTests.dll
+C:\Users\Felix\Source\Repos\SE1-KBS1\RunchUnitTests\bin\Debug\RunchUnitTests.pdb
+C:\Users\Felix\Source\Repos\SE1-KBS1\RunchUnitTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+C:\Users\Felix\Source\Repos\SE1-KBS1\RunchUnitTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+C:\Users\Felix\Source\Repos\SE1-KBS1\RunchUnitTests\bin\Debug\WPF Game.exe
+C:\Users\Felix\Source\Repos\SE1-KBS1\RunchUnitTests\bin\Debug\WPF Game.pdb
+C:\Users\Felix\Source\Repos\SE1-KBS1\RunchUnitTests\bin\Debug\WPF Game.exe.config
+C:\Users\Felix\Source\Repos\SE1-KBS1\RunchUnitTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
+C:\Users\Felix\Source\Repos\SE1-KBS1\RunchUnitTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+C:\Users\Felix\Source\Repos\SE1-KBS1\RunchUnitTests\obj\Debug\RunchUnitTests.csprojAssemblyReference.cache
+C:\Users\Felix\Source\Repos\SE1-KBS1\RunchUnitTests\obj\Debug\RunchUnitTests.csproj.CoreCompileInputs.cache
+C:\Users\Felix\Source\Repos\SE1-KBS1\RunchUnitTests\obj\Debug\RunchUnitTests.csproj.CopyComplete
+C:\Users\Felix\Source\Repos\SE1-KBS1\RunchUnitTests\obj\Debug\RunchUnitTests.dll
+C:\Users\Felix\Source\Repos\SE1-KBS1\RunchUnitTests\obj\Debug\RunchUnitTests.pdb

@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28010.2016
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF Game", "WPF Game\WPF Game.csproj", "{8DF60DE3-D4D1-498C-9A9B-AEDC763253D6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RunchUnitTests", "RunchUnitTests\RunchUnitTests.csproj", "{12794472-4567-42B0-B8B3-1B929B24A5CF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{8DF60DE3-D4D1-498C-9A9B-AEDC763253D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8DF60DE3-D4D1-498C-9A9B-AEDC763253D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8DF60DE3-D4D1-498C-9A9B-AEDC763253D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12794472-4567-42B0-B8B3-1B929B24A5CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12794472-4567-42B0-B8B3-1B929B24A5CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12794472-4567-42B0-B8B3-1B929B24A5CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12794472-4567-42B0-B8B3-1B929B24A5CF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

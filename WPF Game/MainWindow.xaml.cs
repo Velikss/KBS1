@@ -223,7 +223,7 @@ namespace WPF_Game
                     {y = 200};
             var HighScores = new MenuText(ScoreController.GetTopActive(),
                 new Font("ArcadeClassic", 40, System.Drawing.FontStyle.Underline), Brushes.White) {y = 200};
-            var Instructions = new MenuText("You can control your character with 'W', 'D' and spacebar."
+            var Instructions = new MenuText("You can control your character with 'A', 'D' and spacebar."
                                             + Environment.NewLine
                                             + "The goal is to reach the red flag at the end of each level."
                                             + Environment.NewLine
