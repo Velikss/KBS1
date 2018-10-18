@@ -11,7 +11,7 @@ namespace GameEngine
     [Serializable]
     public class Level
     {
-        private Level(string Name)
+        public Level(string Name)
         {
             PrepareLevelClass();
             this.Name = Name;

@@ -20,6 +20,12 @@ namespace RunchUnitTests
                 Console.WriteLine(Score);
             }
         }
+
+        [TestMethod]
+        public void TestScoreBoardSave()
+        {
+            ScoreController.SaveScore(new Level("Test level"), 9);
+        }
         
     }
 
@@ -38,19 +44,5 @@ namespace RunchUnitTests
             Level.Load(AppDomain.CurrentDomain.BaseDirectory + "Levels/level1.lvl");
         }
 
-    }
-
-    [TestClass]
-    public class PlayerTest
-    {
-        [TestMethod]
-        public void TestPlayerDeath()
-        {
-            //Arrange
-            var player = new Player();
-            //Act
-
-            //Assert
-        }
     }
 }
