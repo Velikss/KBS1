@@ -43,6 +43,5 @@ namespace RunchUnitTests
         {
             Level.Load(AppDomain.CurrentDomain.BaseDirectory + "Levels/level1.lvl");
         }
-
     }
 }
